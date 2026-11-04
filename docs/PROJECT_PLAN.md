@@ -52,7 +52,7 @@ Modal Volumes are not automatically mounted on Kaggle. Export versioned inputs a
 
 ## Tracking and measurement
 
-Use a single W&B project (`open-rsi` proposed) with separate runs for generation, verification, training, and evaluation. Link inputs and outputs through Artifacts. W&B remains usable across cloud providers after its transition into CoreWeave Forge. [CoreWeave explanation](https://www.coreweave.com/companies/weights-and-biases), [W&B Artifacts](https://site.wandb.ai/artifacts/)
+Use the existing W&B project `ashu-na/rsi` with separate runs for generation, verification, training, and evaluation. Link inputs and outputs through Artifacts. W&B remains usable across cloud providers after its transition into CoreWeave Forge. [CoreWeave explanation](https://www.coreweave.com/companies/weights-and-biases), [W&B Artifacts](https://site.wandb.ai/artifacts/)
 
 Record at least:
 
@@ -71,7 +71,7 @@ Store full weights and bulky training state in persistent storage. W&B can track
 
 Earlier discussion estimated a 24 GB GPU, roughly 32 GB host RAM, and 100 GB disk as a comfortable starting target for a small QLoRA pilot. These are planning targets, not measured requirements for MiniCPM5. Start with a short memory/throughput benchmark; select hardware based on total job cost.
 
-The earlier $100–$300 pilot estimate and 2–4 week engineering estimate are provisional, not authorized spending or delivery commitments. No budget or account credits have been confirmed. Use measured generation, verification, training, and evaluation costs to set the next run's limits.
+The earlier $100–$300 pilot estimate and 2–4 week engineering estimate are provisional, not authorized spending or delivery commitments. Provider authentication is verified; no budget or account credit balance has been confirmed. Use measured generation, verification, training, and evaluation costs to set the next run's limits.
 
 1. **Setup:** project-local environment, credentials, immutable model revision, provider smoke tests, and one W&B run.
 2. **Baseline:** independently checked task families, frozen splits, starting-model scores and failure inspection.

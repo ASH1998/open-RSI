@@ -1,0 +1,8 @@
+# Provider/metadata checks only; no training stack.
+wandb==0.31.0
+modal==1.6.3
+kaggle==2.2.5
+huggingface_hub==2.4.0
+python-dotenv==1.2.4
+# Kaggle import needs six, which was absent from its resolved dependency set.
+six==1.17.0

@@ -1,6 +1,6 @@
 # Environment and provider setup
 
-Last checked: November 4, 2026. This repository currently contains documentation only. The variables below are a proposed contract for future launchers; SDK variables work only after loading them into the process environment.
+Last checked: November 4, 2026. Provider checks are implemented in `scripts/check_services.py`; see `VERIFICATION.md` for results. The variables below are a proposed contract for future launchers; SDK variables work only after loading them into the process environment.
 
 ## Local workspace
 
@@ -18,7 +18,7 @@ mkdir -p .cache/wandb .config/wandb .config/kaggle work data models checkpoints 
 
 Edit `.env` locally. All secret values in the template are blank. Load it through an explicit dotenv loader in future Python entrypoints, before importing provider SDKs. CLI processes need the same variables exported; a `.env` file alone is not automatically consumed by every SDK. Do not print it or dump the entire process environment.
 
-Use a local `.venv` for future dependencies and honor the cache paths before installation. Planned components are Python, PyTorch, Transformers, PEFT, TRL, bitsandbytes for a compatible CUDA QLoRA path, Modal, wandb, Kaggle CLI, huggingface_hub, and python-dotenv. Version locks are intentionally pending the model/GPU compatibility test. No packages are installed by this documentation.
+Use a local `.venv` for future dependencies and honor the cache paths before installation. Planned components are Python, PyTorch, Transformers, PEFT, TRL, bitsandbytes for a compatible CUDA QLoRA path, Modal, wandb, Kaggle CLI, huggingface_hub, and python-dotenv. Version locks are intentionally pending the model/GPU compatibility test. The service SDKs are installed in the SSD-local `.venv`; exact versions are recorded in `requirements-tools.lock`. Training packages are not installed.
 
 `RSI_*` entries are project-defined settings that future code must implement; they are not provider SDK controls. `RSI_MODEL_REVISION` must be resolved to an immutable commit before recorded experiments. Do not log unresolved `main` as a reproducible revision.
 
@@ -28,7 +28,7 @@ Use a local `.venv` for future dependencies and honor the cache paths before ins
 | --- | --- | --- |
 | Modal | `MODAL_TOKEN_ID`, `MODAL_TOKEN_SECRET` | Required for authenticated Modal jobs. Create a token in Modal account/workspace settings. Use environment authentication to avoid writing a home-directory profile. |
 | W&B | `WANDB_API_KEY` | Required for online tracking. Obtain through W&B/CoreWeave Forge account settings. |
-| W&B destination | `WANDB_ENTITY`, `WANDB_PROJECT` | Entity is your user/team namespace; project defaults to `open-rsi`. These are identifiers, not secrets. |
+| W&B destination | `WANDB_ENTITY`, `WANDB_PROJECT` | Entity is your user/team namespace; entity is `ashu-na` and project is `rsi`. These are identifiers, not secrets. |
 | Kaggle | `KAGGLE_API_TOKEN` | Optional, needed for secondary-provider API/CLI use. Generate at https://www.kaggle.com/settings/api. |
 | Hugging Face | `HF_TOKEN` | Optional for public downloads; needed for gated/private assets or authenticated uploads. Create an appropriately scoped token at https://huggingface.co/settings/tokens. |
 
@@ -56,3 +56,9 @@ The controller must record durable job IDs/status and know how to resume after i
 The remote is https://github.com/ASH1998/open-RSI.git. Commit source, notebooks with outputs cleared, dependency locks, configuration templates, and documentation. Keep `.env`, caches, datasets, model weights, adapters, checkpoints, and raw run logs ignored.
 
 A source push is not a backup of ignored experiment outputs. Retain those in persistent cloud storage and copy selected results to this SSD with checksums. Set dataset/model visibility deliberately when exports are eventually implemented; do not publish artifacts as an incidental part of saving a run.
+
+## Run the service checks
+
+Use `.venv/bin/python scripts/check_services.py SERVICE`, with `SERVICE` equal to `modal`, `kaggle`, `huggingface`, or `wandb`. The W&B check explicitly uses online mode and creates a clearly labeled synthetic run; the others only read provider metadata. The script loads `.env`, keeps output on the SSD, and never prints raw provider exceptions or credentials. Each rerun of the W&B check creates a new run.
+
+To reproduce the validated service environment, install `requirements-tools.lock` in a project-local virtual environment with the cache variables above. This lock describes the macOS/Python 3.13 service-check environment, not the future Linux GPU training environment.

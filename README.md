@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** planning and setup documentation only. No model has been downloaded, no training pipeline exists, and no paid jobs have been launched. Updated November 4, 2026.
+**Status:** provider credential checks and a synthetic W&B run have passed; a reusable service-check script is available. No model has been downloaded, no training pipeline exists, and no paid jobs have been launched. Updated November 4, 2026.
 
 ## Workspace and repository
 
@@ -32,4 +32,6 @@ The user's phrase “OpenAI BMB” is interpreted here as **OpenBMB**, a separat
 3. [Environment template](.env.example): blank credential fields and proposed configuration.
 4. [Agent instructions](AGENTS.md): rules and handoff expectations for future agents.
 
-The environment template is configuration documentation, not an implemented launcher. Copy it to an ignored `.env` when configuring accounts; see the setup guide. Nothing in this repository currently provisions infrastructure or spends credits.
+The environment template is consumed by `scripts/check_services.py`; the training/controller launcher is not implemented. Copy it to an ignored `.env` when configuring accounts; see the setup guide. Nothing in this repository currently provisions infrastructure or spends credits.
+
+Service check results and rerun instructions: [verification report](docs/VERIFICATION.md).
