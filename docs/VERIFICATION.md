@@ -7,7 +7,7 @@ Verified November 4, 2026, from `/Volumes/DevSSDWD/openbmb/rsi` using the projec
 | W&B | Passed | Created a synthetic run in `ashu-na/rsi`, uploaded three metric steps, finished the run, and read the final metric back from the server. |
 | Modal | Passed | Authenticated SDK client handshake. No app, Sandbox, or GPU worker was created. |
 | Kaggle | Passed | Authenticated and successfully requested the account's own dataset listing. No notebook or accelerator was started. |
-| Hugging Face | Passed | Retrieved public metadata for `openbmb/MiniCPM5-2B` without a token. No model weights downloaded. |
+| Hugging Face | Public access passed; new token failed | Anonymous metadata access passed earlier. After `HF_TOKEN` was added, authenticated verification returned HTTP 401 Unauthorized. No model weights downloaded. |
 
 W&B test: https://forge.coreweave.com/wandb/ashu-na/rsi/runs/y4x41q13
 
@@ -20,7 +20,7 @@ The run is named `service-check-synthetic`, tagged `smoke-test`, `synthetic`, an
 - Restricted `.env` file permissions to the owner.
 - Installed provider SDKs in `.venv` and package caches on the SSD. Added the missing `six` dependency needed by Kaggle's import path.
 - Resolved the provisional model revision to `f97400052a43d642bbc6e9975e2397e3ae6a6b52` and pinned it in local `.env`.
-- Left `HF_TOKEN` empty: public model metadata works without it. Gated/private access and authenticated uploads remain untested.
+- Initial `HF_TOKEN` was empty and public metadata access passed. A token was subsequently added by the user; the authenticated check returned HTTP 401. Its prefix and whitespace checks passed. Replace or regenerate the token and rerun the Hugging Face check; it was not removed or altered.
 
 ## Repeating checks
 
@@ -35,4 +35,4 @@ Run from the project root:
 
 The final command creates a new online synthetic W&B run each time. Sanitized JSON results are saved to ignored `work/service-checks/`. The SDK versions are specified in `requirements-tools.txt`; the complete validated local environment is in `requirements-tools.lock`.
 
-Authentication and metric transport are working. GPU/TPU availability, quotas, billing balances, model loading, fine-tuning compatibility, and checkpoint storage have not been tested. No paid compute or training was started by these checks.
+Modal/Kaggle authentication and W&B metric transport are working. The newly added Hugging Face token needs replacement or correction before authenticated access works. GPU/TPU availability, quotas, billing balances, model loading, fine-tuning compatibility, and checkpoint storage have not been tested. No paid compute or training was started by these checks.
