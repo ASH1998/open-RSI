@@ -1,0 +1,16 @@
+{
+  "study": "successor-recovery-v1",
+  "status": "failed_before_model_outputs",
+  "run_id": "20261104T185830Z-successor-r1-baseline-657aa119",
+  "report_sha256": "fdd119f6c7110b1285654516aabe8f935c6c5a255ee4cecf9f666fdc84782252",
+  "plan_sha256": "b8792233163b4ad3368062115b1c428bb4398874ff7501710e62e7b2d2621f1c",
+  "cause": "Image env configured PIP_CACHE_DIR under future /artifacts volume before pip_install; Modal refused nonempty mount.",
+  "modal_error": "cannot mount volume on non-empty path: /artifacts",
+  "outputs": 0,
+  "reservation_usd": 5,
+  "preserved": true,
+  "replacement": "successor-recovery-v2; new source and factory, five $4 stages within original recovery family $25 including this failure",
+  "wandb_url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/0bd2l0ts",
+  "remote_report_readback": true,
+  "sha256": "84901f8d8d7351c2e4e2c41b0212727fc945abfe6ca13ae3d27ea2988f39ac94"
+}

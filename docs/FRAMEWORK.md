@@ -1,7 +1,7 @@
 # rsilab framework foundation
 
 `rsilab` is an installable Python library for verified-learning experiments.
-Version 0.4.1 corrects the portable-worker image build order while retaining
+Version 0.4.2 adds a runtime-only worker environment and CPU probe while retaining
 the explicit category preflight and reviewed reference-evidence reuse from
 0.4.0. The dependency-free offline core covers manifests,
 data and attempt audits, target selection, and matched comparisons, alongside
@@ -481,3 +481,23 @@ completed checks, including earlier APIs, both factory versions, both recovery
 controllers, saved-reference replay and the synthetic examples. Remote GPU
 execution and checkpoint resume require separate validation; lazy SDK
 construction does not build an image or attach a remote volume.
+
+## Runtime-only factory and CPU probe 0.4.2
+
+V2's ENV-only layer still preceded a nonempty-mount error on the remote runner,
+so its build-order change did not establish working attachment. V3 in
+`rsilab.providers.portable_modal_v3` removes every image environment assignment.
+Only remote runtime entries initialize cache paths after volume attachment.
+The new `workers.probe.spawn()` takes no request and uses the identical image,
+source bundle and volume on two CPU cores with 2 GiB memory, timeout 120 seconds,
+zero warm containers, zero retries and no secrets. It reports source/config
+identity, mount-directory presence and full installed distribution metadata
+without loading a model. The controller must reserve, persist and validate that
+probe before GPU work. It does not certify GPU/model behavior.
+
+Twenty-one V3 offline tests cover the new boundary and preserved kernel behavior.
+The distinct `work/successor-recovery-v3-framework-dist/` directory records the
+wheel, exact commands, source inventory and completed installed validation.
+Remote probe verification remains a separate prerequisite before GPU work.
+All prior factories, controllers, kernels and wheels remain preserved. See
+[the probe contract](PORTABLE_MODAL.md#cpu-probe-contract).

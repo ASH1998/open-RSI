@@ -2,9 +2,9 @@
 
 `rsilab` records verified-learning experiments and compares results under matching controls. Its offline core needs Python 3.11+ and the standard library. Cloud execution is optional. There is no claim that installing it provides an agent capable of recursive self-improvement.
 
-Version 0.4.1 corrects the portable Modal factory's image build order, preserving the
+Version 0.4.2 adds a runtime-only Modal environment and CPU probe, preserving the
 category preflight and reference-evidence reuse added in 0.4.0. See
-[release status](FRAMEWORK.md#local-factory-correction-041) for validation records
+[release status](FRAMEWORK.md#runtime-only-factory-and-cpu-probe-042) for validation records
 and preserved artifacts. No package has been published to PyPI.
 
 Install from a checkout into your own project environment:
@@ -21,8 +21,8 @@ The example uses explicitly synthetic evidence. It demonstrates immutable identi
 For optional integrations, install the corresponding extra (`.[modal]`, `.[tracking]`, or `.[data]`). Keep credentials in your project's environment. The core import never reads them. Project-specific `Workspace.stage()` currently enforces the research project's conservative $250/$25/$5 policy; it is not a universal billing service.
 
 - [Portable Modal worker](PORTABLE_MODAL.md): explicit factory, immutable model revision and persistent remote storage.
-  New integrations import `rsilab.providers.portable_modal_v2`; V1 remains
-  available only as preserved historical source.
+  New integrations import `rsilab.providers.portable_modal_v3` and validate a
+  separately reserved CPU probe before GPU work. V1/V2 remain preserved.
 - [Verified learning](LEARNING.md): preserve attempts, construct bounded repairs and select verified labels.
 - [Successor measurement](SUCCESSOR_MEASUREMENT.md): distinguish solving more tasks from producing better students.
 - [Dataset auditing](VERIFIED_DATA.md): independent tests and split separation.

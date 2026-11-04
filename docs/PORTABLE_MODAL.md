@@ -1,23 +1,23 @@
 # Portable optional Modal GPU workers
 
-`rsilab.providers.portable_modal_v2` defines a separate worker factory that uses
+`rsilab.providers.portable_modal_v3` defines a separate worker factory that uses
 packaged Python code and dependency resources. It does not import or mutate the
 historical `rsi.modal_workers` module and does not look for a requirements file
 beside a checkout. Importing it loads no Modal/ML SDK, credentials, or `.env` and
 starts no job. The existing frozen workers and experiment results are unchanged.
 
-Version 0.4.1 introduces this V2 factory after a remote startup failure in V1:
-setting the runtime `PIP_CACHE_DIR` before image dependency installation created
-`/artifacts/cache/pip` inside the image, and Modal rejected the nonempty volume
-mount. V2 calls `pip_install` first, then sets runtime environment paths, then
-attaches the explicit source bundle. No image build command follows that
-environment assignment. The original `portable_modal.py` and resource kernel
-remain unchanged; importing V1 does not silently switch to V2.
+Version 0.4.2 introduces V3 after both earlier factories failed at remote volume
+attachment. V1 applied runtime cache paths before pip installation; V2 moved
+that environment assignment after pip, but its ENV-only image layer still led
+to a nonempty `/artifacts` mount. V3 makes **no `image.env` call at all**. Runtime
+entries set cache paths only after Modal has attached the volume. The original
+V1/V2 factories and resource kernel remain unchanged. V3 also supplies a bounded
+CPU probe so the controller can validate attachment before requesting GPUs.
 
 ## API and lifecycle
 
 ```python
-from rsilab.providers.portable_modal_v2 import PortableModalConfig, create_modal_workers
+from rsilab.providers.portable_modal_v3 import PortableModalConfig, create_modal_workers
 from rsilab.providers.modal import ModalBackend
 
 config = PortableModalConfig(
@@ -30,6 +30,7 @@ config = PortableModalConfig(
 workers = create_modal_workers(config)
 
 # The controller first obtains its authorized stage reservation and report.
+# The controller must first verify a separately reserved CPU probe.
 # This context and these method calls are explicit paid actions:
 with workers.app.run():
     backend = ModalBackend(
@@ -44,7 +45,7 @@ with workers.app.run():
 ```
 
 The factory returns `PortableModalWorkers` with `app`, `generate`, `train`,
-`config`, and a copy-returning `provenance` property. Both function adapters expose
+`probe`, `config`, and a copy-returning `provenance` property. Both GPU function adapters expose
 `.spawn(request)` and return the underlying Modal call object; they plug into the
 existing durable `ModalBackend`. They bind immutable configuration and expected
 source inventory alongside the validated request. No serialized nested function
@@ -52,7 +53,7 @@ is used, so the local controller need not share the remote Python minor version.
 The remote entrypoints are ordinary top-level module functions registered on the
 explicit app. Modal's function registration supports explicit names and source
 inclusion controls. [Modal App reference](https://modal.com/docs/sdk/py/latest/App)
-V2 registers `generate_v2` and `train_v2`, backed by the V2 module's
+V3 registers `generate_v3` and `train_v3`, backed by the V3 module's
 `_generate_entry_v2` and `_train_entry_v2`. The caller-facing attributes remain
 `workers.generate` and `workers.train`.
 
@@ -63,6 +64,38 @@ creation when a later explicit app lifecycle resolves that resource. The caller
 owns authorization, budget reservation, stage/job concurrency, durable call IDs,
 failure handling, and remote resource cleanup. There is no automatic training,
 retry, promotion, tracking, or budget allocation in this factory.
+
+## CPU probe contract
+
+`workers.probe.spawn()` takes no arguments and returns a Modal call object.
+It is an explicit paid action within a caller-owned app lifecycle and reservation.
+Persist the call ID before waiting; handle failures and cancellation through the
+controller. There is no automatic probe, retry, GPU submission, or promotion.
+
+The `probe_v3` function uses the **same image object, source bundle and volume**
+as generation and training. It requests two CPU cores, 2,048 MiB memory, a
+120-second function timeout, zero warm/buffer containers, maximum one container,
+zero retries and no secrets. It has no GPU option. Its runtime entry verifies the
+actual source inventory, reloads the attached volume, checks that its directory
+exists, creates and commits cache/adapter directories, and sets the runtime
+environment. It then inspects distribution metadata without importing ML
+runtimes, initializing CUDA, loading weights, or invoking a model/Hub API.
+
+A successful result includes:
+
+- `status: "completed"` and `mounted_volume_is_dir: true`.
+- `portable_worker` with actual inventory, config and `config_sha256`, equal to
+  the expected `workers.provenance` when source/config identity matches.
+- `packages`, the full `{dist.metadata["Name"]: dist.version}` inventory for
+  installed distributions with nonempty names, matching GPU metadata's format.
+- `volume_mount`, `cache_directories`, `python_version`, `elapsed_seconds`,
+  `gpu_requested: false`, and `dependency_inspection: "distribution_metadata_only"`.
+
+Missing mount directories, changed source inventory, or missing required
+installed dependencies fail. The controller must validate completion and
+provenance before its GPU stage, then match GPU package inventory against the
+probe. A directory check and package metadata inspection do not establish GPU
+availability, successful ML imports, model compatibility or training correctness.
 
 ## Explicit configuration and boundaries
 
@@ -86,8 +119,8 @@ seconds for training, leaving time for persistence.
 
 All runtime model, Torch, pip, XDG, and temporary caches live under the configured
 volume mount. Adapters/checkpoints live under `<mount>/adapters`. The worker
-image installs dependencies before these runtime paths exist in its environment;
-build-time pip uses the image's normal paths outside the future volume mount.
+image has no runtime cache environment layer; build-time pip uses the image's
+normal paths outside the future volume mount.
 The worker
 commits newly created cache/temp directories before the preserved kernels reload
 the volume, so a first-run reload cannot discard those directories. The worker
@@ -156,7 +189,7 @@ static bounds before `.spawn`; remote checks still enforce model/path identities
 The release build must include these new files:
 
 ```text
-rsilab/providers/portable_modal_v2.py
+rsilab/providers/portable_modal_v3.py
 rsilab/resources/__init__.py
 rsilab/resources/gpu_worker_v1.py
 rsilab/resources/gpu_requirements_v1.txt
@@ -185,9 +218,9 @@ as produced by wheel installation; zipimport factory construction is rejected.
 No `rsi` module, project configuration, or root requirements file is part of the
 remote bundle.
 
-The factory inventory reports `worker_version: portable-qlora-v2` and
+The factory inventory reports `worker_version: portable-qlora-v3` and
 `kernel_version: portable-qlora-v1`. Its ten-file source allowlist contains only
-the V2 factory, not V1. Its unchanged kernel provenance resource
+the V3 factory, not V1 or V2. Its unchanged kernel provenance resource
 records the historical `rsi/modal_workers.py` SHA-256
 `d289e78ae99a40831810285d42c0b4ee73cd4bd3446bda0505e4905a70a45d95`,
 the original requirement-file digest, copied function names, and exact portability
@@ -204,8 +237,9 @@ still freeze and audit the package/source versions used for an experiment.
 
 ## Verified status and next milestone
 
-Nineteen V2 offline tests cover image build order, absence of volume-backed
-cache paths during pip installation, V2 inventory/entrypoint identities,
+Twenty-one V3 offline tests cover zero image environment calls, CPU-only probe
+resources and shared image/volume, runtime cache initialization, full installed
+package inventory, V3 entrypoint identities,
 resource pinning/tampering, all eleven function ASTs,
 tokenizer masking/bounds, separate runtime bindings, existing adapter paths and
 symlink containment, lazy resource definitions, explicit source filtering,
@@ -219,14 +253,14 @@ credential-config path. It did not enter an app context, build an image, or
 submit work.
 
 ```sh
-env -i PATH=/usr/bin:/bin .venv/bin/python -B -m unittest discover -s tests -p test_portable_modal_v2.py -v
+env -i PATH=/usr/bin:/bin .venv/bin/python -B -m unittest discover -s tests -p test_portable_modal_v3.py -v
 ```
 
-The V1 remote call failed before outputs at volume attachment. V2 has not yet
-completed a remote GPU job or resumed training remotely.
+V1 and V2 remote calls failed before outputs at volume attachment. V3 has not
+yet completed a remote CPU probe, GPU job, or training resume.
 Offline parity and historical-worker GPU evidence do not substitute for that
 test. Main's next milestones are packaging the resources in the new wheel,
-isolated installed-factory validation, and an explicitly budgeted remote smoke
-and checkpoint/resume check before relying on portable training results. No paid
+isolated installed-factory validation, an explicitly reserved CPU probe, and
+subsequent GPU/checkpoint checks before relying on portable training results. No paid
 job, publication, dependency installation, or frozen-source edit was performed
 for this implementation.

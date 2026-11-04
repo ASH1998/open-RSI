@@ -63,17 +63,17 @@ jobs:
 
           sys.meta_path.insert(0, InstalledOnly())
           suite = unittest.TestSuite()
-          for name in ('framework', 'successor', 'portable_modal', 'portable_modal_v2', 'dataset_io',
-                       'preflight', 'reference_reuse', 'successor_recovery', 'successor_recovery_v2'):
+          for name in ('framework', 'successor', 'portable_modal', 'portable_modal_v2', 'portable_modal_v3', 'dataset_io',
+                       'preflight', 'reference_reuse', 'successor_recovery', 'successor_recovery_v2', 'successor_recovery_v3'):
               filename = root / 'tests' / f'test_{name}.py'
               spec = importlib.util.spec_from_file_location(f'test_{name}', filename)
               module = importlib.util.module_from_spec(spec)
               sys.modules[spec.name] = module
               spec.loader.exec_module(module)
-              if name in ('portable_modal', 'portable_modal_v2'):
+              if name in ('portable_modal', 'portable_modal_v2', 'portable_modal_v3'):
                   # Fixtures emulate allowed remote volume paths, not /home.
                   module.ROOT = fixture_root
-              if name in ('successor_recovery', 'successor_recovery_v2'):
+              if name in ('successor_recovery', 'successor_recovery_v2', 'successor_recovery_v3'):
                   # Installed controller code, explicit checkout config fixture.
                   module.recovery.ROOT = root
               suite.addTests(unittest.defaultTestLoader.loadTestsFromModule(module))

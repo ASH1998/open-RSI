@@ -64,3 +64,5 @@ CPU cores and 16 GiB RAM cost about $2.17 before startup; $4 is reserved per
 stage and the project retains its separate $25 overhead hold. This is a planning
 bound, not billing. No model outputs were observed in the failed startup, and
 no tasks, test cases, inference settings or acceptance gates changed.
+
+Outcome: v2 baseline `20261104T190729Z-successor-r2-baseline-62d0e308` also stopped before any model outputs. Its cloud logs show the dependency build succeeded but the later ENV image layer still resulted in a nonempty volume mount. Preserve its $4 reservation and frozen source; do not rerun v2. V3 moves all runtime cache environment setup inside the worker after mount and requires a CPU-only probe before GPU work.
