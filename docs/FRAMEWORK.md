@@ -1,9 +1,20 @@
 # rsilab framework foundation
 
-`rsilab` is an installable, dependency-free Python foundation for recording
-and comparing verified agent experiments. It adapts the implemented `rsi` pilot
-task generator and scorer. It does not launch compute, load credentials, train
-models, or implement the reference document's proposed research programme.
+`rsilab` is an installable Python library for verified-learning experiments.
+Version 0.2.0 includes a dependency-free offline core for manifests, data and
+attempt audits, target selection, and matched comparisons, alongside optional
+workspace and provider APIs. Importing the library starts no compute and loads
+no credentials.
+
+Explicit runtime calls have broader effects: `Workspace.load_env()` loads the
+selected project's environment, `Workspace.stage()` reserves budget and starts
+configured tracking, and `ModalBackend.generate()` / `.train()` invoke injected
+remote functions. The project controller combines these APIs for authorized
+generation, verification, and training. Those operations require their separately
+available dependencies and remain subject to project budget and launch rules.
+The historical GPU launcher also requires its checkout, configuration, and
+adjacent GPU requirements file; installing the wheel alone does not make it a
+standalone cloud deployment.
 
 The November 1 Mini-RSI Lab v0.2 document is a design reference, not an adoption
 of its model, hardware, $500 budget, timeline, statistics, or measured claims.
@@ -25,15 +36,17 @@ UV_CACHE_DIR="$PWD/.cache/uv" TMPDIR="$PWD/.cache/tmp" \
 .venv/bin/rsilab artifacts artifacts/export adapter/adapter_model.safetensors adapter/adapter_config.json
 ```
 
-The equivalent module entrypoint is `python -m rsilab`. Commands print JSON to
-stdout. Invalid inputs and unmatched comparisons return exit code 2. There is
-no automatic upload, execution, promotion, or provider authentication. The
+The equivalent offline CLI entrypoint is `python -m rsilab`. Its commands print
+JSON to stdout; invalid inputs and unmatched comparisons return exit code 2.
+These CLI commands do not upload, execute candidates, promote models, or
+authenticate providers. Explicit workspace/provider APIs and the separate
+project controller perform the runtime operations described above. The
 wheel includes only Python packages `rsilab` and `rsi`, plus the typing marker;
 it does not bundle `.env`, tests, run outputs, model artifacts, or the checkout.
-The packaged `rsi` code supports the offline task/scoring adapter; the existing
-Modal pilot launcher still requires its checkout, configuration, GPU requirement
-file, and separately installed service dependencies. Installing the core package
-does not make that launcher a standalone cloud service.
+The packaged `rsi` code includes offline task/scoring adapters and the
+project-specific study controller. Its historical GPU worker remains
+checkout-dependent. See the 0.2.0 release appendix for installed validation and
+the boundary between portable injected backends and that worker.
 
 ## Stable initial interfaces
 
@@ -331,3 +344,66 @@ Local package 0.1.1 adds the versioned MBPP evaluator and offline rescore audit 
 ## Durable execution release
 
 Local version 0.1.2 adds bounded trusted-callback execution with persist-before-validation and complete draining after failures. Its installed execution tests and remote diagnostic integration passed. See [execution API](EXECUTION.md) and [completed diagnostic evidence](MBPP_ROBUSTNESS.md). No automatic retry, training loop, or release publication is implied.
+
+## Local verified-learning release 0.2.0
+
+Version 0.2.0 packages the reusable verified-learning workflow beyond the earlier
+foundation described above. It includes coding-data selection/reference-evidence
+audits, immutable learning policy and attempt lineage, verified SFT selection,
+bounded repair prompts, matched comparison/conditional replication gates,
+durable collection, an injected Modal function adapter, explicit `Workspace`
+runtime, and offline learning CLI commands. It also includes the project-specific
+`rsi.verified_study` adapter. Importing these library modules starts no provider
+job and does not load project credentials.
+
+The new offline CLI entrypoints are:
+
+```sh
+.venv/bin/python -I -m rsilab learning-select --help
+.venv/bin/python -I -m rsilab learning-compare --help
+.venv/bin/python -I -m rsilab coding-data-freeze --help
+```
+
+See [learning contracts](LEARNING.md), [explicit workspace runtime](PROJECT_RUNTIME.md),
+and [execution guarantees](EXECUTION.md). The data/learning selectors audit saved
+evidence; independent verifier scoring and frozen source/data provenance remain
+controller responsibilities. No automatic promotion or sustained RSI claim is
+introduced. Conditional replication still requires its own authorized budget
+reservation and matching evidence.
+
+The generic `rsilab.providers.modal.ModalBackend` receives caller-owned function
+objects and persistence callbacks. `Workspace(root)` manages explicit project
+paths rather than using installed-package directories. Those interfaces are
+portable with their injected backends and existing optional dependencies. The
+historical GPU worker remains checkout-dependent: its Modal image expects the
+GPU requirements file adjacent to the project source. Including its adapter in
+the wheel does not make the installed package a turnkey cloud deployment.
+
+Core/offline package metadata declares no dependencies. Optional paths still
+require separately available tools, including `python-dotenv` for environment
+loading, W&B for tracking, Modal for actual provider operations, and dataset/model
+tools where used. This local packaging task downloads or installs none of those
+dependencies. Package installation itself authorizes no compute or upload.
+
+Local artifacts and verification records:
+
+- Wheel: `work/verified-framework-dist/rsilab-0.2.0-py3-none-any.whl`.
+- Explicit allowlist staging: `work/verified-framework-source/`.
+- Wheel SHA-256, source hashes, exact archive inventory, frozen-protocol checks,
+  prior-wheel checksums, and installed test counts:
+  `work/verified-framework-dist/wheel-audit.json`.
+- Isolated test output: `work/verified-framework-dist/installed-tests.log`.
+- Installed CLI help checks: `work/verified-framework-dist/cli-smoke.log`.
+
+Installed validation covers learning, coding-data, workflow/provider, workspace,
+and learning-command tests with checkout **package** imports excluded. Test
+fixtures are loaded from the checkout's `tests/` directory, including the shared
+`test_learning` fixture; every loaded `rsilab`/`rsi` module must resolve to the
+installed wheel. Socket connections are blocked, tracking/provider objects are
+fake, and workspace tests use synthetic credentials in SSD-local temporary
+directories. Import/CLI smoke checks launch no provider operation.
+
+The 0.1.0, 0.1.1, and 0.1.2 wheel files are preserved unchanged. Frozen experiment
+sources are not edited during packaging. No PyPI release is performed; this
+version number describes the local library artifact, not a completed training
+result or adoption of the earlier v0.2 research proposal.

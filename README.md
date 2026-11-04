@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** stronger evaluation coverage and durable failure recording are complete. All seven reference solutions passed 64 cases; 23 saved-output diagnostics exposed two parent errors missed by the original tests. Original development scores remain parent **18/48**, seed 42 **17/48**, seed 43 **16/48**, and the parent is retained. Local `rsilab 0.1.2` passed 230 integrated tests and 15 isolated execution tests. No further training or sustained self-improvement is claimed. Updated November 4, 2026.
+**Status:** verified-data SFT is complete. A fresh adapter trained on 47 verified solutions improved development **11/32 → 13/32**, but retention declined **8/16 → 7/16**. The frozen replication gate failed; the original parent is retained and seed 43 was not launched. Collection, repairs, selection, matched comparison, tracking and budget lifecycle are integrated in local `rsilab 0.2.0`, validated with 293 integrated tests, 56 isolated package tests and exact installed-CLI replay. The final test split remains untouched. Updated November 4, 2026.
 
 ## Workspace and repository
 
@@ -15,7 +15,7 @@ A small-model research project investigating whether a model can learn from veri
 
 | Area | Decision |
 | --- | --- |
-| Model | Prefer an OpenBMB 2B-class text model. `openbmb/MiniCPM5-2B` is the provisional checkpoint, pending a capability and compatibility check. |
+| Model | Prefer an OpenBMB 2B-class text model. `openbmb/MiniCPM5-2B` is pinned to a verified trainable revision; see the experiment report. |
 | Primary compute | Modal for inference, training, evaluation, orchestration, and isolated code execution. |
 | Secondary compute | Kaggle for optional small GPU/TPU experiments. The core loop must work without it. |
 | Tracking | W&B, now part of CoreWeave Forge, across both providers. CoreWeave compute is not required. |
@@ -40,10 +40,14 @@ Pilot commands and budget behavior: [pilot guide](docs/PILOT.md). Parallel chat 
 
 Measured results and W&B evidence: [experiment record](docs/EXPERIMENTS.md). Proposed next experiment: [evaluation redesign](docs/NEXT_EVALUATION.md).
 
-Current study: [MBPP protocol](studies/mbpp_v1/README.md). Python framework: [installation and API](docs/FRAMEWORK.md). Dataset source/filtering: [MBPP preparation](docs/DATASETS.md).
+Original study: [MBPP protocol](studies/mbpp_v1/README.md). Python framework: [installation and API](docs/FRAMEWORK.md). Dataset source/filtering: [MBPP preparation](docs/DATASETS.md).
 
 Original study, training results and checkpoints: [MBPP experiment record](docs/MBPP_EXPERIMENT.md).
 
-Evaluator correction and current scores: [v2 rescore report](docs/MBPP_RESCORE_V2.md). Detailed causes: [failure analysis](docs/MBPP_FAILURE_ANALYSIS.md).
+Historical evaluator correction and scores: [v2 rescore report](docs/MBPP_RESCORE_V2.md). Detailed causes: [failure analysis](docs/MBPP_FAILURE_ANALYSIS.md).
 
-Latest completed engineering milestone: [stronger diagnostics and durable execution](docs/MBPP_ROBUSTNESS.md).
+Earlier engineering milestone: [stronger diagnostics and durable execution](docs/MBPP_ROBUSTNESS.md).
+
+Completed verified-data experiment: [verified-data SFT protocol](studies/verified_sft_v1/README.md). Reusable workflow: [learning API](docs/LEARNING.md), [dataset audit](docs/VERIFIED_DATA.md), and [project runtime](docs/PROJECT_RUNTIME.md).
+
+Latest measured result and handoff: [verified-data SFT experiment](docs/VERIFIED_SFT_EXPERIMENT.md). Current reservations: $170 plus $25 overhead; $55 unallocated.

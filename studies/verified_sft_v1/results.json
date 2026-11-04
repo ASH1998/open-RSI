@@ -1,0 +1,525 @@
+{
+  "study": "verified-sft-v1",
+  "protocol_sha256": "f7d9fbc22fbdfb3cab3962d3742c75d8a4136c07bb95349ba0e663247bdd43b1",
+  "dataset_sha256": "6c7a777b821410a911c251c829e8d5a3bf90c3cf3a8d4a91ff91bf8fe9c17403",
+  "training_selection_sha256": "14bae98083c9610a8b7ecc986b92e5d82afc5930b7d12c410d8e6b7d66a29250",
+  "targets": 47,
+  "categories": {
+    "collections": 14,
+    "numeric": 13,
+    "other": 3,
+    "text": 17
+  },
+  "selection_eligible": true,
+  "selection_reasons": [],
+  "attempt_counts": {
+    "initial": 96,
+    "sample": 96,
+    "repair": 32
+  },
+  "verified_attempt_counts": {
+    "initial": 40,
+    "sample": 39,
+    "repair": 1
+  },
+  "split_counts": {
+    "train": 96,
+    "dev": 32
+  },
+  "augmented_case_count": 1568,
+  "reused_development_ids": [
+    "mbpp-full-513",
+    "mbpp-full-517",
+    "mbpp-full-519",
+    "mbpp-full-526",
+    "mbpp-full-530",
+    "mbpp-full-535",
+    "mbpp-full-543",
+    "mbpp-full-544",
+    "mbpp-full-546",
+    "mbpp-full-547",
+    "mbpp-full-548",
+    "mbpp-full-551",
+    "mbpp-full-552",
+    "mbpp-full-553",
+    "mbpp-full-564",
+    "mbpp-full-566",
+    "mbpp-full-571",
+    "mbpp-full-572",
+    "mbpp-full-581",
+    "mbpp-full-583",
+    "mbpp-full-586",
+    "mbpp-full-588",
+    "mbpp-full-598"
+  ],
+  "parent_scores": {
+    "train": {
+      "passed": 8,
+      "total": 16
+    },
+    "dev": {
+      "passed": 11,
+      "total": 32
+    }
+  },
+  "comparisons": {
+    "42": {
+      "policy_sha256": "7e8af8f900f59beb38661d987752ea0b3856f58eafbcfb12d132dec1115dbe7c",
+      "parent_report_sha256": "2e65aa5d9e58e8e99a57a3fc973c9a2cf75d6612bfd481087f0af3fdc54e6d7c",
+      "candidate_report_sha256": "3ccc18aa9b1accdcaee1b60efbadbd3fe7423151ac45af9dce74b41640b0f0f7",
+      "candidate_adapter_sha256": "6c5d5f5df6701757a2e34cdfa229921fa03f27610b745c18b7ce8c222d55c772",
+      "training_seed": 42,
+      "selection_sha256": "14bae98083c9610a8b7ecc986b92e5d82afc5930b7d12c410d8e6b7d66a29250",
+      "matched": true,
+      "reasons": [],
+      "pairs": [
+        {
+          "task_id": "mbpp-full-524",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-565",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-515",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-537",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-545",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-523",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-589",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-511",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-577",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-586",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-526",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-535",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-548",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-530",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-544",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-598",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-552",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-588",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-513",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-566",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-572",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-546",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-543",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-553",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-547",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-517",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-583",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-571",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-519",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-551",
+          "role": "dev",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-581",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-564",
+          "role": "dev",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-742",
+          "role": "retention",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-890",
+          "role": "retention",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-711",
+          "role": "retention",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-835",
+          "role": "retention",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-771",
+          "role": "retention",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-686",
+          "role": "retention",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-854",
+          "role": "retention",
+          "parent_passed": true,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-621",
+          "role": "retention",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-873",
+          "role": "retention",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-715",
+          "role": "retention",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-849",
+          "role": "retention",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-861",
+          "role": "retention",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-898",
+          "role": "retention",
+          "parent_passed": false,
+          "candidate_passed": false
+        },
+        {
+          "task_id": "mbpp-full-665",
+          "role": "retention",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-616",
+          "role": "retention",
+          "parent_passed": true,
+          "candidate_passed": true
+        },
+        {
+          "task_id": "mbpp-full-648",
+          "role": "retention",
+          "parent_passed": false,
+          "candidate_passed": false
+        }
+      ],
+      "scores": {
+        "dev": {
+          "total": 32,
+          "parent_passed": 11,
+          "candidate_passed": 13,
+          "net_success_gain": 2,
+          "lost_parent_successes": 0
+        },
+        "retention": {
+          "total": 16,
+          "parent_passed": 8,
+          "candidate_passed": 7,
+          "net_success_gain": -1,
+          "lost_parent_successes": 1
+        }
+      },
+      "promising": false,
+      "replication_recommended": false,
+      "next_training_seed": null,
+      "promoted": false,
+      "selected_agent_id": "original-parent",
+      "interpretation": "Descriptive development/retention gate only; retain parent, no RSI or held-out-family claim.",
+      "sha256": "d4ce7a6851bff0cc0326dba0c1701a6fb543356a89021b8654740cd50d546f77"
+    }
+  },
+  "run_ids": [
+    "20261104T140745Z-verified-sft-v1-collect-298ecd59",
+    "20261104T142236Z-verified-sft-v1-improve-data-2a586a1a",
+    "20261104T143454Z-verified-sft-v1-train-evaluate-42-73116f4e"
+  ],
+  "sealed_final": {
+    "dataset": "google-research-datasets/mbpp",
+    "revision": "4bb6404fdc6cacfda99d4ac4205087b89d32030c",
+    "config": "full",
+    "split": "test",
+    "count": 500,
+    "file_sha256": "566fd53060ffba5766dace1d1e2f4c38906781526de222b0dfbdbc325b696c77",
+    "prompts_included": false,
+    "execution_performed": false
+  },
+  "promoted": false,
+  "decision": "retain_original_parent",
+  "budget": {
+    "project_cap_usd": 250.0,
+    "reserved_for_jobs_usd": 170.0,
+    "overhead_reserve_usd": 25.0,
+    "available_for_jobs_usd": 55.0,
+    "invoice_total_usd": null
+  },
+  "interpretation": "Prospective native-split self-training study; previously exposed dev tasks disclosed; reference-derived extra tests; final split untouched",
+  "stopping_reason": "replication_gate_not_met",
+  "run_urls": {
+    "verified-sft-v1-collect": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/gip7pzc8",
+    "verified-sft-v1-improve-data": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/5ozagjsk",
+    "verified-sft-v1-train-evaluate-42": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/cl4f2yfw"
+  },
+  "tracking_readback": {
+    "url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/cl4f2yfw",
+    "run_id": "cl4f2yfw",
+    "state": "finished",
+    "artifact": "verified-sft-v1-results:latest",
+    "remote_matches": {
+      "summary.json": "49c0bc2b3ead7e24afde210c8c185668ceabeab2f6cfa04748523c6570b36a17",
+      "protocol.json": "0622caa0a67bd1c86b827b9a6bbf74753775bcdd775f207f75ff529746bf35e6",
+      "domain-review.json": "7da48bf5acdc87ba116c03b38a7ea6dd125042cb4e510d26a7eb15eaad58fbd2",
+      "wheel-audit.json": "07f45ba575988ddd292f43c1c03025a8522f580a9db6d0b4d7e8353a11559928"
+    },
+    "used_artifacts": [
+      "20261104T142236Z-verified-sft-v1-improve-data-2a586a1a:v0",
+      "20261104T140745Z-verified-sft-v1-collect-298ecd59:v0"
+    ]
+  },
+  "stage_readbacks": [
+    {
+      "run_id": "20261104T140745Z-verified-sft-v1-collect-298ecd59",
+      "wandb_id": "gip7pzc8",
+      "state": "finished",
+      "remote_report_matches": true,
+      "report_sha256": "ff52accbe60b22a651065e4d29acc54317638bdfb2ea5562d10eb813eec22516",
+      "used_artifacts": []
+    },
+    {
+      "run_id": "20261104T142236Z-verified-sft-v1-improve-data-2a586a1a",
+      "wandb_id": "5ozagjsk",
+      "state": "finished",
+      "remote_report_matches": true,
+      "report_sha256": "3d5522a50f928cd5d81541f9a193190321d54a838e30fcb66ec1b2e0f2474bae",
+      "used_artifacts": [
+        "20261104T140745Z-verified-sft-v1-collect-298ecd59:v0"
+      ]
+    },
+    {
+      "run_id": "20261104T143454Z-verified-sft-v1-train-evaluate-42-73116f4e",
+      "wandb_id": "cl4f2yfw",
+      "state": "finished",
+      "remote_report_matches": true,
+      "report_sha256": "8b6735159e35973e2eaab6724953b0a182ed8d803b0739156d576d38fb363db0",
+      "used_artifacts": [
+        "20261104T142236Z-verified-sft-v1-improve-data-2a586a1a:v0"
+      ]
+    }
+  ],
+  "modal_apps_stopped": true,
+  "framework_version": "0.2.0",
+  "framework_wheel_sha256": "46f44cb321855948689a34af6ea8e58e46d191cebbb51d2c4a890cbeb54ed735",
+  "integrated_tests": 293,
+  "isolated_package_tests": 56,
+  "installed_replays": {
+    "selection": "14bae98083c9610a8b7ecc986b92e5d82afc5930b7d12c410d8e6b7d66a29250",
+    "comparison_42": "d4ce7a6851bff0cc0326dba0c1701a6fb543356a89021b8654740cd50d546f77"
+  },
+  "checkpoint": {
+    "path": "artifacts/verified-sft-v1/20261104T143454Z-verified-sft-v1-train-evaluate-42-73116f4e",
+    "files": {
+      "adapter/tokenizer_config.json": "b885881883f77f4bbfe1a56734435fea59d8cc8543b89ef31ae72f56a9f2ef8b",
+      "adapter/tokenizer.json": "3e065a558a034185fe299917b398685c1facd0169a9eea1e629eb30c171fed81",
+      "adapter/chat_template.jinja": "bc1f78ef8a86b6bdf64a056cf89dd0ac506db4f198ab363d85168e2500ab44dd",
+      "adapter/adapter_model.safetensors": "6c5d5f5df6701757a2e34cdfa229921fa03f27610b745c18b7ce8c222d55c772",
+      "adapter/adapter_config.json": "7b6f4a588e8d4ee89f3176e41f01f5bbf5d63979eeaca33fcc9be0812e99b975",
+      "adapter/README.md": "1fdd4a4aeb1c3f3c69a903172e4483fecdb75223a8df794b35fad36fc744f1ac",
+      "checkpoint/training_state.pt": "f474980bff5cfdfbe046f591ae4dd8bc8d1b76076c0b51ed72a4cf324db11543",
+      "checkpoint/metadata.json": "62c4cdb1b211950ce8e441bc86afd6dd1e8e862058c2852335c1e069d9457b8b",
+      "checkpoint/complete.json": "9ea200537d511d06982b7834d9b37ef6e3df5f3d880e6d73ca2a8bd46e80feb4",
+      "checkpoint/adapter_model.safetensors": "6c5d5f5df6701757a2e34cdfa229921fa03f27610b745c18b7ce8c222d55c772",
+      "checkpoint/adapter_config.json": "7b6f4a588e8d4ee89f3176e41f01f5bbf5d63979eeaca33fcc9be0812e99b975",
+      "checkpoint/README.md": "1fdd4a4aeb1c3f3c69a903172e4483fecdb75223a8df794b35fad36fc744f1ac"
+    },
+    "checkpoint_verified": true,
+    "adapter_sha256": "6c5d5f5df6701757a2e34cdfa229921fa03f27610b745c18b7ce8c222d55c772"
+  },
+  "initial_failure_audit": {
+    "passed": 40,
+    "wrong_output_only": 44,
+    "runtime_only": 8,
+    "mixed": 2,
+    "truncated": 2,
+    "original_only_passed": 41,
+    "added_case_rejection": "mbpp-full-768"
+  },
+  "repair_caveat": "Only repair success 974 removes prohibited sys import; sampled function logic is unchanged.",
+  "independent_final_audit": {
+    "matched_controls": true,
+    "effective_seeds": [
+      42,
+      89
+    ],
+    "all_12_export_hashes_match": true,
+    "training_state_resume_tested": false,
+    "original_only_dev": {
+      "parent": 12,
+      "candidate": 13,
+      "total": 32
+    },
+    "changed_tasks": {
+      "524": "Fixes double-counting in maximum-sum increasing subsequences; 4/15 to 15/15",
+      "577": "Fixes factorial last-digit behavior; 9/11 to 11/11",
+      "854": "Returns heapify result None instead of mutated list; 3/3 to 0/3"
+    },
+    "candidate_truncated_task": "mbpp-full-547"
+  }
+}

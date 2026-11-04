@@ -1,0 +1,35 @@
+{
+  "scope": "verified-sft-v1",
+  "stage_reservations_usd": 15,
+  "experiment_envelope_usd": 20,
+  "replication_not_launched": true,
+  "budget": {
+    "project_cap_usd": 250.0,
+    "reserved_for_jobs_usd": 170.0,
+    "overhead_reserve_usd": 25.0,
+    "available_for_jobs_usd": 55.0,
+    "invoice_total_usd": null
+  },
+  "billing_observed_at": "2026-11-04T14:41:16.259379+00:00",
+  "workspace_summary": {
+    "start_timestamp": "2026-11-01T00:00:00Z",
+    "end_timestamp": "2026-12-01T00:00:00Z",
+    "metered_cost": "2.22055157",
+    "billed_cost": "0.00000000",
+    "metered_cost_breakdown": {
+      "LLM Tokens": "0.00000000",
+      "Ephemeral Apps": "2.21621439",
+      "Volumes": "0.00000000",
+      "Network Egress": "0.00055157"
+    },
+    "adjustments": {
+      "Network Egress Allowance": "-0.00055157",
+      "Free Storage": "-0.00000000",
+      "Credits": "-2.22000000",
+      "Plan Cost": "0.00000000",
+      "Reservation Adjustment": "-0.00000000"
+    }
+  },
+  "project_report_entries": 0,
+  "interpretation": "Workspace billing may lag, includes other runs, and is not a project invoice. Empty app-filtered report cannot reconcile project spend. Keep all reservations; no budget released."
+}

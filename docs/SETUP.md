@@ -76,3 +76,9 @@ Evaluator corrections are versioned separately from original studies. The v2 con
 ## Stronger diagnostic controller
 
 `.venv/bin/python -m rsi.robustness_study <freeze|run|report>` manages the separate frozen post-hoc diagnostic. The existing run is complete; do not launch it again. `report` recomputes scores offline from saved evidence. Future controllers should use the durable `rsilab.execution` API and a new protocol instead of changing frozen historical controllers. See `docs/MBPP_ROBUSTNESS.md` and `docs/EXECUTION.md`.
+
+## Verified-data workflow
+
+Local package version 0.2.0 adds `rsilab learning-select`, `rsilab learning-compare`, and `rsilab coding-data-freeze` for offline replay. `rsilab.project.Workspace(root)` explicitly loads that workspace's environment, configures local paths and manages allowlisted tracking plus persistent budget reservations. Nothing launches at import time. See `docs/PROJECT_RUNTIME.md` and `docs/LEARNING.md`.
+
+The current cloud study adapter is `.venv/bin/python -m rsi.verified_study <prepare|collect|improve-data|train-evaluate|report>` from the SSD checkout. Only the main chat runs paid stages. Inspect saved reports and the ledger first: stages must not be duplicated, and failed reservations persist. All stage source identities are frozen; fixes require a new versioned protocol. The historical GPU worker needs the checkout's pinned `requirements-gpu.txt`; installation alone does not provide a standalone cloud launcher. The experiment is complete; do not rerun its paid stages. `report` is offline and reproducible. See `docs/VERIFIED_SFT_EXPERIMENT.md` for saved outputs and installed-library replay checks.

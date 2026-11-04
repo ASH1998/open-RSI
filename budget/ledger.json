@@ -404,6 +404,48 @@
         "app_id": "ap-1ZZe8fnbUT7ik8FaHo129l",
         "wall_seconds": 35.54
       }
+    },
+    {
+      "id": "620676553efb437db61eec8f110a9710",
+      "stage": "verified-sft-v1-collect",
+      "reserved_usd": 5,
+      "status": "completed",
+      "started_at": "2026-11-04T14:07:45.430389+00:00",
+      "finished_at": "2026-11-04T14:22:06.419206+00:00",
+      "details": {
+        "run_id": "20261104T140745Z-verified-sft-v1-collect-298ecd59",
+        "wall_seconds": 851.0448031669948,
+        "error_type": null,
+        "app_id": "ap-BOCnPBM0vEVm97DeyLCGGo"
+      }
+    },
+    {
+      "id": "2bbeb961ed2c48cf884ae7e86975ecc7",
+      "stage": "verified-sft-v1-improve-data",
+      "reserved_usd": 5,
+      "status": "completed",
+      "started_at": "2026-11-04T14:22:36.904246+00:00",
+      "finished_at": "2026-11-04T14:33:44.153939+00:00",
+      "details": {
+        "run_id": "20261104T142236Z-verified-sft-v1-improve-data-2a586a1a",
+        "wall_seconds": 657.9459211669746,
+        "error_type": null,
+        "app_id": "ap-BSAgXaCoFv7hyJy7GfqXfI"
+      }
+    },
+    {
+      "id": "616724190c014620bba132f2d523e923",
+      "stage": "verified-sft-v1-train-evaluate-42",
+      "reserved_usd": 5,
+      "status": "completed",
+      "started_at": "2026-11-04T14:34:54.165860+00:00",
+      "finished_at": "2026-11-04T14:40:23.605335+00:00",
+      "details": {
+        "run_id": "20261104T143454Z-verified-sft-v1-train-evaluate-42-73116f4e",
+        "wall_seconds": 320.67832262499724,
+        "error_type": null,
+        "app_id": "ap-Vkr9BDX0W0aOVlHcqRq1ye"
+      }
     }
   ]
 }
