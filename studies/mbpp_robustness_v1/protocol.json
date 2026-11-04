@@ -1,0 +1,67 @@
+{
+  "study": "mbpp-robustness-v1",
+  "classification": "Post-hoc selected-task diagnostic, not held-out evaluation or training data",
+  "previous_protocol_sha256": "8cf70679601b44c9a41efb712dbdd44ed6a4a34c4ca0d0d98a19ab489ed70e30",
+  "previous_summary_sha256": "b6d80ae1278f61486046f5265134167e4e9967566cb5cf1166ec9b3a6543abbf",
+  "execution_source_hashes": {
+    "rsi/robustness_study.py": "87a472e72520856a30da7d9b07b0fa5fc057d08418789f0bb514abc8edb5a216",
+    "rsi/mbpp_robustness.py": "7a55b754382b42058ff5d2e98bf630567c9a77b8890667611a6b20c48613050b",
+    "rsilab/execution.py": "e91bb72567925340caac0bdf7f18e7ccbcc0c27811a5888e45a8b008c56c49dd",
+    "rsi/pilot.py": "def3d0844f7cb321a99ac734aeda9b13f62742a1887cf16e467eff5348568b93",
+    "rsi/budget.py": "28add06959592794da0ba71005149a085727ae686f39ef45efa2aef27196d6ae",
+    "rsi/config.py": "f677846f5c99ce066b457169cb89d225a72efee7ccbb38cae5704f8a26ff0821",
+    "rsi/rescore_study.py": "242535009bc39c7e30ae9a582d88a272206c6a2cb9d36414203208dd27ac055c",
+    "rsi/study.py": "a947a86a9a94023c7b7fff3d0a1430e741800ff816131e6987e6b922427f8b27",
+    "rsi/datasets.py": "18312005d8bef3f640cd1d55056cdf90a39b3b2b10c5b2e20619072a15980d65",
+    "rsilab/core.py": "44b380977f933b88a8c8234922d7d82dd0f27a7f91f82714da890051cde5c929",
+    "config/budget.json": "a8a29e54f1ab6ee0da6384feacfc94898b9f5ba1be5874d143b8b12efc61e205"
+  },
+  "evaluator_source_hashes": {
+    "rsi/mbpp_verification_v2.py": "b4b0d02ffc6ad71b5a33745c895709eb5bb2f3900c6d414f6063a3fe0afc1083",
+    "rsi/mbpp_verification.py": "47efce04acdef807e54a49f1ecbd64942a31baa2ce9e7d7404fd62326e660bc4",
+    "rsi/verification.py": "b6cd4334adf34678f7f35f908a38a14329ca9a81b6b4d557eb4de270868b0db4",
+    "child_source": "860c3c72558a431a07ac76549173b3d9499ba683ad768cc17526062e5380ca1a"
+  },
+  "tasks_sha256": "d7e7ee07bd61ffc1bafa97f25d877b2be8016d68834ad62d8a4489f448fa74de",
+  "references_sha256": "1295c40ffe4620a6616345ce921df754fe232a4065ff50f0e0738783e685821d",
+  "candidates_sha256": "2df5d4cb11b73d77c7ebb90abec6782bf6a6477e95a3b51501f33e532cd6d68b",
+  "task_ids": [
+    "mbpp-full-512-robustness-v1",
+    "mbpp-full-520-robustness-v1",
+    "mbpp-full-557-robustness-v1",
+    "mbpp-full-558-robustness-v1",
+    "mbpp-full-568-robustness-v1",
+    "mbpp-full-576-robustness-v1",
+    "mbpp-full-928-robustness-v1"
+  ],
+  "reference_count": 7,
+  "candidate_count": 23,
+  "counts_by_arm": {
+    "parent": 7,
+    "seed-42": 7,
+    "seed-43": 7,
+    "kaggle": 2
+  },
+  "cases": {
+    "mbpp-full-512": 9,
+    "mbpp-full-520": 9,
+    "mbpp-full-557": 9,
+    "mbpp-full-558": 9,
+    "mbpp-full-568": 7,
+    "mbpp-full-576": 13,
+    "mbpp-full-928": 8
+  },
+  "reference_gate": "Every pinned reference must pass all original and additional cases before saved candidate execution",
+  "infrastructure": "Persist every returned result before validation; stop submissions on failure, cancel queued tasks, drain running tasks, retain missing IDs; no automatic retry",
+  "budget": {
+    "reservation_usd": 5,
+    "maximum_stages": 1,
+    "maximum_workers": 4,
+    "project_cap_usd": 250
+  },
+  "no_generation": true,
+  "no_training": true,
+  "no_promotion": true,
+  "interpretation": "Preserve previous 368-outcome scores. Report these selected-task diagnostics separately; task selection was informed by observed failures.",
+  "sha256": "c19a8f43aa3e72e3733d8732cc179aa4f0b4343079ed66dee4caffb3afe32f7b"
+}

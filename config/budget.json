@@ -17,9 +17,10 @@
     "A10": 0.000306,
     "L40S": 0.000542
   },
-  "notes": "Reservations conservatively consume the budget even on failures. They are not invoice totals. No account-level billing limit has been configured. The overhead reserve covers image builds, cold starts, egress, and retained storage; reconcile with Modal billing before sustained use. On November 4 the v2 CPU rescore required one bounded $5 recovery after an infrastructure abort. The mbpp prefix ceiling is $105 (original $80 study + $20 rescore + $5 recovery); the global $250 cap and $25 overhead remain unchanged.",
+  "notes": "Reservations conservatively consume the budget even on failures. They are not invoice totals. No account-level billing limit has been configured. The overhead reserve covers image builds, cold starts, egress, and retained storage; reconcile with Modal billing before sustained use. On November 4 the v2 CPU rescore required one bounded $5 recovery after an infrastructure abort. The mbpp prefix ceiling is $105 (original $80 study + $20 rescore + $5 recovery); the global $250 cap and $25 overhead remain unchanged. A separate post-hoc stronger-case validation is capped at one $5 robustness-v1 stage.",
   "prefix_reservation_caps": {
     "mbpp-": 105,
-    "mbpp-rescore-v2-recovery": 5
+    "mbpp-rescore-v2-recovery": 5,
+    "robustness-v1": 5
   }
 }
