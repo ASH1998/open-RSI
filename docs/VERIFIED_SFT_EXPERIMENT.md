@@ -22,7 +22,7 @@ All 154 reviewed reference solutions passed their original tests. All 1,441 appr
 
 Every selected task has at least three distinct accepted additions. Original tests are preserved. Reference code supplies expectations, never SFT targets. Domain review and calibration reduce test errors but do not prove reference correctness.
 
-Training includes 41 previously used training tasks and 55 new ones. Development includes 23 previously exposed tasks and 9 unexposed tasks. Sixteen unchanged earlier training tasks form the separate retention set; none enters current training. Native splits and known duplicate clusters remain separated. Categories overlap across native splits, so this is not family-held-out evaluation. The native 500-task final split remains untouched, with its file hash checked and no test prompts decoded or executed. Pretraining contamination has not been measured.
+Training includes 41 previously used training tasks and 55 new ones. Development includes 23 previously exposed tasks and 9 unexposed tasks. Sixteen unchanged earlier training tasks form the separate retention set; none enters current training. Native splits and known duplicate clusters remain separated. Categories overlap across native splits, so this is not family-held-out evaluation. The native 500-task final split was not used for training, generation, scoring or selection. Correction recorded in the next phase: the legacy `load_mbpp()` function decoded all native splits before the preparation caller filtered to train/validation. Thus the earlier claim that no final-test prompts were decoded was incorrect. Final-test rows were not included in model requests or evaluations; new loaders must read permitted splits explicitly. Pretraining contamination has not been measured.
 
 ## Collection and training
 
@@ -69,7 +69,7 @@ Do not rerun completed paid stages. Raw data and scratch replay helpers are igno
 
 ## Artifacts, budget and handoff
 
-The adapter and full training-state checkpoint are persisted on Modal Volume `open-rsi-artifacts` and exported to SSD under `artifacts/verified-sft-v1/20261104T143454Z-verified-sft-v1-train-evaluate-42-73116f4e/`. Export hashes match the completion manifest. The checkpoint includes optimizer/scheduler and RNG state; an interruption/resume trial was not run for this adapter. The original parent remains available unchanged.
+The adapter and full training-state checkpoint are persisted on Modal Volume `open-rsi-artifacts` and exported to SSD under `artifacts/verified-sft-v1/20261104T143454Z-verified-sft-v1-train-evaluate-42-73116f4e/`. Export hashes match the completion manifest. The checkpoint includes optimizer and RNG state; training uses a constant learning rate without a scheduler, and an interruption/resume trial was not run for this adapter. The original parent remains available unchanged.
 
 All three W&B run reports were read back and matched their local reports plus the recorded local-report digest. The final summary artifact also matches its protocol, domain review and wheel audit; stage input lineage is preserved. All three Modal apps are stopped with zero tasks.
 

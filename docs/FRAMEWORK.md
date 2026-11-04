@@ -19,8 +19,8 @@ standalone cloud deployment.
 The November 1 Mini-RSI Lab v0.2 document is a design reference, not an adoption
 of its model, hardware, $500 budget, timeline, statistics, or measured claims.
 This project retains its $250 total Modal cap, pinned MiniCPM5-2B model, and
-main-chat ownership of launches. No legal license has been chosen and nothing
-has been published to PyPI; a repository license remains a release prerequisite.
+main-chat ownership of launches. The user selected Apache-2.0 for the repository; see `LICENSE` and `NOTICE`.
+Nothing has been published to PyPI. External model/data licenses remain separate.
 
 ## Install and use offline
 

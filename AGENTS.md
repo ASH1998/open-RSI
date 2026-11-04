@@ -4,6 +4,10 @@
 
 Read `README.md`, `docs/PROJECT_PLAN.md`, and `docs/SETUP.md` before implementation. Treat documented proposals as proposals, not completed work or measured results. Keep these documents updated when decisions or implementation status change.
 
+## Research and library goals
+
+The two continuing goals are measurable recursive self-improvement and a usable public Python library. A task-score gain is not RSI. Measure whether an experimental learned improver produces better successors than the original improver from identical starting students and matched budgets; only later test repeated generations and replication. Preserve negative results and retain the original parent when gates fail. Reusable experiment, provider, data and comparison mechanisms belong in `rsilab`, with installed-package tests and examples. The user chose Apache-2.0 for the library; preserve third-party model/data licenses and do not equate a local version bump with a package publication.
+
 ## Workspace constraint
 
 The user explicitly requires all local project work to stay under:

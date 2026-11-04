@@ -4,10 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rsilab"
-version = "0.2.0"
-description = "Offline manifests and matched comparisons for verified agent improvement experiments"
+version = "0.3.0"
+description = "Verified learning workflows and controlled successor-improvement experiments"
 readme = "docs/FRAMEWORK.md"
 requires-python = ">=3.11"
+license = {file = "LICENSE"}
 dependencies = []
 
 [project.scripts]
@@ -18,4 +19,13 @@ include = ["rsilab*", "rsi"]
 exclude = ["tests*", "work*", "data*", "runs*"]
 
 [tool.setuptools.package-data]
-rsilab = ["py.typed"]
+rsilab = ["py.typed", "resources/*.txt", "resources/*.json"]
+
+[project.optional-dependencies]
+modal = ["modal==1.6.3"]
+tracking = ["wandb==0.31.0", "python-dotenv==1.2.4"]
+data = ["pyarrow==26.0.1"]
+
+[project.urls]
+Repository = "https://github.com/ASH1998/open-RSI"
+Issues = "https://github.com/ASH1998/open-RSI/issues"

@@ -1,0 +1,41 @@
+{
+  "study": "successor-v1",
+  "prefix": "successor-v1-",
+  "reservation_cap_usd": 25,
+  "per_stage_usd": 5,
+  "stages": [
+    "calibrate",
+    "teacher-original",
+    "teacher-learned",
+    "child-original",
+    "child-learned"
+  ],
+  "generation": {
+    "seed": 42,
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "max_input_tokens": 2048
+  },
+  "sampling": {
+    "seed": 31415,
+    "temperature": 0.7,
+    "max_new_tokens": 512,
+    "max_input_tokens": 2048
+  },
+  "training": {
+    "seed": 42,
+    "learning_rate": 2e-05,
+    "gradient_accumulation": 4,
+    "max_length": 2048,
+    "max_steps": 16
+  },
+  "min_targets": 16,
+  "min_categories": 3,
+  "max_category_share": 0.6,
+  "max_gpu_calls_per_stage": 3,
+  "failure_policy": "No automatic retries; preserve reservations and partial evidence; dependent stages stop",
+  "promotion": "Retain original parent; experimental learned teacher is not promoted",
+  "final_test": "No final-test decoding, generation, training, selection or scoring",
+  "train_count": 20,
+  "reference_pool_cap": 24
+}

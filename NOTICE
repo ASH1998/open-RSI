@@ -1,0 +1,6 @@
+Open RSI / rsilab
+Copyright 2026 Open RSI contributors
+
+This repository's original source is licensed under Apache License 2.0.
+External model weights, datasets, and dependencies are distributed separately
+and retain their respective licenses. They are not included in this package.

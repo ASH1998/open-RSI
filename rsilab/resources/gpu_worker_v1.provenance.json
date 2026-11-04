@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "worker_version": "portable-qlora-v1",
+  "historical_source": {
+    "path": "rsi/modal_workers.py",
+    "sha256": "d289e78ae99a40831810285d42c0b4ee73cd4bd3446bda0505e4905a70a45d95"
+  },
+  "historical_requirements": {
+    "path": "requirements-gpu.txt",
+    "sha256": "0cdd2443fb0607a7619ee91bac14c05bfe0e3661e33482e9d4342ba5455ae9cc"
+  },
+  "parity_functions": [
+    "_identity",
+    "_bounded_int",
+    "_adapter_path",
+    "_bounded_float",
+    "_text",
+    "_metadata",
+    "_load",
+    "_prompt_ids",
+    "_encode_example",
+    "_generate",
+    "train"
+  ],
+  "replacements": {
+    "This pilot only supports the reviewed, pinned MiniCPM5 checkpoint": "Request must match the configured immutable model identity",
+    "Adapter must be an absolute path under /artifacts/adapters": "Adapter must be an absolute path under the configured adapter root",
+    "Adapter resolves outside a child directory of /artifacts/adapters": "Adapter resolves outside a child directory of the configured adapter root",
+    "Adapter directory does not exist under /artifacts/adapters": "Adapter directory does not exist under the configured adapter root",
+    "hashlib.sha256(Path(__file__).read_bytes()).hexdigest()": "WORKER_SOURCE_SHA256"
+  },
+  "changes": [
+    "Removed Modal resource construction/decorators; runtime is explicitly injected.",
+    "Model and storage globals are bound per invocation; no module-global mutation.",
+    "Checkpoint fingerprint binds portable source/config/requirements inventory instead of historical __file__.",
+    "Path/model rejection messages describe the configured roots rather than historical literals."
+  ],
+  "resource_sha256": {
+    "gpu_worker_v1.py": "194bca0df0c3b2d6ff7811b2ed6fd47010137aba2a6cf2635a88a9574853e3b1",
+    "gpu_requirements_v1.txt": "0cdd2443fb0607a7619ee91bac14c05bfe0e3661e33482e9d4342ba5455ae9cc"
+  }
+}

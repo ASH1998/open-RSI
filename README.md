@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** verified-data SFT is complete. A fresh adapter trained on 47 verified solutions improved development **11/32 → 13/32**, but retention declined **8/16 → 7/16**. The frozen replication gate failed; the original parent is retained and seed 43 was not launched. Collection, repairs, selection, matched comparison, tracking and budget lifecycle are integrated in local `rsilab 0.2.0`, validated with 293 integrated tests, 56 isolated package tests and exact installed-CLI replay. The final test split remains untouched. Updated November 4, 2026.
+**Status:** developing `rsilab 0.3.0` and a controlled successor-teaching probe. The new experiment will compare original and learned experimental teachers on 20 fresh tasks, then train matched fresh-base children only if both teachers produce enough verified data. Previous result remains development **11/32 → 13/32**, retention **8/16 → 7/16**: original parent retained. No sustained RSI has been demonstrated. The library is Apache-2.0 licensed; see the [quickstart](docs/QUICKSTART.md).
 
 ## Workspace and repository
 
@@ -51,3 +51,5 @@ Earlier engineering milestone: [stronger diagnostics and durable execution](docs
 Completed verified-data experiment: [verified-data SFT protocol](studies/verified_sft_v1/README.md). Reusable workflow: [learning API](docs/LEARNING.md), [dataset audit](docs/VERIFIED_DATA.md), and [project runtime](docs/PROJECT_RUNTIME.md).
 
 Latest measured result and handoff: [verified-data SFT experiment](docs/VERIFIED_SFT_EXPERIMENT.md). Current reservations: $170 plus $25 overhead; $55 unallocated.
+
+Next research milestone: [successor protocol](studies/successor_v1/README.md), [measurement contract](docs/SUCCESSOR_MEASUREMENT.md), and [portable Modal workers](docs/PORTABLE_MODAL.md).
