@@ -8,3 +8,5 @@ python-dotenv==1.2.4
 six==1.17.0
 # Matches the remote worker; local installation does not require PyTorch.
 transformers==5.22.1
+# Read pinned Hugging Face dataset Parquet files without executing dataset code.
+pyarrow==26.0.1

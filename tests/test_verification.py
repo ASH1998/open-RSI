@@ -31,6 +31,11 @@ class VerificationTests(unittest.TestCase):
     def test_allow_numeric_function(self):
         validate_code('import math\ndef solve(xs):\n    return [math.exp(x) for x in xs]', 'solve')
 
+    def test_mbpp_import_extension_does_not_change_original_policy(self):
+        for module in ('re', 'string', 'operator', 'array'):
+            with self.assertRaises(verifier.CandidatePolicyError):
+                validate_code(f'import {module}\ndef solve(x): return x', 'solve')
+
     def test_nested_json_and_numeric_tolerance(self):
         self.assertTrue(values_match({'a': [1, 0.25]}, {'a': [1.0, 0.25000001]}))
         self.assertFalse(values_match([1], [1, 2]))
@@ -141,6 +146,12 @@ class SandboxContractTests(unittest.TestCase):
             with self.subTest(task=task):
                 result = verify_candidate(self.code, task, 'mock-app')
                 self.assertEqual(result['error_kind'], 'invalid_task')
+        self.create.assert_not_called()
+
+    def test_raw_assertions_and_unknown_modes_never_launch(self):
+        for mode in ('python_assertions', 'unknown'):
+            self.task['verification_mode'] = mode
+            self.assertEqual(self.run_candidate()['error_kind'], 'invalid_task')
         self.create.assert_not_called()
 
     def test_invalid_timeouts_never_create_a_sandbox(self):

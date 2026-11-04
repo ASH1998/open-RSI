@@ -1,0 +1,61 @@
+{
+  "study": "mbpp-v1",
+  "objective": "Measure whether a fresh adapter trained on the parent's own verified MBPP outputs improves fixed-budget development task success.",
+  "dataset": "google-research-datasets/mbpp",
+  "revision": "4bb6404fdc6cacfda99d4ac4205087b89d32030c",
+  "config": "full",
+  "selection": "Preserve source train/validation; quarantine duplicate clusters and protected pilot final domains; require all tests convertible and reference solution passing before selection. Take first 128 train and 48 validation tasks in seed-42 importer order. Freeze IDs before model generation.",
+  "sizes": {
+    "train_pool": 128,
+    "development": 48,
+    "training_retention": 32
+  },
+  "model_id": "openbmb/MiniCPM5-2B",
+  "model_revision": "f97400052a43d642bbc6e9975e2397e3ae6a6b52",
+  "generation": {
+    "seed": 42,
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "max_input_tokens": 2048,
+    "thinking": false,
+    "attempts_per_task": 1
+  },
+  "main_hardware": "NVIDIA L40S",
+  "quantization": "nf4-double-bfloat16",
+  "collection": "Only passing train outputs become targets. Deduplicate exact completion text. Never use reference solutions or validation outputs as labels; no repair attempts or teacher calls.",
+  "training_gate": {
+    "minimum_unique_targets": 32,
+    "minimum_descriptive_categories": 3,
+    "maximum_category_fraction": 0.6
+  },
+  "training": {
+    "fresh_adapters": 2,
+    "seeds": [
+      42,
+      43
+    ],
+    "lora_rank": 8,
+    "learning_rate": 2e-05,
+    "gradient_accumulation": 4,
+    "max_length": 2048,
+    "steps": "ceil(2 * unique_verified_examples / 4)",
+    "maximum_steps": 64
+  },
+  "evaluation": "Both adapters and original parent on identical 48 development tasks and 32 preselected training-retention tasks. Preserve all paired task outcomes. Report each seed separately. Invalid/truncated outputs count as failures; infrastructure failures abort a batch.",
+  "decision": "No automatic promotion. Only mark replication-worthy if both seeds gain at least 4 net development successes, neither loses more than 1 parent retention success, and no unresolved integrity mismatch exists. These are prospective pilot engineering gates, not proof of population-level generalization or RSI.",
+  "kaggle": "Separate private base-model benchmark on first 32 frozen development tasks. Record actual GPU/precision/packages; do not merge with paired Modal scores. Verify outputs in the same isolated trusted evaluator.",
+  "modal_incremental_reservation_cap_usd": 100,
+  "per_stage_reservation_usd": 5,
+  "maximum_inflight_gpu_batches": 2,
+  "maximum_inflight_verification_sandboxes_per_stage": 4,
+  "failed_stage_policy": "Retain reservation and outputs. Retry only infrastructure failures after diagnosis; no selective resampling of model failures.",
+  "stopping": "Complete one collection, two predeclared fresh adapters and their paired evaluations. Stop if audited task counts or verified-data diversity gate fail; report that result without using excluded data. No test split, autonomous repeats, hyperparameter sweep, or final-holdout use.",
+  "limitations": [
+    "Public MBPP may occur in model pretraining",
+    "Source tests are sparse",
+    "Automated deduplication cannot prove semantic independence",
+    "Native splits share broad algorithm categories",
+    "Only one generated dataset; two seeds test training sensitivity, not independent dataset replication",
+    "This measures task solving, not ability to improve a frozen agent"
+  ]
+}

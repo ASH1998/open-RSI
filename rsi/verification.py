@@ -113,7 +113,7 @@ def extract_code(response: str) -> str:
     return text
 
 
-def validate_code(code: str, entry_point: str) -> None:
+def validate_code(code: str, entry_point: str, *, allowed_imports: frozenset[str] = ALLOWED_IMPORTS) -> None:
     """Apply a deliberately small pure-Python task language before execution."""
     if not isinstance(entry_point, str) or not entry_point.isidentifier() or entry_point.startswith("_"):
         raise CandidatePolicyError("invalid_entry_point")
@@ -136,10 +136,10 @@ def validate_code(code: str, entry_point: str) -> None:
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.decorator_list:
             raise CandidatePolicyError("decorators_not_supported")
         if isinstance(node, ast.Import):
-            if any(a.name not in ALLOWED_IMPORTS for a in node.names):
+            if any(a.name not in allowed_imports for a in node.names):
                 raise CandidatePolicyError("unsupported_import")
         if isinstance(node, ast.ImportFrom):
-            if node.level or node.module not in ALLOWED_IMPORTS or any(a.name.startswith("_") or a.name == "*" for a in node.names):
+            if node.level or node.module not in allowed_imports or any(a.name.startswith("_") or a.name == "*" for a in node.names):
                 raise CandidatePolicyError("unsupported_import")
 
 
@@ -249,32 +249,15 @@ def _parse_output(raw: str) -> Any:
         raise CandidateOutputError("invalid_output_json") from exc
 
 
-def verify_candidate(code: str, task: dict, app: Any, *, timeout: int = SANDBOX_TIMEOUT_SECONDS) -> dict:
-    """Run one candidate; caller reserves budget before invoking this function.
-
-    duration_seconds includes creation/provisioning/termination client wall time,
-    not an authoritative Modal billed duration. No retries are performed here.
-    """
-    start = time.monotonic()
-    result = {"passed": False, "count": 0, "total": 0, "errors": [],
-              "verifier_version": VERIFIER_VERSION, "sandbox_id": None}
+def _run_sandbox(payload: str, app: Any, timeout: int, *, child: str, total: int, score: Any) -> dict:
+    """Shared trusted transport; only callers' explicit payload enters isolation."""
+    result = {"passed": False, "count": 0, "total": total, "errors": [], "sandbox_id": None}
     sandbox = None
-    stage = "preflight"
     try:
-        cases, tolerance = _validate_task(task, timeout)
-        result["total"] = len(cases)
-        candidate = extract_code(code)
-        validate_code(candidate, task["entry_point"])
-        result["candidate_sha256"] = hashlib.sha256(candidate.encode()).hexdigest()
-        payload = json.dumps({"code": candidate, "entry_point": task["entry_point"],
-                              "inputs": [case["args"] for case in cases]}, allow_nan=False)
-        if len(payload.encode()) > MAX_PAYLOAD_BYTES:
-            raise ValueError("payload_too_large")
-        stage = "provider"
         import modal
 
         sandbox = modal.Sandbox.create(
-            "python", "-I", "-S", "-c", _SUPERVISOR, payload, _CHILD,
+            "python", "-I", "-S", "-c", _SUPERVISOR, payload, child,
             app=app, image=modal.Image.debian_slim(python_version="3.11"),
             cpu=(SANDBOX_CPU, SANDBOX_CPU), memory=(SANDBOX_MEMORY_MIB, SANDBOX_MEMORY_MIB),
             timeout=timeout, block_network=True, secrets=[], volumes={},
@@ -298,27 +281,17 @@ def verify_candidate(code: str, task: dict, app: Any, *, timeout: int = SANDBOX_
                 result["errors"] = [outputs["error"]]
                 result["error_kind"] = "candidate_execution"
             else:
-                result.update(score_outputs(outputs, cases, **tolerance))
+                result.update(score(outputs))
                 if not result["passed"]:
                     result["error_kind"] = "candidate_execution"
-    except TaskValidationError:
-        result["errors"] = ["invalid_task_or_settings"]
-        result["error_kind"] = "invalid_task"
-    except CandidatePolicyError as exc:
-        result["errors"] = [f"candidate_policy:{exc}"]
-        result["error_kind"] = "candidate_policy"
     except CandidateOutputError as exc:
         result["errors"] = [str(exc)]
         result["error_kind"] = "candidate_execution"
     except Exception as exc:
         # Provider messages could include sensitive transport information.
-        if stage == "preflight":
-            result["errors"] = [f"invalid_candidate_or_payload:{type(exc).__name__}"]
-            result["error_kind"] = "invalid_candidate"
-        else:
-            result["errors"] = [f"sandbox_error:{type(exc).__name__}"]
-            result["error_kind"] = "infrastructure"
-            result["infrastructure_error"] = True
+        result["errors"] = [f"sandbox_error:{type(exc).__name__}"]
+        result["error_kind"] = "infrastructure"
+        result["infrastructure_error"] = True
     finally:
         if sandbox is not None:
             try:
@@ -328,5 +301,45 @@ def verify_candidate(code: str, task: dict, app: Any, *, timeout: int = SANDBOX_
                 result["infrastructure_error"] = True
                 result["error_kind"] = "infrastructure"
                 result["passed"] = False
+    return result
+
+
+def verify_candidate(code: str, task: dict, app: Any, *, timeout: int = SANDBOX_TIMEOUT_SECONDS) -> dict:
+    """Run one candidate; caller reserves budget before invoking this function.
+
+    duration_seconds includes creation/provisioning/termination client wall time,
+    not an authoritative Modal billed duration. No retries are performed here.
+    Compiled MBPP tasks use their explicit typed protocol; raw assertions do not.
+    """
+    if isinstance(task, dict) and task.get("verification_mode") == "mbpp_typed_v1":
+        from .mbpp_verification import verify_mbpp_candidate
+        return verify_mbpp_candidate(code, task, app, timeout=timeout)
+    start = time.monotonic()
+    result = {"passed": False, "count": 0, "total": 0, "errors": [],
+              "verifier_version": VERIFIER_VERSION, "sandbox_id": None}
+    try:
+        if isinstance(task, dict) and task.get("verification_mode") not in (None, "python_json"):
+            raise TaskValidationError("unsupported_verification_mode")
+        cases, tolerance = _validate_task(task, timeout)
+        result["total"] = len(cases)
+        candidate = extract_code(code)
+        validate_code(candidate, task["entry_point"])
+        result["candidate_sha256"] = hashlib.sha256(candidate.encode()).hexdigest()
+        payload = json.dumps({"code": candidate, "entry_point": task["entry_point"],
+                              "inputs": [case["args"] for case in cases]}, allow_nan=False)
+        if len(payload.encode()) > MAX_PAYLOAD_BYTES:
+            raise ValueError("payload_too_large")
+        result.update(_run_sandbox(payload, app, timeout, child=_CHILD, total=len(cases),
+                                  score=lambda outputs: score_outputs(outputs, cases, **tolerance)))
+    except TaskValidationError:
+        result["errors"] = ["invalid_task_or_settings"]
+        result["error_kind"] = "invalid_task"
+    except CandidatePolicyError as exc:
+        result["errors"] = [f"candidate_policy:{exc}"]
+        result["error_kind"] = "candidate_policy"
+    except Exception as exc:
+        result["errors"] = [f"invalid_candidate_or_payload:{type(exc).__name__}"]
+        result["error_kind"] = "invalid_candidate"
+    finally:
         result["duration_seconds"] = round(time.monotonic() - start, 6)
     return result

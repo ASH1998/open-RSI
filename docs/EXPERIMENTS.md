@@ -4,7 +4,7 @@ This record describes measured pilot results, not sustained recursive self-impro
 
 ## Setup and integration
 
-Model: `openbmb/MiniCPM5-2B`, revision `f97400052a43d642bbc6e9975e2397e3ae6a6b52`. Quantization: NF4 double quantization, bfloat16 computation. Hardware: one NVIDIA A10. Verifier: `python-json-v2`, independent CPU Modal Sandboxes without credentials, network, or project mounts.
+Model: `openbmb/MiniCPM5-2B`, revision `f97400052a43d642bbc6e9975e2397e3ae6a6b52`. Quantization: NF4 double quantization, bfloat16 computation. Hardware: one Modal A10-class GPU. The baseline reported NVIDIA A10G; the candidate evaluation reported NVIDIA A10. Verifier: `python-json-v2`, independent CPU Modal Sandboxes without credentials, network, or project mounts.
 
 Two initial smoke attempts failed: one L4 request had no capacity and was stopped; the first A10 call loaded the model but exposed a Transformers 5 tokenizer return-type mismatch. Both encoding paths were fixed and checked with the actual pinned tokenizer on CPU. All 51 tests then passed; two subsequent comparison-integrity tests also passed.
 
@@ -54,7 +54,7 @@ Run: `20261104T071521Z-train-b77c8e`. [W&B training evidence and loss curve](htt
 
 The two gains were sequence-padding tasks. The two regressions were grouped-reduction tasks. Masked mean stayed 4/4, stable softmax and gradient clipping stayed 0/4, and interval union stayed 4/4. The adapter produced one token-limited response, versus three in the parent baseline.
 
-The task dictionaries/hash, inference settings, installed package inventory, base revision, and A10 hardware match. The worker code difference fixes artifact path handling; it does not change prompts, sampling, quantization, or scoring. Adapter generation took 276.04 seconds; total worker execution took 287.99 seconds, with 2.05 GiB peak allocated GPU memory.
+The task dictionaries/hash, inference settings, installed package inventory, and base revision match. A later framework audit found different observed GPU names: baseline NVIDIA A10G, candidate NVIDIA A10, both requested through Modal A10. This is not an exact-hardware matched comparison, and the strict framework comparator rejects it. The new MBPP study uses explicit L40S hardware and checks reported identity. The worker code difference fixes artifact path handling; it does not change prompts, sampling, quantization, or scoring. Adapter generation took 276.04 seconds; total worker execution took 287.99 seconds, with 2.05 GiB peak allocated GPU memory.
 
 **Decision: retain the original parent; do not promote the adapter.** Training loss reduction and two training-family gains were accompanied by worse development performance. The tiny correlated suite and one seed cannot establish a general learning effect, and this experiment does not test successor-improvement ability. No final-test tasks were used. The next useful work is a frozen, costed redesign with broader verified training yield and harder development tasks, as proposed in [NEXT_EVALUATION.md](NEXT_EVALUATION.md).
 

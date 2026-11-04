@@ -1,9 +1,159 @@
 # Python sandbox verifier
 
-Updated November 4, 2026. Implementation: `rsi/verification.py`; evaluator version
-`python-json-v2`. Local validation is complete for the checks below. **No remote
-sandbox has been launched by this verifier work, and remote enforcement has not
-been demonstrated.** This is not evidence of model performance or RSI.
+Updated November 4, 2026. The original `python-json-v2` verifier has been used in
+the main chat's pilot; measured outcomes are in `EXPERIMENTS.md`. The new
+`mbpp-typed-v1` protocol is locally tested and **not yet remotely audited by this
+chat**. Neither static conversion counts nor local tests measure model capability.
+
+## MBPP integration contract
+
+Implementation: `rsi/mbpp_verification.py`; tests: `tests/test_mbpp_verification.py`.
+The dataset importer owns downloading, source revisions, splits, duplicate/family
+quarantine, and task prompts. The verifier compiles tests and scores outputs.
+
+```python
+from rsi.mbpp_verification import convert_mbpp_task, UnsupportedTest
+from rsi.verification import verify_candidate
+
+# raw_task is the importer's verification_mode="python_assertions" manifest.
+# Conversion is local AST/data processing, with no network or execution.
+try:
+    task = convert_mbpp_task(raw_task)
+except UnsupportedTest as exc:
+    exclusion_reason = str(exc)  # exclude the whole task and record its ID
+
+# Only main/controller, after reservation and reference audit:
+# result = verify_candidate(response, task, app)
+```
+
+`convert_mbpp_tests(test_list, entry_point=None, *, test_setup_code="",
+test_imports=(), challenge_test_list=())` provides the lower-level API.
+`convert_mbpp_record(record)` aliases task conversion for raw MBPP rows. All
+supplied ordinary and challenge tests are mandatory; there is no flag that drops
+unsupported challenge tests. Conversion returns `entry_point`, typed `cases`,
+`verification_mode="mbpp_typed_v1"`, `mbpp_compiler_version="mbpp-typed-v1"`,
+source test counts, and `source_tests_sha256`. Task conversion also preserves
+the original manifest fields. Reference `code`, if present, is neither read nor
+executed by conversion. `UnsupportedMBPPTest` aliases `UnsupportedTest`.
+
+`verification.verify_candidate` dispatches this explicit compiled mode to
+`verify_mbpp_candidate`. Raw `python_assertions` and unknown modes fail before a
+sandbox launch. Existing tasks with no mode or `python_json` keep the original
+candidate and scoring rules. Both protocols use the same sandbox lifecycle,
+bounded stdout transport, sanitized provider errors, and fail-closed cleanup.
+
+### Accepted test grammar and exclusions
+
+The accepted form is one `assert fn(literal_args, name=literal_value) == expected`
+per source string, or the reversed equality. Every test must call the same public
+function. Names are preserved; there is no forced rename to `solve`.
+
+Literal data supports finite numbers, strings, booleans, null, lists, tuples,
+sets, and dictionaries with supported hashable keys. Unary numeric `+`/`-` and
+zero/one-argument `set`, `frozenset`, `list`, `tuple`, `dict`, and `sorted`
+constructors over literals are supported. These are fixed builtin constructors,
+not arbitrary Python calls. Dataset setup is never executed or injected.
+
+Results may be wrapped in nested unary `set`, `frozenset`, `list`, `tuple`, or
+`sorted` calls. The compiler records those projections; the parent applies them
+to decoded builtin values. Neither projection expressions nor expected values
+are sent to the candidate. For example, `set(fn((1, 2))) == {1, 2}` sends a tuple
+argument, receives a typed result, and compares sets in the parent.
+
+Explicit exclusions include nonempty setup/import code (even import-only setup),
+custom classes, type-valued arguments such as `int`, unknown names, attributes,
+computed/reference-function expectations, arbitrary arithmetic, comprehensions,
+`*args`/`**kwargs` unpacking, non-equality comparisons, chained comparisons,
+truthiness assertions, assertion messages, multiple statements, multiple entry
+points, and wrappers such as `int(fn(...))`. Unsupported tests invalidate the
+entire record; no hidden case is silently omitted.
+
+The primary [Hugging Face MBPP card](https://huggingface.co/datasets/google-research-datasets/mbpp/blob/4bb6404fdc6cacfda99d4ac4205087b89d32030c/README.md)
+describes full rows with `test_list`, `test_setup_code`, and `challenge_test_list`,
+and sanitized rows with `test_imports` and `test_list`. The
+[upstream evaluation instructions](https://github.com/google-research/google-research/tree/master/mbpp)
+define the original task-ID split. This restricted protocol is a **filtered MBPP
+experiment**, not an unqualified reproduction of the official execution metric.
+The controller must report every filtering stage and its denominator.
+
+### Typed values and candidate policy
+
+Typed JSON retains list/tuple distinctions, set membership, and non-string dict
+keys. The wire form is `[tag, value]`, with nested entries for containers and
+key/value pairs for dictionaries. The codec accepts exact builtin types only;
+there is no pickle, import hook, custom-class reconstruction, or candidate-defined
+comparison code in the parent. Duplicate keys/items in untrusted wire maps/sets
+are rejected. Bytes, complex numbers, iterators, arrays, and custom container
+subclasses are unsupported **return values**; candidates may use those internally
+but must return one of the supported builtin values.
+
+Parent comparison uses Python builtin `==` without float tolerance, matching the
+accepted source operator: `(1, 2)` differs from `[1, 2]`, integer dictionary keys
+remain integers, and `1 == True` is true. This is separate from `python-json-v2`,
+which continues to reject bool/number equivalence and permits float tolerance.
+The fixed parent builtin projections cannot be redefined by candidate code.
+Order-sensitive conversion of sets/dictionaries reflects the reconstructed
+builtin value; tasks depending on implementation-specific iteration order need
+exclusion during remote reference audit. Use sorted/set comparisons when present
+in the original tests; do not rewrite tests to make references pass.
+
+MBPP candidates use the original AST policy with these additional modules:
+`re`, `string`, `operator`, and `array`. Full import allowlist:
+
+```text
+array bisect collections functools heapq itertools math operator re statistics string
+```
+
+No `sys`, `os`, network, filesystem, process, or serialization modules are added.
+The old JSON allowlist is unchanged. **Dataset prompts and metadata must advertise
+the MBPP list before the manifest is frozen.** The design reference's larger
+budget/local GPU proposal does not change the current $250 Modal authorization or
+the prohibition on local candidate/reference-code execution.
+
+### Bounds, evidence, and handoff
+
+Original sandbox bounds below are reused unchanged: 0.125 CPU, 512 MiB memory,
+30-second maximum lifetime, 8-second child wall limit, 5-second CPU limit,
+256 MiB child address space, no secrets/mounts/network, and bounded output.
+Typed values additionally have depth 8, 4,096 nodes, 4,096-bit integers, and
+24,000-byte strings. Tests have a 24,000-byte/4,096-AST-node limit. Aggregate
+compiled cases and launch payload are each limited to 128,000 bytes. Per-case
+typed output is at most 8,192 bytes; aggregate output remains 65,536 bytes.
+Only candidate source, entry point, and encoded positional/keyword arguments
+enter the payload. Raw tests, expectations, projections, prompts, metadata, and
+reference source remain in the controller. The untrusted child is not a scoring
+authority even if it forges `ok` or `passed` fields.
+
+Local verification command:
+
+```sh
+TMPDIR="$PWD/.cache/tmp" XDG_CACHE_HOME="$PWD/.cache" \
+  .venv/bin/python -B -m unittest discover -s tests -p '*verification.py' -v
+```
+
+**65 tests passed** (35 MBPP and 30 original-verifier tests). Coverage includes
+adversarial AST expressions, all-or-nothing challenge conversion, exact typed
+round trips, equality semantics, unknown wire tags, output bounds, missing/forged
+verdicts, no expected-value leakage, raw-mode rejection, unchanged original
+import policy, rejected dropped challenge/case identities, maximum-depth transport,
+and cleanup failure. Child source is parsed for Python 3.11 syntax;
+it is never executed locally. Sandbox SDK calls are mocked.
+
+A static inspection of the dataset chat's `pools-full-seed42.json` accepted
+269/272 training and 65/68 development records. Reference AST policy checks
+reduced those to 259 training and 64 development records, before execution.
+These are provisional counts tied to that manifest snapshot; they are not a
+correctness audit or guaranteed achievable experiment sizes. No final-test source
+was opened by this verifier inspection. Detailed machine-readable evidence is in
+the ignored SSD-local `work/mbpp-verifier/coverage.json`.
+
+Main chat's next milestone is to freeze/import-align the compiled task list and
+reserve a bounded remote audit. Audit selected source references against all
+converted tests, typed tuple/set/dict transport, expected failure cases, and
+resource/lifecycle behavior. Persist exclusions and reference failures before
+scoring model outputs. Maintain matched task lists and inference limits for
+parent/successor comparisons. This chat launched no remote job, read no `.env`,
+spent no credits, and made no Git commit.
 
 ## Contract and authority
 
@@ -137,7 +287,7 @@ billing reconciliation. The Debian image declaration alone is not an immutable
 image digest. Client duration includes provisioning/cleanup and is not a Modal
 invoice. Upload only selected examples/metrics to W&B using an explicit allowlist.
 
-## Verified evidence and next milestone
+## Original JSON verifier evidence (initial handoff)
 
 Local command, run from the SSD workspace:
 
@@ -163,15 +313,17 @@ documents those settings and the [stream reference](https://modal.com/docs/sdk/p
 documents chunk iteration. This validates the client interface, not server-side
 acceptance or actual resource enforcement.
 
-The next executable milestone belongs to the main chat: reserve a small stage
-and run a remote smoke matrix with known correct and incorrect solutions, missing
+At the initial handoff, the next milestone was for the main chat to reserve a small
+stage and run a remote smoke matrix with known correct and incorrect solutions, missing
 outputs, syntax/policy failures, exceptions, infinite loops, memory/output growth,
 and network/filesystem isolation probes. Confirm lifecycle termination, cold-start
 behavior, gVisor rlimits, server acceptance of resource caps, image identity,
-absence of injected credentials/mounts, and ledger reconciliation. Do not collect
-training labels or report baseline scores until that boundary is validated.
+absence of injected credentials/mounts, and ledger reconciliation. Subsequent pilot
+execution is recorded in `EXPERIMENTS.md`; the MBPP-specific remote audit remains
+the next milestone for this change.
 
-This handoff changes only `rsi/verification.py`, `tests/test_verification.py`, and
-this document. Main chat owns integration, the work log, README/plan/setup updates,
-commits, and all paid launches. No credentials were read and no credits were spent
-by this work.
+This expanded handoff changes only `rsi/verification.py`, `tests/test_verification.py`,
+`rsi/mbpp_verification.py`, `tests/test_mbpp_verification.py`, and this document,
+plus the ignored local coverage report. Main chat owns integration, the work log,
+README/plan/setup updates, commits, and all paid launches. No credentials were read
+and no credits were spent by this work.

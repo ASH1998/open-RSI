@@ -14,7 +14,11 @@
     "memory_gib": 2.22e-06,
     "sandbox_cpu_core": 3.942e-05,
     "sandbox_memory_gib": 6.67e-06,
-    "A10": 0.000306
+    "A10": 0.000306,
+    "L40S": 0.000542
   },
-  "notes": "Reservations conservatively consume the budget even on failures. They are not invoice totals. No account-level billing limit has been configured. The overhead reserve covers image builds, cold starts, egress, and retained storage; reconcile with Modal billing before sustained use."
+  "notes": "Reservations conservatively consume the budget even on failures. They are not invoice totals. No account-level billing limit has been configured. The overhead reserve covers image builds, cold starts, egress, and retained storage; reconcile with Modal billing before sustained use.",
+  "prefix_reservation_caps": {
+    "mbpp-": 100
+  }
 }

@@ -51,6 +51,11 @@ class Budget:
             committed = sum(item['reserved_usd'] for item in ledger['reservations'])
             if committed + amount + policy['overhead_reserve'] > policy['project_cap']:
                 raise BudgetExceeded('Project budget exhausted; no remote job started')
+            for prefix, cap in policy.get('prefix_reservation_caps', {}).items():
+                if stage.startswith(prefix):
+                    subtotal = sum(x['reserved_usd'] for x in ledger['reservations'] if x['stage'].startswith(prefix))
+                    if subtotal + amount > cap:
+                        raise BudgetExceeded(f'Study reservation envelope exhausted for {prefix}')
             item = {'id': uuid.uuid4().hex, 'stage': stage, 'reserved_usd': amount,
                     'status': 'reserved', 'started_at': datetime.now(timezone.utc).isoformat()}
             ledger['reservations'].append(item)

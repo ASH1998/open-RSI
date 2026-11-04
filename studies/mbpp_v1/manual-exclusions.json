@@ -1,0 +1,10 @@
+{
+  "review_phase": "Before any model generation; reviewed descriptions from the provisional audited selection",
+  "exclusions": [
+    {"id": "mbpp-full-955", "reason": "Same abundant-number predicate as validation task 541; quarantine both"},
+    {"id": "mbpp-full-541", "reason": "Same abundant-number predicate as training task 955; quarantine both"},
+    {"id": "mbpp-full-629", "reason": "Even-number filter is a parity variant of validation odd-number filter 554; quarantine both"},
+    {"id": "mbpp-full-554", "reason": "Odd-number filter is a parity variant of training even-number filter 629; quarantine both"}
+  ],
+  "limitation": "Manual review catches these missed near duplicates but does not prove all semantic overlap is absent. Related broad algorithms remain across native splits."
+}

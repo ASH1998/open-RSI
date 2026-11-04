@@ -26,7 +26,7 @@ The user explicitly requires all local project work to stay under:
 
 ## Experimental integrity
 
-- Keep training, development, and final evaluation task families separate. Near-duplicate variants must not cross splits.
+- Keep training, development, and final evaluation separate. The synthetic pilot uses family-disjoint splits. Dataset-native studies may use the source's train/validation splits when preregistered explicitly; report category overlap and do not claim family-held-out generalization. Detected exact/near duplicates must not cross splits.
 - Verifiers must be independent of the candidate's proposed answer. Candidate code must not modify authoritative tests or the evaluator.
 - Preserve raw successes and failures. Only selected verified targets become SFT labels; failed actions may appear as context.
 - Record exact model/code/data/evaluator versions, seeds, settings, hardware, tokens, time, and cost. Keep the parent checkpoint and support rollback.

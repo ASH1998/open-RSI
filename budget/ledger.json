@@ -117,6 +117,19 @@
         "app_id": "ap-9GPbvZtCSZwdjRaeMJrEga",
         "wall_seconds": 385.71
       }
+    },
+    {
+      "id": "fe23cfe490b5418ca88c1b1aa0fa16f2",
+      "stage": "mbpp-reference-audit",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T09:43:31.962219+00:00",
+      "finished_at": "2026-11-04T09:47:56.993999+00:00",
+      "details": {
+        "run_id": "20261104T094331Z-mbpp-reference-audit-32abb6",
+        "app_id": "ap-JnyFGrDDBz24yY0fftxRcg",
+        "wall_seconds": 265.02
+      }
     }
   ]
 }
