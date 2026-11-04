@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** provider checks passed; the budgeted pilot controller, task suite, isolated verifier, and QLoRA worker are implemented. First remote integration is underway. No learning result has been established. Updated November 4, 2026.
+**Status:** first end-to-end Modal pilot completed. A 20-step QLoRA adapter improved training-family results from 4/16 to 6/16 but reduced development results from 7/8 to 5/8; the original model is retained. All 60 local tests pass. This is pipeline validation and a measured regression, not evidence of sustained self-improvement. Updated November 4, 2026.
 
 ## Workspace and repository
 
@@ -37,3 +37,5 @@ The environment template is consumed by `scripts/check_services.py` and `rsi/pil
 Service check results and rerun instructions: [verification report](docs/VERIFICATION.md).
 
 Pilot commands and budget behavior: [pilot guide](docs/PILOT.md). Parallel chat assignments: [work log](docs/WORK_LOG.md).
+
+Measured results and W&B evidence: [experiment record](docs/EXPERIMENTS.md). Proposed next experiment: [evaluation redesign](docs/NEXT_EVALUATION.md).

@@ -84,4 +84,4 @@ The user authorized **$250 total Modal spending for the whole project** on Novem
 
 Exact checkpoint/revision; task sources and licenses; acceptance thresholds and required replication; adapter continuation strategy; GPU sizing; billing reconciliation; and whether Kaggle TPU work has enough value to justify a separate implementation.
 
-No claim of successful self-improvement has been measured in this repository yet.
+The first compatibility cycle has completed: training-family results rose from 4/16 to 6/16, while development results fell from 7/8 to 5/8. The parent was retained. See [measured experiment record](EXPERIMENTS.md) and [proposed next evaluation](NEXT_EVALUATION.md). No general improvement or sustained RSI has been demonstrated.

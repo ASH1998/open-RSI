@@ -41,6 +41,27 @@ The adapter and optimizer/RNG checkpoints were committed to the Modal Volume. Th
 
 The first evaluation attempt stopped before model generation because the worker compared a canonical adapter path with a noncanonical root. A CPU-only diagnostic confirmed `/artifacts` is a symlink into `/__modal/volumes/`. Both adapter and checkpoint-parent validation now resolve both sides, while rejecting escapes. Seven new path tests passed; the integrated suite passed all 60 tests. The first CPU diagnostic failed before execution due to a serialized-function Python-version mismatch; the corrected diagnostic completed. All reservations remain in the ledger.
 
-The existing adapter is now being compared with the frozen baseline using identical tasks and inference settings. Interrupted-run recovery and resumed-training equivalence have not been tested. The worker source-fingerprint check correctly blocks resuming the pre-fix checkpoint under changed code; no bypass or checkpoint migration was performed. The exact training worker source was preserved under `artifacts/provenance/c06d4331d0cff442221b29bf9c8d79d3ce269d94f783b39e333a7a99794ba199/modal_workers.py` and verified against the original report hash. No promotion is authorized by this tiny comparison alone.
+The existing adapter completed matched evaluation after the path fix. Interrupted-run recovery and resumed-training equivalence have not been tested. The worker source-fingerprint check correctly blocks resuming the pre-fix checkpoint under changed code; no bypass or checkpoint migration was performed. The exact training worker source was preserved under `artifacts/provenance/c06d4331d0cff442221b29bf9c8d79d3ce269d94f783b39e333a7a99794ba199/modal_workers.py` and verified against the original report hash.
 
 Run: `20261104T071521Z-train-b77c8e`. [W&B training evidence and loss curve](https://forge.coreweave.com/wandb/ashu-na/rsi/runs/g0tw2hjk).
+
+## Matched comparison and decision
+
+| Measure | Original parent | Trained adapter | Paired change |
+| --- | ---: | ---: | --- |
+| Training families | 4/16 (25%) | 6/16 (37.5%) | 2 wins, 0 losses |
+| Development families | 7/8 (87.5%) | 5/8 (62.5%) | 0 wins, 2 losses |
+
+The two gains were sequence-padding tasks. The two regressions were grouped-reduction tasks. Masked mean stayed 4/4, stable softmax and gradient clipping stayed 0/4, and interval union stayed 4/4. The adapter produced one token-limited response, versus three in the parent baseline.
+
+The task dictionaries/hash, inference settings, installed package inventory, base revision, and A10 hardware match. The worker code difference fixes artifact path handling; it does not change prompts, sampling, quantization, or scoring. Adapter generation took 276.04 seconds; total worker execution took 287.99 seconds, with 2.05 GiB peak allocated GPU memory.
+
+**Decision: retain the original parent; do not promote the adapter.** Training loss reduction and two training-family gains were accompanied by worse development performance. The tiny correlated suite and one seed cannot establish a general learning effect, and this experiment does not test successor-improvement ability. No final-test tasks were used. The next useful work is a frozen, costed redesign with broader verified training yield and harder development tasks, as proposed in [NEXT_EVALUATION.md](NEXT_EVALUATION.md).
+
+Run: `20261104T072356Z-evaluate-92cbe2`. [W&B matched evaluation](https://forge.coreweave.com/wandb/ashu-na/rsi/runs/ivo3034e). The W&B API confirmed the training run's 20 loss points/report artifact and the evaluation's completed status, both pass-rate metrics, and report artifact.
+
+## Budget and handoff
+
+Nine stage attempts reserved **$45** in the cumulative ledger, including failed attempts and two CPU diagnostics. **$25** remains held for overhead, leaving **$180** available for further job reservations under the unchanged **$250** total cap. These are conservative planning reservations, not charges; actual Modal invoice totals have not been reconciled. Do not automatically refund failed or short runs. Persistent Volume storage is retained and must be included in later billing reconciliation.
+
+The first cycle is complete, with no automatic repeat or promotion. A final Modal status read confirmed all nine project apps stopped with zero tasks; the snapshot is saved in `work/modal-final-app-status.json`. Code and experiment documentation are backed up to GitHub; full reports are on the SSD and in W&B; the adapter/checkpoint are on the Modal Volume and SSD with verified checksums. Existing visible chats remain the owners of future GPU, task/evaluation, and sandbox work; main chat coordinates paid launches.

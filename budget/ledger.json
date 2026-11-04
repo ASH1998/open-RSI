@@ -18,8 +18,105 @@
       "id": "d363e2b7992a419da0c9f0e617fca108",
       "stage": "smoke",
       "reserved_usd": 5.0,
-      "status": "reserved",
-      "started_at": "2026-11-04T07:02:36.574490+00:00"
+      "status": "failed",
+      "started_at": "2026-11-04T07:02:36.574490+00:00",
+      "finished_at": "2026-11-04T07:03:44.041719+00:00",
+      "details": {
+        "run_id": "20261104T070236Z-smoke-75a7ca",
+        "error_type": "RuntimeError",
+        "app_id": "ap-JZ4vkjNZL8Ooyz1GMkiA5a"
+      }
+    },
+    {
+      "id": "0d5fb63e77264f849ec50cd501732a08",
+      "stage": "smoke",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T07:08:30.386099+00:00",
+      "finished_at": "2026-11-04T07:08:57.741866+00:00",
+      "details": {
+        "run_id": "20261104T070830Z-smoke-0679af",
+        "app_id": "ap-Q45PdRo9kg7dOrMREIG71S",
+        "wall_seconds": 27.35
+      }
+    },
+    {
+      "id": "2d70c4b2602e476793ae35cda145d113",
+      "stage": "baseline",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T07:09:18.373033+00:00",
+      "finished_at": "2026-11-04T07:14:58.364418+00:00",
+      "details": {
+        "run_id": "20261104T070918Z-baseline-14df3d",
+        "app_id": "ap-zRz5ccdiM0wrq19RS4ahUI",
+        "wall_seconds": 339.98
+      }
+    },
+    {
+      "id": "de6b83d57bc94471b9197e6b175370f6",
+      "stage": "train",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T07:15:21.204033+00:00",
+      "finished_at": "2026-11-04T07:17:03.354455+00:00",
+      "details": {
+        "run_id": "20261104T071521Z-train-b77c8e",
+        "app_id": "ap-8p03unx1xRbBcAZFxPoQke",
+        "wall_seconds": 102.14
+      }
+    },
+    {
+      "id": "602314a008ac409ca01880402018e74b",
+      "stage": "evaluate",
+      "reserved_usd": 5.0,
+      "status": "failed",
+      "started_at": "2026-11-04T07:17:29.323918+00:00",
+      "finished_at": "2026-11-04T07:18:39.407798+00:00",
+      "details": {
+        "run_id": "20261104T071729Z-evaluate-0d688c",
+        "error_type": "ValueError",
+        "app_id": "ap-ivBFYvKF5mrdFxNqPFb3GK"
+      }
+    },
+    {
+      "id": "dffe65e3d0d8441f969e2077633ba561",
+      "stage": "artifact-inspection",
+      "reserved_usd": 5.0,
+      "status": "failed",
+      "started_at": "2026-11-04T07:21:46.180543+00:00",
+      "finished_at": "2026-11-04T07:21:51.801187+00:00",
+      "details": {
+        "run_id": "20261104T072146Z-artifact-inspection-1f1f65",
+        "error_type": "InvalidError",
+        "app_id": null
+      }
+    },
+    {
+      "id": "344c1ff4a254498292520d027ddb0a5a",
+      "stage": "artifact-inspection",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T07:22:19.289333+00:00",
+      "finished_at": "2026-11-04T07:22:36.898732+00:00",
+      "details": {
+        "run_id": "20261104T072219Z-artifact-inspection-dc77f6",
+        "app_id": "ap-QZc8i5xAL7iQLyGQykRW39",
+        "wall_seconds": 17.6
+      }
+    },
+    {
+      "id": "f09d078d13484c3091fe9cdbb3a1b2fd",
+      "stage": "evaluate",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T07:23:56.296960+00:00",
+      "finished_at": "2026-11-04T07:30:22.025746+00:00",
+      "details": {
+        "run_id": "20261104T072356Z-evaluate-92cbe2",
+        "app_id": "ap-9GPbvZtCSZwdjRaeMJrEga",
+        "wall_seconds": 385.71
+      }
     }
   ]
 }

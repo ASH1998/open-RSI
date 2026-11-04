@@ -18,7 +18,7 @@ mkdir -p .cache/wandb .config/wandb .config/kaggle work data models checkpoints 
 
 Edit `.env` locally. All secret values in the template are blank. Load it through an explicit dotenv loader in future Python entrypoints, before importing provider SDKs. CLI processes need the same variables exported; a `.env` file alone is not automatically consumed by every SDK. Do not print it or dump the entire process environment.
 
-Use the SSD-local `.venv` and honor the cache paths before installation. The service SDKs and CPU tokenizer tools are pinned in `requirements-tools.txt` and `requirements-tools.lock`. Local PyTorch is not required. The separate Linux GPU image uses `requirements-gpu.txt` for PyTorch, Transformers, PEFT, Accelerate, and bitsandbytes. Its model-load integration check passed; end-to-end training validation is still in progress.
+Use the SSD-local `.venv` and honor the cache paths before installation. The service SDKs and CPU tokenizer tools are pinned in `requirements-tools.txt` and `requirements-tools.lock`. Local PyTorch is not required. The separate Linux GPU image uses `requirements-gpu.txt` for PyTorch, Transformers, PEFT, Accelerate, and bitsandbytes. Model loading, generation, QLoRA training, adapter saving/loading, and matched evaluation passed integration; see `EXPERIMENTS.md` for outcomes and untested recovery limits.
 
 `RSI_*` entries are project-defined settings that future code must implement; they are not provider SDK controls. `RSI_MODEL_REVISION` must be resolved to an immutable commit before recorded experiments. Do not log unresolved `main` as a reproducible revision.
 
