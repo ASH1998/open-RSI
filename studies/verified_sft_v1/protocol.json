@@ -1,0 +1,143 @@
+{
+  "study": "verified-sft-v1",
+  "prepared_sha256": "dbcaa4276cc0a563a283153672b1328fd4f542178145b492c3301dcf8cdf7319",
+  "source_hashes": {
+    "rsi/verified_study.py": "ff96ff357ee84522a85c98808e75cb54b176f446cbd3ffe2fcbc5b74b1f16cdc",
+    "rsi/verified_workers.py": "0592b37e8c5c0f15da730085af8bacda5dc31978dc0f8387e9eb973aa1bd2ed6",
+    "rsi/modal_workers.py": "d289e78ae99a40831810285d42c0b4ee73cd4bd3446bda0505e4905a70a45d95",
+    "rsi/pilot.py": "def3d0844f7cb321a99ac734aeda9b13f62742a1887cf16e467eff5348568b93",
+    "rsi/budget.py": "28add06959592794da0ba71005149a085727ae686f39ef45efa2aef27196d6ae",
+    "rsi/config.py": "f677846f5c99ce066b457169cb89d225a72efee7ccbb38cae5704f8a26ff0821",
+    "rsi/datasets.py": "18312005d8bef3f640cd1d55056cdf90a39b3b2b10c5b2e20619072a15980d65",
+    "rsilab/coding_data.py": "9f07d973685d80344de15c1f6c74250022c26f7cb34996b62e267f1a88117174",
+    "rsilab/learning.py": "23d4d8e04507e4b6b258c30e0556671158a2a990f84c1078bfc9df005539e41b",
+    "rsilab/workflow.py": "d9b4c2b5ddaa315e8a55f208061cd9569595ea8c9c24435bf7bfa6b4392af979",
+    "rsilab/execution.py": "e91bb72567925340caac0bdf7f18e7ccbcc0c27811a5888e45a8b008c56c49dd",
+    "rsilab/providers/modal.py": "c2ce1020c00ae0098175e2b3a5b40bc474d9db610a04dfbe5e2f67dc5e83d5f1",
+    "rsilab/project.py": "96c77e73458b14b282982fa9eb9c1a1c3fa21125530c8ccad3d2f9acac1504ff",
+    "rsilab/learning_commands.py": "3babe74554a85851c7be3d1751c823102fa850b3050ad27d00fcf3975127fc1a",
+    "rsilab/core.py": "44b380977f933b88a8c8234922d7d82dd0f27a7f91f82714da890051cde5c929",
+    "config/verified_sft_v1.json": "92cf46f0dc1a53e9a2f87f70a6f595806448fac484b6d062340ea5747b049f84",
+    "requirements-gpu.txt": "0cdd2443fb0607a7619ee91bac14c05bfe0e3661e33482e9d4342ba5455ae9cc"
+  },
+  "evaluator_source_hashes": {
+    "rsi/mbpp_verification_v2.py": "b4b0d02ffc6ad71b5a33745c895709eb5bb2f3900c6d414f6063a3fe0afc1083",
+    "rsi/mbpp_verification.py": "47efce04acdef807e54a49f1ecbd64942a31baa2ce9e7d7404fd62326e660bc4",
+    "rsi/verification.py": "b6cd4334adf34678f7f35f908a38a14329ca9a81b6b4d557eb4de270868b0db4",
+    "child_source": "860c3c72558a431a07ac76549173b3d9499ba683ad768cc17526062e5380ca1a"
+  },
+  "policy": {
+    "study": "verified-sft-v1",
+    "prefix": "verified-sft-v1-",
+    "reservation_cap_usd": 20,
+    "per_stage_usd": 5,
+    "stages": [
+      "collect",
+      "improve-data",
+      "train-evaluate-42",
+      "train-evaluate-43"
+    ],
+    "train_count": 96,
+    "dev_count": 32,
+    "retention_count": 16,
+    "maximum_reference_pool": {
+      "train": 192,
+      "dev": 64
+    },
+    "max_gpu_calls_per_stage": 3,
+    "worker_timeout_seconds": 1800,
+    "generation": {
+      "seed": 42,
+      "temperature": 0.0,
+      "max_new_tokens": 512,
+      "max_input_tokens": 2048
+    },
+    "sample_generation": {
+      "seed": 31415,
+      "temperature": 0.7,
+      "max_new_tokens": 512,
+      "max_input_tokens": 2048
+    },
+    "repair_generation": {
+      "seed": 31416,
+      "temperature": 0.0,
+      "max_new_tokens": 512,
+      "max_input_tokens": 4096
+    },
+    "max_repaired_tasks": 32,
+    "repair_selection": "First 32 tasks in frozen training order that failed both initial and sampled attempts; one feedback repair each",
+    "training": {
+      "learning_rate": 2e-05,
+      "epochs": 2,
+      "gradient_accumulation": 4,
+      "max_length": 2048,
+      "max_steps": 64
+    },
+    "selection": {
+      "min_targets": 24,
+      "min_categories": 3,
+      "max_category_share": 0.6
+    },
+    "replication": {
+      "initial_seed": 42,
+      "replication_seed": 43,
+      "min_net_dev_gain": 3,
+      "max_individual_retention_losses": 0
+    },
+    "final_evaluation": "Native MBPP test split stays untouched throughout this experiment, including conditional replication",
+    "promotion": "No automatic promotion; retain parent and report development replication only",
+    "failure_policy": "Preserve failures and reservations; no automatic retry or additional stage. Infrastructure failure blocks dependent stages.",
+    "reference_policy": "Freeze proposals and independent domain review before probing. Require original reference tests to pass and at least 3 distinct supported added calls. Reference-derived expectations are not a proof of reference correctness. Freeze audited dataset before any model generation."
+  },
+  "learning_policy": {
+    "min_targets": 24,
+    "min_categories": 3,
+    "max_category_share": 0.6,
+    "independent_attempts": 2,
+    "max_repairs": 1,
+    "max_repair_tasks": 32,
+    "max_prompt_chars": 16000,
+    "max_previous_code_chars": 8000,
+    "max_feedback_chars": 1200,
+    "dev_count": 32,
+    "retention_count": 16,
+    "min_dev_gain": 3,
+    "initial_seed": 42,
+    "replication_seed": 43
+  },
+  "model": {
+    "model_id": "openbmb/MiniCPM5-2B",
+    "revision": "f97400052a43d642bbc6e9975e2397e3ae6a6b52"
+  },
+  "reference_pool_count": 154,
+  "retention_ids": [
+    "mbpp-full-742",
+    "mbpp-full-890",
+    "mbpp-full-711",
+    "mbpp-full-835",
+    "mbpp-full-771",
+    "mbpp-full-686",
+    "mbpp-full-854",
+    "mbpp-full-621",
+    "mbpp-full-873",
+    "mbpp-full-715",
+    "mbpp-full-849",
+    "mbpp-full-861",
+    "mbpp-full-898",
+    "mbpp-full-665",
+    "mbpp-full-616",
+    "mbpp-full-648"
+  ],
+  "final_evaluation": {
+    "dataset": "google-research-datasets/mbpp",
+    "revision": "4bb6404fdc6cacfda99d4ac4205087b89d32030c",
+    "config": "full",
+    "split": "test",
+    "count": 500,
+    "file_sha256": "566fd53060ffba5766dace1d1e2f4c38906781526de222b0dfbdbc325b696c77",
+    "prompts_included": false,
+    "execution_performed": false
+  },
+  "interpretation": "Prospective native-split self-training study; previously exposed dev tasks disclosed; reference-derived extra tests; final split untouched",
+  "sha256": "f7d9fbc22fbdfb3cab3962d3742c75d8a4136c07bb95349ba0e663247bdd43b1"
+}

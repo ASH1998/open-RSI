@@ -42,6 +42,16 @@ def main(argv=None) -> int:
     artifacts = commands.add_parser("artifacts", help="Hash an explicit local artifact allowlist")
     artifacts.add_argument("root")
     artifacts.add_argument("paths", nargs="+")
+    selected = commands.add_parser("learning-select", help="Audit saved attempts and select verified training targets offline")
+    selected.add_argument("ledger")
+    selected.add_argument("excluded_tasks")
+    learning = commands.add_parser("learning-compare", help="Compare matched verified-learning parent and candidate reports")
+    for field in ("parent", "candidate", "tasks", "retention_ids", "policy"):
+        learning.add_argument(field)
+    learning.add_argument("--initial-comparison")
+    data = commands.add_parser("coding-data-freeze", help="Validate saved reference evidence and freeze stronger tasks offline")
+    data.add_argument("selection")
+    data.add_argument("audits")
     args = parser.parse_args(argv)
     try:
         if args.command == "validate":
@@ -61,6 +71,17 @@ def main(argv=None) -> int:
                                           [_load(path) for path in args.candidate], adapter_sha256=args.adapter_sha256,
                                           training_report=_load(args.training_report) if args.training_report else None)
             result["matched"] = result["comparison"]["matched"]
+        elif args.command == "learning-select":
+            from .learning_commands import select_from_saved_ledger
+            result = select_from_saved_ledger(_load(args.ledger), _load(args.excluded_tasks))
+        elif args.command == "learning-compare":
+            from .learning import LearningPolicy, compare_learning_run
+            result = compare_learning_run(_load(args.parent), _load(args.candidate), tasks=_load(args.tasks),
+                retention_ids=_load(args.retention_ids), policy=LearningPolicy(**_load(args.policy)),
+                initial_comparison=_load(args.initial_comparison) if args.initial_comparison else None)
+        elif args.command == "coding-data-freeze":
+            from .coding_data import freeze_verified_dataset
+            result = freeze_verified_dataset(_load(args.selection), _load(args.audits))
         else:
             inventory = artifact_manifest(args.root, args.paths)
             result = {"sha256": digest(inventory), "manifest": inventory.to_dict()}
