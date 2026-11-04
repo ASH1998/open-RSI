@@ -488,6 +488,34 @@
         "error_type": "RemoteError",
         "app_id": "ap-8uppXKPSgeDDfZYJb7jAwj"
       }
+    },
+    {
+      "id": "1a84548adbe84062b4a74479ab81f725",
+      "stage": "successor-r3-worker-probe",
+      "reserved_usd": 1,
+      "status": "completed",
+      "started_at": "2026-11-04T19:17:39.173175+00:00",
+      "finished_at": "2026-11-04T19:18:02.535080+00:00",
+      "details": {
+        "run_id": "20261104T191739Z-successor-r3-worker-probe-d69fa7c6",
+        "wall_seconds": 17.785750292008743,
+        "error_type": null,
+        "app_id": "ap-hmjmA01S4X7nAUseRyBULK"
+      }
+    },
+    {
+      "id": "d72fcae918a240689e4c388eebbf602e",
+      "stage": "successor-r3-baseline",
+      "reserved_usd": 3,
+      "status": "completed",
+      "started_at": "2026-11-04T19:18:36.360219+00:00",
+      "finished_at": "2026-11-04T19:22:31.167884+00:00",
+      "details": {
+        "run_id": "20261104T191836Z-successor-r3-baseline-df0f6744",
+        "wall_seconds": 227.19942112499848,
+        "error_type": null,
+        "app_id": "ap-0cWAYc2kMLQ7BgfCXYKNrV"
+      }
     }
   ]
 }
