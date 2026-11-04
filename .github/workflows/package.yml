@@ -17,19 +17,33 @@ jobs:
       - run: python -m build --wheel --outdir work/dist
       - run: python -m pip install --no-deps work/dist/*.whl
       - run: python -I -m rsilab --help
+      - name: Prepare non-system volume fixture directory
+        run: |
+          # Portable volume mounts reject /home, including the runner checkout.
+          sudo install -d -o "$(id -u)" -g "$(id -g)" /mnt/rsilab-ci
       - name: Test installed offline APIs and packaged resources
+        env:
+          RSI_CI_FIXTURE_ROOT: /mnt/rsilab-ci
         run: |
           python -I -B - <<'PY'
           import importlib.abc
           import importlib.machinery
           import importlib.util
+          import os
           from pathlib import Path
           import runpy
+          import shutil
           import socket
           import sys
           import unittest
 
           root = Path.cwd().resolve()
+          fixture_root = Path(os.environ['RSI_CI_FIXTURE_ROOT']).resolve()
+          assert fixture_root.is_absolute() and fixture_root.is_dir()
+          for relative in ('rsi/modal_workers.py', 'requirements-gpu.txt'):
+              destination = fixture_root / relative
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copyfile(root / relative, destination)
           def blocked(*args, **kwargs):
               raise AssertionError("Package smoke tests must not use the network")
           socket.socket.connect = blocked
@@ -49,14 +63,17 @@ jobs:
 
           sys.meta_path.insert(0, InstalledOnly())
           suite = unittest.TestSuite()
-          for name in ('framework', 'successor', 'portable_modal', 'dataset_io',
-                       'preflight', 'reference_reuse', 'successor_recovery'):
+          for name in ('framework', 'successor', 'portable_modal', 'portable_modal_v2', 'dataset_io',
+                       'preflight', 'reference_reuse', 'successor_recovery', 'successor_recovery_v2'):
               filename = root / 'tests' / f'test_{name}.py'
               spec = importlib.util.spec_from_file_location(f'test_{name}', filename)
               module = importlib.util.module_from_spec(spec)
               sys.modules[spec.name] = module
               spec.loader.exec_module(module)
-              if name == 'successor_recovery':
+              if name in ('portable_modal', 'portable_modal_v2'):
+                  # Fixtures emulate allowed remote volume paths, not /home.
+                  module.ROOT = fixture_root
+              if name in ('successor_recovery', 'successor_recovery_v2'):
                   # Installed controller code, explicit checkout config fixture.
                   module.recovery.ROOT = root
               suite.addTests(unittest.defaultTestLoader.loadTestsFromModule(module))

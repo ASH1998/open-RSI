@@ -1,15 +1,23 @@
 # Portable optional Modal GPU workers
 
-`rsilab.providers.portable_modal` defines a separate worker factory that uses
+`rsilab.providers.portable_modal_v2` defines a separate worker factory that uses
 packaged Python code and dependency resources. It does not import or mutate the
 historical `rsi.modal_workers` module and does not look for a requirements file
 beside a checkout. Importing it loads no Modal/ML SDK, credentials, or `.env` and
 starts no job. The existing frozen workers and experiment results are unchanged.
 
+Version 0.4.1 introduces this V2 factory after a remote startup failure in V1:
+setting the runtime `PIP_CACHE_DIR` before image dependency installation created
+`/artifacts/cache/pip` inside the image, and Modal rejected the nonempty volume
+mount. V2 calls `pip_install` first, then sets runtime environment paths, then
+attaches the explicit source bundle. No image build command follows that
+environment assignment. The original `portable_modal.py` and resource kernel
+remain unchanged; importing V1 does not silently switch to V2.
+
 ## API and lifecycle
 
 ```python
-from rsilab.providers.portable_modal import PortableModalConfig, create_modal_workers
+from rsilab.providers.portable_modal_v2 import PortableModalConfig, create_modal_workers
 from rsilab.providers.modal import ModalBackend
 
 config = PortableModalConfig(
@@ -44,6 +52,9 @@ is used, so the local controller need not share the remote Python minor version.
 The remote entrypoints are ordinary top-level module functions registered on the
 explicit app. Modal's function registration supports explicit names and source
 inclusion controls. [Modal App reference](https://modal.com/docs/sdk/py/latest/App)
+V2 registers `generate_v2` and `train_v2`, backed by the V2 module's
+`_generate_entry_v2` and `_train_entry_v2`. The caller-facing attributes remain
+`workers.generate` and `workers.train`.
 
 Construction imports the optional Modal SDK and defines lazy app/image/volume
 objects, but calls no `app.run`, image build, deploy, `.spawn`, or credential
@@ -73,8 +84,11 @@ controller submits both; its budget/concurrency policy remains authoritative.
 Internal historical work limits remain 1,500 seconds for generation and 1,400
 seconds for training, leaving time for persistence.
 
-All remote model, Torch, pip, XDG, and temporary caches live under the configured
+All runtime model, Torch, pip, XDG, and temporary caches live under the configured
 volume mount. Adapters/checkpoints live under `<mount>/adapters`. The worker
+image installs dependencies before these runtime paths exist in its environment;
+build-time pip uses the image's normal paths outside the future volume mount.
+The worker
 commits newly created cache/temp directories before the preserved kernels reload
 the volume, so a first-run reload cannot discard those directories. The worker
 requests public pinned model bytes with `trust_remote_code=False` and
@@ -142,7 +156,7 @@ static bounds before `.spawn`; remote checks still enforce model/path identities
 The release build must include these new files:
 
 ```text
-rsilab/providers/portable_modal.py
+rsilab/providers/portable_modal_v2.py
 rsilab/resources/__init__.py
 rsilab/resources/gpu_worker_v1.py
 rsilab/resources/gpu_requirements_v1.txt
@@ -171,7 +185,9 @@ as produced by wheel installation; zipimport factory construction is rejected.
 No `rsi` module, project configuration, or root requirements file is part of the
 remote bundle.
 
-The worker source is versioned as `portable-qlora-v1`. Its provenance resource
+The factory inventory reports `worker_version: portable-qlora-v2` and
+`kernel_version: portable-qlora-v1`. Its ten-file source allowlist contains only
+the V2 factory, not V1. Its unchanged kernel provenance resource
 records the historical `rsi/modal_workers.py` SHA-256
 `d289e78ae99a40831810285d42c0b4ee73cd4bd3446bda0505e4905a70a45d95`,
 the original requirement-file digest, copied function names, and exact portability
@@ -188,7 +204,9 @@ still freeze and audit the package/source versions used for an experiment.
 
 ## Verified status and next milestone
 
-Sixteen offline tests cover resource pinning/tampering, all eleven function ASTs,
+Nineteen V2 offline tests cover image build order, absence of volume-backed
+cache paths during pip installation, V2 inventory/entrypoint identities,
+resource pinning/tampering, all eleven function ASTs,
 tokenizer masking/bounds, separate runtime bindings, existing adapter paths and
 symlink containment, lazy resource definitions, explicit source filtering,
 preflight rejection, `ModalBackend` compatibility, metadata binding, required
@@ -201,10 +219,11 @@ credential-config path. It did not enter an app context, build an image, or
 submit work.
 
 ```sh
-env -i PATH=/usr/bin:/bin .venv/bin/python -B -m unittest discover -s tests -p test_portable_modal.py -v
+env -i PATH=/usr/bin:/bin .venv/bin/python -B -m unittest discover -s tests -p test_portable_modal_v2.py -v
 ```
 
-This portable worker has not yet run a GPU job or resumed training remotely.
+The V1 remote call failed before outputs at volume attachment. V2 has not yet
+completed a remote GPU job or resumed training remotely.
 Offline parity and historical-worker GPU evidence do not substitute for that
 test. Main's next milestones are packaging the resources in the new wheel,
 isolated installed-factory validation, and an explicitly budgeted remote smoke

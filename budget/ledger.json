@@ -460,6 +460,20 @@
         "error_type": "ValueError",
         "app_id": "ap-nIuraWLp9QImopB8Bd15cw"
       }
+    },
+    {
+      "id": "0776dc668c744241bdabe4363eb1d47b",
+      "stage": "successor-r1-baseline",
+      "reserved_usd": 5,
+      "status": "failed",
+      "started_at": "2026-11-04T18:58:30.193584+00:00",
+      "finished_at": "2026-11-04T18:58:53.367054+00:00",
+      "details": {
+        "run_id": "20261104T185830Z-successor-r1-baseline-657aa119",
+        "wall_seconds": 15.203816291992553,
+        "error_type": "RemoteError",
+        "app_id": "ap-JAAfKD1BLtTXUiBQ7Ihmdz"
+      }
     }
   ]
 }

@@ -1,8 +1,9 @@
 # rsilab framework foundation
 
 `rsilab` is an installable Python library for verified-learning experiments.
-Version 0.4.0 adds explicit category preflight and reviewed
-reference-evidence reuse. The dependency-free offline core covers manifests,
+Version 0.4.1 corrects the portable-worker image build order while retaining
+the explicit category preflight and reviewed reference-evidence reuse from
+0.4.0. The dependency-free offline core covers manifests,
 data and attempt audits, target selection, and matched comparisons, alongside
 optional workspace and provider APIs. Importing the library starts no compute
 and loads no credentials. The release notes below distinguish completed package
@@ -459,3 +460,24 @@ allowlisted local evidence is available; raw run data remains outside the wheel
 and public CI. Earlier wheels and frozen experiment identities are retained.
 The corrected experiment freezes a new source inventory. No PyPI publication or
 remote model/training result follows from this package release.
+
+## Local factory correction 0.4.1
+
+The first recovery GPU call failed before producing outputs: V1 assigned
+volume-backed pip cache paths before dependency installation, leaving the future
+volume mount nonempty in the image. The new
+`rsilab.providers.portable_modal_v2` factory installs dependencies before setting
+runtime cache paths. It uses its own source inventory and remote entrypoints,
+while retaining the unchanged V1 kernel, request bounds, adapter byte checks,
+checkpoint algorithm and dependencies. Historical factories/controllers and the
+0.4.0 wheel are preserved. See [the V2 contract](PORTABLE_MODAL.md).
+
+Nineteen V2 offline tests cover the previous worker checks plus build order and
+versioned identities. The new `rsi.successor_recovery_v2` controller imports V2
+explicitly; no existing frozen experiment is rewritten by this package change.
+The distinct `work/successor-recovery-v2-framework-dist/` directory holds the
+0.4.1 wheel, exact commands and installed-validation audit. That audit records
+completed checks, including earlier APIs, both factory versions, both recovery
+controllers, saved-reference replay and the synthetic examples. Remote GPU
+execution and checkpoint resume require separate validation; lazy SDK
+construction does not build an image or attach a remote volume.

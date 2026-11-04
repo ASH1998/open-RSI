@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** preparing the authorized successor recovery with `rsilab 0.4.0`. All 24 saved reference audits replay exactly; a category-only correction preserves the original 20-task order and tests. The new protocol compares original and learned teachers, with child training conditional on verified-data quality. Previous development **11/32 → 13/32**, retention **8/16 → 7/16**: original parent retained. No sustained RSI has been demonstrated. Apache-2.0 source and the [quickstart](docs/QUICKSTART.md) are public. See the [recovery protocol](studies/successor_recovery_v1/README.md) and [preserved failed study](docs/SUCCESSOR_EXPERIMENT.md).
+**Status:** preparing the authorized successor recovery with `rsilab 0.4.1`. All 24 saved reference audits replay exactly; a category-only correction preserves the original 20-task order and tests. The new protocol compares original and learned teachers, with child training conditional on verified-data quality. Previous development **11/32 → 13/32**, retention **8/16 → 7/16**: original parent retained. No sustained RSI has been demonstrated. Apache-2.0 source and the [quickstart](docs/QUICKSTART.md) are public. See the [recovery protocol](studies/successor_recovery_v2/README.md) and [preserved failed study](docs/SUCCESSOR_EXPERIMENT.md).
 
 ## Workspace and repository
 

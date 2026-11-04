@@ -1,4 +1,4 @@
-# Successor recovery v1
+# Successor recovery v1 — preserved infrastructure failure
 
 Authorized November 5, 2026. This is a new versioned study, preserving the failed
 `successor-v1-calibrate` report and its $5 reservation. At most $25 in five new
@@ -53,3 +53,5 @@ allowlists and link the original calibration and teacher checkpoint reports.
 Reusable category preflight and reference-reuse APIs ship in rsilab 0.4.0.
 Historical 0.3.0 source remains in Git and its immutable wheel. Existing frozen
 controllers and replay-critical evaluator/data modules remain unchanged.
+
+Status: baseline `20261104T185830Z-successor-r1-baseline-657aa119` failed before model execution: Modal rejected a nonempty `/artifacts` mount created by image-build package caching. No model outputs or scores exist. Preserve this run and its $5 reservation. The versioned correction is `studies/successor_recovery_v2/README.md`, using the remaining $20 of the same $25 recovery allocation. Do not rerun this controller.
