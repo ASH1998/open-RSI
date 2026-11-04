@@ -69,3 +69,7 @@ including failed r1 ($5) and r2 ($4), and never exceeds $25. This version allows
 at most $16: $1 plus five $3 stages. Two maximum-duration GPU function calls cost
 about $2.17 at the frozen compute rates; cold startup, builds and storage retain
 the existing project overhead allocation. These are planning bounds, not invoices.
+
+## Completed outcome
+
+The CPU probe, baseline and both teachers completed. Baseline is 11/32 development and 8/16 retention. Unique teacher targets: original 10/20, learned 9/20; neither has a text success. Both fail the frozen gate, so no child training or promotion. Do not launch child commands or repeat paid stages. `report` remains offline. See `results.json`, `reconciliation.json` and [full report](../../docs/SUCCESSOR_RECOVERY_EXPERIMENT.md). The recovery family reserved $19 including both startup failures; cumulative jobs $194 plus $25 overhead, $31 unallocated.

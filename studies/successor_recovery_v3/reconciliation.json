@@ -1,0 +1,38 @@
+{
+  "observed_at": "2026-11-04T19:34:36.077259+00:00",
+  "budget": {
+    "project_cap_usd": 250.0,
+    "reserved_for_jobs_usd": 194.0,
+    "overhead_reserve_usd": 25.0,
+    "available_for_jobs_usd": 31.0,
+    "invoice_total_usd": null
+  },
+  "recovery_family_reserved_usd": 19,
+  "failed_startups_reserved_usd": 9,
+  "successful_cpu_probe_reserved_usd": 1,
+  "completed_model_stages_reserved_usd": 9,
+  "children_launched": false,
+  "workspace_billing_snapshot": {
+    "start_timestamp": "2026-11-01T00:00:00Z",
+    "end_timestamp": "2026-12-01T00:00:00Z",
+    "metered_cost": "2.62101049",
+    "billed_cost": "0.00000000",
+    "metered_cost_breakdown": {
+      "LLM Tokens": "0.00000000",
+      "Ephemeral Apps": "2.61918463",
+      "Network Egress": "0.00101049",
+      "Volumes": "0.00000000"
+    },
+    "adjustments": {
+      "Plan Cost": "0.00000000",
+      "Reservation Adjustment": "-0.00000000",
+      "Network Egress Allowance": "-0.00101049",
+      "Credits": "-2.62000000",
+      "Free Storage": "-0.00000000"
+    }
+  },
+  "billing_scope": "Workspace month-to-date summary and known project app filter; billing may lag; not a finalized invoice",
+  "project_filtered_billing_rows": 0,
+  "reservations_released": false,
+  "invoice_total_usd": null
+}

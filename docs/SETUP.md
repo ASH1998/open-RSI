@@ -91,8 +91,18 @@ Use `rsilab.dataset_io.read_development_splits` for explicit pinned train/valida
 
 The successor-v1 calibration is now stopped at a data-category gate. Do not retry its paid commands. The raw run and original source remain frozen; a new protocol is needed after the category correction and preflight. See `SUCCESSOR_EXPERIMENT.md`. The immutable 0.3.0 wheel and installed tests passed, but no portable GPU function executed, so remote portable inference/training validation remains pending.
 
-The user has now authorized a separate recovery study: `python -m rsi.successor_recovery COMMAND`. Its commands and bounds are in `studies/successor_recovery_v1/README.md`. This does not reopen the failed v1 stage. New reference-reuse and preflight APIs are packaged for 0.4.0; historical 0.3.0 wheel/source identities remain preserved. Only main launches paid recovery stages, with a new frozen plan and cumulative budget reservations.
+The separate recovery is now complete. Its frozen controller is
+`python -m rsi.successor_recovery_v3 COMMAND` with `portable_modal_v3` and library
+0.4.2. V1 and v2 startup failures are preserved; do not rerun their stages.
+The validated v3 factory sets cache paths only inside workers after mounting,
+with a mandatory CPU-only image/volume/source/package probe before GPU work.
+The actual baseline and both teacher arms completed. Both teachers failed the
+data gate, so neither child stage may run under this protocol. Only `report`
+is an offline replay command; it reproduced exactly from the installed wheel.
+See `SUCCESSOR_RECOVERY_EXPERIMENT.md` and the study README before future work.
 
-Current executable recovery: `python -m rsi.successor_recovery_v2 COMMAND`, using `rsilab.providers.portable_modal_v2`. V1 remains a preserved failed startup; do not rerun it. The corrected factory sets runtime cache environment variables after dependency installation so image layers leave the volume mount empty. Five $4 reservations plus the preserved failed $5 fit the existing $25 recovery allocation.
-
-Current controller is `python -m rsi.successor_recovery_v3 COMMAND` with `portable_modal_v3`. Run the frozen `worker-probe` CPU stage successfully before `baseline`; failed/attempted stages may not be duplicated. Runtime cache paths are configured inside entrypoints after mounting, never through image environment layers. V1/v2 startup failures remain preserved. The remaining recovery budget is $16 including the probe, with $9 already reserved for the two startup failures.
+All successor apps stopped with zero tasks. Current reservations are $194 plus
+$25 overhead, leaving $31 under the unchanged $250 cap. Failed reservations
+remain counted; billing snapshots are not final invoices. A new experiment
+requires a new frozen protocol and main-chat budget coordination. Portable
+inference is remotely validated; portable training and resume are not yet tested.

@@ -1,0 +1,50 @@
+{
+  "study": "successor-recovery-v3",
+  "plan_sha256": "e04df37d5b23a30c4fb5f88821a5cd0ae6440fa070e893b49a65c7c7d7b80b26",
+  "protocol_sha256": "0cba1d12bb4f06c051566ac9e9d58923d1ad108475a34f6b04aa4cb3aa0060ba",
+  "probe_sha256": "8bc807da036a09a298aff52ff0ddc1a21140a5dec5bd5820940d79745d437d53",
+  "yields": {
+    "original": {
+      "attempt_successes": [
+        9,
+        7
+      ],
+      "unique_solved_tasks": 10,
+      "selected_targets": 10,
+      "categories": {
+        "collections": 4,
+        "numeric": 6
+      }
+    },
+    "learned": {
+      "attempt_successes": [
+        9,
+        6
+      ],
+      "unique_solved_tasks": 9,
+      "selected_targets": 9,
+      "categories": {
+        "collections": 4,
+        "numeric": 5
+      }
+    }
+  },
+  "probe_eligible": false,
+  "probe_reasons": [
+    "learned_too_few_categories",
+    "learned_too_few_targets",
+    "original_too_few_categories",
+    "original_too_few_targets"
+  ],
+  "promoted": false,
+  "selected_agent_id": "original-parent",
+  "sustained_rsi": false,
+  "stopping_reason": "teacher_data_gate_failed",
+  "budget": {
+    "project_cap_usd": 250.0,
+    "reserved_for_jobs_usd": 194.0,
+    "overhead_reserve_usd": 25.0,
+    "available_for_jobs_usd": 31.0,
+    "invoice_total_usd": null
+  }
+}

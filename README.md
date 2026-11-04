@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** preparing the authorized successor recovery with `rsilab 0.4.2`. All 24 saved reference audits replay exactly; a category-only correction preserves the original 20-task order and tests. The new protocol compares original and learned teachers, with child training conditional on verified-data quality. Previous development **11/32 → 13/32**, retention **8/16 → 7/16**: original parent retained. No sustained RSI has been demonstrated. Apache-2.0 source and the [quickstart](docs/QUICKSTART.md) are public. See the [recovery protocol](studies/successor_recovery_v3/README.md) and [preserved failed study](docs/SUCCESSOR_EXPERIMENT.md).
+**Status:** completed the matched successor teacher probe with `rsilab 0.4.2`. Original teacher: **10/20** unique verified targets; learned teacher: **9/20**. Both failed the data gate, so no children were trained and the original parent remains selected. No sustained RSI has been demonstrated. The Apache-2.0 library now includes reference-evidence reuse, category preflight and a remotely validated portable Modal inference path. See the [completed report](docs/SUCCESSOR_RECOVERY_EXPERIMENT.md), [failure analysis](docs/SUCCESSOR_RECOVERY_FAILURE_ANALYSIS.md) and [public quickstart](docs/QUICKSTART.md).
 
 ## Workspace and repository
 
@@ -50,6 +50,6 @@ Earlier engineering milestone: [stronger diagnostics and durable execution](docs
 
 Completed verified-data experiment: [verified-data SFT protocol](studies/verified_sft_v1/README.md). Reusable workflow: [learning API](docs/LEARNING.md), [dataset audit](docs/VERIFIED_DATA.md), and [project runtime](docs/PROJECT_RUNTIME.md).
 
-Latest measured result and handoff: [verified-data SFT experiment](docs/VERIFIED_SFT_EXPERIMENT.md). Current reservations: $175 plus $25 overhead; $50 unallocated.
+Latest measured result and handoff: [successor recovery](docs/SUCCESSOR_RECOVERY_EXPERIMENT.md). Current reservations: $194 plus $25 overhead; $31 unallocated. Reservations are not invoices.
 
-Next research milestone: [successor protocol](studies/successor_v1/README.md), [measurement contract](docs/SUCCESSOR_MEASUREMENT.md), and [portable Modal workers](docs/PORTABLE_MODAL.md).
+Completed successor probe: [recovery protocol](studies/successor_recovery_v3/README.md), [measurement contract](docs/SUCCESSOR_MEASUREMENT.md), and [portable Modal workers](docs/PORTABLE_MODAL.md).

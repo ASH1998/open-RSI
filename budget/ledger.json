@@ -516,6 +516,34 @@
         "error_type": null,
         "app_id": "ap-0cWAYc2kMLQ7BgfCXYKNrV"
       }
+    },
+    {
+      "id": "9d016f2759d14611be87ab25ad8686da",
+      "stage": "successor-r3-teacher-original",
+      "reserved_usd": 3,
+      "status": "completed",
+      "started_at": "2026-11-04T19:23:32.243132+00:00",
+      "finished_at": "2026-11-04T19:27:33.409316+00:00",
+      "details": {
+        "run_id": "20261104T192332Z-successor-r3-teacher-original-b2467f06",
+        "wall_seconds": 233.26317062499584,
+        "error_type": null,
+        "app_id": "ap-cJDXOCIrFs7nG3AvrqgGiT"
+      }
+    },
+    {
+      "id": "6b52a5eb4dd347ffabc3b7335c39382b",
+      "stage": "successor-r3-teacher-learned",
+      "reserved_usd": 3,
+      "status": "completed",
+      "started_at": "2026-11-04T19:28:21.940075+00:00",
+      "finished_at": "2026-11-04T19:33:19.771814+00:00",
+      "details": {
+        "run_id": "20261104T192821Z-successor-r3-teacher-learned-c9ee6e5a",
+        "wall_seconds": 290.30305854199105,
+        "error_type": null,
+        "app_id": "ap-1FDypnC0D6BtjpogFmHrpL"
+      }
     }
   ]
 }

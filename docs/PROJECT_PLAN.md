@@ -1,6 +1,6 @@
 # Project plan
 
-Last updated: November 4, 2026. This document separates the longer-term research plan from the implemented MBPP study below.
+Last updated: November 5, 2026. This document separates the longer-term research plan from the implemented MBPP study below.
 
 ## Objective and scope
 
@@ -129,3 +129,11 @@ On November 5 the user authorized the corrected comparison. The new controller i
 Recovery baseline v1 failed at worker startup before any model outputs: image-build dependency caching populated the future volume mount. V2 changes only worker image-build order and preserves scientific controls. Five $4 stages use the remaining $20 of the same $25 recovery allocation; the failed $5 is retained and family reservations are checked across versions. The v2 plan is `a974ee728a7f9c220ea79d01393c1b57c82a4847567c09609e7ee5431932c7fa`. Library0.4.1 contains the corrected factory and regression tests; older factory/controllers/wheels remain preserved. See `studies/successor_recovery_v2/README.md`.
 
 The v2 ENV layer also failed the mount check before model outputs. V3 removes image-level cache environment entirely and requires a CPU-only probe on the exact image/volume/source before GPU work. New allocation is $1 probe plus five $3 stages ($16); prior recovery failures retain $9, preserving the $25 family cap. Source plan `e04df37d5b23a30c4fb5f88821a5cd0ae6440fa070e893b49a65c7c7d7b80b26` is frozen. Tests:436 total with433 default passes and3 previously verified opt-in tokenizer checks. The CPU probe validates startup/source/package metadata, not CUDA or model loading. See `studies/successor_recovery_v3/README.md`.
+
+## Completed successor recovery and current handoff
+
+Original and learned teachers generated two matched attempts on the same 20 fresh training tasks. Unique verified yield is 10 versus 9, with zero text successes in either arm. Both fail the unchanged 16-target/three-category gate; no child training or promotion. Baseline exactly reproduces all 48 historical outputs and scores 11/32 development, 8/16 retention. This measures teacher-data feasibility, not successor performance or sustained RSI.
+
+Library 0.4.2 includes reference-evidence reuse, preflight and a portable Modal factory with runtime-only cache setup and a CPU startup probe. Actual GPU inference and isolated verification completed; portable training/resume remain untested. Validation covers 436 unique integrated tests, 155 installed-wheel tests, hosted CI and exact installed offline report replay. Both startup failures remain preserved. All workers stopped; W&B report readbacks match. Recovery reservations total $19; cumulative jobs $194 plus $25 overhead, leaving $31. Billing remains non-final.
+
+Next executable milestone is a new offline task-contract/boundary-coverage audit and preregistered diverse-data/repair design. Task 675 exposes a finite-test coverage gap; do not change the completed scores. Register these 20 tasks as exposed before selecting another fresh cohort. No automatic further training. See [completed report](SUCCESSOR_RECOVERY_EXPERIMENT.md).
