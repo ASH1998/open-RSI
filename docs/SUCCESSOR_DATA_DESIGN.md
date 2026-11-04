@@ -1,21 +1,26 @@
 # Successor experiment: data review and feasibility
 
-Status: manual data review completed on November 4, 2026. Main selected a
-20-task design from the 24-task audit pool before paid work. This document does
-not itself freeze a study, launch work, or report successor results.
-Owned artifacts are this document and `work/successor-design-data.json`.
+Status updated November 5, 2026: manual data review completed November 4;
+main's calibration subsequently passed all reference audits but failed the
+serialized-category gate before dataset creation or model generation. The
+original inventory and frozen evidence remain unchanged. A separate
+`studies/successor_v1/category-correction-proposal.json` records future-protocol
+input only; it does not authorize a retry or report successor results.
 
 ## Decision supported by the review
 
 The current generic-proposal pool supports **24 tasks for remote reference
 audit**, with **261 explicitly approved additional calls**. The requested
 32- or 40-task cohort is not available from these reviewed proposals.
-The 24 tasks span collections (13), numeric (8), and text (3). There is no
-fourth category; none should be invented or forced into the cohort.
+The independently reviewed outer inventory categories span collections (13),
+numeric (8), and text (3). These were review-only categories: every embedded
+`item.task.category` was actually serialized as `text`. The earlier wording
+failed to distinguish these two representations. There is no reviewed fourth
+category; none should be invented or forced into the cohort.
 
-These are input/domain approvals, not remotely verified expectations.
-Every selected task still needs a passing original-reference calibration and
-at least three accepted additional calls under the unchanged typed evaluator.
+At initial handoff these were input/domain approvals, not remotely verified
+expectations. Main's subsequent calibration passed all 24 original references
+and accepted all 261 additional calls under the unchanged typed evaluator.
 Reference success is evidence for these tests, not proof of oracle correctness.
 No reference or model-generated code was executed in this review.
 
@@ -39,10 +44,44 @@ the earlier deterministic seed20261104 rank within each category:
 681 816 687 633 675 611 745 734 805 915 744 780
 ```
 
-All IDs above have prefix `mbpp-full-`. If all pass remote audit, the first 20
-contain nine collections, eight numeric, and three text tasks. Main owns the
-protocol freeze. Fallbacks must be selected from reference-only evidence before
+All IDs above have prefix `mbpp-full-`. The first 20 have nine collections,
+eight numeric, and three text categories under the reviewed taxonomy, but
+their frozen serialized categories are twenty `text` values. Main owns any
+future protocol freeze. Fallbacks must be selected from reference-only evidence before
 any model outcomes; they cannot fill holes after seeing teacher failures.
+
+## Calibration failure and proposed metadata correction
+
+The saved report is
+`runs/20261104T183006Z-successor-v1-calibrate-a33b28fc/report.json`.
+All 24 saved audits replay identically using the original prepared tasks,
+proposals, reviews, and reference outputs. The first 20 contain 60 original
+cases plus 213 accepted additional cases, for 273 cases total. No fallback
+substitution is needed to recover the intended task identities.
+
+The inventory retained stale embedded categories from historical reference
+tasks while computing the correct category separately on each outer item.
+Preparation copied the embedded task unchanged, and augmentation preserved
+that category. The three-category check at `rsi/successor_study.py:235`
+therefore saw only `text` and raised `ValueError`. The saved report records
+the exception type without its message; the failing gate is reproduced from
+the persisted data and controller logic. No dataset hash or baseline-generation
+evidence appears in the report, and that gate precedes both operations.
+
+The separate correction proposal records all 24 task IDs, original serialized
+categories, independently reviewed categories, source descriptions and row
+digests, and individual reasons. Its canonical SHA is
+`bdf423e468b4dd806a9c7a6d2d9338eb005e65b36f96ca66da5c353d7ba3f128`.
+The original inventory, prepared data, domain review, plan, and failed report
+were verified byte-identical before and after proposal creation. Their hashes
+are recorded in the proposal.
+
+Any application needs a new, explicit protocol version. Category changes alter
+task hashes; preserve the original task/proposal/review bindings and record a
+derived metadata transformation rather than silently relabeling old evidence.
+The reference outputs remain evidence for unchanged calls, subject to main's
+explicit reuse validation. No threshold reduction, automatic retry, additional
+paid work, or overwrite of frozen evidence is authorized by this proposal.
 
 ## Freshness and exclusions
 
@@ -133,9 +172,9 @@ support only descriptive development comparisons. No additional unseen 32-task
 development cohort is established here. One seed and one teaching hop cannot
 establish sustained recursive improvement or general research capability.
 
-The next executable milestone is main-chat review of the exact mutation
-allowlists and the 24-to-20 selection rule, followed by protocol/source freeze
-and remote calibration. Do not add weaker tasks, reuse attempted tasks, override
+The next executable milestone is main-chat review of the separate category
+correction and an explicitly versioned recovery design, including reference
+evidence reuse and new task hash bindings. Do not add weaker tasks, reuse attempted tasks, override
 semantic exclusions, or lower thresholds to fill the count.
 
 ## Final split and budget
@@ -177,5 +216,7 @@ this review does not certify their changing source or test results.
 
 Verification in this chat covers saved report hashes, exposure reconstruction,
 manual review bindings, deterministic proposal reproduction, exact subset/probe
-construction, and static inventory consistency. No claim of new model quality,
-successful reference probes, trained successors, or promotion is made.
+construction, all 24 saved calibration audit replays, the category discrepancy,
+and preservation of frozen source evidence. Reference success is reported from
+main's saved remote evidence; no reference or candidate code ran locally here.
+No claim of new model quality, trained successors, or promotion is made.

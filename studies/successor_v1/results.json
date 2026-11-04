@@ -1,0 +1,51 @@
+{
+  "study": "successor-v1",
+  "status": "stopped_before_model_generation",
+  "run_id": "20261104T183006Z-successor-v1-calibrate-a33b28fc",
+  "report_sha256": "8f84adaedffd6853d8a5b9dc35f5225a56879a04733f8d0df36ec0e7607eb0a5",
+  "plan_sha256": "d400461f6a1ad8a8d621e373908a453d17a444b6a26b201310488f2107cb4cb6",
+  "source_commit": "1dc5271f4a737d58e65873fbfea4b2a868e7ca47",
+  "failure": {
+    "type": "ValueError",
+    "stage": "reference_only_data_gate",
+    "required_categories": 3,
+    "actual_first_20_categories": {
+      "text": 20
+    },
+    "cause": "Reviewed outer categories disagreed with serialized nested task categories; prepare lacked cross-field category validation."
+  },
+  "reference_audit": {
+    "original_tasks": 24,
+    "original_passes": 24,
+    "original_cases": 72,
+    "approved_probe_outputs": 261,
+    "accepted_additional_cases": 261,
+    "eligible_tasks": 24
+  },
+  "gpu_calls": 0,
+  "teacher_attempts": 0,
+  "children_trained": 0,
+  "new_model_scores": null,
+  "decision": "Retain original parent; no automatic retry of frozen study. Prepare separately versioned category correction and preflight before any new paid stage.",
+  "modal": {
+    "app_id": "ap-nIuraWLp9QImopB8Bd15cw",
+    "observed_state": "stopped",
+    "observed_tasks": 0
+  },
+  "budget": {
+    "project_cap_usd": 250.0,
+    "reserved_for_jobs_usd": 175.0,
+    "overhead_reserve_usd": 25.0,
+    "available_for_jobs_usd": 50.0,
+    "invoice_total_usd": null
+  },
+  "wandb_url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/95x0qgew",
+  "remote_report_readback": true,
+  "limitations": [
+    "No successor-improvement result exists.",
+    "Portable GPU inference/training and checkpoint resume remain remotely untested.",
+    "Reference audit success is not proof of oracle correctness.",
+    "Budget reservations are not invoice totals."
+  ],
+  "sha256": "21d4bef3124c71d13a0be5da0ca9d327eb3464aed49c6b571971f849fe2e3629"
+}

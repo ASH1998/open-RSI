@@ -1,6 +1,8 @@
 # Successor teaching probe v1
 
-Prospective study, no measured results yet. Main alone coordinates paid launches. The plan permits at most five $5 reservations ($25), inside the existing $250 project cap; no automatic retries, replication or promotion.
+Stopped at the reference-only category gate before GPU generation. All 24 reference audits were eligible, but serialized task categories were all `text`, contradicting the reviewed outer labels. No teacher or child results exist. See `results.json` and `docs/SUCCESSOR_EXPERIMENT.md`. Do not retry this frozen study.
+
+Original prospective design follows. Main alone coordinates paid launches. The plan permits at most five $5 reservations ($25), inside the existing $250 project cap; no automatic retries, replication or promotion.
 
 Question: does the experimental verified-SFT adapter produce training material that creates a better successor than material from the original model, when both students start from the same original base and use matching training/evaluation controls? The adapter previously failed retention and remains unpromoted.
 

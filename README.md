@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** developing `rsilab 0.3.0` and a controlled successor-teaching probe. The new experiment will compare original and learned experimental teachers on 20 fresh tasks, then train matched fresh-base children only if both teachers produce enough verified data. Previous result remains development **11/32 → 13/32**, retention **8/16 → 7/16**: original parent retained. No sustained RSI has been demonstrated. The library is Apache-2.0 licensed; see the [quickstart](docs/QUICKSTART.md).
+**Status:** Apache-2.0 library `rsilab 0.3.0` is available from this repository, with installed-wheel tests and public CI passing. The successor probe stopped at its category-diversity gate before GPU generation: reference checks completed, but reviewed and serialized category fields disagreed. No new model scores or children were produced. Previous result remains development **11/32 → 13/32**, retention **8/16 → 7/16**: original parent retained. No sustained RSI has been demonstrated. See the [quickstart](docs/QUICKSTART.md) and [latest outcome](docs/SUCCESSOR_EXPERIMENT.md).
 
 ## Workspace and repository
 
@@ -50,6 +50,6 @@ Earlier engineering milestone: [stronger diagnostics and durable execution](docs
 
 Completed verified-data experiment: [verified-data SFT protocol](studies/verified_sft_v1/README.md). Reusable workflow: [learning API](docs/LEARNING.md), [dataset audit](docs/VERIFIED_DATA.md), and [project runtime](docs/PROJECT_RUNTIME.md).
 
-Latest measured result and handoff: [verified-data SFT experiment](docs/VERIFIED_SFT_EXPERIMENT.md). Current reservations: $170 plus $25 overhead; $55 unallocated.
+Latest measured result and handoff: [verified-data SFT experiment](docs/VERIFIED_SFT_EXPERIMENT.md). Current reservations: $175 plus $25 overhead; $50 unallocated.
 
 Next research milestone: [successor protocol](studies/successor_v1/README.md), [measurement contract](docs/SUCCESSOR_MEASUREMENT.md), and [portable Modal workers](docs/PORTABLE_MODAL.md).

@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "status": "future_protocol_input_only",
+  "review_date": "2026-11-05",
+  "reviewer": "Successor data-design chat; independent description review and read-only calibration replay",
+  "purpose": "Correct category metadata in a future explicitly versioned protocol; preserve the original failed plan and all source evidence. No automatic retry, changed task order, changed tests, or threshold reduction.",
+  "taxonomy": {
+    "source": "rsilab/coding_data.py:category",
+    "source_file_sha256": "9f07d973685d80344de15c1f6c74250022c26f7cb34996b62e267f1a88117174",
+    "input": "Task description between the common preamble and required signature; exclude import-policy preamble.",
+    "precedence": [
+      "text",
+      "collections",
+      "numeric",
+      "other"
+    ],
+    "interpretation": "Existing broad lexical taxonomy; not a family-disjoint claim. Categories agree with the previously reviewed outer inventory fields."
+  },
+  "source_artifacts": {
+    "inventory": {
+      "path": "work/successor-design-data.json",
+      "file_sha256": "8b93ce84da6f86f15299018df2d595bec51ec33b0623c682ec70a50f0be18d50",
+      "canonical_json_sha256": "30fb65d19903540c6adfdad1459acf552a0b9d72143909d2820531b47fb10e11"
+    },
+    "prepared": {
+      "path": "data/successor-v1/prepared.json",
+      "file_sha256": "b7eed9fef2123e6added6035117d7a132ccf1e11f345a498d27835087c1268eb",
+      "canonical_json_sha256": "4819f5dcd6eaec9407e308fd977fa69bafaaf70e868fedaa4dd8a3634d43dcdf"
+    },
+    "domain_review": {
+      "path": "studies/successor_v1/domain-review.json",
+      "file_sha256": "a496e151d06a188d96eef77ffbe88554c47a412373b9ec769e0c24a5cb9ebd45",
+      "canonical_json_sha256": "fa63e01a700c143e54181a2dbde872508458c10b69c439d0f31e29fd7af53a00"
+    },
+    "plan": {
+      "path": "studies/successor_v1/plan.json",
+      "file_sha256": "c2c3509157d3c6c89a08ad3804539f0269488a367822ef97a31afa3a133df69f",
+      "canonical_json_sha256": "d4bc3bc3df9be443921d1e34950acefe2055401276891d9a0f8793a0cefa1be0"
+    },
+    "failed_calibration": {
+      "path": "runs/20261104T183006Z-successor-v1-calibrate-a33b28fc/report.json",
+      "file_sha256": "f9552f9853b025456a3a8a09ff23adc1fe9e642704a4f7fa2856fb09d402cdea",
+      "canonical_json_sha256": "8f84adaedffd6853d8a5b9dc35f5225a56879a04733f8d0df36ec0e7607eb0a5"
+    }
+  },
+  "preserved_bindings": {
+    "inventory_sha256": "958d94195798fe876fdbc9bf8c67d06dc7560c15aa7c4f24cd3f0f10baf40424",
+    "prepared_sha256": "4819f5dcd6eaec9407e308fd977fa69bafaaf70e868fedaa4dd8a3634d43dcdf",
+    "plan_sha256": "d400461f6a1ad8a8d621e373908a453d17a444b6a26b201310488f2107cb4cb6",
+    "domain_review_inventory_sha256": "958d94195798fe876fdbc9bf8c67d06dc7560c15aa7c4f24cd3f0f10baf40424"
+  },
+  "calibration_observation": {
+    "status": "failed",
+    "error_type": "ValueError",
+    "reproduced_gate": "Reference-only data gate failed: first20 serialized task categories contain only text.",
+    "audits_replayed_equal": 24,
+    "original_reference_passes": 24,
+    "accepted_additional_calls": 261,
+    "model_generation_evidence_present": false
+  },
+  "counts": {
+    "all24_original_serialized": {
+      "text": 24
+    },
+    "all24_reviewed": {
+      "collections": 13,
+      "text": 3,
+      "numeric": 8
+    },
+    "first20_original_serialized": {
+      "text": 20
+    },
+    "first20_reviewed": {
+      "collections": 9,
+      "text": 3,
+      "numeric": 8
+    }
+  },
+  "items": [
+    {
+      "task_id": "mbpp-full-613",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "21a204e6ac6d0357a1c2a64837cd204a713d5f277cc0d24219389783ab6bf5c3",
+      "source_description": "Write a function to find the maximum value in record list as tuple attribute in the given tuple list.",
+      "reason": "Tuple-list record maxima: collection structure is the described object."
+    },
+    {
+      "task_id": "mbpp-full-757",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "text",
+      "source_row_sha256": "065e674cfd8d64497a56a596b393293210f68e8df9666554c2c8157c7c0d3183",
+      "source_description": "Write a function to count the pairs of reverse strings in the given string list.",
+      "reason": "Reverse-string pairs: text semantics take precedence over the enclosing list."
+    },
+    {
+      "task_id": "mbpp-full-661",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "numeric",
+      "source_row_sha256": "471af56dad67e890918dfe7336e60de365faf16031161532e5cb10b593c53f0c",
+      "source_description": "Write a function to find the maximum sum that can be formed which has no three consecutive elements present.",
+      "reason": "Maximum constrained sum: numeric description, with no collection keyword."
+    },
+    {
+      "task_id": "mbpp-full-916",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "870cb86d628e3fb4505dccaa24b845393fe05d76fd50b0b0f5889372ae44fc03",
+      "source_description": "Write a function to find if there is a triplet in the array whose sum is equal to a given value.",
+      "reason": "Triplets in an array: collection keyword takes precedence over sum."
+    },
+    {
+      "task_id": "mbpp-full-885",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "text",
+      "source_row_sha256": "e3a946fda051c8d0c23405b31ce15effc8be714af6656b5acfef50cbafa5b35f",
+      "source_description": "Write a python function to check whether the two given strings are isomorphic to each other or not.",
+      "reason": "Character isomorphism between two strings is a text task."
+    },
+    {
+      "task_id": "mbpp-full-863",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "numeric",
+      "source_row_sha256": "3148ab1ca3efe2fe24dc6c173d70760ac39540515b77ee536496bc673b56bd83",
+      "source_description": "Write a function to find the length of the longest sub-sequence such that elements in the subsequences are consecutive integers.",
+      "reason": "Consecutive integers: numeric description, with no collection keyword."
+    },
+    {
+      "task_id": "mbpp-full-929",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "73962d3b44f451eeabac2a23cfae2a2a100f48b7f7b6a280ab230bfd5de7d00a",
+      "source_description": "Write a function to count repeated items of a tuple.",
+      "reason": "Counting repeated tuple items is a collection task."
+    },
+    {
+      "task_id": "mbpp-full-619",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "text",
+      "source_row_sha256": "b6acb53b595a109522c82a62e653af2837506c4982d4299e99eef8080e278e0d",
+      "source_description": "Write a function to move all the numbers in it to the given string.",
+      "reason": "Moving digits within a string is a text transformation."
+    },
+    {
+      "task_id": "mbpp-full-641",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "numeric",
+      "source_row_sha256": "359adbe825793f933829da4dc0d0e6c16adf1dba1bdeecad5e7a2d834c15c01e",
+      "source_description": "Write a function to find the nth nonagonal number.",
+      "reason": "Nth nonagonal number is a numeric sequence task."
+    },
+    {
+      "task_id": "mbpp-full-844",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "9c679462e4e99911b6dd527f2dd546980212074be2a0f8a1ec737ffbd5327b8f",
+      "source_description": "Write a python function to find the kth element in an array containing odd elements first and then even elements.",
+      "reason": "Kth element in an array is a collection task."
+    },
+    {
+      "task_id": "mbpp-full-789",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "numeric",
+      "source_row_sha256": "2cd17ce5c12c2292d68e72c5290709a8f2d80293c2427485ddf4ac21a4559b0f",
+      "source_description": "Write a function to calculate the perimeter of a regular polygon.",
+      "reason": "Regular-polygon perimeter is a numeric geometry task."
+    },
+    {
+      "task_id": "mbpp-full-610",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "e8abcd59d92faf90caf8e50ce268bb0269f1959c126e3dc4f9d758ae1a7f694c",
+      "source_description": "Write a python function to remove the k'th element from a given list.",
+      "reason": "Deleting the kth list element is a collection task."
+    },
+    {
+      "task_id": "mbpp-full-681",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "numeric",
+      "source_row_sha256": "574d98ac7ff0fe31d77c9256b338be7d75af2154ebaf69e49b0d74e8523e4583",
+      "source_description": "Write a python function to find the smallest prime divisor of a number.",
+      "reason": "Smallest prime divisor is a numeric task."
+    },
+    {
+      "task_id": "mbpp-full-816",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "29b167833eea79fdacc79322e788c11a7222de12efc9635c7ce600a99f57978b",
+      "source_description": "Write a function to clear the values of the given tuples.",
+      "reason": "Clearing tuple values is a collection task."
+    },
+    {
+      "task_id": "mbpp-full-687",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "numeric",
+      "source_row_sha256": "9b219d164936d85677a3e325fe5356454d05360f306a941c1197a731829719e9",
+      "source_description": "Write a function to find the greatest common divisor (gcd) of two integers by using recursion.",
+      "reason": "Greatest common divisor of integers is a numeric task."
+    },
+    {
+      "task_id": "mbpp-full-633",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "1bea1d5337844b519fd1028a9fa5caf3b6d91a78f030a73a52b47121ebf7b4c0",
+      "source_description": "Write a python function to find the sum of xor of all pairs of numbers in the given array.",
+      "reason": "XOR across array pairs: collection keyword takes precedence over numeric terms."
+    },
+    {
+      "task_id": "mbpp-full-675",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "numeric",
+      "source_row_sha256": "d87a9563834df0dd1e0fc0bd0e5ea77d22e7e0ca0c68abf8bc48d53190c0f42a",
+      "source_description": "Write a function to add two integers. however, if the sum is between the given range it will return 20.",
+      "reason": "Integer addition with a conditional return value is numeric."
+    },
+    {
+      "task_id": "mbpp-full-611",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "0b23f1c20bec751158cb41396f27b9ac0df5923b8980fb94adacc17fbe6f7883",
+      "source_description": "Write a function to find the maximum of nth column from the given tuple list.",
+      "reason": "Column maximum in a tuple list is a collection task."
+    },
+    {
+      "task_id": "mbpp-full-745",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "numeric",
+      "source_row_sha256": "4db988206b6ae79fdb89850e5fd25a56a03ddd9368b4963615daa00c9fcd0aa0",
+      "source_description": "Write a function to find numbers within a given range where every number is divisible by every digit it contains.",
+      "reason": "Digit-divisibility filtering of numbers is numeric."
+    },
+    {
+      "task_id": "mbpp-full-734",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "1132e7cb4b502a2a45cdd4955817e7a140a2dd695b6a5003ed1ac14ae6d23913",
+      "source_description": "Write a python function to find sum of products of all possible subarrays.",
+      "reason": "Products over subarrays: array substring matches the existing collection taxonomy."
+    },
+    {
+      "task_id": "mbpp-full-805",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "6f2e1352b7bf9fe1299f2ffa488975fa275b1e2818f1e15bb2c36b37b8043bad",
+      "source_description": "Write a function to find the list in a list of lists whose sum of elements is the highest.",
+      "reason": "Maximum-sum list among lists is a collection task."
+    },
+    {
+      "task_id": "mbpp-full-915",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "a1ff7b229f0041252f37200b6f84f89253c9a7536afff4bdda7d2b9140e02088",
+      "source_description": "Write a function to rearrange positive and negative numbers in a given array using lambda function.",
+      "reason": "Rearranging an array is a collection task."
+    },
+    {
+      "task_id": "mbpp-full-744",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "6fc94d0011d42f025dd59eb0ba27add82e37bae6eef2bb8ba7d3ebf6a1a83468",
+      "source_description": "Write a function to check if the given tuple has any none value or not.",
+      "reason": "Checking a tuple for None is a collection task."
+    },
+    {
+      "task_id": "mbpp-full-780",
+      "original_serialized_category": "text",
+      "independently_reviewed_category": "collections",
+      "source_row_sha256": "b4fa2350ec450028dcb27b527b7c8055d22e817bd4b3aab2e5ae794aeb98173a",
+      "source_description": "Write a function to find the combinations of sums with tuples in the given tuple list.",
+      "reason": "Combining tuple-list pairs is a collection task."
+    }
+  ],
+  "application_requirements": [
+    "Use a new protocol/version; do not overwrite inventory, prepared data, review records, failed report or original plan.",
+    "Category changes alter task hashes. Preserve old task/proposal/review bindings and explicitly record any derived metadata transformation; do not relabel old evidence as having new hashes.",
+    "Keep the same reviewed task order, mutation allowlists, reference outputs and selection thresholds.",
+    "Main chat owns any future evidence-reuse validation, protocol freeze, reservation and launch. This artifact authorizes no retry."
+  ],
+  "sha256": "bdf423e468b4dd806a9c7a6d2d9338eb005e65b36f96ca66da5c353d7ba3f128"
+}
