@@ -1,0 +1,428 @@
+{
+  "schema_version": 1,
+  "version": "category-only-reference-reuse-v1",
+  "status": "derived_offline",
+  "source_run_id": "20261104T183006Z-successor-v1-calibrate-a33b28fc",
+  "source_plan_sha256": "d400461f6a1ad8a8d621e373908a453d17a444b6a26b201310488f2107cb4cb6",
+  "source_prepared_sha256": "4819f5dcd6eaec9407e308fd977fa69bafaaf70e868fedaa4dd8a3634d43dcdf",
+  "source_report_sha256": "8f84adaedffd6853d8a5b9dc35f5225a56879a04733f8d0df36ec0e7607eb0a5",
+  "source_audits_sha256": "d1292b454ecc16807c4afbc96e1cbec04e5026ac222b8a25d4b3cb6ec2ae7271",
+  "correction_sha256": "bdf423e468b4dd806a9c7a6d2d9338eb005e65b36f96ca66da5c353d7ba3f128",
+  "evaluator_source_hashes": {
+    "rsi/mbpp_verification_v2.py": "b4b0d02ffc6ad71b5a33745c895709eb5bb2f3900c6d414f6063a3fe0afc1083",
+    "rsi/mbpp_verification.py": "47efce04acdef807e54a49f1ecbd64942a31baa2ce9e7d7404fd62326e660bc4",
+    "rsi/verification.py": "b6cd4334adf34678f7f35f908a38a14329ca9a81b6b4d557eb4de270868b0db4",
+    "child_source": "860c3c72558a431a07ac76549173b3d9499ba683ad768cc17526062e5380ca1a"
+  },
+  "replayed_audit_count": 24,
+  "accepted_additional_calls": 261,
+  "lineage": [
+    {
+      "task_id": "mbpp-full-613",
+      "original_task_sha256": "aa3c3b1729fb1db9c81b487a7795bd27fc425a14238f5582658eaea39a72bdc9",
+      "original_augmented_task_sha256": "408c819e9d22fded32ae14074cd778a5ced6e896d3604ffaaac7a66ff6b1e8a2",
+      "derived_task_sha256": "9332fc97a07e04b02df846b8674a20d652f3fa5af7b60399beb8e953a14b63e1",
+      "audit_sha256": "8f26cc109debdb24628fee3cc9f1fdd023912a72588526897e95644e78f4ca79",
+      "proposal_sha256": "f2d4ccfb6b9b589f550083fccb4fd8a0617d32f303260304f55b07d5617340f9",
+      "review_sha256": "e30b28ee5c4defca88325d411859b0856a1b96dea0fe1fb71a22891d05d6e700",
+      "reference_sha256": "11cff1de75fbab6921584e486bf223c967a5b3c79b0164199bfe0497e9eca98f",
+      "correction_row_sha256": "b143d73a10fe8ead04a165cf3d67f16312dc0d6d898fcc84a3f927d553eff748",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-757",
+      "original_task_sha256": "0a2cc0fef84cc6682530a8bd8b3085c0446f9d9b4483994596d663a8b518aad1",
+      "original_augmented_task_sha256": "6121436c0d267b6499458f55bf5a560eebaa30ae507b2a5ca172454c95f4c094",
+      "derived_task_sha256": "6121436c0d267b6499458f55bf5a560eebaa30ae507b2a5ca172454c95f4c094",
+      "audit_sha256": "9ed5bcee736101c99f20266db7a1bdead0c809d8b0189eb28c066d5268370851",
+      "proposal_sha256": "9f3966a936e9ac46866089d4a2f5adc52566d315d9236abdb27e386bcc5b58c1",
+      "review_sha256": "45e9b5855ebc909c5af4b8715f6f87df307b12a89605caa1d0e69fc603e292d0",
+      "reference_sha256": "6b11e486f0cec68f9f10f08874d233f13c71c77c49c01b7d5855eca313ba0ed8",
+      "correction_row_sha256": "90cd4b424763db1e4e0e1257092e12dd1500ee49323432b16729a6fd17f8adb9",
+      "original_category": "text",
+      "derived_category": "text",
+      "changed_fields": []
+    },
+    {
+      "task_id": "mbpp-full-661",
+      "original_task_sha256": "dc198192c0a328c8ba024324b40e9b13f476dda08e0753a9da40fd010766c81a",
+      "original_augmented_task_sha256": "356e5945128759f3c66dcea0e0a41305ecdac8814bb0aaaea64b945bcbf01bca",
+      "derived_task_sha256": "f8bffa7aa8b140cc65ccbca5edae6ff89230981826fc6c3149092304ddd2bbab",
+      "audit_sha256": "49f8920157282bb681b78bf34d4b6f8f12592327b983089a6487dd2de668f6e3",
+      "proposal_sha256": "078aa8aed61f53b23e15d40eaad5c6ab56a4a30c6fecf8c9f625669e5584c933",
+      "review_sha256": "c4810a127b21c092555a378c0e424cf1ef8cbafbb6419053bfa4fbae6ef57700",
+      "reference_sha256": "523cca1676c85a70429eb72d54ca433e69b2c724234280814e4c3f9a59c4d061",
+      "correction_row_sha256": "cce16b697774c92f43024e4e70596cc8bb3721f8bf0e278e0fd5c59ee3924475",
+      "original_category": "text",
+      "derived_category": "numeric",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-916",
+      "original_task_sha256": "c73101958a780bf54b6e646352cdab3c5c01fe0174f5fec13d323a8dbf3b95ee",
+      "original_augmented_task_sha256": "2d4ce417f587e72a032e9dab4f2daffde7ba34a2ee445bd1e8e719b2a047bce1",
+      "derived_task_sha256": "3165952293360c5fce66fe472c021619c412e914af9cc377907ede227799a014",
+      "audit_sha256": "c58d83865844e036e7361a870b667e345f4781e969ac9f789c4107ddcf5ccbfc",
+      "proposal_sha256": "cad2833fdd7781231599d32f2835025740b050c4911cfb4bb93f69af4e271c52",
+      "review_sha256": "bc7a4056d46d138900bad20eeb52343d9d2a42c4e53b5cf36d9d16443f0fb699",
+      "reference_sha256": "067d07206e113015e3b0f996af5b195a0773b8e86160ade67123b963a1c2e6f9",
+      "correction_row_sha256": "7bc04171423dfd1dfdaaf2928049e28512180432c2b8d72e4f674c9a82965bfe",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-885",
+      "original_task_sha256": "d5a833d08c913e396fe3e853128b0d3683a65fb4285d6f27197be8f338f649a3",
+      "original_augmented_task_sha256": "57257c62025e44320ec1c5854e45aaccd193284d415b94946eee3ed942e461e0",
+      "derived_task_sha256": "57257c62025e44320ec1c5854e45aaccd193284d415b94946eee3ed942e461e0",
+      "audit_sha256": "db7e19fda44e085d6613f6450c2ff0641a5a12528e1e5e2382a2a1dcddde8f2e",
+      "proposal_sha256": "831dd157173f5beca1e62e0c9e54c44f16325eef82f6d4c3a7e2dd6c7ab3b95d",
+      "review_sha256": "1ed147d95fa722c7fb1a1ac18d289025376a260b60f8588ee8051b0541d113ca",
+      "reference_sha256": "30a6e283f9c8b33a6535819578ed900b805cad2683aca162655074797aa4a62e",
+      "correction_row_sha256": "6b2c64cc8d0cc27e9357273224f473c99feddb8c912148fcc861c572998b396f",
+      "original_category": "text",
+      "derived_category": "text",
+      "changed_fields": []
+    },
+    {
+      "task_id": "mbpp-full-863",
+      "original_task_sha256": "1faf7a0d612a987c00e93d132b49a8b856e6e91f9d9117bcc25dac0150092f9f",
+      "original_augmented_task_sha256": "53b707c2214c2a6720a3df34db2cd6b3027ee50578ac721a0df354c3ed11aa54",
+      "derived_task_sha256": "ecbcbb90f6486a80d77465dbf6713f15cc4c6798565c41998366dbbf0b70c08f",
+      "audit_sha256": "9fb563a056269b520fba57a2152f98f52696cb3a72f3a1cb16d7d3297eb11d34",
+      "proposal_sha256": "a69ce7e02a4ba90d462848d586192437fdc8edf1547db3c91ae7b59d5f92d457",
+      "review_sha256": "9d31e0776eb900c502bb40d3ec4e9de98687b0b90f6f7c9a4a5f16ab76bb7040",
+      "reference_sha256": "08fc839288a743e806e82c84c1a8e4e23654354f833bbd693d1728588fae6fd9",
+      "correction_row_sha256": "ac05304c5299756e179b1fee264f0f6d3177ca94e89042c437f29fda65272628",
+      "original_category": "text",
+      "derived_category": "numeric",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-929",
+      "original_task_sha256": "ae0002c0f25fb1face5a535b00167fcf1a5cf9fbdf03ee52b79633a6e04ad1c1",
+      "original_augmented_task_sha256": "5d4f9c5edba1e252241f1af74348ea112eff26d689f82c8a8a745923798beafa",
+      "derived_task_sha256": "ebd89bf15094bb88d78d620885ae36fe1cc6e2d681b6bdd7c9b76bf9feda1f2a",
+      "audit_sha256": "98069d6e5eb2d9cb260d111f7de21459a3104fbc4b544db06829b8601fdd4457",
+      "proposal_sha256": "7cdd76904c3e78b85fad48b4fad6545a6c1da37cbd1f8930e8e8b1e9585226d9",
+      "review_sha256": "52ce384c9e430b738f7a1b2c889325fa1bd2e061c2e4065ecaaffca47d971304",
+      "reference_sha256": "c7b818809700dff923b34a96c2b3f0f9ee885f46406b086b22b03ebefb480ecf",
+      "correction_row_sha256": "a79f4f94bf3234e59b53571d04faeb2d8192dfd9534e8d46cb652827ac569a84",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-619",
+      "original_task_sha256": "6c5432b1ce1630cbdcead3aa33e474866f08b4efd108f81b5891cf05dd583824",
+      "original_augmented_task_sha256": "65b6c743e200362f5ac53acb0629ef9e52363e9b16a94a94fa28f55f5e227d94",
+      "derived_task_sha256": "65b6c743e200362f5ac53acb0629ef9e52363e9b16a94a94fa28f55f5e227d94",
+      "audit_sha256": "cf45c0ff4282592270a5ab0de02bcd0f0d54f30ce5aee85037d22e0fefc69aad",
+      "proposal_sha256": "0c563fe5d882381fd174b7ab3c3ef83e250cb5fcba2e10dc494532a190f99d67",
+      "review_sha256": "135cd65876ed7e2fbe0d5d7291fcde51d948816de1427b1315fd613c365f0ecd",
+      "reference_sha256": "3fc202a2e1d2a1661da85763e1660c5d58d98b34d253239356d5dbcc6442c5a0",
+      "correction_row_sha256": "267f2a628f33c587f41ae2d6cb9b9d65303bcd3664a310c5489bdbf66f845385",
+      "original_category": "text",
+      "derived_category": "text",
+      "changed_fields": []
+    },
+    {
+      "task_id": "mbpp-full-641",
+      "original_task_sha256": "0ea403f831d901ceaba94777d61cfe68722127e7fd1abd29d885f055a6396e1d",
+      "original_augmented_task_sha256": "6b54dd8e17fc82c41fd67941a4e93a0cd81e2a545e4d8e2cf61c8e8d0e305dee",
+      "derived_task_sha256": "375ffbd65462000560010197cd1b9c49d20303dc69b197d2f7bae570ec83bdd5",
+      "audit_sha256": "e26482fa9f8eab591d29b3863abc05c1ef745ec609e1b597a43be1e7ac5c495b",
+      "proposal_sha256": "fcaa27f16c630f80c81306450c7683b682ca82dfe731f5ff8b903aa30827f9bf",
+      "review_sha256": "0e4d7349824a4d612cd70b352cc554d5483f7600a3560659c63caf489a06c103",
+      "reference_sha256": "01765d5417c236adf43fe81e013fa7357a9b0b8a27a0873cf123fbdcd061e7c0",
+      "correction_row_sha256": "1b62bf07d08c3ac4e0b8f3847bc18aff4ad2e733ab6e27f75381844f51507162",
+      "original_category": "text",
+      "derived_category": "numeric",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-844",
+      "original_task_sha256": "e240a4b3cb39335a3385a8cb0d960ec85803da0b80cb66b141d71b73e79781a5",
+      "original_augmented_task_sha256": "8f39b43ec64efef02ee48fe76a1f5606a164117ce21f6cc248825962ae83eaf0",
+      "derived_task_sha256": "a825821872b4c4541899acae70ba0d6baf21b87f2fa47fc79678f5f46b8df394",
+      "audit_sha256": "9addb746c09c370da90a7dd4a734706b3bbe59ebccd59df3c2646531fcacd4af",
+      "proposal_sha256": "e330176a11aae5702f0ca3e332cd919dc9f79a74f77cadfb629951410c6d031b",
+      "review_sha256": "0d18c6e219c381b0cd5b8ccc994533170e529a9591725263b14067f552e62322",
+      "reference_sha256": "a50505421a08df6db4367ec79d31c9cc57216ff6e1074bb9042a9e52e22cb687",
+      "correction_row_sha256": "2c519b09389292132e52a0b87f97f70ffe6b27895d28d81c3456c7da473cc890",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-789",
+      "original_task_sha256": "1bd6b81b0503dd24720bb3e4e26397464f2dfa5f7a5e81ec9f9f08c5f7244672",
+      "original_augmented_task_sha256": "2e07e9a853c26eed7ac6cac6cb3b137f324b60713453e4e7f15723a92917fe14",
+      "derived_task_sha256": "aba5d882b5e4b9335ec05c3b9ff98e162c4192b1a3fcd5c346d06b1f604c2ef9",
+      "audit_sha256": "1cfb76e63a152c52064850c217fb600ef3da75229a72bf2516fd6523b590509a",
+      "proposal_sha256": "daef339065a9146b015d1ba41489766a3cf6bb153ad272dc78b1368552af5253",
+      "review_sha256": "b929848d30c8e9750a2c8ccb4556854bd4ce1bdec13a2ef78fb5333091d36358",
+      "reference_sha256": "fd01087992ed8b97660bfdde5316eb7e86267bf1c652fe816d8e4587643375a9",
+      "correction_row_sha256": "25a8c382e37ec2ea5e72ba1460a413bd803f670615b6231772f1a7695b8e7f47",
+      "original_category": "text",
+      "derived_category": "numeric",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-610",
+      "original_task_sha256": "ac0cfabc88efedce9fe8c9fb185ef8ff1d046541134d47d38c8364ea9752f025",
+      "original_augmented_task_sha256": "339ae38d006532d43cf4956c2fa98f792248eea257a7cfd93e3c3fa48283a74a",
+      "derived_task_sha256": "21d0a39c1949198a38d6d3195c0f62ee674b34aa46ab3e7ff8836548d352fb5f",
+      "audit_sha256": "6bb7bcca8bb41b9dddd6d085fa0d330a34f7fb1574f40bb6f0e0955ff6e6aff2",
+      "proposal_sha256": "28032586bb43a7cb7eeaca61d82e70f2718f18d3fe107761efc062cc1c19d7af",
+      "review_sha256": "0fc06bcbe444fe49ba3ee53e50b57e27cc02602d5450fdc6075987f9de98e511",
+      "reference_sha256": "96af3bf9e0dac3cee72eed5ab1b835f724c2d029d7787a34b035cc2bc2f0f23d",
+      "correction_row_sha256": "6be37f7c440ba619feddeb748a998af98c779fbdc31ec135f22066a925931f3d",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-681",
+      "original_task_sha256": "769079b857512291abd0f79bf99d111eb5b3b876076af17c067179c186acc351",
+      "original_augmented_task_sha256": "85b91e978b0eabf7c74e8a9e68b9dcd0b5fa7ab33dcb57c2acae67ff7ade83de",
+      "derived_task_sha256": "b523c76eacd81ee17cb26048525090bfe41f935a40a6bd5e115354fa3302f74e",
+      "audit_sha256": "92f0b07a6e7227409783da3ab4d28f795ed14ee486fe25aecb7e6fc5052675a5",
+      "proposal_sha256": "207b2d761699641fdb371f74aae3eb1fc75ff2aa9e2d84271ef1db1bbdb4e1e6",
+      "review_sha256": "df8a45382b24aed06b05c8611821d9de72e4f2685f2c203e98758f217800df37",
+      "reference_sha256": "f24320d01b333c1175d8510c1b1993b43ce0a17a248ea41112f64c1e46b0ebcd",
+      "correction_row_sha256": "3cccac5bba145749cb5b9def7091653b44586c1265d46bf9fc2d637864e5a5d1",
+      "original_category": "text",
+      "derived_category": "numeric",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-816",
+      "original_task_sha256": "0193ce7a73c1580e27652d04f96a18ddcbc4217d4c754f02c53c6400acc1396c",
+      "original_augmented_task_sha256": "6aacfe5eccaefa14f9e303ff5f7d54a3d12f7f28ff7430a8a84d59548a428ce8",
+      "derived_task_sha256": "1f905d7e83fd6b48cf83ca62dd97e0441afb24023665a1b28381dcf00849ee01",
+      "audit_sha256": "9267ae2f61f338351e3734e218849cad194879e3bf8f255dd0a3729c2e576dee",
+      "proposal_sha256": "710434a41f7b5f773238db160e3027c9a18762a3a1097fea5868cffeb42eb34e",
+      "review_sha256": "c8e9c21949f01c6547cc88ef065cb41065038197f44e0a00d94965c05696b4ea",
+      "reference_sha256": "8568705e3873bda4e12acc78efce5ca1c341f6ec2b8f1aeaa0dacba038c595de",
+      "correction_row_sha256": "0f1d60ebf981362555b9e135c7654e782c55dc4ad9ec43b1711af600858582e1",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-687",
+      "original_task_sha256": "74f52e046e4e98fa30a21b6ae2853163bc24a9542688915b108e04f714f70588",
+      "original_augmented_task_sha256": "69db995dd9f75149b2bd919695dd12f0090baeec685408a6c25380df902cacb9",
+      "derived_task_sha256": "34132f76781ce520aaf34925053732cf68e9b5ea33bcf7186f2bcbe1ec70651f",
+      "audit_sha256": "f301f87dd64cf7c284b5d7fd1dea8014f79cfe90ff2e59eff53153fc4db0a030",
+      "proposal_sha256": "fa3116dfc47a6b0c3b5c04e926ea579a514556a8092a01ed409ff67db8fd7598",
+      "review_sha256": "f7746ef3a808da6a90f53e062a281d5e061d0939eda0a44eb572061bd68cd8a7",
+      "reference_sha256": "d02876b05f4312bba6aeae64289fa886ce00b93db5c10c163a1f08524e7511f2",
+      "correction_row_sha256": "84eb0c3146d7f2abafd07723de44fcdbb4ee7297e6f42b5e0610fa40e53bebbd",
+      "original_category": "text",
+      "derived_category": "numeric",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-633",
+      "original_task_sha256": "8b04bfcbeeddeed121a1f1d805111db456c04f16f7d38171086e8db9ded74f78",
+      "original_augmented_task_sha256": "b9e42b7b11f6c6aa983e7ace237902f1b4f47d0ca2d647d95f0dc84da8c9062f",
+      "derived_task_sha256": "b5688c2b4b44efe6ab031539caa4d18021f408a47739892b922a153594282b01",
+      "audit_sha256": "098719fc1970214637c8f070ee3cfeabfaa267dfb298865c043fcfb024c5feb5",
+      "proposal_sha256": "8a4c70e825f9e4fd860574847591814a3e98b36530522a2074ab90fadb24ada0",
+      "review_sha256": "5b0673a8418d6dfaf91244e831bc60e634c7d81e82f0dc71a0cedb2f4f1e0def",
+      "reference_sha256": "3a6979eb90413609210f6a7b547ad6cf11689a2398e3ef540a3d62c7029acafc",
+      "correction_row_sha256": "efca300bd87d1f2bd90b703691a2433d2b888193dd9d4be9030114b7996aaafd",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-675",
+      "original_task_sha256": "eaf9f534cbcaa2765b5bcb8ac967505b49e793af9a9dd33e4ccbae635a0b0261",
+      "original_augmented_task_sha256": "10dae581242b7851e3e926efca5f378e1fc0a97e9d74c6f1d36d4c48edf884f2",
+      "derived_task_sha256": "eb680ae8aad3c72b1fcfd37a97e026fa055deabfe25bd3f69c956ddb58b03b56",
+      "audit_sha256": "a2dadc5af324a26e85b57598d314d7d417cec343ab56bb30cf43d723d9826d65",
+      "proposal_sha256": "a5c2ba1b5d710b1912836d135abac658bb8eb081da61680d69056de57feee913",
+      "review_sha256": "2bfed404ef5769b9850ef494439a5278d0f7105f0a5c6650ddb7da685d6ac806",
+      "reference_sha256": "5ade5d77d119e865efd4b5c0056b7017bf991b2e3d4030945af6c544e298f0ff",
+      "correction_row_sha256": "4451f84d6ba91da8455c293be807a5f2d7353de37d4094ff14c4534e6f38e075",
+      "original_category": "text",
+      "derived_category": "numeric",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-611",
+      "original_task_sha256": "9c9b57c113a7e6ed66b2c68db1ab2dcaa54eab8956005f759d18bbfd0874a41e",
+      "original_augmented_task_sha256": "7da5e068651da513e3fa1f2b8ba03ddef5480d4dde0e0d13d8acd54aa048e789",
+      "derived_task_sha256": "12546ca7132d74b5337d7f2a206f94f76c577d816cb3602ff39cf1e642090c83",
+      "audit_sha256": "c3dff0ba10137be1a1c240b80b63569e5abe863f913ec9678678544cee40f0c4",
+      "proposal_sha256": "78aa0e2e8df9305e61478cb0a51268818b69144af67299ab47091d0976dbfb72",
+      "review_sha256": "a010d3eafb2f8ec999601fe1b2a1ecef9efdfa9143903b4f14954cc48f3200f7",
+      "reference_sha256": "c4b8537c1f25cd82dd6b3979ac60c9b954ee07c530eba41fa5a8c694ec804bf0",
+      "correction_row_sha256": "5bf5ce048c44a5782080a61defa501b347f60710f53e92d7fa25e77e82546817",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-745",
+      "original_task_sha256": "b3d42ece2f202c1fe9c1aff20ab7391bd9b4ab2ed541073d91f3ca193af8afa6",
+      "original_augmented_task_sha256": "4804ad106fbf1f3bf4e5c5c49643a4a960ab3578eb34b0cab582349d748ee959",
+      "derived_task_sha256": "c40b509b4db9f1288d89b812937949507823cc61680d47beaf6aba8e07ccf97a",
+      "audit_sha256": "f7112a11761b84181e5129adcbce573ef15a1d6239fe31eaf785504daf57c9a0",
+      "proposal_sha256": "ac7fca6b9d3450ab99b22bff96b0f9d325e93a8cc403d05643e5f08281ae1dad",
+      "review_sha256": "91cd01436242fe67851775c0af4ade9b8156ef12188c5301d05451677145ddf0",
+      "reference_sha256": "1e338c5fe7a4a195ff36d9f13c1ed1dcb9360cf65a92e9e1bfeeb8903e71e833",
+      "correction_row_sha256": "0fdc14ad6a150017318486087e67943bbf732cbdc3718eec19477f18646c368a",
+      "original_category": "text",
+      "derived_category": "numeric",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-734",
+      "original_task_sha256": "5c699d344fbd52cc1d09619433b0275a6779db57dfd3ec23f24c90b9d24eb11b",
+      "original_augmented_task_sha256": "0cfef0f89a2f78404fb15b1abca3df3debf77e4ebcf0372a30a281bad11a47cd",
+      "derived_task_sha256": "679f5090b366ac0ab39839a74a268be21d34a4f06ee166b1dfa10306b3f86e87",
+      "audit_sha256": "0fae8883997f62524cecaa3f51d4a8bfd28c12d241ee60ba2af8d87dd4b2b02b",
+      "proposal_sha256": "b3b2fc3adff8d889d7ec0f54cc82bb7358650ea11f7b7b5681b7a4f63fa03b14",
+      "review_sha256": "fe1bda4c8995c476285704b6f889240530024edca7c0ecfe9a43754a99971009",
+      "reference_sha256": "5f2addab15f0b5e21189ddf01f24fdb31ec6cee082a154d4c2abf72e7a03047d",
+      "correction_row_sha256": "0901cf11c2244b4cd88af32773a1c247862baad7c2e919e94654e7441f071c88",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-805",
+      "original_task_sha256": "3b69c792e9decf23dd3a3aeb11a297f038cd63fa6a29742a41010022583efd78",
+      "original_augmented_task_sha256": "eeb1d0ad5f0e86d36d78830f32d5e06996afb8c952762875966583bba1d9d962",
+      "derived_task_sha256": "96495f53a8b8fb627db6b4a90b59754ba01e4656c93ee2f951dc818b1d4e1332",
+      "audit_sha256": "7393ce835e17e95c11c147f7b026ba64095a4906fe9dbf1aea33c8e0b5c92a78",
+      "proposal_sha256": "5e749e4361f55aaca24fb7b49d178141026ea7667c3948c0fd3e5e039bbc01a8",
+      "review_sha256": "303548a8a677ae290d0e6009fd28164b823807809968a568ceca3ca7b05e43f2",
+      "reference_sha256": "65fd7afffb21cbd249c568475bf45362af26c0e0bcbf9e1a5fe0645688393ad1",
+      "correction_row_sha256": "d03ecb93f48f395addc31a4ad0083553625273c40db487c5a720460ed943bcf6",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-915",
+      "original_task_sha256": "d2d6df3e36057f22ba58a7ec623c4fd74c9032aaa8e95fc40f1f2145ff5f0c07",
+      "original_augmented_task_sha256": "c823afa14bc6bcdddf7283c955c18a4b0a283dc815bf726736ea3ff5385e57ef",
+      "derived_task_sha256": "394366fde014d8ce53fcff88df352fc5b5be0f7d28cd9da2b242535d312b0726",
+      "audit_sha256": "df651663e7ce58999912dd2d264e2e22c38b05db1f7999e1efd3d733d1841181",
+      "proposal_sha256": "9ed36346cf0bfdde21507517b47aa459cf8464d94cb9c7efc3f02725950bd7a5",
+      "review_sha256": "2dbcc8e1fdd0e52daab3028aa4e726803e688eed2430a70ab10e30137dada1cb",
+      "reference_sha256": "06687fc88e46fd5637cb24b0c3d0df21c83f915e84f481af8e12aee6e345dd8b",
+      "correction_row_sha256": "bd99c1ffa47cd43caea989a731e405e19666a5587bcae65a3444a4cbafdce64a",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-744",
+      "original_task_sha256": "923c7f4a16a6d6ab11287167a1108b9a57205bb01422de79106cd21b671a3036",
+      "original_augmented_task_sha256": "7bede79614b7c5353f9246fabde6177f2eec3a7342eabce9c245108db7fdd308",
+      "derived_task_sha256": "3799041dbe594b38e34dbc54f5cb4bbea523765b5ff4ec09143448219d344ba4",
+      "audit_sha256": "aed319008fa07fde2e2cfc12a819eb0f6168af636a68d11c213b3cb36a17a7e5",
+      "proposal_sha256": "8fe1cb4a3676f70d7cbc153a269725741b9c31aa261821155f771c2a00971189",
+      "review_sha256": "cb5199d167d096f797c13919c222e2b9cb2714cbac91a7f1d0ae2b3b5434fe6c",
+      "reference_sha256": "c8d449aa4361fc4f1482f0557ddd3aa2bef7dbc74497dc242c67f362d33322c5",
+      "correction_row_sha256": "9092747cdc4c9782e736a89bab5c0adade64a28d505b1be3e920dd195f9861ee",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    },
+    {
+      "task_id": "mbpp-full-780",
+      "original_task_sha256": "364cf15738189444977c53322a2cfce72edab453ef51b4ab1c50f0e1125ee84a",
+      "original_augmented_task_sha256": "87e1f0c429c54bf25199d1453a0732379c431b25d63af67b89b08f89aa23a9e5",
+      "derived_task_sha256": "592762e82cefa6c6347df8c84ca95b6a3d363c95adc852e3a3c7475f2c7ff6dd",
+      "audit_sha256": "2f1de67d5f8267a617e4c534ea92e852eb3a36c741cace581fafd69e0f189e8d",
+      "proposal_sha256": "db0e6bbc0e724a9f57ce733e13bd86817bc72eefe7864e8caa08c4ff73dc8ec9",
+      "review_sha256": "99092e8f4659447430629f29a00ca50c29b3482d707fe565bd847fb2d0248b82",
+      "reference_sha256": "cca0b8f65edbf995db979d8fe3be406872a97f2c14a351b7a13e5f50039ce3fa",
+      "correction_row_sha256": "1ae58c9b441f8505f2fec2985186ebf109d91ccfc1d6fd77c01d494eedbdf6cd",
+      "original_category": "text",
+      "derived_category": "collections",
+      "changed_fields": [
+        "category"
+      ]
+    }
+  ],
+  "preflight": {
+    "schema_version": 1,
+    "pool_count": 24,
+    "first_n": 20,
+    "min_pool_count": 24,
+    "min_categories": 3,
+    "pool_category_counts": {
+      "collections": 13,
+      "numeric": 8,
+      "text": 3
+    },
+    "first_n_category_counts": {
+      "collections": 9,
+      "numeric": 8,
+      "text": 3
+    },
+    "ordered_categories_sha256": "c5fd7684d3828d82dedfa0e46cfff8786ce9402e0ff82bb95bb2b23854f57eff",
+    "reviewed_categories_sha256": "4f8c94a53341fb493e939cf01318ec5d04f4b4348804c985dcf79aa0b0a057ca",
+    "sha256": "0754c4a2aa43e9e2f8ed852f2a78e8e59b40669eeb76d00926868fe585b9f95f"
+  },
+  "expected_category_counts": {
+    "collections": 9,
+    "numeric": 8,
+    "text": 3
+  },
+  "transformation": "Only augmented task.category changes; old evidence bindings remain unchanged.",
+  "interpretation": "Saved evidence consistency, not proof of origin/reference correctness; no execution or launch.",
+  "full_reuse_sha256": "845be7a5f193b2cb476eba4b8d75ca3c02088cc560b724af217aea052e151f15",
+  "sha256": "4a238c51cfd223317ec180220cbd82758ea64ecc4cec1a9ab623e3f1cfbecdf7"
+}

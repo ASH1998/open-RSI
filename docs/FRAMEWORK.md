@@ -1,10 +1,12 @@
 # rsilab framework foundation
 
 `rsilab` is an installable Python library for verified-learning experiments.
-Version 0.2.0 includes a dependency-free offline core for manifests, data and
-attempt audits, target selection, and matched comparisons, alongside optional
-workspace and provider APIs. Importing the library starts no compute and loads
-no credentials.
+Version 0.4.0 adds explicit category preflight and reviewed
+reference-evidence reuse. The dependency-free offline core covers manifests,
+data and attempt audits, target selection, and matched comparisons, alongside
+optional workspace and provider APIs. Importing the library starts no compute
+and loads no credentials. The release notes below distinguish completed package
+checks from work still awaiting validation.
 
 Explicit runtime calls have broader effects: `Workspace.load_env()` loads the
 selected project's environment, `Workspace.stage()` reserves budget and starts
@@ -12,9 +14,11 @@ configured tracking, and `ModalBackend.generate()` / `.train()` invoke injected
 remote functions. The project controller combines these APIs for authorized
 generation, verification, and training. Those operations require their separately
 available dependencies and remain subject to project budget and launch rules.
-The historical GPU launcher also requires its checkout, configuration, and
-adjacent GPU requirements file; installing the wheel alone does not make it a
-standalone cloud deployment.
+The portable Modal factory uses packaged worker code and requirements; callers
+explicitly supply model, app, and storage configuration. The historical GPU
+launcher still requires its checkout and adjacent requirements file. See
+[portable worker contracts](PORTABLE_MODAL.md); a package install alone starts
+neither launcher.
 
 The November 1 Mini-RSI Lab v0.2 document is a design reference, not an adoption
 of its model, hardware, $500 budget, timeline, statistics, or measured claims.
@@ -41,12 +45,13 @@ JSON to stdout; invalid inputs and unmatched comparisons return exit code 2.
 These CLI commands do not upload, execute candidates, promote models, or
 authenticate providers. Explicit workspace/provider APIs and the separate
 project controller perform the runtime operations described above. The
-wheel includes only Python packages `rsilab` and `rsi`, plus the typing marker;
-it does not bundle `.env`, tests, run outputs, model artifacts, or the checkout.
+wheel includes Python packages `rsilab` and `rsi`, the typing marker, versioned
+worker requirement/provenance resources, and Apache LICENSE/NOTICE metadata.
+It does not bundle `.env`, tests, run outputs, model artifacts, or the checkout.
 The packaged `rsi` code includes offline task/scoring adapters and the
 project-specific study controller. Its historical GPU worker remains
-checkout-dependent. See the 0.2.0 release appendix for installed validation and
-the boundary between portable injected backends and that worker.
+checkout-dependent. New integrations should use the explicit portable factory.
+The release appendices record validation for each preserved wheel.
 
 ## Stable initial interfaces
 
@@ -314,7 +319,7 @@ as matched evidence. TPU support is a separate unvalidated backend. Main owns
 the private kernel package, submission, quota checks, execution and exports;
 the framework CLI has no launch command.
 
-## Validation and remaining scope
+## Historical foundation validation (0.1.0)
 
 All 12 framework tests passed locally on November 4, 2026. They exercise immutable payloads and round trips, strict identities,
 split separation, paired completeness/control mismatches, conservative gating,
@@ -322,7 +327,7 @@ artifact hashing and symlink containment, actual pilot scoring, and offline CLI
 validation. `work/framework-dist/rsilab-0.1.0-py3-none-any.whl` was built from an
 explicit source allowlist in `work/framework-source`, installed without runtime
 dependencies into the SSD `.venv`, and imported using isolated Python (`-I`).
-The latest wheel rebuild includes `rsilab.mbpp_report` and its CLI dispatch,
+That wheel rebuild includes `rsilab.mbpp_report` and its CLI dispatch,
 alongside the current allowlisted `rsi` Python sources. Installed core, pilot
 adapter, MBPP report helper, and CLI checks passed under isolated Python with
 socket connections blocked; no Modal, Kaggle, Torch, W&B, or dotenv module was
@@ -407,3 +412,50 @@ The 0.1.0, 0.1.1, and 0.1.2 wheel files are preserved unchanged. Frozen experime
 sources are not edited during packaging. No PyPI release is performed; this
 version number describes the local library artifact, not a completed training
 result or adoption of the earlier v0.2 research proposal.
+
+## Preserved portable-worker release 0.3.0
+
+The local 0.3.0 wheel adds successor-improvement audits, an explicit
+train/validation split reader, and a Modal factory backed by packaged worker
+code and requirements. Its 49 isolated installed tests, synthetic offline
+example, and real Modal SDK lazy factory construction passed without cloud
+execution. LICENSE/NOTICE, all 45 source/resource files and archive checksums
+were verified. The preserved wheel is
+`work/successor-framework-dist/rsilab-0.3.0-py3-none-any.whl`, SHA-256
+`1ec7dcca910e023b405e3f3367866af8732b1de12e1baa20235bada388c92952`.
+The corresponding audit and exact commands remain in that directory.
+
+The first successor study stopped after reference calibration at its category
+gate; no portable GPU function ran in that study. Passing package tests does
+not establish remote inference, training, or resume behavior. See
+[the frozen outcome](SUCCESSOR_EXPERIMENT.md). Its source records and wheel are
+preserved independently of subsequent package changes.
+
+## Local recovery release 0.4.0
+
+The new release integrates `rsilab.preflight.preflight_task_categories` for
+record-level category checks against an optional reviewed mapping, including
+coverage in the exact first-N prefix. It rejects disagreement without inference,
+relabeling, or reordering. See [the preflight contract](PREFLIGHT.md). Reviewed
+reference-evidence reuse is available through
+`rsilab.reference_reuse.reuse_reference_audits`. It replays complete saved
+execution envelopes and typed outputs, checks pinned evidence and evaluator
+identities, and derives category-only copies with separate lineage. Its
+explicit-hash API is documented in [reference reuse](REFERENCE_REUSE.md).
+Neither helper executes reference code or starts cloud work. The new
+project-specific adapter is `rsi.successor_recovery`; historical controllers
+remain separately preserved.
+
+Local wheel, source inventory, exact commands, and validation logs belong in
+`work/successor-recovery-framework-dist/`. Its `wheel-audit.json` is the record
+of completed build and installed checks; a source version number alone does not
+establish those results. CI builds a wheel and tests installed framework,
+successor, portable-worker, split-reader, preflight, reference-reuse, and recovery
+APIs, plus the synthetic example, with test networking blocked. Controller tests
+use explicitly selected configuration fixtures and launch no jobs.
+
+Installed validation also replays the saved reference calibration when the
+allowlisted local evidence is available; raw run data remains outside the wheel
+and public CI. Earlier wheels and frozen experiment identities are retained.
+The corrected experiment freezes a new source inventory. No PyPI publication or
+remote model/training result follows from this package release.
