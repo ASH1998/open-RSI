@@ -72,3 +72,7 @@ Kaggle's private MBPP worker downloads the public pinned model without secrets. 
 ## Rescoring saved MBPP outputs
 
 Evaluator corrections are versioned separately from original studies. The v2 controller is `.venv/bin/python -m rsi.rescore_study`; inspect its frozen protocol and existing arm reports before execution. It uses CPU-only Modal sandboxes, no GPU model invocation. `report` is offline. The original v1 task/compiler/tests remain unchanged, and original scores are retained. See `docs/MBPP_RESCORE_V2.md` and `docs/RESCORING.md` for the data contract and local package 0.1.1.
+
+## Stronger diagnostic controller
+
+`.venv/bin/python -m rsi.robustness_study <freeze|run|report>` manages the separate frozen post-hoc diagnostic. The existing run is complete; do not launch it again. `report` recomputes scores offline from saved evidence. Future controllers should use the durable `rsilab.execution` API and a new protocol instead of changing frozen historical controllers. See `docs/MBPP_ROBUSTNESS.md` and `docs/EXECUTION.md`.

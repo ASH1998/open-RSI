@@ -160,3 +160,39 @@ Handoff verification: all 15 execution tests passed, and all execution-source
 checksums in `studies/mbpp_rescore_v2/protocol.json` remained unchanged. No paid
 calls, dependency installations, or edits outside these three new files were
 performed for this work.
+
+## Local package 0.1.2
+
+The bounded execution helper is packaged and installed as `rsilab 0.1.2` in
+the SSD-local `.venv`. Packaging changed only the two version declarations and
+this appendix; helper, controller, case, and frozen evaluator source files were
+not edited. There was no dependency download, paid job, or package publication.
+
+- Wheel: `work/robustness-framework-dist/rsilab-0.1.2-py3-none-any.whl`
+  (94,435 bytes).
+- SHA-256: `7472b2512f8b3c8842fba81a4a03a36d91a9c205f0dc963d5c76cf0ba1823ce1`.
+- Source staging: `work/robustness-framework-source/`, copied from an explicit
+  allowlist. It includes the previous package modules plus `rsilab/execution.py`,
+  `rsi/mbpp_robustness.py`, and `rsi/robustness_study.py`.
+- Audit: `work/robustness-framework-dist/wheel-audit.json` records the exact
+  source allowlist and hashes, archive inventory, prior-wheel checksums, and
+  installed validation results.
+- Test log: `work/robustness-framework-dist/installed-tests.log`.
+
+All 15 execution tests passed under isolated Python against the installed wheel,
+with network calls blocked and checkout package imports excluded. Validation
+also checked version metadata, core/execution/rescore/v2/robustness imports,
+every installed package file's checksum, and agreement with the frozen diagnostic
+source inventory. No provider or ML-library modules were imported. The original
+rescore source hashes remained unchanged.
+
+Both prior wheels were preserved byte-for-byte:
+
+| Version | Path | SHA-256 |
+| --- | --- | --- |
+| 0.1.0 | `work/framework-dist/rsilab-0.1.0-py3-none-any.whl` | `985a5a2a7b27874057a62ae862b1ebc306148cd373a26a30cd2c523538593551` |
+| 0.1.1 | `work/rescore-framework-dist/rsilab-0.1.1-py3-none-any.whl` | `3b72462b4b0a33101101831a9a2dec38ba335ca4bc97f6f44283719958af66ba` |
+
+These installed tests validate local orchestration behavior, not remote verifier
+results. The main controller remains responsible for the authorized diagnostic
+run and durable experiment reports.

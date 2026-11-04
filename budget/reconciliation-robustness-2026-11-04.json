@@ -1,0 +1,15 @@
+{
+  "observed_at": "2026-11-04T13:30:27.782828+00:00",
+  "provider": "modal",
+  "scope": "Workspace month-to-date summary and known project app filter; billing may lag; not a finalized invoice",
+  "workspace_metered_usd": "1.31054595",
+  "workspace_billed_after_credits_usd": "0.00000000",
+  "project_app_report_rows": 0,
+  "project_invoice_total_usd": null,
+  "project_job_reservations_usd": 155,
+  "overhead_holdback_usd": 25,
+  "unallocated_usd": 70,
+  "project_cap_usd": 250,
+  "diagnostic_reserved_usd": 5,
+  "note": "Provisional workspace metering may lag or be revised; it is not a project invoice. All prior reservations remain charged against the planning cap, including failed attempts."
+}

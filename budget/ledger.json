@@ -391,6 +391,19 @@
         "app_id": "ap-fyaAhMP8sHL1bGlvx5Lw8N",
         "wall_seconds": 14.55
       }
+    },
+    {
+      "id": "dfae407d5510496b97ac7372c66ae2b9",
+      "stage": "robustness-v1-validate",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T13:28:55.151812+00:00",
+      "finished_at": "2026-11-04T13:29:30.684188+00:00",
+      "details": {
+        "run_id": "20261104T132855Z-robustness-v1-validate-2ef6ac",
+        "app_id": "ap-1ZZe8fnbUT7ik8FaHo129l",
+        "wall_seconds": 35.54
+      }
     }
   ]
 }

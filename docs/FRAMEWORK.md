@@ -327,3 +327,7 @@ remain proposals. Main owns orchestration and subsequent experiment decisions.
 ## Evaluator correction release
 
 Local package 0.1.1 adds the versioned MBPP evaluator and offline rescore audit while preserving the original 0.1.0 wheel and v1 results. See [rescore API and package validation](RESCORING.md) and [correction experiment](MBPP_RESCORE_V2.md). No PyPI publication or automatic training/promotion is included.
+
+## Durable execution release
+
+Local version 0.1.2 adds bounded trusted-callback execution with persist-before-validation and complete draining after failures. Its installed execution tests and remote diagnostic integration passed. See [execution API](EXECUTION.md) and [completed diagnostic evidence](MBPP_ROBUSTNESS.md). No automatic retry, training loop, or release publication is implied.

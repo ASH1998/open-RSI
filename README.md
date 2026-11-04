@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** evaluator v2 rescored all 368 saved MBPP outcomes and corrected four codec false negatives. Development scores are parent **18/48**, adapter seed 42 **17/48**, and seed 43 **16/48**; the original parent is retained. The separate Kaggle baseline is **9/32**. No new generation or training was performed. The local `rsilab 0.1.1` framework and 199 integrated tests are verified. No sustained self-improvement has been demonstrated. Updated November 4, 2026.
+**Status:** stronger evaluation coverage and durable failure recording are complete. All seven reference solutions passed 64 cases; 23 saved-output diagnostics exposed two parent errors missed by the original tests. Original development scores remain parent **18/48**, seed 42 **17/48**, seed 43 **16/48**, and the parent is retained. Local `rsilab 0.1.2` passed 230 integrated tests and 15 isolated execution tests. No further training or sustained self-improvement is claimed. Updated November 4, 2026.
 
 ## Workspace and repository
 
@@ -45,3 +45,5 @@ Current study: [MBPP protocol](studies/mbpp_v1/README.md). Python framework: [in
 Original study, training results and checkpoints: [MBPP experiment record](docs/MBPP_EXPERIMENT.md).
 
 Evaluator correction and current scores: [v2 rescore report](docs/MBPP_RESCORE_V2.md). Detailed causes: [failure analysis](docs/MBPP_FAILURE_ANALYSIS.md).
+
+Latest completed engineering milestone: [stronger diagnostics and durable execution](docs/MBPP_ROBUSTNESS.md).
