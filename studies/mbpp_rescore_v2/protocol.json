@@ -1,0 +1,100 @@
+{
+  "study": "mbpp-rescore-v2",
+  "parent_study_sha256": "cde70ffcd2bc5e243587a0c32f4f084457ac446a67c00adbd3522303ec3029ca",
+  "classification": "Post-hoc evaluator correction, not new generation or prospective training evidence",
+  "evaluator_version": "mbpp-typed-v2",
+  "evaluator_source_hashes": {
+    "rsi/mbpp_verification_v2.py": "b4b0d02ffc6ad71b5a33745c895709eb5bb2f3900c6d414f6063a3fe0afc1083",
+    "rsi/mbpp_verification.py": "47efce04acdef807e54a49f1ecbd64942a31baa2ce9e7d7404fd62326e660bc4",
+    "rsi/verification.py": "b6cd4334adf34678f7f35f908a38a14329ca9a81b6b4d557eb4de270868b0db4",
+    "child_source": "860c3c72558a431a07ac76549173b3d9499ba683ad768cc17526062e5380ca1a"
+  },
+  "execution_source_hashes": {
+    "rsi/mbpp_verification_v2.py": "b4b0d02ffc6ad71b5a33745c895709eb5bb2f3900c6d414f6063a3fe0afc1083",
+    "rsi/mbpp_verification.py": "47efce04acdef807e54a49f1ecbd64942a31baa2ce9e7d7404fd62326e660bc4",
+    "rsi/verification.py": "b6cd4334adf34678f7f35f908a38a14329ca9a81b6b4d557eb4de270868b0db4",
+    "rsi/rescore_study.py": "242535009bc39c7e30ae9a582d88a272206c6a2cb9d36414203208dd27ac055c",
+    "rsilab/rescore.py": "8b81d0c97a084ea873029177edb4f06861db16ab92eba8f52d5b82f91acb0f2b"
+  },
+  "source_reports": {
+    "parent": [
+      {
+        "run_id": "20261104T095148Z-mbpp-baseline-ddee4c",
+        "sha256": "e3e7ffd3505f7c9e8bd7057e76569abaf025d94ebd32870d25596e66e9760fc8"
+      },
+      {
+        "run_id": "20261104T095154Z-mbpp-baseline-ce496e",
+        "sha256": "b6f98e2cff99fdc29a4c62a404ec44c33845ee12beeba1f01a8d79fb6c9e3e91"
+      },
+      {
+        "run_id": "20261104T095814Z-mbpp-baseline-59f822",
+        "sha256": "f0929da23e98e6f1d05a3b3a571a403485cb2fbdc6eb4e5603c099e0e5199c1a"
+      },
+      {
+        "run_id": "20261104T095856Z-mbpp-baseline-795f44",
+        "sha256": "a6336aba9e129a0eee7e1615ca86b5f50ff465895379882fd6a17eb9f8e870c6"
+      },
+      {
+        "run_id": "20261104T095949Z-mbpp-baseline-7c3b8e",
+        "sha256": "b04bc062a9a2125bc880217bf10d4896904cbe7aea179c06573ac07589876b25"
+      },
+      {
+        "run_id": "20261104T100054Z-mbpp-baseline-0cc65d",
+        "sha256": "5407c9affec280014694a5d3d056b5d76a764329df1be7a2bdc4e2bb57fa23e6"
+      }
+    ],
+    "seed-42": [
+      {
+        "run_id": "20261104T100500Z-mbpp-evaluate-ac91e0",
+        "sha256": "56d7fee323b157e9cd7555a61bee61834c67f6261bb3328f06c5bb451c03e9c8"
+      },
+      {
+        "run_id": "20261104T100906Z-mbpp-evaluate-914680",
+        "sha256": "3282083a744c5fd9dfbe3142a820792817f876c9ae01484ba5c2e90c50e04221"
+      },
+      {
+        "run_id": "20261104T101136Z-mbpp-evaluate-afcad5",
+        "sha256": "c43da15ef13d832b19482962ef1e4f1e82661c47794cbd330548580bf3db2835"
+      }
+    ],
+    "seed-43": [
+      {
+        "run_id": "20261104T100447Z-mbpp-evaluate-66cb3b",
+        "sha256": "7e1a060b9024d500c90c935a98d5ff66f4221bc1caabcd9f33cb9b751676acff"
+      },
+      {
+        "run_id": "20261104T100820Z-mbpp-evaluate-daca3b",
+        "sha256": "f79b46336e2f1e5bb08cbe7f58122b7bc7ccb8798c0b81d02b604212aed41526"
+      },
+      {
+        "run_id": "20261104T101211Z-mbpp-evaluate-136611",
+        "sha256": "80d993b506b4491d5045bf5ed1e837282638f5b363e1fe09a03c0eac31caa331"
+      }
+    ],
+    "kaggle": [
+      {
+        "run_id": "20261104T095900Z-mbpp-kaggle-verify-21d047",
+        "sha256": "70b0299a1f14c6bb49fd74df72d8dfdc15ff0d223e519017da575f6e4ca9ccf4"
+      }
+    ]
+  },
+  "counts": {
+    "parent": 176,
+    "seed-42": 80,
+    "seed-43": 80,
+    "kaggle": 32
+  },
+  "reference_inputs_sha256": "161dc886ba68876eda9108af1e32b6bf82147763fe772d226227ca10dfe518d6",
+  "preserved": "Original tasks, authoritative cases, prompts, generation text, token limits, model checkpoints and v1 outcomes",
+  "execution": "Re-execute every non-truncated output independently in credential-free network-blocked Modal CPU sandboxes; never execute candidates locally",
+  "reference_gate": "Hand-authored positive/negative calibration then all 176 original reference solutions must pass before saved candidate execution",
+  "infrastructure": "Abort incomplete stages on transport, invalid-task or termination failures. Never count them as model errors.",
+  "maximum_sandboxes_per_stage": 4,
+  "maximum_parallel_stages": 2,
+  "stage_reservation_usd": 5,
+  "total_planned_reservations_usd": 20,
+  "no_training": true,
+  "no_promotion": true,
+  "comparison": "Report old/new outcomes and changes for every arm. Pair Modal parent/adapters on unchanged 48 dev and 32 retention tasks. Report Kaggle separately.",
+  "sha256": "8cf70679601b44c9a41efb712dbdd44ed6a4a34c4ca0d0d98a19ab489ed70e30"
+}
