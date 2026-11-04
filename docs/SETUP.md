@@ -18,7 +18,7 @@ mkdir -p .cache/wandb .config/wandb .config/kaggle work data models checkpoints 
 
 Edit `.env` locally. All secret values in the template are blank. Load it through an explicit dotenv loader in future Python entrypoints, before importing provider SDKs. CLI processes need the same variables exported; a `.env` file alone is not automatically consumed by every SDK. Do not print it or dump the entire process environment.
 
-Use a local `.venv` for future dependencies and honor the cache paths before installation. Planned components are Python, PyTorch, Transformers, PEFT, TRL, bitsandbytes for a compatible CUDA QLoRA path, Modal, wandb, Kaggle CLI, huggingface_hub, and python-dotenv. Version locks are intentionally pending the model/GPU compatibility test. The service SDKs are installed in the SSD-local `.venv`; exact versions are recorded in `requirements-tools.lock`. Training packages are not installed.
+Use the SSD-local `.venv` and honor the cache paths before installation. The service SDKs and CPU tokenizer tools are pinned in `requirements-tools.txt` and `requirements-tools.lock`. Local PyTorch is not required. The separate Linux GPU image uses `requirements-gpu.txt` for PyTorch, Transformers, PEFT, Accelerate, and bitsandbytes. Its model-load integration check passed; end-to-end training validation is still in progress.
 
 `RSI_*` entries are project-defined settings that future code must implement; they are not provider SDK controls. `RSI_MODEL_REVISION` must be resolved to an immutable commit before recorded experiments. Do not log unresolved `main` as a reproducible revision.
 
@@ -44,7 +44,7 @@ W&B environment variables are documented in the SDK source. Use the endpoint con
 
 Do not upload the local `.env` as code or mount the entire checkout into a worker without exclusions. Construct a per-job allowlist of required settings and secrets.
 
-- **Modal:** use Modal Secrets for trusted workers that need `WANDB_API_KEY` or `HF_TOKEN`. Keep Modal control credentials in the controller. Mount the proposed `open-rsi-artifacts` Volume for persistent data/checkpoints. This name is a proposal; the Volume has not been created.
+- **Modal:** the pilot has created the `open-rsi-artifacts` Volume and mounts it at `/artifacts` for model cache and checkpoints. Public-model GPU workers receive no credentials; W&B logging runs in the controller. Use scoped Modal Secrets only if a future trusted worker needs private-model or tracking access. Keep Modal control credentials in the controller.
 - **Generated-code Sandboxes:** provide only task inputs, bounded resources, and required runtime dependencies. Keep authoritative evaluators outside candidate-writable paths. Avoid giving these workers account tokens or unrelated project data.
 - **Kaggle:** use Kaggle Secrets for W&B/Hugging Face access and enable internet only when the job needs it. The Kaggle API token generally belongs to the submitting client, not the training notebook. Save resumable outputs before session limits and export them explicitly.
 - **Paths:** replace macOS SSD paths with worker-local paths, for example `/rsi` for a Modal mount and `/kaggle/working/rsi` on Kaggle. Never send the local path values blindly to Linux workers.

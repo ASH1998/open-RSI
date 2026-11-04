@@ -18,6 +18,7 @@ import modal
 
 MODEL_ID = "openbmb/MiniCPM5-2B"
 MODEL_REVISION = "f97400052a43d642bbc6e9975e2397e3ae6a6b52"
+ADAPTER_ROOT = Path("/artifacts/adapters")
 GPU_PACKAGES = (
     "torch==2.8.0", "transformers==5.22.1", "peft==0.21.2",
     "accelerate==1.15.0", "bitsandbytes==0.50.2", "safetensors==0.8.0",
@@ -59,11 +60,16 @@ def _bounded_int(request: dict, key: str, default: int, low: int, high: int) -> 
 
 
 def _adapter_path(value: str) -> Path:
-    if not isinstance(value, str) or not value.startswith("/artifacts/adapters/"):
+    if not isinstance(value, str) or not value.startswith(f"{ADAPTER_ROOT}/"):
         raise ValueError("Adapter must be an absolute path under /artifacts/adapters")
+    # A mount or one of its parents may be a symlink. Compare both sides in
+    # canonical coordinates while still rejecting links escaping the root.
+    root = ADAPTER_ROOT.resolve()
     path = Path(value).resolve()
-    if not path.is_relative_to(Path("/artifacts/adapters")) or not path.is_dir():
-        raise ValueError("Adapter must be an existing directory under /artifacts/adapters")
+    if path == root or not path.is_relative_to(root):
+        raise ValueError("Adapter resolves outside a child directory of /artifacts/adapters")
+    if not path.is_dir():
+        raise ValueError("Adapter directory does not exist under /artifacts/adapters")
     return path
 
 
@@ -125,9 +131,10 @@ def _load(request: dict, *, training: bool = False):
 
 
 def _prompt_ids(tokenizer, prompt: str) -> list[int]:
+    # Transformers 5 defaults to BatchEncoding; request the flat input_ids list.
     return tokenizer.apply_chat_template(
         [{"role": "user", "content": prompt}], tokenize=True,
-        add_generation_prompt=True, enable_thinking=False,
+        add_generation_prompt=True, enable_thinking=False, return_dict=False,
     )
 
 
@@ -138,7 +145,7 @@ def _encode_example(tokenizer, example: dict, max_length: int) -> dict:
     tokens = tokenizer.apply_chat_template(
         [{"role": "user", "content": prompt},
          {"role": "assistant", "content": completion}],
-        tokenize=True, add_generation_prompt=False, enable_thinking=False,
+        tokenize=True, add_generation_prompt=False, enable_thinking=False, return_dict=False,
     )
     if tokens[:len(prefix)] != prefix:
         raise ValueError("Training template does not preserve the inference token prefix")
@@ -270,14 +277,14 @@ def train(request: dict) -> dict:
                         "packages": {name: importlib.metadata.version(name) for name in
                                      ("torch", "transformers", "peft", "accelerate", "bitsandbytes", "safetensors")}}
     fingerprint = hashlib.sha256(json.dumps(fingerprint_data, sort_keys=True).encode()).hexdigest()
-    directory = Path("/artifacts/adapters") / run_id
+    directory = ADAPTER_ROOT / run_id
     checkpoint = None
     resume = request.get("resume_checkpoint")
     state = None
     volume.reload()
     if resume is not None:
         checkpoint = _adapter_path(resume)
-        if checkpoint.parent != directory / "checkpoints" or not (checkpoint / "complete.json").is_file():
+        if checkpoint.parent != (directory / "checkpoints").resolve() or not (checkpoint / "complete.json").is_file():
             raise ValueError("Resume requires a completed checkpoint belonging to this run_id")
         manifest = json.loads((checkpoint / "complete.json").read_text())
         files = {p.name for p in checkpoint.iterdir() if p.is_file() and p.name != "complete.json"}

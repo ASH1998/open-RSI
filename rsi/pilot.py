@@ -109,6 +109,8 @@ def load_report(value):
 
 def score_generation(tasks, generation, app, report):
     from .verification import verify_candidate, extract_code
+    if generation.get('status') != 'completed' or any(x.get('hit_time_limit') for x in generation['outputs']):
+        raise ValueError('Generation did not finish within its time budget; comparison is incomplete')
     outputs = generation['outputs']
     if [x['id'] for x in tasks] != [x['id'] for x in outputs]:
         raise ValueError('Model output task IDs/order do not match')
@@ -187,6 +189,8 @@ def train(parent_id, max_steps):
                           'seed': 42, 'max_length': 2048, 'gradient_accumulation': 4}, report)
         if report['training']['status'] != 'completed':
             raise RuntimeError('Training stopped before completing the requested steps')
+        for point in report['training']['losses']:
+            run.log({'train/optimizer_step': point['step'], 'train/loss': point['loss']})
         run.log({'train/examples': len(examples), 'train/steps': report['training']['steps_completed']})
 
 
