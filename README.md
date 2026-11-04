@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** first end-to-end Modal pilot completed. A 20-step QLoRA adapter improved training-family results from 4/16 to 6/16 but reduced development results from 7/8 to 5/8; the original model is retained. All 60 local tests pass. This is pipeline validation and a measured regression, not evidence of sustained self-improvement. Updated November 4, 2026.
+**Status:** the MBPP study completed on 128 training and 48 development tasks. Parent development performance was 17/48; two QLoRA adapters scored 16/48 and 15/48, so the original parent is retained. The separate Kaggle baseline scored 8/32. The installable `rsilab` framework provides immutable manifests and strict paired comparisons; 145 integrated tests and 23 isolated package checks passed. No sustained self-improvement has been demonstrated. Updated November 4, 2026.
 
 ## Workspace and repository
 
@@ -39,3 +39,7 @@ Service check results and rerun instructions: [verification report](docs/VERIFIC
 Pilot commands and budget behavior: [pilot guide](docs/PILOT.md). Parallel chat assignments: [work log](docs/WORK_LOG.md).
 
 Measured results and W&B evidence: [experiment record](docs/EXPERIMENTS.md). Proposed next experiment: [evaluation redesign](docs/NEXT_EVALUATION.md).
+
+Current study: [MBPP protocol](studies/mbpp_v1/README.md). Python framework: [installation and API](docs/FRAMEWORK.md). Dataset source/filtering: [MBPP preparation](docs/DATASETS.md).
+
+Latest measured results, budget and handoff: [MBPP experiment record](docs/MBPP_EXPERIMENT.md).

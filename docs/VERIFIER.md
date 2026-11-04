@@ -155,6 +155,63 @@ scoring model outputs. Maintain matched task lists and inference limits for
 parent/successor comparisons. This chat launched no remote job, read no `.env`,
 spent no credits, and made no Git commit.
 
+## Kaggle artifact audit — November 4, 2026
+
+Read-only inspection of `artifacts/kaggle-mbpp-v1/open-rsi-result.json` confirmed
+32 unique, ordered outputs for the first 32 frozen development tasks. Its request
+matches `work/kaggle-mbpp-v1/upload-audit.json`, the embedded request in uploaded
+`worker.py`, and the frozen task prompts/manifest hash. The uploaded source hash
+matches its audit record, and the uploaded worker matches the current worker
+template with that request substituted. All 32 progress-log records agree with
+the output IDs and token counts. No result-envelope/schema mismatch was found.
+
+| Evidence | Observed value |
+| --- | --- |
+| Result status | completed |
+| Token/time-limit flags | 0/32 for each |
+| Empty responses | 0/32 |
+| Input tokens | 3,881 total; 112–136 per task |
+| Output tokens | 2,321 total; 20–494 per task; cap 512 |
+| Worker wall time | 284.88 seconds |
+| Sum of per-task generation time | 194.46 seconds |
+| Requested / recorded GPU | NvidiaL4 / Tesla T4 |
+| Recorded compute dtype | torch.bfloat16 |
+| Peak allocated GPU memory | 2,145,820,672 bytes |
+| Packages | torch 2.11.0+cu130; transformers 5.22.1; accelerate 1.15.0; bitsandbytes 0.50.2; safetensors 0.8.0; tokenizers 0.23.3 |
+
+The four packages explicitly installed by the worker match their pinned versions.
+Torch and tokenizers are recorded runtime versions, not direct worker pins. The
+worker chooses dtype with `torch.cuda.is_bf16_supported()`; the
+[PyTorch 2.11 implementation](https://github.com/pytorch/pytorch/blob/v2.11.0/torch/cuda/__init__.py#L169-L188)
+includes emulation in its default check. Therefore the reported dtype does not
+establish native BF16 hardware support. The artifacts cannot establish why Kaggle
+allocated a T4 instead of the requested L4. Preserve actual hardware/precision in
+reporting; this remains the preregistered **separate Kaggle benchmark**, not a
+matched L40S arm or a basis for cross-device speed claims.
+
+Static extraction found one malformed response: `mbpp-full-543` contains an extra
+closing parenthesis. The other 31 pass syntax and candidate-policy checks, which
+does not establish correctness. Main chat's completed verification report
+`runs/20261104T095900Z-mbpp-kaggle-verify-21d047/report.json` records **8/32 passed**,
+23 candidate-execution/scoring failures, one syntax failure, and zero
+infrastructure failures.
+
+The frozen codec's exact-builtin restriction affects this result. Task
+`mbpp-full-568` returns a list of empty `collections.OrderedDict` instances where
+the expected values are lists of empty builtin dictionaries. By source inspection,
+ordinary Python equality would accept those containers; the typed codec rejects
+them with `ValueError`. Task `mbpp-full-561` likewise returns a `defaultdict`,
+which is outside the return-value protocol, though its contents also differ from
+the expected mapping. These are protocol limitations, not provider corruption.
+Keep the recorded scores unchanged and disclose the restriction; any broader
+codec would require a separately versioned, re-audited comparison. No candidate
+completion was executed locally to make these observations.
+
+Artifact SHA-256:
+`799e052b8c96b3d4c92b4ad073087380308d9973a5d8e84c7fc722c37390822f`.
+This inspection made no study-source changes or paid launches; only this evidence
+note was added.
+
 ## Contract and authority
 
 `verify_candidate(response, task, app, timeout=30)` accepts model response text

@@ -1,5 +1,7 @@
 # Proposed next evaluation
 
+Historical proposal after the synthetic pilot. The later user-authorized MBPP v1 study adopted its own frozen protocol; see [MBPP experiment record](MBPP_EXPERIMENT.md). Gates suggested below do not override that protocol.
+
 November 4, 2026. **The next experiment remains proposed; the completed compatibility run does not establish a generalization gain or authorize another launch.** Exactly one 20-step QLoRA adapter on four verified training outputs completed its matched comparison. Training-family scores increased while development scores regressed; the parent was retained. This document does not change that run, its frozen prompts, or its acceptance criteria retrospectively.
 
 ## Baseline evidence and immediate decision

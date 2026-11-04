@@ -65,3 +65,7 @@ Run: `20261104T072356Z-evaluate-92cbe2`. [W&B matched evaluation](https://forge.
 Nine stage attempts reserved **$45** in the cumulative ledger, including failed attempts and two CPU diagnostics. **$25** remains held for overhead, leaving **$180** available for further job reservations under the unchanged **$250** total cap. These are conservative planning reservations, not charges; actual Modal invoice totals have not been reconciled. Do not automatically refund failed or short runs. Persistent Volume storage is retained and must be included in later billing reconciliation.
 
 The first cycle is complete, with no automatic repeat or promotion. A final Modal status read confirmed all nine project apps stopped with zero tasks; the snapshot is saved in `work/modal-final-app-status.json`. Code and experiment documentation are backed up to GitHub; full reports are on the SSD and in W&B; the adapter/checkpoint are on the Modal Volume and SSD with verified checksums. Existing visible chats remain the owners of future GPU, task/evaluation, and sandbox work; main chat coordinates paid launches.
+
+## Larger MBPP follow-up
+
+The subsequent user-authorized experiment uses 128 audited training tasks, 48 development tasks, a separate Kaggle baseline, and two fresh QLoRA seeds. Its protocol, measured baseline, paired results, limitations and framework validation are recorded in [MBPP_EXPERIMENT.md](MBPP_EXPERIMENT.md). This earlier synthetic pilot remains unchanged.

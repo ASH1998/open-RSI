@@ -132,6 +132,131 @@ that pair unmatched. This does not erase the recorded scores; it narrows what
 can be claimed about a strict identical-hardware comparison. Main owns any
 correction to the experiment record and future comparison policy.
 
+## Aggregate completed MBPP study reports
+
+For the completed two-seed study, the reusable offline driver discovers inputs
+and writes all reports in one validated operation:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/report_mbpp.py --check-only
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/report_mbpp.py
+```
+
+Before either command, export each selected training run's weights to
+`artifacts/mbpp/<training_run>/adapter/adapter_model.safetensors` and verify that
+the export belongs to that run. The driver hashes the local bytes. It requires
+six completed baseline batches, exactly one completed training run for each of
+seeds 42 and 43, and three completed evaluation batches linked to each training
+run. Missing exports, unfinished runs, ambiguous completed duplicates, changed
+target selection, or incomplete batches are errors; no partial final report is
+written. The driver also checks selected-data diversity and training settings,
+source inventory, hardware, and package/CUDA inventory against the baseline.
+
+The output directory `artifacts/mbpp/reports` contains `summary.json`,
+`seed-42-comparison.json`, `seed-43-comparison.json`, parent/candidate manifests
+for each seed, and a checksum `inventory.json`. Summary fields include baseline
+split/category counts, baseline and per-seed truncation counts, unique verified
+target yield/categories, paired dev/retention results, and failed-attempt
+lineage. Exact reruns are idempotent; differing existing reports are preserved
+and cause an error. `--check-only` validates and summarizes without writing.
+
+The explicit prospective decision is `replication_worthy` only if **both**
+training seeds gain at least **four net development successes**, each loses at
+most **one previously passing retention task**, and both comparisons have
+matched controls. Any unmet condition yields `not_replication_worthy`; unmatched
+controls retain null scores rather than fabricated zeros. The original parent
+remains selected and `promoted` is always false. This is an engineering flag,
+not statistical significance, population-level generalization, or evidence of
+RSI. The driver does not combine training seeds into an independent-data result.
+
+Driver tests use synthetic report fixtures and the real strict scorer/helper;
+they exercise threshold boundaries, incomplete/ambiguous inputs, training-label
+lineage, unmatched controls, truncations, and atomic/idempotent publication.
+No model or generated code is executed by the tests or driver.
+
+Run the source CLI from the SSD checkout (`.venv/bin/python -m rsilab`), rather
+than relying on an older installed wheel's console entrypoint. The adapter is
+`rsilab.mbpp_report.build_mbpp_comparison`. It requires all **six** completed
+baseline batches (0–5; 176 tasks) and **three** completed evaluation batches
+(0–2; 80 tasks) for **one** training run. Run it separately for training seeds
+42 and 43. The framework manifests retain the original `train` split; the
+human-facing `evaluation_splits.retention` summary identifies the preselected
+32-task retention subset, alongside 48 development tasks.
+
+Direct CLI syntax, with explicit report paths and a verified weights digest:
+
+```sh
+.venv/bin/python -m rsilab mbpp-report data/mbpp/study-v1.json \
+  --baseline PARENT_BATCH_0/report.json PARENT_BATCH_1/report.json PARENT_BATCH_2/report.json PARENT_BATCH_3/report.json PARENT_BATCH_4/report.json PARENT_BATCH_5/report.json \
+  --candidate CANDIDATE_BATCH_0/report.json CANDIDATE_BATCH_1/report.json CANDIDATE_BATCH_2/report.json \
+  --training-report runs/TRAINING_RUN_ID/report.json \
+  --adapter-sha256 VERIFIED_ADAPTER_WEIGHTS_SHA256
+```
+
+Replace the uppercase placeholders with actual paths/values. The following
+alternative discovers the correct completed reports, hashes the exported
+`adapter_model.safetensors`, and saves the full result under `work/`. Replace
+only the two invocation arguments; run from `/Volumes/DevSSDWD/openbmb/rsi`.
+It performs no network access, credential loading, execution of generated code,
+or provider calls. It refuses to overwrite an existing comparison file.
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python - \
+  "TRAINING_RUN_ID" "artifacts/EXPORTED_ADAPTER/adapter_model.safetensors" <<'PY'
+import hashlib
+import json
+from pathlib import Path
+import sys
+from rsilab.mbpp_report import build_mbpp_comparison
+
+training_id, adapter_name = sys.argv[1:]
+if Path(training_id).name != training_id:
+    raise ValueError("Use a run ID, not a path")
+root = Path.cwd().resolve()
+adapter = Path(adapter_name).resolve()
+if not adapter.is_relative_to(root) or adapter.name != "adapter_model.safetensors":
+    raise ValueError("Use the exported adapter weights inside this SSD checkout")
+study = json.loads(Path("data/mbpp/study-v1.json").read_text())
+reports = [json.loads(path.read_text()) for path in sorted(Path("runs").glob("*/report.json"))]
+completed = [row for row in reports if row.get("status") == "completed"
+             and row.get("study_sha256") == study["sha256"]]
+baselines = [row for row in completed if row.get("stage") == "mbpp-baseline"]
+candidates = [row for row in completed if row.get("stage") == "mbpp-evaluate"
+              and row.get("training_run") == training_id]
+training = json.loads((Path("runs") / training_id / "report.json").read_text())
+with adapter.open("rb") as stream:
+    weights_hash = hashlib.file_digest(stream, "sha256").hexdigest()
+result = build_mbpp_comparison(study, baselines, candidates,
+                               adapter_sha256=weights_hash, training_report=training)
+output = Path("work") / f"mbpp-comparison-{training_id}.json"
+output.parent.mkdir(exist_ok=True)
+with output.open("x") as stream:
+    json.dump(result, stream, indent=2)
+    stream.write("\n")
+print(json.dumps({"path": str(output), "matched": result["comparison"]["matched"],
+                  "reasons": result["comparison"]["reasons"],
+                  "scores": result["evaluation_splits"], "promoted": False}, indent=2))
+raise SystemExit(0 if result["comparison"]["matched"] else 2)
+PY
+```
+
+Missing/extra batches, duplicate successful retries, wrong task order/hash,
+mixed adapters, protocol changes, incomplete generation, invalid output flags,
+or unverifiable recorded scores stop aggregation. Source/hardware/package/CUDA
+drift within one arm also stops it. Differences between otherwise valid parent
+and candidate controls produce `comparison.matched=false` and no score summary.
+All recorded `rsi/*.py` source hashes participate, including files outside the
+six required worker/evaluator modules: avoid changing that source inventory
+between baseline and evaluation. Documentation-only edits do not affect it.
+
+The exported weights hash is caller-attested: confirm the SSD export belongs to
+the selected training run and matches its Volume/checkpoint inventory before
+aggregation. The helper links the training report's run ID, study, seed and
+adapter path but cannot prove a supplied digest belongs to remote bytes. Keep
+raw reports and both failed and successful outcomes. No promotion or
+replication-worthiness decision is automated by this single-adapter command;
+the two-seed driver above implements only the predeclared replication flag.
+
 ## GPU and Kaggle backend handoff
 
 Only installed Kaggle 2.2.5 source was inspected; importing `kaggle` was avoided
@@ -184,9 +309,13 @@ artifact hashing and symlink containment, actual pilot scoring, and offline CLI
 validation. `work/framework-dist/rsilab-0.1.0-py3-none-any.whl` was built from an
 explicit source allowlist in `work/framework-source`, installed without runtime
 dependencies into the SSD `.venv`, and imported using isolated Python (`-I`).
-The installed task adapter and console entrypoint passed; no Modal, Kaggle,
-Torch, W&B, or dotenv module was imported by the core/offline pilot adapter.
-The wheel content allowlist passed. Setuptools 84.2.1 and wheel 0.48.0 were added
+The latest wheel rebuild includes `rsilab.mbpp_report` and its CLI dispatch,
+alongside the current allowlisted `rsi` Python sources. Installed core, pilot
+adapter, MBPP report helper, and CLI checks passed under isolated Python with
+socket connections blocked; no Modal, Kaggle, Torch, W&B, or dotenv module was
+imported. Main reports 145 integrated tests passing. The wheel content and source
+checksum allowlists passed; its SHA256 and inventory are recorded in
+`work/framework-dist/wheel-audit.json`. Setuptools 84.2.1 and wheel 0.48.0 were added
 only to the SSD-local build environment. No GPU, generated-code execution,
 credentials, remote jobs, commits, or publication were used in this handoff.
 

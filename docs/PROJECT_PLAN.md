@@ -1,6 +1,6 @@
 # Project plan
 
-Last updated: November 4, 2026. This is a proposed research protocol, not a record of completed experiments.
+Last updated: November 4, 2026. This document separates the longer-term research plan from the implemented MBPP study below.
 
 ## Objective and scope
 
@@ -71,7 +71,7 @@ Store full weights and bulky training state in persistent storage. W&B can track
 
 Earlier discussion estimated a 24 GB GPU, roughly 32 GB host RAM, and 100 GB disk as a comfortable starting target for a small QLoRA pilot. These are planning targets, not measured requirements for MiniCPM5. Start with a short memory/throughput benchmark; select hardware based on total job cost.
 
-The user authorized **$250 total Modal spending for the whole project** on November 4, 2026. An extension requires a separate decision. Provider authentication is verified; account credit balances have not been inspected. The initial controller reserves at most $5 per stage, with $25 held aside for overhead. Reservations persist after failures and are not released based on runtime estimates. See `config/budget.json` and `budget/ledger.json`. The earlier engineering timeline remains an estimate, not a delivery commitment.
+The user authorized **$250 total Modal spending for the whole project** on November 4, 2026. An extension requires a separate decision. Provider authentication is verified. A November 4 billing snapshot reported $1.50054595 workspace metered usage, covered by credits; this is not a finalized project invoice. The initial controller reserves at most $5 per stage, with $25 held aside for overhead. Reservations persist after failures and are not released based on runtime estimates. See `config/budget.json` and `budget/ledger.json`. The earlier engineering timeline remains an estimate, not a delivery commitment.
 
 1. **Setup:** project-local environment, credentials, immutable model revision, provider smoke tests, and one W&B run.
 2. **Baseline:** independently checked task families, frozen splits, starting-model scores and failure inspection.
@@ -82,6 +82,14 @@ The user authorized **$250 total Modal spending for the whole project** on Novem
 
 ## Open decisions
 
-Exact checkpoint/revision; task sources and licenses; acceptance thresholds and required replication; adapter continuation strategy; GPU sizing; billing reconciliation; and whether Kaggle TPU work has enough value to justify a separate implementation.
+The MBPP v1 checkpoint, dataset, licenses, hardware and engineering thresholds are frozen. Future-study choices remain open: stronger evaluation/data, adapter continuation, finalized billing reconciliation, and whether Kaggle TPU work warrants a separate backend.
 
 The first compatibility cycle has completed: training-family results rose from 4/16 to 6/16, while development results fell from 7/8 to 5/8. The parent was retained. See [measured experiment record](EXPERIMENTS.md) and [proposed next evaluation](NEXT_EVALUATION.md). No general improvement or sustained RSI has been demonstrated.
+
+## Implemented MBPP v1 study
+
+The frozen implementation is `studies/mbpp_v1/protocol.json`, committed before generation. It uses pinned MiniCPM5-2B, 128 audited MBPP training tasks and 48 development tasks on L40S, with native train/validation splits, duplicate exclusions and no final-test execution. A separate 32-task Kaggle baseline completed on Tesla T4. Main uses the controller in `rsi/study.py`; all stages reserve budget atomically, with a $100 study envelope inside the $250 project cap. Two training seeds (42, 43) use only unique verified parent training outputs, subject to the documented diversity gate.
+
+The initial `rsilab` Python package provides immutable task/agent/provenance manifests, matching checks, paired score reports, checksummed artifact inventories and a retain-parent default. It is an offline foundation; provider integration still uses the checkout's legacy `rsi` controller. The user's v0.2 proposal is preserved in `docs/design/`, but its larger budget, different model and later recursion/RL mechanisms are proposals. Packaging is local; no PyPI release or project license choice has been made.
+
+The completed MBPP comparison scored parent 17/48 development versus adapters 16/48 and 15/48. Both seeds passed exact control matching but failed the predeclared development gain threshold; the original parent is retained. See `docs/MBPP_EXPERIMENT.md`. No automatic further experiment follows this result.

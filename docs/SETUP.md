@@ -62,3 +62,9 @@ A source push is not a backup of ignored experiment outputs. Retain those in per
 Use `.venv/bin/python scripts/check_services.py SERVICE`, with `SERVICE` equal to `modal`, `kaggle`, `huggingface`, or `wandb`. The W&B check explicitly uses online mode and creates a clearly labeled synthetic run; the others only read provider metadata. The script loads `.env`, keeps output on the SSD, and never prints raw provider exceptions or credentials. Each rerun of the W&B check creates a new run.
 
 To reproduce the validated service environment, install `requirements-tools.lock` in a project-local virtual environment with the cache variables above. This lock describes the macOS/Python 3.13 service-check environment, not the future Linux GPU training environment.
+
+## MBPP framework and study
+
+See `docs/FRAMEWORK.md` for the SSD-local wheel/install and offline manifest commands. MBPP preparation uses pinned `pyarrow==26.0.1` in the local tool environment. The frozen study launches through `.venv/bin/python -m rsi.study`; inspect `studies/mbpp_v1/protocol.json` and existing run reports before launching to avoid duplicate batches. Only the main chat starts paid stages.
+
+Kaggle's private MBPP worker downloads the public pinned model without secrets. It sends prompts only, saves raw generations, and never executes generated programs. Results return to SSD and are verified in isolated Modal sandboxes. The actual accelerator/precision/package inventory is authoritative: the first submitted NvidiaL4 request ran on Tesla T4, and is reported separately from the L40S paired comparison.

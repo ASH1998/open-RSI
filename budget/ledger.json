@@ -130,6 +130,202 @@
         "app_id": "ap-JnyFGrDDBz24yY0fftxRcg",
         "wall_seconds": 265.02
       }
+    },
+    {
+      "id": "9497e3bd8aec4723b30faddc90c2bd4a",
+      "stage": "mbpp-baseline",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T09:51:48.650925+00:00",
+      "finished_at": "2026-11-04T09:59:27.266439+00:00",
+      "details": {
+        "run_id": "20261104T095148Z-mbpp-baseline-ddee4c",
+        "recovered": true,
+        "app_id": "ap-FfYE3pEYZKilLFSFvnrtGI",
+        "verification_app_id": "ap-ZhsXm9kIkUE3vZvwC6jlNf"
+      }
+    },
+    {
+      "id": "f63c832926ad438688003e27a559a4c9",
+      "stage": "mbpp-baseline",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T09:51:54.150465+00:00",
+      "finished_at": "2026-11-04T09:53:46.565543+00:00",
+      "details": {
+        "run_id": "20261104T095154Z-mbpp-baseline-ce496e",
+        "app_id": "ap-kpKWYDNCZKHY2ZCHskxlX6",
+        "wall_seconds": 112.41
+      }
+    },
+    {
+      "id": "c181e6b123d84c42ad8b90e0eb224706",
+      "stage": "mbpp-baseline",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T09:58:14.316246+00:00",
+      "finished_at": "2026-11-04T09:59:58.949489+00:00",
+      "details": {
+        "run_id": "20261104T095814Z-mbpp-baseline-59f822",
+        "app_id": "ap-tpvuipxKWFNBvUsayLrUpB",
+        "wall_seconds": 104.61
+      }
+    },
+    {
+      "id": "b8282d62545d434f98c63a424d510677",
+      "stage": "mbpp-baseline",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T09:58:56.673886+00:00",
+      "finished_at": "2026-11-04T10:00:42.557267+00:00",
+      "details": {
+        "run_id": "20261104T095856Z-mbpp-baseline-795f44",
+        "app_id": "ap-jRyrhVfNWSylcLQEYvWrUv",
+        "wall_seconds": 105.87
+      }
+    },
+    {
+      "id": "5fc0a24e821f45068a2269db5d8f23b7",
+      "stage": "mbpp-kaggle-verify",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T09:59:00.721868+00:00",
+      "finished_at": "2026-11-04T09:59:30.934452+00:00",
+      "details": {
+        "run_id": "20261104T095900Z-mbpp-kaggle-verify-21d047",
+        "app_id": "ap-PpcdJlYmv6Nt7d5EwZtRug",
+        "wall_seconds": 30.21
+      }
+    },
+    {
+      "id": "577171125cea47d681ea1d236efc562b",
+      "stage": "mbpp-baseline",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T09:59:49.855418+00:00",
+      "finished_at": "2026-11-04T10:01:28.655788+00:00",
+      "details": {
+        "run_id": "20261104T095949Z-mbpp-baseline-7c3b8e",
+        "app_id": "ap-ikedyBP1WNcViwLENvDlq1",
+        "wall_seconds": 98.79
+      }
+    },
+    {
+      "id": "a665a77832504bfea8e547a5aa1addd2",
+      "stage": "mbpp-baseline",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T10:00:54.088017+00:00",
+      "finished_at": "2026-11-04T10:02:32.155754+00:00",
+      "details": {
+        "run_id": "20261104T100054Z-mbpp-baseline-0cc65d",
+        "app_id": "ap-Y5bDcM9fuIbzzsb2Wo0lYU",
+        "wall_seconds": 98.05
+      }
+    },
+    {
+      "id": "df43ff4858fb4a2ebbc78325784a996c",
+      "stage": "mbpp-train",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T10:02:58.745565+00:00",
+      "finished_at": "2026-11-04T10:04:35.017462+00:00",
+      "details": {
+        "run_id": "20261104T100258Z-mbpp-train-8445eb",
+        "app_id": "ap-QJeiuasyOQJev4091mSglg",
+        "wall_seconds": 96.25
+      }
+    },
+    {
+      "id": "342186aa553747d9b23b02436ed79950",
+      "stage": "mbpp-train",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T10:02:58.746671+00:00",
+      "finished_at": "2026-11-04T10:04:08.635115+00:00",
+      "details": {
+        "run_id": "20261104T100258Z-mbpp-train-ff538c",
+        "app_id": "ap-pO0qiEzhaZ7t4iY6WMDHI3",
+        "wall_seconds": 69.87
+      }
+    },
+    {
+      "id": "2a39fbf9f3d8491ebad141746efe45e0",
+      "stage": "mbpp-evaluate",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T10:04:47.209110+00:00",
+      "finished_at": "2026-11-04T10:08:00.073698+00:00",
+      "details": {
+        "run_id": "20261104T100447Z-mbpp-evaluate-66cb3b",
+        "app_id": "ap-pAKAYgKU1jUKlylZqZi9zo",
+        "wall_seconds": 192.86
+      }
+    },
+    {
+      "id": "bb53b27e84fa438e92af0d9228a00c28",
+      "stage": "mbpp-evaluate",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T10:05:00.517419+00:00",
+      "finished_at": "2026-11-04T10:09:11.328807+00:00",
+      "details": {
+        "run_id": "20261104T100500Z-mbpp-evaluate-ac91e0",
+        "app_id": "ap-cg7BcX8Y4Ztvt2FUfvnGDD",
+        "wall_seconds": 250.8
+      }
+    },
+    {
+      "id": "f324d6beb20b4d10881be0ce2817a52c",
+      "stage": "mbpp-evaluate",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T10:08:20.604540+00:00",
+      "finished_at": "2026-11-04T10:12:25.474323+00:00",
+      "details": {
+        "run_id": "20261104T100820Z-mbpp-evaluate-daca3b",
+        "app_id": "ap-EUhXXBkZ5WpSEPeCwJ3kpm",
+        "wall_seconds": 244.86
+      }
+    },
+    {
+      "id": "00b09b010f3444f093c1c4bd18cb8008",
+      "stage": "mbpp-evaluate",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T10:09:06.545399+00:00",
+      "finished_at": "2026-11-04T10:11:31.380764+00:00",
+      "details": {
+        "run_id": "20261104T100906Z-mbpp-evaluate-914680",
+        "app_id": "ap-KZ04He2iRb2CQTQzEA3Iy2",
+        "wall_seconds": 144.82
+      }
+    },
+    {
+      "id": "05e3d92d7d6b4f87af023dfed5ac1677",
+      "stage": "mbpp-evaluate",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T10:11:36.363371+00:00",
+      "finished_at": "2026-11-04T10:13:52.243835+00:00",
+      "details": {
+        "run_id": "20261104T101136Z-mbpp-evaluate-afcad5",
+        "app_id": "ap-EDfhwsEyZZV7HbaorIz7B0",
+        "wall_seconds": 135.87
+      }
+    },
+    {
+      "id": "be65d99198fc45599c53b61aa462b0ad",
+      "stage": "mbpp-evaluate",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T10:12:11.440758+00:00",
+      "finished_at": "2026-11-04T10:14:38.911334+00:00",
+      "details": {
+        "run_id": "20261104T101211Z-mbpp-evaluate-136611",
+        "app_id": "ap-FU7haYQv9ZqniMhnpz5BMR",
+        "wall_seconds": 147.46
+      }
     }
   ]
 }

@@ -1,6 +1,6 @@
 # MBPP dataset preparation
 
-Updated November 4, 2026. Dataset preparation is implemented; model generation, reference execution, training, and promotion are separate main-chat responsibilities. This study uses the dataset-native split exception documented in `AGENTS.md` and [the MBPP study](../studies/mbpp_v1/README.md). It does not claim family-held-out generalization.
+Updated November 4, 2026. Dataset preparation and the main-chat reference audit are complete; 128 train and 48 development tasks are frozen, with 32 train tasks designated for retention checks. Baseline generation remains under main-chat coordination; no MBPP model score or training outcome is claimed here. This study uses the dataset-native split exception documented in `AGENTS.md` and [the MBPP study](../studies/mbpp_v1/README.md). It does not claim family-held-out generalization.
 
 ## Source choice and provenance
 
@@ -53,7 +53,7 @@ Each task carries `id`, `family` (duplicate-cluster identifier, **not an algorit
 
 Prompts contain the source description and a signature extracted statically from the reference function, with no function body or source tests. Literal defaults are permitted; dynamic defaults, decorators, ambiguous entry points, and unsupported syntax are excluded. Prompts request concise self-contained Python code, required imports, no explanation or long comments. Allowed modules match the coordinated MBPP policy: `math`, `collections`, `itertools`, `functools`, `bisect`, `heapq`, `statistics`, `re`, `string`, `operator`, `array`.
 
-The raw assertion manifest is **not executable by the existing JSON-case verifier**. Main chat coordinates safe AST conversion to independently scored cases and explicit unsupported exclusions. Unsupported setup, assertions, imports, or challenge tests must not be silently dropped. Keep converted cases/expected outputs in the trusted controller. Never send full manifests or raw reference rows to a model or candidate-writable sandbox. Remote reference success is a verifier compatibility audit, not an SFT label.
+The raw assertion manifest requires conversion; do not pass it directly to the original JSON-case verifier. The completed study audit used static AST conversion and `mbpp-typed-v1` for independently scored typed cases, with explicit unsupported exclusions. Unsupported setup, assertions, imports, or challenge tests must not be silently dropped. Keep converted cases/expected outputs in the trusted controller. Never send full manifests or raw reference rows to a model or candidate-writable sandbox. Remote reference success is a verifier compatibility audit, not an SFT label.
 
 ## Duplicate exclusions and reserved domains
 
@@ -63,11 +63,29 @@ The keyword quarantine also excludes explicit graph/reachability/traversal and e
 
 Observed full-pool preparation: **272 train / 68 dev candidates**. Across source train/validation, 107 rows were quarantined for cross-split duplicate components, 16 for within-split duplicates, and one for unsupported signature/test syntax. No additional row was removed by the reserved-domain rule after those exclusions. These counts precede conversion, gold audits, and manual review. `ready_for_training` remains false; required gates are included in the manifest. Each exclusion retains a reason/source ID/cluster ID.
 
-The finalized preparation pool is `data/mbpp/pools-full-seed42.json`, canonical manifest SHA-256 `13907d86dc89f61a1bfb06d691415984b6efd0304d5b321b914d787d8873b49f`. This is a hash of the canonical JSON payload excluding its own hash field, not the pretty-printed file bytes. The earlier seven-import/prompt draft is retained as `pools-full-seed42-initial-candidate.json`; do not use it for new generation. Final converted subset hashes are still to be recorded by main chat.
+The finalized preparation pool is `data/mbpp/pools-full-seed42.json`, canonical manifest SHA-256 `13907d86dc89f61a1bfb06d691415984b6efd0304d5b321b914d787d8873b49f`. This is a hash of the canonical JSON payload excluding its own hash field, not the pretty-printed file bytes. The earlier seven-import/prompt draft is retained as `pools-full-seed42-initial-candidate.json`; do not use it for new generation.
+
+## Completed audit and frozen subset
+
+The [completed reference audit](../runs/20261104T094331Z-mbpp-reference-audit-32abb6/report.json) records a passing verifier preflight and 334 reference checks using `mbpp-typed-v1`. These are source-reference checks, **not model-generation accuracy**.
+
+| Preparation stage | Train | Development |
+| --- | ---: | ---: |
+| Importer candidates | 272 | 68 |
+| Convertible candidates audited | 269 | 65 |
+| References passing audit | 258 | 64 |
+| Passing candidates after manual duplicate exclusions | 256 | 62 |
+| Frozen study tasks | 128 | 48 |
+
+Six conversion exclusions (three per split) cover unsupported literal calls, setup/imports, nonliteral values, or mismatched entry points. Twelve further reference checks failed: eleven candidate-policy rejections and one task with execution errors. No excluded reference was used to fill the frozen subset. Manual review then quarantined two missed cross-split pairs: abundant-number predicates (`955`/`541`) and even/odd parity filters (`629`/`554`). [Review record](../studies/mbpp_v1/manual-exclusions.json)
+
+The [frozen summary](../studies/mbpp_v1/frozen-manifest-summary.json) lists all 176 selected task IDs and 32 retention IDs. The retention set is the first 32 selected training tasks, not an additional held-out split. Source rows remain train→train and validation→dev; no source test/prompt task was selected. Broad category counts are train: text 21, collections 70, numeric 30, other 7; dev: text 7, collections 27, numeric 11, other 3. These are task counts, not verified model-label yield.
+
+The full converted manifest is `data/mbpp/study-v1.json`, hash `cde70ffcd2bc5e243587a0c32f4f084457ac446a67c00adbd3522303ec3029ca`. Its frozen analysis-plan hash is `afac675cae3c23e83ceef4bffdc274aa6a9e0d26c37c0899c3b2cdf10322c59c`. Both agree with the public frozen summary. Preserve these artifacts and the importer/prompts during baseline collection.
 
 ## Frozen study protocol
 
-Main chat froze [the prospective protocol](../studies/mbpp_v1/protocol.json) before model generation: audit candidates, then select the first **128 train / 48 dev tasks** in the importer order and preselect 32 training-retention tasks. Stop if audited counts are insufficient; do not relax the verifier or borrow test rows. Exact IDs, source and converted hashes, exclusions, protocol hash, and evaluator version must be recorded before generation. The importer and prompts are now stable for the reference audit; this handoff makes no code or prompt changes.
+Main chat froze [the prospective protocol](../studies/mbpp_v1/protocol.json) before model generation: audit candidates, then select the first **128 train / 48 dev tasks** in importer order after exclusions and preselect 32 training-retention tasks. Those counts and IDs are now frozen as recorded above. The importer and prompts remain unchanged; this documentation review makes no code, data, or protocol changes.
 
 Preserve the original base checkpoint and its baseline outputs. Predeclare one generation/repair policy, output cap, seed, precision, and hardware class; apply identical inference budgets to base and adapter. Missing imports, truncation, and wrong outputs remain failures. A changed prompt or cap requires a fresh matched base baseline, not selective repairs to previously scored outputs. Kaggle experiments may use the same frozen artifacts but remain a separate hardware/precision stratum unless matched comparability is demonstrated.
 
@@ -75,6 +93,8 @@ The frozen SFT gate is **at least 32 unique verified targets across at least thr
 
 Use development only for the frozen decisions; do not call it sealed final evidence. The protocol marks a result replication-worthy only if both seeds gain at least four net development successes, each loses at most one parent retention success, and no integrity mismatch remains. No automatic promotion follows. Keep MBPP test/prompt splits and the pilot final families unused in this experiment. Measuring a better improver requires the separate fixed-improvee experiment described in the user's design reference; its $500 plan does not override the project's $250 Modal cap, reservations, or main-chat launch coordination.
 
-## Handoff
+## Remaining limitations and handoff
 
-Owned changes: `rsi/datasets.py`, `tests/test_datasets.py`, this document, and ignored `data/mbpp/` assets. Thirteen local tests passed; immutable downloads, checksums, row counts, and deterministic full-pool generation were verified. No dataset code was executed, no model weights downloaded, no credentials read, no jobs launched, and no Git commit/push performed. Remote reference correctness, supported final counts, manual overlap/category review, and model/training outcomes remain unresolved. Next main-chat milestone: filter the full pools with the converter, audit references remotely under a reservation, review selected descriptions, and freeze exact subsets plus the prospective protocol before base generation.
+Sparse source tests and passing references do not establish arbitrary-input correctness. Automated and manual duplicate review cannot prove semantic separation or preserve every related pilot-final task; dataset-native splits share broad categories. Pretraining contamination is unresolved. Filtering selects a supported subset rather than the standard MBPP benchmark. Retention is a training diagnostic; two adapter seeds share one generated dataset and do not provide independent dataset replication. Task-solving gains would not establish better successor-improvement ability.
+
+Earlier preparation changed `rsi/datasets.py`, `tests/test_datasets.py`, this document, and ignored `data/mbpp/` assets; its 13 local tests passed. This follow-up changed **only this document**, checking saved audit records, selected counts/categories/retention IDs, and frozen manifest/protocol hashes. No dataset code was executed locally, credentials read, jobs launched, or Git commit/push performed by this chat. The main-chat remote reference audit is complete. Model-label yield, training eligibility, baseline/adapter outcomes, and statistical interpretation remain pending main-chat results. Next milestone: complete the frozen base collection, apply the predeclared label-diversity gate, and retain the base if that gate fails.
