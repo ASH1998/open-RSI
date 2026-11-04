@@ -118,3 +118,32 @@ token-limit failures. That check was not a real v2 rescore and produced no saved
 result. The next executable milestone is the main controller's reference audit,
 v2 execution, trusted output scoring, and final call to this helper. This helper
 does not certify those steps in advance.
+
+## Local package 0.1.1
+
+The correction is packaged and installed as `rsilab 0.1.1` in the SSD-local
+`.venv`. Only the package version declarations changed during packaging; the
+evaluator, controller, and audit helper still match the frozen rescore protocol.
+This is a local artifact, with no PyPI release or dependency installation.
+
+- Wheel: `work/rescore-framework-dist/rsilab-0.1.1-py3-none-any.whl` (83,850 bytes).
+- SHA-256: `3b72462b4b0a33101101831a9a2dec38ba335ca4bc97f6f44283719958af66ba`.
+- Explicit source staging: `work/rescore-framework-source/`; the exact allowlist,
+  source hashes, archive inventory, and validation results are recorded in
+  `work/rescore-framework-dist/wheel-audit.json`.
+- The previous `work/framework-dist/rsilab-0.1.0-py3-none-any.whl` is unchanged,
+  retaining SHA-256 `985a5a2a7b27874057a62ae862b1ebc306148cd373a26a30cd2c523538593551`.
+
+Isolated Python checks verified installed core/rescore/v2 imports, version
+metadata, every installed package file's checksum, and the frozen evaluator
+inventory. All 11 rescore tests passed against the installed package with network
+access blocked and no provider or ML-library imports. The shared fixture's
+checkout script adds the project root to Python's import path; the validation
+harness removed that entry before running tests and verified that every loaded
+`rsi`/`rsilab` module came from `.venv` site-packages. The test log is
+`work/rescore-framework-dist/installed-tests.log`.
+
+Packaging alone does not validate remote candidate execution. Main subsequently
+completed the 18 remote calibration checks, 176 reference audit, and all 368 saved
+outcome rescoring. See [the completed correction](MBPP_RESCORE_V2.md). No cloud
+job or training was launched by this package build.

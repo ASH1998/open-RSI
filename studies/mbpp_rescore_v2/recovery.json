@@ -1,0 +1,17 @@
+{
+  "rescore_protocol_sha256": "8cf70679601b44c9a41efb712dbdd44ed6a4a34c4ca0d0d98a19ab489ed70e30",
+  "failed_run_id": "20261104T123311Z-mbpp-rescore-v2-fde935",
+  "failed_report_file_sha256": "7d7a4af6fd68b14cffd8474f047aa2b1e786cd6819ca69596175479341956a7e",
+  "controller_sha256": "d421069e0b369d4b4c6bed0e967d3723407e9256a0dc15704af8475513f2d8c2",
+  "missing_task_ids": [
+    "mbpp-full-648",
+    "mbpp-full-582",
+    "mbpp-full-557"
+  ],
+  "missing_records_sha256": "94bf89a39c35ff21c6d05e92c412ed77c5cf160c0b993134256d43dbea00ab6a",
+  "recovery_reservation_usd": 5,
+  "rescore_total_reservations_usd": 25,
+  "project_cap_usd": 250,
+  "reason": "The seed-43 controller aborted at the infrastructure/invalid-task guard after saving77 of80 outputs. All three missing original task schemas revalidated locally; the unchanged176-reference audit had passed. Underlying exception detail was not persisted by the original controller, so no precise provider cause is asserted. Preserve original failed evidence and retry only missing records.",
+  "preservation": "77 existing rows, original model outputs, evaluator hashes, source tests, failed reservation and failed report artifact v0 stay intact."
+}

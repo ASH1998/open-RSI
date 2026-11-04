@@ -1,5 +1,7 @@
 # MBPP v1 static failure analysis
 
+Subsequent isolated v2 execution confirmed the four hypothesized false-negative outcomes. This original static analysis is preserved; see [the corrected measurement report](MBPP_RESCORE_V2.md) for results.
+
 November 4, 2026. This review reads saved generations, original verification envelopes, frozen source assertions, and verifier source. **No candidate/reference code was executed locally, and no corrected score is claimed.** Preserve the original reports and [original aggregation](../artifacts/mbpp/reports/summary.json); main chat coordinates a separately versioned rescore before further training.
 
 ## Findings requiring evaluator attention

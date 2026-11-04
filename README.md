@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** the MBPP study completed on 128 training and 48 development tasks. Parent development performance was 17/48; two QLoRA adapters scored 16/48 and 15/48, so the original parent is retained. The separate Kaggle baseline scored 8/32. The installable `rsilab` framework provides immutable manifests and strict paired comparisons; 145 integrated tests and 23 isolated package checks passed. No sustained self-improvement has been demonstrated. Updated November 4, 2026.
+**Status:** evaluator v2 rescored all 368 saved MBPP outcomes and corrected four codec false negatives. Development scores are parent **18/48**, adapter seed 42 **17/48**, and seed 43 **16/48**; the original parent is retained. The separate Kaggle baseline is **9/32**. No new generation or training was performed. The local `rsilab 0.1.1` framework and 199 integrated tests are verified. No sustained self-improvement has been demonstrated. Updated November 4, 2026.
 
 ## Workspace and repository
 
@@ -42,4 +42,6 @@ Measured results and W&B evidence: [experiment record](docs/EXPERIMENTS.md). Pro
 
 Current study: [MBPP protocol](studies/mbpp_v1/README.md). Python framework: [installation and API](docs/FRAMEWORK.md). Dataset source/filtering: [MBPP preparation](docs/DATASETS.md).
 
-Latest measured results, budget and handoff: [MBPP experiment record](docs/MBPP_EXPERIMENT.md).
+Original study, training results and checkpoints: [MBPP experiment record](docs/MBPP_EXPERIMENT.md).
+
+Evaluator correction and current scores: [v2 rescore report](docs/MBPP_RESCORE_V2.md). Detailed causes: [failure analysis](docs/MBPP_FAILURE_ANALYSIS.md).

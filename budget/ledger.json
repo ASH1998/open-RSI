@@ -326,6 +326,71 @@
         "app_id": "ap-FU7haYQv9ZqniMhnpz5BMR",
         "wall_seconds": 147.46
       }
+    },
+    {
+      "id": "34d7adbac2324d458e1e0aa883aca843",
+      "stage": "mbpp-rescore-v2",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T12:26:55.619970+00:00",
+      "finished_at": "2026-11-04T12:32:57.110954+00:00",
+      "details": {
+        "run_id": "20261104T122655Z-mbpp-rescore-v2-b59cd6",
+        "app_id": "ap-Sc4sZkRoIs895iOQuOFSQo",
+        "wall_seconds": 361.49
+      }
+    },
+    {
+      "id": "d79c7aeb02fd4a6b9dc8ac2640396bba",
+      "stage": "mbpp-rescore-v2",
+      "reserved_usd": 5.0,
+      "status": "failed",
+      "started_at": "2026-11-04T12:33:11.450812+00:00",
+      "finished_at": "2026-11-04T12:34:50.963153+00:00",
+      "details": {
+        "run_id": "20261104T123311Z-mbpp-rescore-v2-fde935",
+        "error_type": "RuntimeError",
+        "app_id": "ap-gadys8OtoV1g3tKtldelPY"
+      }
+    },
+    {
+      "id": "c0941ad7facf4de18b791f0d2174a704",
+      "stage": "mbpp-rescore-v2",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T12:33:12.091161+00:00",
+      "finished_at": "2026-11-04T12:34:24.354122+00:00",
+      "details": {
+        "run_id": "20261104T123312Z-mbpp-rescore-v2-305931",
+        "app_id": "ap-zG8jFJMWQ1xaIA4PtIN7Cq",
+        "wall_seconds": 72.24
+      }
+    },
+    {
+      "id": "7cb02d875cf64664a6c4ae15e4798574",
+      "stage": "mbpp-rescore-v2",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T12:35:19.161881+00:00",
+      "finished_at": "2026-11-04T12:35:51.564341+00:00",
+      "details": {
+        "run_id": "20261104T123519Z-mbpp-rescore-v2-e501eb",
+        "app_id": "ap-QLkpKeATRW6YGKX9uoSg72",
+        "wall_seconds": 32.39
+      }
+    },
+    {
+      "id": "5f39f6424ac640cc8f0434319fa327a2",
+      "stage": "mbpp-rescore-v2-recovery",
+      "reserved_usd": 5.0,
+      "status": "completed",
+      "started_at": "2026-11-04T12:38:10.436914+00:00",
+      "finished_at": "2026-11-04T12:38:24.997893+00:00",
+      "details": {
+        "run_id": "20261104T123810Z-mbpp-rescore-v2-recovery-54c5e5",
+        "app_id": "ap-fyaAhMP8sHL1bGlvx5Lw8N",
+        "wall_seconds": 14.55
+      }
     }
   ]
 }

@@ -1,6 +1,6 @@
 # rsilab framework foundation
 
-`rsilab` 0.1.0 is an installable, dependency-free Python foundation for recording
+`rsilab` is an installable, dependency-free Python foundation for recording
 and comparing verified agent experiments. It adapts the implemented `rsi` pilot
 task generator and scorer. It does not launch compute, load credentials, train
 models, or implement the reference document's proposed research programme.
@@ -323,3 +323,7 @@ Not implemented: new environments, provider-independent GPU execution, automatic
 operators, authenticated/sealed ledgers, confidence intervals, promotion based
 on evidence, Level 2 experiments, or a reusable distributed controller. These
 remain proposals. Main owns orchestration and subsequent experiment decisions.
+
+## Evaluator correction release
+
+Local package 0.1.1 adds the versioned MBPP evaluator and offline rescore audit while preserving the original 0.1.0 wheel and v1 results. See [rescore API and package validation](RESCORING.md) and [correction experiment](MBPP_RESCORE_V2.md). No PyPI publication or automatic training/promotion is included.

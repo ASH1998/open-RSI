@@ -68,3 +68,7 @@ To reproduce the validated service environment, install `requirements-tools.lock
 See `docs/FRAMEWORK.md` for the SSD-local wheel/install and offline manifest commands. MBPP preparation uses pinned `pyarrow==26.0.1` in the local tool environment. The frozen study launches through `.venv/bin/python -m rsi.study`; inspect `studies/mbpp_v1/protocol.json` and existing run reports before launching to avoid duplicate batches. Only the main chat starts paid stages.
 
 Kaggle's private MBPP worker downloads the public pinned model without secrets. It sends prompts only, saves raw generations, and never executes generated programs. Results return to SSD and are verified in isolated Modal sandboxes. The actual accelerator/precision/package inventory is authoritative: the first submitted NvidiaL4 request ran on Tesla T4, and is reported separately from the L40S paired comparison.
+
+## Rescoring saved MBPP outputs
+
+Evaluator corrections are versioned separately from original studies. The v2 controller is `.venv/bin/python -m rsi.rescore_study`; inspect its frozen protocol and existing arm reports before execution. It uses CPU-only Modal sandboxes, no GPU model invocation. `report` is offline. The original v1 task/compiler/tests remain unchanged, and original scores are retained. See `docs/MBPP_RESCORE_V2.md` and `docs/RESCORING.md` for the data contract and local package 0.1.1.

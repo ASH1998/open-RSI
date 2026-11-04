@@ -1,5 +1,7 @@
 # MBPP v1: verified self-training experiment
 
+Historical v1 scores are preserved below. The separately versioned [evaluator v2 correction](MBPP_RESCORE_V2.md) rescored the same saved outputs; use that record for current corrected scores.
+
 November 4, 2026. This is a filtered-subset engineering experiment, not the standard MBPP leaderboard or a demonstration of recursive self-improvement. The protocol was committed locally as `cb2babe3149808956cd160f62421a31fb2f1a57f` before generation. Both matched evaluations completed; the original parent is retained.
 
 ## Data and fixed comparison

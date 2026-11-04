@@ -1,0 +1,15 @@
+{
+  "observed_at": "2026-11-04T12:39:22.633213+00:00",
+  "provider": "modal",
+  "scope": "Workspace month-to-date summary and known project app filter; billing may lag; not a finalized invoice",
+  "workspace_metered_usd": "1.31054595",
+  "workspace_billed_after_credits_usd": "0.00000000",
+  "project_app_report_rows": 0,
+  "project_invoice_total_usd": null,
+  "project_job_reservations_usd": 150,
+  "overhead_holdback_usd": 25,
+  "unallocated_usd": 75,
+  "project_cap_usd": 250,
+  "correction_reserved_usd": 25,
+  "note": "Billing may lag or be revised. Workspace summary is not project-only or final. Empty app-filtered rows do not imply zero cost. All reservations including the failed attempt remain charged against the planning budget."
+}

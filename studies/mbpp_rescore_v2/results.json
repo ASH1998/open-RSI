@@ -1,0 +1,398 @@
+{
+  "study_sha256": "cde70ffcd2bc5e243587a0c32f4f084457ac446a67c00adbd3522303ec3029ca",
+  "rescore_protocol_sha256": "8cf70679601b44c9a41efb712dbdd44ed6a4a34c4ca0d0d98a19ab489ed70e30",
+  "evaluator": {
+    "version": "mbpp-typed-v2",
+    "source_hashes": {
+      "rsi/mbpp_verification_v2.py": "b4b0d02ffc6ad71b5a33745c895709eb5bb2f3900c6d414f6063a3fe0afc1083",
+      "rsi/mbpp_verification.py": "47efce04acdef807e54a49f1ecbd64942a31baa2ce9e7d7404fd62326e660bc4",
+      "rsi/verification.py": "b6cd4334adf34678f7f35f908a38a14329ca9a81b6b4d557eb4de270868b0db4",
+      "child_source": "860c3c72558a431a07ac76549173b3d9499ba683ad768cc17526062e5380ca1a"
+    }
+  },
+  "total_records": 368,
+  "changes": {
+    "total": 368,
+    "v1_passed": 126,
+    "v2_passed": 130,
+    "net_score_change": 4,
+    "changes": {
+      "fail_to_pass": 4,
+      "pass_to_fail": 0,
+      "unchanged_pass": 126,
+      "unchanged_fail": 238
+    },
+    "preserved_token_limit_failures": 4
+  },
+  "reference_audit": {
+    "run_id": "20261104T122655Z-mbpp-rescore-v2-b59cd6",
+    "passed": true,
+    "count": 176,
+    "calibration_count": 18
+  },
+  "parent_full": {
+    "total": 176,
+    "v1_passed": 63,
+    "v2_passed": 64,
+    "net_score_change": 1,
+    "changes": {
+      "fail_to_pass": 1,
+      "pass_to_fail": 0,
+      "unchanged_pass": 63,
+      "unchanged_fail": 112
+    },
+    "preserved_token_limit_failures": 3,
+    "by_split": {
+      "dev": {
+        "total": 48,
+        "v1_passed": 17,
+        "v2_passed": 18,
+        "net_score_change": 1,
+        "changes": {
+          "fail_to_pass": 1,
+          "pass_to_fail": 0,
+          "unchanged_pass": 17,
+          "unchanged_fail": 30
+        },
+        "preserved_token_limit_failures": 1
+      },
+      "train": {
+        "total": 128,
+        "v1_passed": 46,
+        "v2_passed": 46,
+        "net_score_change": 0,
+        "changes": {
+          "fail_to_pass": 0,
+          "pass_to_fail": 0,
+          "unchanged_pass": 46,
+          "unchanged_fail": 82
+        },
+        "preserved_token_limit_failures": 2
+      }
+    }
+  },
+  "adapters": {
+    "42": {
+      "total": 80,
+      "v1_passed": 28,
+      "v2_passed": 29,
+      "net_score_change": 1,
+      "changes": {
+        "fail_to_pass": 1,
+        "pass_to_fail": 0,
+        "unchanged_pass": 28,
+        "unchanged_fail": 51
+      },
+      "preserved_token_limit_failures": 1,
+      "by_split": {
+        "dev": {
+          "total": 48,
+          "v1_passed": 16,
+          "v2_passed": 17,
+          "net_score_change": 1,
+          "changes": {
+            "fail_to_pass": 1,
+            "pass_to_fail": 0,
+            "unchanged_pass": 16,
+            "unchanged_fail": 31
+          },
+          "preserved_token_limit_failures": 1
+        },
+        "train": {
+          "total": 32,
+          "v1_passed": 12,
+          "v2_passed": 12,
+          "net_score_change": 0,
+          "changes": {
+            "fail_to_pass": 0,
+            "pass_to_fail": 0,
+            "unchanged_pass": 12,
+            "unchanged_fail": 20
+          },
+          "preserved_token_limit_failures": 0
+        }
+      }
+    },
+    "43": {
+      "total": 80,
+      "v1_passed": 27,
+      "v2_passed": 28,
+      "net_score_change": 1,
+      "changes": {
+        "fail_to_pass": 1,
+        "pass_to_fail": 0,
+        "unchanged_pass": 27,
+        "unchanged_fail": 52
+      },
+      "preserved_token_limit_failures": 0,
+      "by_split": {
+        "dev": {
+          "total": 48,
+          "v1_passed": 15,
+          "v2_passed": 16,
+          "net_score_change": 1,
+          "changes": {
+            "fail_to_pass": 1,
+            "pass_to_fail": 0,
+            "unchanged_pass": 15,
+            "unchanged_fail": 32
+          },
+          "preserved_token_limit_failures": 0
+        },
+        "train": {
+          "total": 32,
+          "v1_passed": 12,
+          "v2_passed": 12,
+          "net_score_change": 0,
+          "changes": {
+            "fail_to_pass": 0,
+            "pass_to_fail": 0,
+            "unchanged_pass": 12,
+            "unchanged_fail": 20
+          },
+          "preserved_token_limit_failures": 0
+        }
+      }
+    }
+  },
+  "kaggle": {
+    "total": 32,
+    "v1_passed": 8,
+    "v2_passed": 9,
+    "net_score_change": 1,
+    "changes": {
+      "fail_to_pass": 1,
+      "pass_to_fail": 0,
+      "unchanged_pass": 8,
+      "unchanged_fail": 23
+    },
+    "preserved_token_limit_failures": 0,
+    "by_split": {
+      "dev": {
+        "total": 32,
+        "v1_passed": 8,
+        "v2_passed": 9,
+        "net_score_change": 1,
+        "changes": {
+          "fail_to_pass": 1,
+          "pass_to_fail": 0,
+          "unchanged_pass": 8,
+          "unchanged_fail": 23
+        },
+        "preserved_token_limit_failures": 0
+      }
+    },
+    "matched_modal_arm": false,
+    "interpretation": "Separate saved Kaggle benchmark; not pooled with Modal."
+  },
+  "promoted": false,
+  "training_performed": false,
+  "generation_performed": false,
+  "paired": {
+    "42": {
+      "training_run_id": "20261104T100258Z-mbpp-train-8445eb",
+      "scores": {
+        "v1": {
+          "dev": {
+            "total": 48,
+            "parent_passed": 17,
+            "candidate_passed": 16,
+            "net_success_gain": -1,
+            "lost_parent_successes": 4
+          },
+          "retention": {
+            "total": 32,
+            "parent_passed": 13,
+            "candidate_passed": 12,
+            "net_success_gain": -1,
+            "lost_parent_successes": 1
+          }
+        },
+        "v2": {
+          "dev": {
+            "total": 48,
+            "parent_passed": 18,
+            "candidate_passed": 17,
+            "net_success_gain": -1,
+            "lost_parent_successes": 4
+          },
+          "retention": {
+            "total": 32,
+            "parent_passed": 13,
+            "candidate_passed": 12,
+            "net_success_gain": -1,
+            "lost_parent_successes": 1
+          }
+        }
+      }
+    },
+    "43": {
+      "training_run_id": "20261104T100258Z-mbpp-train-ff538c",
+      "scores": {
+        "v1": {
+          "dev": {
+            "total": 48,
+            "parent_passed": 17,
+            "candidate_passed": 15,
+            "net_success_gain": -2,
+            "lost_parent_successes": 4
+          },
+          "retention": {
+            "total": 32,
+            "parent_passed": 13,
+            "candidate_passed": 12,
+            "net_success_gain": -1,
+            "lost_parent_successes": 1
+          }
+        },
+        "v2": {
+          "dev": {
+            "total": 48,
+            "parent_passed": 18,
+            "candidate_passed": 16,
+            "net_success_gain": -2,
+            "lost_parent_successes": 4
+          },
+          "retention": {
+            "total": 32,
+            "parent_passed": 13,
+            "candidate_passed": 12,
+            "net_success_gain": -1,
+            "lost_parent_successes": 1
+          }
+        }
+      }
+    }
+  },
+  "changed_outcomes": [
+    {
+      "arm": "parent",
+      "task_id": "mbpp-full-568",
+      "v1_passed": false,
+      "v2_passed": true
+    },
+    {
+      "arm": "seed-42",
+      "task_id": "mbpp-full-512",
+      "v1_passed": false,
+      "v2_passed": true
+    },
+    {
+      "arm": "seed-43",
+      "task_id": "mbpp-full-512",
+      "v1_passed": false,
+      "v2_passed": true
+    },
+    {
+      "arm": "kaggle",
+      "task_id": "mbpp-full-568",
+      "v1_passed": false,
+      "v2_passed": true
+    }
+  ],
+  "training_eligibility_unchanged": true,
+  "tracking_url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/gyzdo33g",
+  "grouped_stage_runs": [
+    {
+      "run_id": "20261104T122655Z-mbpp-rescore-v2-b59cd6",
+      "arm": "parent",
+      "sha256": "122ff65632a99affa28239ded421e31dded5de4db73911e671153c45dbad3f97",
+      "wandb_url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/9fczeek0"
+    },
+    {
+      "run_id": "20261104T123312Z-mbpp-rescore-v2-305931",
+      "arm": "seed-42",
+      "sha256": "a5065ded1e6363cee6a0039e660ff1499dcd7dc9a25e2480451f355b9585d3d3",
+      "wandb_url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/sl6baqk4"
+    },
+    {
+      "run_id": "20261104T123311Z-mbpp-rescore-v2-fde935",
+      "arm": "seed-43",
+      "sha256": "02895c08e01b37b1cb466613afc5fa379093c682923529be751e15083dc367ed",
+      "wandb_url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/te4lqd6t"
+    },
+    {
+      "run_id": "20261104T123519Z-mbpp-rescore-v2-e501eb",
+      "arm": "kaggle",
+      "sha256": "1ddd7470f283ae31466d0636ecae2dd743da90692b4985c7e7a5c8736a0b5c8f",
+      "wandb_url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/jllq1l6e"
+    }
+  ],
+  "completion": {
+    "observed_at": "2026-11-04T12:42:15.716548+00:00",
+    "summary_file_sha256": "7c4e5afb443c37d2e03e00529638fcb68c1b129764b48c5bbbf74a6348cad3ae",
+    "budget": {
+      "project_cap_usd": 250,
+      "reserved_for_jobs_usd": 150,
+      "overhead_reserve_usd": 25,
+      "available_for_jobs_usd": 75,
+      "invoice_total_usd": null
+    },
+    "budget_note": "The immutable aggregate budget is the Kaggle-stage snapshot ($145), recorded before recovery. This completion budget includes the additional $5 recovery. Reservations are not invoices.",
+    "correction_reservations_usd": 25,
+    "recovery": {
+      "rescore_protocol_sha256": "8cf70679601b44c9a41efb712dbdd44ed6a4a34c4ca0d0d98a19ab489ed70e30",
+      "failed_run_id": "20261104T123311Z-mbpp-rescore-v2-fde935",
+      "failed_report_file_sha256": "7d7a4af6fd68b14cffd8474f047aa2b1e786cd6819ca69596175479341956a7e",
+      "controller_sha256": "d421069e0b369d4b4c6bed0e967d3723407e9256a0dc15704af8475513f2d8c2",
+      "missing_task_ids": [
+        "mbpp-full-648",
+        "mbpp-full-582",
+        "mbpp-full-557"
+      ],
+      "missing_records_sha256": "94bf89a39c35ff21c6d05e92c412ed77c5cf160c0b993134256d43dbea00ab6a",
+      "recovery_reservation_usd": 5,
+      "rescore_total_reservations_usd": 25,
+      "project_cap_usd": 250,
+      "reason": "The seed-43 controller aborted at the infrastructure/invalid-task guard after saving77 of80 outputs. All three missing original task schemas revalidated locally; the unchanged176-reference audit had passed. Underlying exception detail was not persisted by the original controller, so no precise provider cause is asserted. Preserve original failed evidence and retry only missing records.",
+      "preservation": "77 existing rows, original model outputs, evaluator hashes, source tests, failed reservation and failed report artifact v0 stay intact."
+    },
+    "recovery_run_id": "20261104T123810Z-mbpp-rescore-v2-recovery-54c5e5",
+    "all_correction_apps_stopped": true,
+    "apps": [
+      {
+        "app_id": "ap-fyaAhMP8sHL1bGlvx5Lw8N",
+        "description": "open-rsi-mbpp-v2-recovery",
+        "state": "stopped",
+        "tasks": "0",
+        "created_at": "2026-11-04 18:08:14+05:30",
+        "stopped_at": "2026-11-04 18:08:24+05:30"
+      },
+      {
+        "app_id": "ap-QLkpKeATRW6YGKX9uoSg72",
+        "description": "open-rsi-mbpp-rescore-v2",
+        "state": "stopped",
+        "tasks": "0",
+        "created_at": "2026-11-04 18:05:23+05:30",
+        "stopped_at": "2026-11-04 18:05:51+05:30"
+      },
+      {
+        "app_id": "ap-zG8jFJMWQ1xaIA4PtIN7Cq",
+        "description": "open-rsi-mbpp-rescore-v2",
+        "state": "stopped",
+        "tasks": "0",
+        "created_at": "2026-11-04 18:03:19+05:30",
+        "stopped_at": "2026-11-04 18:04:24+05:30"
+      },
+      {
+        "app_id": "ap-gadys8OtoV1g3tKtldelPY",
+        "description": "open-rsi-mbpp-rescore-v2",
+        "state": "stopped",
+        "tasks": "0",
+        "created_at": "2026-11-04 18:03:17+05:30",
+        "stopped_at": "2026-11-04 18:04:50+05:30"
+      },
+      {
+        "app_id": "ap-Sc4sZkRoIs895iOQuOFSQo",
+        "description": "open-rsi-mbpp-rescore-v2",
+        "state": "stopped",
+        "tasks": "0",
+        "created_at": "2026-11-04 17:57:04+05:30",
+        "stopped_at": "2026-11-04 18:02:56+05:30"
+      }
+    ],
+    "remaining_infrastructure_failures": 0,
+    "original_abort_detail": "The initial seed-43 attempt failed at the infrastructure/invalid-task guard after 77 saved rows. Its underlying exception detail was not persisted, so the exact cause is unknown. The failed report and reservation are preserved. Only three absent rows were retried.",
+    "next_framework_milestone": "Persist infrastructure results before raising and harvest completed futures on abort in a new controller version; preserve the frozen v2 controller for reproducibility."
+  }
+}
