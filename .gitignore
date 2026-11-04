@@ -1,0 +1,32 @@
+# Secrets and machine-local configuration
+.env
+.env.*
+!.env.example
+.config/
+.modal.toml
+.netrc
+kaggle.json
+access_token
+
+# Local dependencies, caches, and generated artifacts
+.venv/
+venv/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+work/
+data/
+models/
+checkpoints/
+runs/
+artifacts/
+wandb/
+*.safetensors
+*.gguf
+*.ckpt
+*.pt
+*.pth
