@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "reservations": [
+    {
+      "id": "31fe6642ad2744549fd9baf26431874e",
+      "stage": "smoke",
+      "reserved_usd": 5.0,
+      "status": "failed",
+      "started_at": "2026-11-04T06:56:17.983913+00:00",
+      "finished_at": "2026-11-04T07:02:07.991059+00:00",
+      "details": {
+        "run_id": "20261104T065617Z-smoke-b13354",
+        "error_type": "RemoteError",
+        "app_id": "ap-vxNr7ax7esIIfXzlriMbm0"
+      }
+    },
+    {
+      "id": "d363e2b7992a419da0c9f0e617fca108",
+      "stage": "smoke",
+      "reserved_usd": 5.0,
+      "status": "reserved",
+      "started_at": "2026-11-04T07:02:36.574490+00:00"
+    }
+  ]
+}

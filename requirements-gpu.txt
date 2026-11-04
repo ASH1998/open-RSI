@@ -1,0 +1,9 @@
+# Provisional Linux/Python 3.12 GPU pins; CUDA compatibility is not yet validated.
+# Modal installs this file. Keep the GPU_PACKAGES audit tuple aligned in the worker.
+# Actual installed direct and transitive versions are recorded per run.
+torch==2.8.0
+transformers==5.22.1
+peft==0.21.2
+accelerate==1.15.0
+bitsandbytes==0.50.2
+safetensors==0.8.0

@@ -71,7 +71,7 @@ Store full weights and bulky training state in persistent storage. W&B can track
 
 Earlier discussion estimated a 24 GB GPU, roughly 32 GB host RAM, and 100 GB disk as a comfortable starting target for a small QLoRA pilot. These are planning targets, not measured requirements for MiniCPM5. Start with a short memory/throughput benchmark; select hardware based on total job cost.
 
-The earlier $100–$300 pilot estimate and 2–4 week engineering estimate are provisional, not authorized spending or delivery commitments. Provider authentication is verified; no budget or account credit balance has been confirmed. Use measured generation, verification, training, and evaluation costs to set the next run's limits.
+The user authorized **$250 total Modal spending for the whole project** on November 4, 2026. An extension requires a separate decision. Provider authentication is verified; account credit balances have not been inspected. The initial controller reserves at most $5 per stage, with $25 held aside for overhead. Reservations persist after failures and are not released based on runtime estimates. See `config/budget.json` and `budget/ledger.json`. The earlier engineering timeline remains an estimate, not a delivery commitment.
 
 1. **Setup:** project-local environment, credentials, immutable model revision, provider smoke tests, and one W&B run.
 2. **Baseline:** independently checked task families, frozen splits, starting-model scores and failure inspection.
@@ -82,6 +82,6 @@ The earlier $100–$300 pilot estimate and 2–4 week engineering estimate are p
 
 ## Open decisions
 
-Exact checkpoint/revision; task sources and licenses; acceptance thresholds and required replication; adapter continuation strategy; GPU sizing; approved cost ceiling; credential/account readiness; and whether Kaggle TPU work has enough value to justify a separate implementation.
+Exact checkpoint/revision; task sources and licenses; acceptance thresholds and required replication; adapter continuation strategy; GPU sizing; billing reconciliation; and whether Kaggle TPU work has enough value to justify a separate implementation.
 
 No claim of successful self-improvement has been measured in this repository yet.

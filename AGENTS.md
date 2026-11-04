@@ -38,6 +38,8 @@ The user explicitly requires all local project work to stay under:
 
 Never commit `.env`, provider credential files, model weights, or raw run data. Inject only each worker's required secrets; generated-code sandboxes should not receive provider control credentials or tracking credentials.
 
-The current request establishes documentation and a GitHub backup. It does not establish a paid experiment budget. Record runtime and cost limits when a future experiment is requested; do not treat the planning estimates as approved spending.
+The user authorized a total Modal project budget of USD 250 on November 4, 2026. Do not exceed it or interpret willingness to extend later as an increase. Reserve each stage through `rsi/budget.py` before launching; initial stage reservations are capped at USD 5, with USD 25 held for overhead. Keep the cumulative ledger in `budget/ledger.json`. Planning reservations are not invoice totals; reconcile with provider billing. All paid launches are coordinated by the main project chat to avoid duplicate spending.
+
+The user prefers visible project chats for parallel work so the record persists in the sidebar. Use project chats when explicitly authorized; give each a disjoint file scope and record assignments in `docs/WORK_LOG.md`. Do not start duplicate paid jobs from parallel chats.
 
 For each handoff, record what was changed, what was actually verified, unresolved assumptions, and the next executable milestone. Do not repeatedly ask the user to reconfirm the settled provider and SSD decisions.

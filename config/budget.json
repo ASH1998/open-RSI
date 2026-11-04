@@ -1,0 +1,20 @@
+{
+  "currency": "USD",
+  "provider": "modal",
+  "project_cap": 250.0,
+  "overhead_reserve": 25.0,
+  "max_stage_reservation": 5.0,
+  "authorized_on": "2026-11-04",
+  "authorization": "User approved $250 for the entire project on Modal. Increases require a separate decision.",
+  "rates_checked_on": "2026-11-04",
+  "rates_source": "https://modal.com/pricing",
+  "rates_per_second": {
+    "L4": 0.000222,
+    "cpu_core": 1.31e-05,
+    "memory_gib": 2.22e-06,
+    "sandbox_cpu_core": 3.942e-05,
+    "sandbox_memory_gib": 6.67e-06,
+    "A10": 0.000306
+  },
+  "notes": "Reservations conservatively consume the budget even on failures. They are not invoice totals. No account-level billing limit has been configured. The overhead reserve covers image builds, cold starts, egress, and retained storage; reconcile with Modal billing before sustained use."
+}
