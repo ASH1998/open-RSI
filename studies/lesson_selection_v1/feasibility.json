@@ -1,0 +1,90 @@
+{
+  "available_usd": 6.0,
+  "budget_ledger_sha256": "2e034c13b8b091127dcacf0830a11791f23bcb3c6d9ae094b6a35cdcdd44258f",
+  "bundle_checks": {
+    "723": {
+      "bundle_sha256": "d0a9e8f5a5dc3adbb674178d91143c470309d516d96e0c1d856e07bdeb837837",
+      "processed_tokens_per_pass": 1339,
+      "supervised_tokens_per_pass": 243
+    },
+    "811": {
+      "bundle_sha256": "e673e95cb75139775d70a5879b89633ac454e1b7354cad6816fabe2689e8d544",
+      "processed_tokens_per_pass": 1338,
+      "supervised_tokens_per_pass": 240
+    }
+  },
+  "decision": "stop",
+  "exposure_inventory": {
+    "mbpp": 287,
+    "ordered_rows_sha256": "e3aeb4c84914a0b621c5781d9175c3e001ba25ceec993b7bcd92da52b9638226",
+    "total": 317
+  },
+  "max_possible_net_fresh_gain": 1,
+  "overhead_usd": 25.0,
+  "proposed_min_net_fresh_gain": 3,
+  "reasons": [
+    "fresh_task_ceiling_below_proposed_net_gain",
+    "historical_stage_reservations_exceed_available_budget"
+  ],
+  "remaining_development_ids": [
+    "mbpp-full-575"
+  ],
+  "reservation_scenario_total_usd": 15,
+  "reservation_scenario_usd": {
+    "baseline": 4,
+    "child-learned": 5,
+    "child-original": 5,
+    "worker-probe": 1
+  },
+  "reserved_jobs_usd": 219.0,
+  "shortfall_vs_scenario_usd": 9.0,
+  "stage": "offline_feasibility",
+  "study": "lesson-selection-v1",
+  "validation_screen": [
+    {
+      "disposition": "quarantine_for_fresh_comparison",
+      "exposed_task": "mbpp-full-918",
+      "id": "mbpp-full-531",
+      "matching_native_inputs": [
+        {
+          "args": [
+            [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            6,
+            9
+          ],
+          "combination_count": 2,
+          "minimum_coins": 1
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            3,
+            4
+          ],
+          "combination_count": 4,
+          "minimum_coins": 2
+        }
+      ],
+      "native_cases": 3,
+      "new_checks": 3
+    },
+    {
+      "bounded_reference_cases": 3522,
+      "disposition": "retain_for_bounded_development",
+      "id": "mbpp-full-575",
+      "native_cases": 3,
+      "new_checks": 3
+    }
+  ]
+}

@@ -52,4 +52,6 @@ Completed verified-data experiment: [verified-data SFT protocol](studies/verifie
 
 Latest model comparison: [sampling, repair and matched students](docs/REPAIR_EXPERIMENT.md). Project job reservations are $219, with $25 held for overhead and $6 unallocated.
 
+The [offline lesson audit](studies/lesson_selection_v1/README.md) compares the examples actually used by both children and provides a matched MBPP-only lesson-selection dry run.
+
 Completed successor probe: [recovery protocol](studies/successor_recovery_v3/README.md), [measurement contract](docs/SUCCESSOR_MEASUREMENT.md), and [portable Modal workers](docs/PORTABLE_MODAL.md).

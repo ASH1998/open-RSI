@@ -1,0 +1,1190 @@
+{
+  "checkpoint_examples_sha256": {
+    "learned": "c5b4d4be91ca542237b44faed65d0085877cb817566bb057c48d70c737555b53",
+    "original": "6892b8ea2392461277c92fb240bb7b7ebdf8d71ec314739222094c2ec8d913e6"
+  },
+  "comparison_counts": {
+    "different_ast": 8,
+    "learned_only": 2,
+    "original_only": 2,
+    "same_ast": 6
+  },
+  "diagnostic_input_count": 22,
+  "labels_reviewed": 32,
+  "lessons": [
+    {
+      "arms": {
+        "original": {
+          "ast_sha256": "abac0b21db0a2712f0ad420596830edfe57a3658392f127a29757b8ed0424f38",
+          "attempt": "repair",
+          "code_sha256": "c816bf76c96773a534b7f1d0eaa4e858d279827dae5c6b7605263fddca2b2f48",
+          "supervised_tokens": 299
+        }
+      },
+      "comparison": "original_only",
+      "id": "apps-train-3038",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "str",
+                "cabbacb"
+              ]
+            ]
+          ],
+          "expected": [
+            "str",
+            "c"
+          ]
+        }
+      ],
+      "static_review": "Original alone selected a repair that ranks positional span, then alphabetic order. It replaced a frequency heuristic."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "7b86276872a4246af8779e54ade8f06d045501cefec3753816d673b33844c074",
+          "attempt": "first",
+          "code_sha256": "212dd6791d3d79237ec9a072ad2007cc8205ea64ce00f99cf8fef94bbf5a99a2",
+          "supervised_tokens": 97
+        },
+        "original": {
+          "ast_sha256": "c2ccf23dec05b5dcb284e844f6f3aec92006bf5c4380742d234534c9de0769c7",
+          "attempt": "first",
+          "code_sha256": "a6cf75fe40fdb4114dc084568415bc5c4713334a6360ace3997b4dc8e779096a",
+          "supervised_tokens": 85
+        }
+      },
+      "comparison": "different_ast",
+      "id": "apps-train-3041",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "str",
+                " -7a!E?i"
+              ]
+            ]
+          ],
+          "expected": [
+            "str",
+            "7 a e i"
+          ]
+        }
+      ],
+      "static_review": "Both clean the ASCII sentence, lowercase letters, and split at each vowel. They differ in the order of cleaning and lowercasing."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "b3b6bf4d334123cbb4303fab24aa225be3dd94b63fd0e732094a4c7e93d9a3c7",
+          "attempt": "first",
+          "code_sha256": "16eae50b72dbdd2b50c4543edd41ee5fe98729385d5028d88e55fde7b1f8e669",
+          "supervised_tokens": 37
+        }
+      },
+      "comparison": "learned_only",
+      "id": "apps-train-3080",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "str",
+                " A "
+              ]
+            ]
+          ],
+          "expected": [
+            "list",
+            [
+              [
+                "str",
+                " A "
+              ],
+              [
+                "str",
+                " A"
+              ]
+            ]
+          ]
+        }
+      ],
+      "static_review": "Learned alone selected a full name and, for length above two, its two-character prefix."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "17f4624b7fef3265aa62912951f286c0f9511e3b87e398d13fc3f20c32dd02ad",
+          "attempt": "first",
+          "code_sha256": "716395229eb641d483a28a6600946e53f669c3c0278aaeb49ee80231963ef976",
+          "supervised_tokens": 29
+        },
+        "original": {
+          "ast_sha256": "17f4624b7fef3265aa62912951f286c0f9511e3b87e398d13fc3f20c32dd02ad",
+          "attempt": "first",
+          "code_sha256": "716395229eb641d483a28a6600946e53f669c3c0278aaeb49ee80231963ef976",
+          "supervised_tokens": 29
+        }
+      },
+      "comparison": "same_ast",
+      "id": "mbpp-full-662",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "dict",
+                [
+                  [
+                    [
+                      "str",
+                      "a"
+                    ],
+                    [
+                      "list",
+                      [
+                        [
+                          "int",
+                          -1
+                        ],
+                        [
+                          "int",
+                          -3
+                        ],
+                        [
+                          "int",
+                          -1
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      "str",
+                      "b"
+                    ],
+                    [
+                      "list",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "expected": [
+            "dict",
+            [
+              [
+                [
+                  "str",
+                  "a"
+                ],
+                [
+                  "list",
+                  [
+                    [
+                      "int",
+                      -3
+                    ],
+                    [
+                      "int",
+                      -1
+                    ],
+                    [
+                      "int",
+                      -1
+                    ]
+                  ]
+                ]
+              ],
+              [
+                [
+                  "str",
+                  "b"
+                ],
+                [
+                  "list",
+                  []
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "static_review": "Both sort each dictionary value and build a plain dictionary."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "43d1847067021db739eb406e40944dcb213459f0dd4e5ae111422019f6c20fc4",
+          "attempt": "first",
+          "code_sha256": "a5314a1d04674f765e66f2eb492015feb8c171c849127e839fd9de4f75d42a2b",
+          "supervised_tokens": 133
+        },
+        "original": {
+          "ast_sha256": "6d49f12fcd37d22654c44a3542bf2e1fcfef21538ab8b7c0d8ad71d5ded3b612",
+          "attempt": "first",
+          "code_sha256": "eef45aa891af053e85c71e0a163a795ee7abf8dc947aea684de40bd0ceb89fbb",
+          "supervised_tokens": 114
+        }
+      },
+      "comparison": "different_ast",
+      "id": "mbpp-full-663",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "int",
+                4
+              ],
+              [
+                "int",
+                1
+              ],
+              [
+                "int",
+                1
+              ]
+            ]
+          ],
+          "expected": [
+            "int",
+            -1
+          ]
+        },
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "int",
+                4
+              ],
+              [
+                "int",
+                1
+              ],
+              [
+                "int",
+                0
+              ]
+            ]
+          ],
+          "expected": [
+            "int",
+            4
+          ]
+        },
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "int",
+                0
+              ],
+              [
+                "int",
+                1
+              ],
+              [
+                "int",
+                2
+              ]
+            ]
+          ],
+          "expected": [
+            "int",
+            -1
+          ]
+        }
+      ],
+      "static_review": "Both return n for x=1 and y>0. Original otherwise computes a residue directly; learned scans down from n."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "126dd5b3ada569a22bff127ef288439327b08234157b56c07de93e75126170fa",
+          "attempt": "repair",
+          "code_sha256": "bb7bb43ca81bdb9a9181ad1c3a96a07082fac4f51973adcbc2f1e515316a91e3",
+          "supervised_tokens": 40
+        },
+        "original": {
+          "ast_sha256": "b927601f3b936dc789c6319ce4bf33b24a9e49b1f93f2093732e69d63b8d5c8d",
+          "attempt": "first",
+          "code_sha256": "145b12153d1f20837a8622cfb0113116b797bf230f9b41c349af49bfb9decb73",
+          "supervised_tokens": 34
+        }
+      },
+      "comparison": "different_ast",
+      "id": "mbpp-full-664",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "int",
+                14
+              ]
+            ]
+          ],
+          "expected": [
+            "int",
+            8
+          ]
+        }
+      ],
+      "static_review": "Original averages the range with statistics.mean. Learned repair divides the sum by the actual number of terms. For even n>=2 the mean is integral."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "4b0a7cd1d1c59daaebf3b3452e381e9502d1905687b02cceb2de58e5a4de0493",
+          "attempt": "first",
+          "code_sha256": "99d09856711f3c8d9a71fcae1b5194ad9533999f34d8344a55afd16473997851",
+          "supervised_tokens": 23
+        },
+        "original": {
+          "ast_sha256": "8de64f5fe246b331f86ef9632a803d70fdfae56e57d8064289b95e00f064d809",
+          "attempt": "first",
+          "code_sha256": "dfa9e7fbb77a94786ed42e4bfc9f1d7526480f7f7d1868de257842bfddd4450a",
+          "supervised_tokens": 25
+        }
+      },
+      "comparison": "different_ast",
+      "id": "mbpp-full-688",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "int",
+                8
+              ],
+              [
+                "int",
+                -15
+              ]
+            ]
+          ],
+          "expected": [
+            "float",
+            17.0
+          ]
+        }
+      ],
+      "static_review": "Both use hypot on the two components. Original explicitly casts the result to float."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "46828360b51ab80ff5f19439d206095fc126eef51a6620726c34ce43b060e954",
+          "attempt": "first",
+          "code_sha256": "9b2a920a0756dc7516a634172a3e0260c3ee81c339b3d9a1c50c34ad518ee531",
+          "supervised_tokens": 29
+        },
+        "original": {
+          "ast_sha256": "4b65051148ca0279ba3907d798fbf8335a74c4e041eb6eab3808e5fb045fdb66",
+          "attempt": "first",
+          "code_sha256": "93f84f63aa357f61cf90192af9015b639ee2a0c211218664d8623c41db39a8c3",
+          "supervised_tokens": 24
+        }
+      },
+      "comparison": "different_ast",
+      "id": "mbpp-full-694",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "dict",
+                [
+                  [
+                    [
+                      "str",
+                      "a"
+                    ],
+                    [
+                      "list",
+                      [
+                        [
+                          "int",
+                          0
+                        ],
+                        [
+                          "int",
+                          -2
+                        ],
+                        [
+                          "int",
+                          -2
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      "str",
+                      "b"
+                    ],
+                    [
+                      "list",
+                      [
+                        [
+                          "int",
+                          -2
+                        ],
+                        [
+                          "int",
+                          -1
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      "str",
+                      "c"
+                    ],
+                    [
+                      "list",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "expected": [
+            "list",
+            [
+              [
+                "int",
+                -2
+              ],
+              [
+                "int",
+                -1
+              ],
+              [
+                "int",
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "static_review": "Both union all value lists then sort. The learned guard for an empty mapping gives the same empty result."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "0f829c74c58a3b4165a561353749493d4ee545fe72f92bf116ad442f6e8e4860",
+          "attempt": "first",
+          "code_sha256": "8cd0d0a967c7b1eb490bdec9e4be16162bcb5b82da7849f705b0c40a1a1b7d75",
+          "supervised_tokens": 32
+        },
+        "original": {
+          "ast_sha256": "0f829c74c58a3b4165a561353749493d4ee545fe72f92bf116ad442f6e8e4860",
+          "attempt": "first",
+          "code_sha256": "8cd0d0a967c7b1eb490bdec9e4be16162bcb5b82da7849f705b0c40a1a1b7d75",
+          "supervised_tokens": 32
+        }
+      },
+      "comparison": "same_ast",
+      "id": "mbpp-full-696",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "list",
+                [
+                  [
+                    "list",
+                    []
+                  ],
+                  [
+                    "list",
+                    [
+                      [
+                        "int",
+                        0
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "list",
+                [
+                  [
+                    "list",
+                    [
+                      [
+                        "int",
+                        9
+                      ]
+                    ]
+                  ],
+                  [
+                    "list",
+                    [
+                      [
+                        "int",
+                        8
+                      ]
+                    ]
+                  ],
+                  [
+                    "list",
+                    [
+                      [
+                        "int",
+                        7
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "expected": [
+            "list",
+            [
+              [
+                "list",
+                [
+                  [
+                    "int",
+                    9
+                  ]
+                ]
+              ],
+              [
+                "list",
+                [
+                  [
+                    "int",
+                    0
+                  ],
+                  [
+                    "int",
+                    8
+                  ]
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "static_review": "Both concatenate aligned inner lists using zip, stopping at the shorter input."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "718a6b57ac7d172bbb4765bbbe072a47ce92d2a32f99d498a99993e5715391bd",
+          "attempt": "first",
+          "code_sha256": "15c9e4f8aedd31c09290eed6999a3dff9cfd3cfb4e67fc14ada9ab175d30baa7",
+          "supervised_tokens": 41
+        }
+      },
+      "comparison": "learned_only",
+      "id": "mbpp-full-723",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "list",
+                [
+                  [
+                    "int",
+                    1
+                  ],
+                  [
+                    "int",
+                    1
+                  ],
+                  [
+                    "int",
+                    2
+                  ],
+                  [
+                    "int",
+                    3
+                  ]
+                ]
+              ],
+              [
+                "list",
+                [
+                  [
+                    "int",
+                    2
+                  ],
+                  [
+                    "int",
+                    1
+                  ],
+                  [
+                    "int",
+                    1
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "expected": [
+            "int",
+            1
+          ]
+        }
+      ],
+      "static_review": "Learned alone selected the positional equality count via zip. This is distinct from unordered count or membership."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "02cc5800963636533970284d30ed08cf2ac6f0156491917077ef7d5ac606b311",
+          "attempt": "first",
+          "code_sha256": "0c7aecc7b6c481bffff3c76e906c997d1af8289596600056c34453d0c39d5df3",
+          "supervised_tokens": 146
+        },
+        "original": {
+          "ast_sha256": "37c708a4a85ff5f3babc7780c264c8b3bd31e260df53eaec1df57597ad8ebf57",
+          "attempt": "first",
+          "code_sha256": "be6cdf4b5963982df1a3ef558112f11f21af9ef828db63ecac95b67ff58ab289",
+          "supervised_tokens": 211
+        }
+      },
+      "comparison": "different_ast",
+      "id": "mbpp-full-739",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "int",
+                7
+              ]
+            ]
+          ],
+          "expected": [
+            "int",
+            1414
+          ]
+        },
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "int",
+                8
+              ]
+            ]
+          ],
+          "expected": [
+            "int",
+            4472
+          ]
+        }
+      ],
+      "static_review": "Original binary-searches triangular numbers; learned uses the inverse quadratic formula. Integer thresholds can be checked on the full stated domain 1..9."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "0a51cb325a316590a02dc1efb860d881268dc93e16fb5179d870a884e4874bdf",
+          "attempt": "first",
+          "code_sha256": "ec1928001f6af38f7c9217f983bcad94b6d703f2246fe6d335c29a0f4d8f3017",
+          "supervised_tokens": 34
+        },
+        "original": {
+          "ast_sha256": "0a51cb325a316590a02dc1efb860d881268dc93e16fb5179d870a884e4874bdf",
+          "attempt": "first",
+          "code_sha256": "ec1928001f6af38f7c9217f983bcad94b6d703f2246fe6d335c29a0f4d8f3017",
+          "supervised_tokens": 34
+        }
+      },
+      "comparison": "same_ast",
+      "id": "mbpp-full-744",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "tuple",
+                [
+                  [
+                    "tuple",
+                    []
+                  ],
+                  [
+                    "bool",
+                    false
+                  ],
+                  [
+                    "tuple",
+                    [
+                      [
+                        "none",
+                        null
+                      ]
+                    ]
+                  ],
+                  [
+                    "none",
+                    null
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "expected": [
+            "bool",
+            true
+          ]
+        }
+      ],
+      "static_review": "Both test top-level identity with None and stop at the first match."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "8fd23499c6e6f88bf56ba87fd1deaa079f3828d2742e5d1a22dedb2a8f65cb48",
+          "attempt": "first",
+          "code_sha256": "ad9c7eb3f68a60419df6b70dba63c538941ce096202d890810e694723e0cd38d",
+          "supervised_tokens": 32
+        },
+        "original": {
+          "ast_sha256": "8fd23499c6e6f88bf56ba87fd1deaa079f3828d2742e5d1a22dedb2a8f65cb48",
+          "attempt": "first",
+          "code_sha256": "ad9c7eb3f68a60419df6b70dba63c538941ce096202d890810e694723e0cd38d",
+          "supervised_tokens": 32
+        }
+      },
+      "comparison": "same_ast",
+      "id": "mbpp-full-759",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "str",
+                "1.00 "
+              ]
+            ]
+          ],
+          "expected": [
+            "bool",
+            false
+          ]
+        },
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "str",
+                ".01"
+              ]
+            ]
+          ],
+          "expected": [
+            "bool",
+            false
+          ]
+        }
+      ],
+      "static_review": "Both use a whole-string decimal pattern. The contract restricts the input to single-line ASCII."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "a341d58de21c6e42f7d91c47eb8735ce33da0dba9a32cdca08aae46007f8f1d4",
+          "attempt": "first",
+          "code_sha256": "b062f7214d52f0cadd144d4fa0c1c7a3f37515f7e556e6188f4d20b51aae7f97",
+          "supervised_tokens": 18
+        },
+        "original": {
+          "ast_sha256": "a341d58de21c6e42f7d91c47eb8735ce33da0dba9a32cdca08aae46007f8f1d4",
+          "attempt": "first",
+          "code_sha256": "b062f7214d52f0cadd144d4fa0c1c7a3f37515f7e556e6188f4d20b51aae7f97",
+          "supervised_tokens": 18
+        }
+      },
+      "comparison": "same_ast",
+      "id": "mbpp-full-796",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "dict",
+                [
+                  [
+                    [
+                      "str",
+                      "a"
+                    ],
+                    [
+                      "int",
+                      2
+                    ]
+                  ],
+                  [
+                    [
+                      "str",
+                      "b"
+                    ],
+                    [
+                      "int",
+                      -6
+                    ]
+                  ],
+                  [
+                    [
+                      "str",
+                      "c"
+                    ],
+                    [
+                      "int",
+                      2
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "expected": [
+            "int",
+            -2
+          ]
+        }
+      ],
+      "static_review": "Both sum dictionary values, including signed integers."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "90fd8b11d9b4a57fbb1df3e21c679e44551a70cdb06538894c4dde7a2356c446",
+          "attempt": "first",
+          "code_sha256": "202ee170c084224d07e3cdd0672d716bb1dcf1379b772d734ca4339b893f7fdd",
+          "supervised_tokens": 26
+        },
+        "original": {
+          "ast_sha256": "90fd8b11d9b4a57fbb1df3e21c679e44551a70cdb06538894c4dde7a2356c446",
+          "attempt": "first",
+          "code_sha256": "202ee170c084224d07e3cdd0672d716bb1dcf1379b772d734ca4339b893f7fdd",
+          "supervised_tokens": 26
+        }
+      },
+      "comparison": "same_ast",
+      "id": "mbpp-full-805",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "list",
+                [
+                  [
+                    "list",
+                    [
+                      [
+                        "int",
+                        -5
+                      ]
+                    ]
+                  ],
+                  [
+                    "list",
+                    [
+                      [
+                        "int",
+                        -3
+                      ],
+                      [
+                        "int",
+                        -2
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "expected": [
+            "list",
+            [
+              [
+                "int",
+                -5
+              ]
+            ]
+          ]
+        }
+      ],
+      "static_review": "Both use max with the sum as key, preserving the first list on ties."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "4b7562438e53d262842e9a4e11b0b4c9497a11263f514ba1ff2065d961ebda4c",
+          "attempt": "first",
+          "code_sha256": "62da77e2b50460e7e540f2a3ca4f181926aea02db86da9fe0009a4f3cf3e6179",
+          "supervised_tokens": 38
+        },
+        "original": {
+          "ast_sha256": "cb2946b9b219711addfabdafd71fda70370668e6eb20169b652e990354c10c67",
+          "attempt": "first",
+          "code_sha256": "3fd4c9f30b50cead3e575d4a0866bf53c90013928273a132a9bfe691ef95aef7",
+          "supervised_tokens": 34
+        }
+      },
+      "comparison": "different_ast",
+      "id": "mbpp-full-811",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "list",
+                [
+                  [
+                    "tuple",
+                    [
+                      [
+                        "int",
+                        1
+                      ],
+                      [
+                        "int",
+                        2
+                      ]
+                    ]
+                  ],
+                  [
+                    "tuple",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "list",
+                [
+                  [
+                    "tuple",
+                    [
+                      [
+                        "int",
+                        1
+                      ],
+                      [
+                        "int",
+                        2
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "expected": [
+            "bool",
+            false
+          ]
+        }
+      ],
+      "static_review": "Original compares deques; learned compares lengths and lists directly. Both preserve outer and inner order on the stated inputs."
+    },
+    {
+      "arms": {
+        "learned": {
+          "ast_sha256": "580c615886915f7a884240a8b734d2f2398f248733c52f13790d7aafcf5b2022",
+          "attempt": "first",
+          "code_sha256": "e23ca5f1395a0334d450156737d49a7ea3811704ec1570e94abe0b54c0769c89",
+          "supervised_tokens": 26
+        },
+        "original": {
+          "ast_sha256": "e8bfc13e18a9b39b2bb83016865c30d1582369ff0606a76746997ec44c3961e4",
+          "attempt": "first",
+          "code_sha256": "79f984286d6813a8078eb56a8d88cd4f7e7a8624b810cbcfd3f9f1d429b792de",
+          "supervised_tokens": 36
+        }
+      },
+      "comparison": "different_ast",
+      "id": "mbpp-full-832",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "str",
+                "09-010.8"
+              ]
+            ]
+          ],
+          "expected": [
+            "int",
+            10
+          ]
+        }
+      ],
+      "static_review": "Both parse maximal ASCII digit runs and take the maximum integer. The original fallback is unreachable on inputs with at least one digit."
+    },
+    {
+      "arms": {
+        "original": {
+          "ast_sha256": "3e63f0807ab4b20fa94d07c643ce8c3d4cf7e0f34851e924552d37017ff26728",
+          "attempt": "first",
+          "code_sha256": "2f2ec3f07fd4b1079516bac1221e574368df020c3c1dd8c8d0c8e8e25471f268",
+          "supervised_tokens": 71
+        }
+      },
+      "comparison": "original_only",
+      "id": "mbpp-full-936",
+      "reference_checked_inputs": [
+        {
+          "args": [
+            "tuple",
+            [
+              [
+                "list",
+                [
+                  [
+                    "tuple",
+                    [
+                      [
+                        "int",
+                        7
+                      ],
+                      [
+                        "int",
+                        2
+                      ]
+                    ]
+                  ],
+                  [
+                    "tuple",
+                    [
+                      [
+                        "int",
+                        5
+                      ],
+                      [
+                        "int",
+                        1
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "list",
+                [
+                  [
+                    "int",
+                    5
+                  ],
+                  [
+                    "int",
+                    7
+                  ],
+                  [
+                    "int",
+                    5
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "expected": [
+            "list",
+            [
+              [
+                "tuple",
+                [
+                  [
+                    "int",
+                    5
+                  ],
+                  [
+                    "int",
+                    1
+                  ]
+                ]
+              ],
+              [
+                "tuple",
+                [
+                  [
+                    "int",
+                    7
+                  ],
+                  [
+                    "int",
+                    2
+                  ]
+                ]
+              ],
+              [
+                "tuple",
+                [
+                  [
+                    "int",
+                    5
+                  ],
+                  [
+                    "int",
+                    1
+                  ]
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "static_review": "Original alone maps each unique key to its row and replays the request order, retaining repeated requests."
+    }
+  ],
+  "paired_sha256": "cf3377cda9293317a803697f334b80d4de8d0d20f99ab2701a29364e9077fae3",
+  "parent_plan_sha256": "eaca8b38e8600715acb63fa5be57da5c178f5f607f451449a04662c22550ce7e",
+  "study": "lesson-selection-v1-offline-audit",
+  "token_accounting": {
+    "learned": {
+      "dataset_supervised_tokens": 781,
+      "processed_tokens": 12148,
+      "supervised_tokens": 3124
+    },
+    "original": {
+      "dataset_supervised_tokens": 1104,
+      "processed_tokens": 13456,
+      "supervised_tokens": 4416
+    }
+  }
+}

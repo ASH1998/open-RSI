@@ -1,0 +1,116 @@
+{
+  "study": "lesson-pair-v1",
+  "status": "exploratory",
+  "historical_plan": "eaca8b38e8600715acb63fa5be57da5c178f5f607f451449a04662c22550ce7e",
+  "probe": [
+    "20261105T163348Z-repair-v1-worker-probe-3b908549",
+    "600d0b2c630ffd82cb8e7f6c92343cdfb8fdfe69eeedbc2144459912efb52485"
+  ],
+  "baseline": [
+    "20261105T163427Z-repair-v1-baseline-78a59c92",
+    "4c37f35cd3edb253c918e1c2e0cdc7abb1d525eb8665d8b8e61f12ce31312c94"
+  ],
+  "paired_data_sha256": "cf3377cda9293317a803697f334b80d4de8d0d20f99ab2701a29364e9077fae3",
+  "model": {
+    "model_id": "openbmb/MiniCPM5-2B",
+    "revision": "f97400052a43d642bbc6e9975e2397e3ae6a6b52"
+  },
+  "training": {
+    "seed": 42,
+    "learning_rate": 2e-05,
+    "gradient_accumulation": 4,
+    "max_length": 2048,
+    "max_steps": 16
+  },
+  "generation": {
+    "seed": 42,
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "max_input_tokens": 2048
+  },
+  "arms": {
+    "a": {
+      "bundle_sha256": "d0a9e8f5a5dc3adbb674178d91143c470309d516d96e0c1d856e07bdeb837837",
+      "task_ids": [
+        "mbpp-full-662",
+        "mbpp-full-664",
+        "mbpp-full-688",
+        "mbpp-full-744",
+        "mbpp-full-759",
+        "mbpp-full-796",
+        "mbpp-full-832",
+        "mbpp-full-723"
+      ],
+      "examples_sha256": "0d7a11a94eec9751ef9a0b904d68f5ccd36c31f2e78d7dc4d4537718abc279d8",
+      "tokens": {
+        "processed_tokens": 10712,
+        "supervised_tokens": 1944,
+        "dataset_supervised_tokens": 243
+      }
+    },
+    "b": {
+      "bundle_sha256": "e673e95cb75139775d70a5879b89633ac454e1b7354cad6816fabe2689e8d544",
+      "task_ids": [
+        "mbpp-full-662",
+        "mbpp-full-664",
+        "mbpp-full-688",
+        "mbpp-full-744",
+        "mbpp-full-759",
+        "mbpp-full-796",
+        "mbpp-full-832",
+        "mbpp-full-811"
+      ],
+      "examples_sha256": "52633171c5ef15c37d60a8eb6d0d4cf3bd3cda0c7a0b8c2f6198e1f97d5a4b14",
+      "tokens": {
+        "processed_tokens": 10704,
+        "supervised_tokens": 1920,
+        "dataset_supervised_tokens": 240
+      }
+    }
+  },
+  "arm_order": [
+    "a",
+    "b"
+  ],
+  "reservation_per_arm": 3,
+  "max_gpu_calls_per_arm": 2,
+  "max_direct_compute_usd_per_arm": 2.922164,
+  "evaluation_ids": [
+    "mbpp-full-626",
+    "mbpp-full-644",
+    "mbpp-full-679",
+    "mbpp-full-717",
+    "mbpp-full-780",
+    "mbpp-full-915",
+    "mbpp-full-938",
+    "mbpp-full-950",
+    "mbpp-full-575",
+    "mbpp-full-742",
+    "mbpp-full-890",
+    "mbpp-full-711",
+    "mbpp-full-835",
+    "mbpp-full-771",
+    "mbpp-full-686",
+    "mbpp-full-854",
+    "mbpp-full-621",
+    "mbpp-full-873",
+    "mbpp-full-715",
+    "mbpp-full-849",
+    "mbpp-full-861",
+    "mbpp-full-898",
+    "mbpp-full-665",
+    "mbpp-full-616",
+    "mbpp-full-648"
+  ],
+  "evaluation_sha256": "2b62ab4449c9bd85a28493195fae251cdaa720f8dd0e1228f616726c7edb4324",
+  "source_files": {
+    "studies/lesson_pair_v1/experiment.py": "1252f603763bf0bc84e00155df314f84ee8b49d24a93e94a884a0ffbffdc056f",
+    "studies/lesson_pair_v1/README.md": "ca3e484b6eee03ad766248f99b819c4f7d72b22c65596d34b904877dd221f6ca",
+    "studies/lesson_selection_v1/dry_run.py": "0c2c7a0455a2a6b702a915713d775607eba9747d28727b108ba9cbc12bb59f4c",
+    "studies/lesson_selection_v1/screen_validation.py": "22228178d1bd82022660389cf2f4d2d0ea36a0ee4912486fdff09ec4057a2abb",
+    "studies/lesson_selection_v1/audit.py": "70355119385cb7278d3eb929b86c2e8c756149227645da02d4798c93f0876bef",
+    "studies/lesson_selection_v1/audit.json": "286015df792f3b3d7b673424760f7d441c732c7c5122b848fcfa083f09552c48"
+  },
+  "promotion_allowed": false,
+  "sha256": "73cc79b2be12d046ced88ee3653ce431e30a00ab2bd6f6a31c8feecf5f74c02b"
+}
