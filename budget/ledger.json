@@ -628,6 +628,34 @@
         "error_type": null,
         "app_id": "ap-Tz09SStwHJ7D960Gst17cv"
       }
+    },
+    {
+      "id": "025c1248432546e99048940bb6476fde",
+      "stage": "lesson-pair-v1-a",
+      "reserved_usd": 3,
+      "status": "completed",
+      "started_at": "2026-11-05T18:02:52.544688+00:00",
+      "finished_at": "2026-11-05T18:07:44.430407+00:00",
+      "details": {
+        "run_id": "20261105T180252Z-lesson-pair-v1-a-24e20e36",
+        "wall_seconds": 284.17269249999663,
+        "error_type": null,
+        "app_id": "ap-k96IADq13xbJNLG59QCUXG"
+      }
+    },
+    {
+      "id": "cb28b0c5804449d084cf09ff20798484",
+      "stage": "lesson-pair-v1-b",
+      "reserved_usd": 3,
+      "status": "completed",
+      "started_at": "2026-11-05T18:08:07.757266+00:00",
+      "finished_at": "2026-11-05T18:16:53.810570+00:00",
+      "details": {
+        "run_id": "20261105T180807Z-lesson-pair-v1-b-c83df5a7",
+        "wall_seconds": 519.2463876669935,
+        "error_type": null,
+        "app_id": "ap-hwlDZoc87UxQ5FyPZG530P"
+      }
     }
   ]
 }

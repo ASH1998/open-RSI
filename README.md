@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** completed a matched successor training experiment with `rsilab 0.6.0`. Feedback repair produced 19/24 verified targets for the original teacher and 18/24 for the learned teacher. Their students passed the same 4/9 fresh and 6/16 retention tasks. The starting model passed 3/9 and 8/16, so the original parent stays selected. [Experiment results](docs/REPAIR_EXPERIMENT.md) · [Public library quickstart](docs/QUICKSTART.md).
+**Status:** the MBPP-only lesson substitution completed. Changing one of eight examples yielded 4/8 versus 3/8 previously exposed development successes, identical 6/16 retention outcomes, and a failure by both students on the one previously unused task. The original parent stays selected. [Lesson-pair experiment](docs/LESSON_PAIR_EXPERIMENT.md) · [Earlier matched successor study](docs/REPAIR_EXPERIMENT.md) · [Public library quickstart](docs/QUICKSTART.md).
 
 ## Workspace and repository
 
@@ -50,7 +50,7 @@ Earlier engineering milestone: [stronger diagnostics and durable execution](docs
 
 Completed verified-data experiment: [verified-data SFT protocol](studies/verified_sft_v1/README.md). Reusable workflow: [learning API](docs/LEARNING.md), [dataset audit](docs/VERIFIED_DATA.md), and [project runtime](docs/PROJECT_RUNTIME.md).
 
-Latest model comparison: [sampling, repair and matched students](docs/REPAIR_EXPERIMENT.md). Project job reservations are $219, with $25 held for overhead and $6 unallocated.
+Latest model comparison: [sampling, repair and matched students](docs/REPAIR_EXPERIMENT.md). Current project job reservations are $225, with $25 held for overhead and $0 unallocated.
 
 The [offline lesson audit](studies/lesson_selection_v1/README.md) compares the examples actually used by both children and provides a matched MBPP-only lesson-selection dry run.
 

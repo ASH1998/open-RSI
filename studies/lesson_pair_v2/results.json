@@ -1,0 +1,212 @@
+{
+  "comparison": {
+    "scientific_plan_sha256": "73cc79b2be12d046ced88ee3653ce431e30a00ab2bd6f6a31c8feecf5f74c02b",
+    "plan_sha256": "31f5a9a3f7310c58100610fc4c566c82a10c48f471d3e698401e2d44a871304c",
+    "runs": {
+      "a": "20261105T180252Z-lesson-pair-v1-a-24e20e36",
+      "b": "20261105T180807Z-lesson-pair-v1-b-c83df5a7"
+    },
+    "arms": {
+      "a": {
+        "mbpp-full-626": false,
+        "mbpp-full-644": true,
+        "mbpp-full-679": false,
+        "mbpp-full-717": true,
+        "mbpp-full-780": false,
+        "mbpp-full-915": true,
+        "mbpp-full-938": false,
+        "mbpp-full-950": false,
+        "mbpp-full-575": false,
+        "mbpp-full-742": false,
+        "mbpp-full-890": false,
+        "mbpp-full-711": true,
+        "mbpp-full-835": true,
+        "mbpp-full-771": false,
+        "mbpp-full-686": false,
+        "mbpp-full-854": false,
+        "mbpp-full-621": false,
+        "mbpp-full-873": true,
+        "mbpp-full-715": false,
+        "mbpp-full-849": true,
+        "mbpp-full-861": false,
+        "mbpp-full-898": false,
+        "mbpp-full-665": true,
+        "mbpp-full-616": true,
+        "mbpp-full-648": false
+      },
+      "b": {
+        "mbpp-full-626": false,
+        "mbpp-full-644": true,
+        "mbpp-full-679": false,
+        "mbpp-full-717": true,
+        "mbpp-full-780": true,
+        "mbpp-full-915": true,
+        "mbpp-full-938": false,
+        "mbpp-full-950": false,
+        "mbpp-full-575": false,
+        "mbpp-full-742": false,
+        "mbpp-full-890": false,
+        "mbpp-full-711": true,
+        "mbpp-full-835": true,
+        "mbpp-full-771": false,
+        "mbpp-full-686": false,
+        "mbpp-full-854": false,
+        "mbpp-full-621": false,
+        "mbpp-full-873": true,
+        "mbpp-full-715": false,
+        "mbpp-full-849": true,
+        "mbpp-full-861": false,
+        "mbpp-full-898": false,
+        "mbpp-full-665": true,
+        "mbpp-full-616": true,
+        "mbpp-full-648": false
+      }
+    },
+    "base_reused": {
+      "mbpp-full-626": false,
+      "mbpp-full-644": true,
+      "mbpp-full-679": false,
+      "mbpp-full-717": true,
+      "mbpp-full-780": false,
+      "mbpp-full-915": false,
+      "mbpp-full-938": false,
+      "mbpp-full-950": true,
+      "mbpp-full-742": false,
+      "mbpp-full-890": false,
+      "mbpp-full-711": true,
+      "mbpp-full-835": true,
+      "mbpp-full-771": false,
+      "mbpp-full-686": false,
+      "mbpp-full-854": true,
+      "mbpp-full-621": true,
+      "mbpp-full-873": true,
+      "mbpp-full-715": false,
+      "mbpp-full-849": true,
+      "mbpp-full-861": false,
+      "mbpp-full-898": false,
+      "mbpp-full-665": true,
+      "mbpp-full-616": true,
+      "mbpp-full-648": false
+    },
+    "promoted": false,
+    "rsi_established": false,
+    "exposed_development": {
+      "b_vs_a": {
+        "parent_passes": 3,
+        "candidate_passes": 4,
+        "total": 8,
+        "gains": [
+          "mbpp-full-780"
+        ],
+        "losses": [],
+        "net": 1
+      },
+      "a_vs_base": {
+        "parent_passes": 3,
+        "candidate_passes": 3,
+        "total": 8,
+        "gains": [
+          "mbpp-full-915"
+        ],
+        "losses": [
+          "mbpp-full-950"
+        ],
+        "net": 0
+      },
+      "b_vs_base": {
+        "parent_passes": 3,
+        "candidate_passes": 4,
+        "total": 8,
+        "gains": [
+          "mbpp-full-780",
+          "mbpp-full-915"
+        ],
+        "losses": [
+          "mbpp-full-950"
+        ],
+        "net": 1
+      }
+    },
+    "retention": {
+      "b_vs_a": {
+        "parent_passes": 6,
+        "candidate_passes": 6,
+        "total": 16,
+        "gains": [],
+        "losses": [],
+        "net": 0
+      },
+      "a_vs_base": {
+        "parent_passes": 8,
+        "candidate_passes": 6,
+        "total": 16,
+        "gains": [],
+        "losses": [
+          "mbpp-full-854",
+          "mbpp-full-621"
+        ],
+        "net": -2
+      },
+      "b_vs_base": {
+        "parent_passes": 8,
+        "candidate_passes": 6,
+        "total": 16,
+        "gains": [],
+        "losses": [
+          "mbpp-full-854",
+          "mbpp-full-621"
+        ],
+        "net": -2
+      }
+    },
+    "unused_task_575": {
+      "a": false,
+      "b": false
+    }
+  },
+  "comparison_sha256": "23936ed088c4299c1dfd52dfbae2ead7925501713324c69886d272c6752386b8",
+  "stages": {
+    "a": {
+      "run_id": "20261105T180252Z-lesson-pair-v1-a-24e20e36",
+      "url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/0y8mgaab",
+      "stage_report_sha256": "f75cfe7f632cd643f5641957dddeba206a24b289254a34a924e73db497a32dcf",
+      "adapter_sha256": "847f25ece59564bada96a018116f7a1051d5df6aa4d8d67783c2c00d1f6bf912",
+      "export_files_verified": 12,
+      "usage": {
+        "input_tokens": 3333,
+        "output_tokens": 1190,
+        "gpu_seconds": 183.663835609,
+        "sandbox_wall_seconds": 85.524964,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.11158818084891547,
+        "invoice_total_usd": null
+      },
+      "wall_seconds": 284.17269249999663
+    },
+    "b": {
+      "run_id": "20261105T180807Z-lesson-pair-v1-b-c83df5a7",
+      "url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/8y352kja",
+      "stage_report_sha256": "6185f8093e487c1b010eb6d6651854b136ab24f461169943c6473ed74964739c",
+      "adapter_sha256": "1b40a1f8cbfc571e820dcfee2e8a302d70076b837f950681d420b68b4c0fd36b",
+      "export_files_verified": 12,
+      "usage": {
+        "input_tokens": 3333,
+        "output_tokens": 1171,
+        "gpu_seconds": 201.423796121,
+        "sandbox_wall_seconds": 86.167299,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.12231553150215761,
+        "invoice_total_usd": null
+      },
+      "wall_seconds": 519.2463876669935
+    }
+  },
+  "budget": {
+    "project_cap_usd": 250.0,
+    "reserved_for_jobs_usd": 225.0,
+    "overhead_reserve_usd": 25.0,
+    "available_for_jobs_usd": 0.0,
+    "invoice_total_usd": null
+  },
+  "study_reserved_usd": 6
+}
