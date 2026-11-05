@@ -2,10 +2,7 @@
 
 `rsilab` records verified-learning experiments and compares results under matching controls. Its offline core needs Python 3.11+ and the standard library. Cloud execution is optional. There is no claim that installing it provides an agent capable of recursive self-improvement.
 
-Version 0.4.2 adds a runtime-only Modal environment and CPU probe, preserving the
-category preflight and reference-evidence reuse added in 0.4.0. See
-[release status](FRAMEWORK.md#runtime-only-factory-and-cpu-probe-042) for validation records
-and preserved artifacts. No package has been published to PyPI.
+Version 0.5.0 adds reviewed task prompts and boundary checks. The example builds a derived task, separates the public prompt from its tests and replays the result. See [task contracts](TASK_CONTRACTS.md). The source is available from GitHub.
 
 Install from a checkout into your own project environment:
 
@@ -14,6 +11,7 @@ python -m venv .venv
 .venv/bin/python -m pip install .
 .venv/bin/rsilab --help
 .venv/bin/python -I examples/offline_comparison.py
+.venv/bin/python -I examples/task_contracts.py
 ```
 
 The example uses explicitly synthetic evidence. It demonstrates immutable identities, matched comparison and retaining the parent; it starts no compute and loads no credentials. For recorded evidence, use the manifest/CLI contracts in [FRAMEWORK.md](FRAMEWORK.md).

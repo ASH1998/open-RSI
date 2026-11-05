@@ -1,0 +1,880 @@
+[
+  {
+    "task_id": "mbpp-full-613",
+    "source_sha256": "9332fc97a07e04b02df846b8674a20d652f3fa5af7b60399beb8e953a14b63e1",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a list of (key, values) tuples, return a list of (key, largest_value) tuples in the same order, one for each input record. Keys are strings and each values list contains at least one integer. Preserve separate records even when their keys match. An empty outer list returns an empty list.\n\nRequired signature:\ndef maximum_value(test_list):",
+    "review_note": "The source produces one result per record and retains input order. The largest value comes from that record's list. An empty inner list is outside the contract. The repeated key checks that equal keys do not merge.",
+    "boundaries": [
+      {
+        "name": "empty_outer",
+        "call": "maximum_value([])",
+        "expected": [
+          "list",
+          []
+        ]
+      },
+      {
+        "name": "singleton_inner",
+        "call": "maximum_value([('z', [4])])",
+        "expected": [
+          "list",
+          [
+            [
+              "tuple",
+              [
+                [
+                  "str",
+                  "z"
+                ],
+                [
+                  "int",
+                  4
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "repeated_keys",
+        "call": "maximum_value([('b', [2, 9]), ('a', [4]), ('b', [3, 3])])",
+        "expected": [
+          "list",
+          [
+            [
+              "tuple",
+              [
+                [
+                  "str",
+                  "b"
+                ],
+                [
+                  "int",
+                  9
+                ]
+              ]
+            ],
+            [
+              "tuple",
+              [
+                [
+                  "str",
+                  "a"
+                ],
+                [
+                  "int",
+                  4
+                ]
+              ]
+            ],
+            [
+              "tuple",
+              [
+                [
+                  "str",
+                  "b"
+                ],
+                [
+                  "int",
+                  3
+                ]
+              ]
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-757",
+    "source_sha256": "6121436c0d267b6499458f55bf5a560eebaa30ae507b2a5ca172454c95f4c094",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a list of distinct, nonempty lowercase words, each of which differs from its reverse, count pairs of different positions whose words are reverses of each other. Count each pair once, regardless of which word comes first. Return the count as a decimal string, including '0' when there are no pairs.\n\nRequired signature:\ndef count_reverse_pairs(test_list):",
+    "review_note": "All historical cases use distinct nonpalindromes and expect a string. The reference loop includes its own index, making palindromes ambiguous under the ordinary meaning of a pair. This review restricts inputs to the historically reviewed domain. In the final boundary the two pairs are ab/ba and cd/dc.",
+    "boundaries": [
+      {
+        "name": "empty_list",
+        "call": "count_reverse_pairs([])",
+        "expected": [
+          "str",
+          "0"
+        ]
+      },
+      {
+        "name": "unpaired_singleton",
+        "call": "count_reverse_pairs(['ab'])",
+        "expected": [
+          "str",
+          "0"
+        ]
+      },
+      {
+        "name": "single_pair_reversed_order",
+        "call": "count_reverse_pairs(['yx', 'xy'])",
+        "expected": [
+          "str",
+          "1"
+        ]
+      },
+      {
+        "name": "two_disjoint_pairs",
+        "call": "count_reverse_pairs(['ab', 'dc', 'xy', 'ba', 'cd'])",
+        "expected": [
+          "str",
+          "2"
+        ]
+      },
+      {
+        "name": "two_without_partner",
+        "call": "count_reverse_pairs(['ab', 'cd'])",
+        "expected": [
+          "str",
+          "0"
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-661",
+    "source_sha256": "f8bffa7aa8b140cc65ccbca5edae6ff89230981826fc6c3149092304ddd2bbab",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a nonempty list arr of positive integers and n equal to its length, choose positions that maximize the sum of their values. You may choose any positions provided that you never choose all three positions in any run of three consecutive indices. Return the maximum sum as an integer.\n\nRequired signature:\ndef max_sum_of_three_consecutive(arr, n):",
+    "review_note": "The restriction applies to selected indices in the original array. Historical inputs are positive. For [7,1,8] the optimum skips the middle position, and for [4,4,4,4] three positions are possible by skipping an interior one.",
+    "boundaries": [
+      {
+        "name": "single_position",
+        "call": "max_sum_of_three_consecutive([7], 1)",
+        "expected": [
+          "int",
+          7
+        ]
+      },
+      {
+        "name": "two_positions",
+        "call": "max_sum_of_three_consecutive([3, 5], 2)",
+        "expected": [
+          "int",
+          8
+        ]
+      },
+      {
+        "name": "skip_middle",
+        "call": "max_sum_of_three_consecutive([7, 1, 8], 3)",
+        "expected": [
+          "int",
+          15
+        ]
+      },
+      {
+        "name": "four_equal",
+        "call": "max_sum_of_three_consecutive([4, 4, 4, 4], 4)",
+        "expected": [
+          "int",
+          12
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-916",
+    "source_sha256": "3165952293360c5fce66fe472c021619c412e914af9cc377907ede227799a014",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nA is a list of positive integers, arr_size is its length, and at least one triple of distinct positions has values that add up to sum. Return the three values as a tuple in input order. If several triples qualify, use the one with the lexicographically smallest index triple (i, j, k), where i < j < k.\n\nRequired signature:\ndef find_triplet_array(A, arr_size, sum):",
+    "review_note": "The original calls expect a value tuple and the source searches increasing indices. The source also returns False on a miss, but the historical augmented task admitted only matching triples. This contract retains that explicit domain. For target 9 in [4,1,2,3,4], positions (0,1,4) precede (0,2,3).",
+    "boundaries": [
+      {
+        "name": "minimum_length",
+        "call": "find_triplet_array([5, 1, 3], 3, 9)",
+        "expected": [
+          "tuple",
+          [
+            [
+              "int",
+              5
+            ],
+            [
+              "int",
+              1
+            ],
+            [
+              "int",
+              3
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "repeated_values",
+        "call": "find_triplet_array([2, 2, 2], 3, 6)",
+        "expected": [
+          "tuple",
+          [
+            [
+              "int",
+              2
+            ],
+            [
+              "int",
+              2
+            ],
+            [
+              "int",
+              2
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "earliest_index_tie",
+        "call": "find_triplet_array([4, 1, 2, 3, 4], 5, 9)",
+        "expected": [
+          "tuple",
+          [
+            [
+              "int",
+              4
+            ],
+            [
+              "int",
+              1
+            ],
+            [
+              "int",
+              4
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-885",
+    "source_sha256": "57257c62025e44320ec1c5854e45aaccd193284d415b94946eee3ed942e461e0",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nReturn a boolean indicating whether the two strings are isomorphic. They must have equal length. Each character of str1 must map to the same character of str2 at every occurrence, and different characters of str1 must map to different characters of str2. Treat characters as case-sensitive.\n\nRequired signature:\ndef is_Isomorphic(str1, str2):",
+    "review_note": "The reference compares the position groups for characters in the two strings. A repeated consistent mapping is valid. Splitting one source character or merging two source characters breaks the bijection. Two empty strings share the empty mapping.",
+    "boundaries": [
+      {
+        "name": "both_empty",
+        "call": "is_Isomorphic('', '')",
+        "expected": [
+          "bool",
+          true
+        ]
+      },
+      {
+        "name": "unequal_lengths",
+        "call": "is_Isomorphic('aa', 'a')",
+        "expected": [
+          "bool",
+          false
+        ]
+      },
+      {
+        "name": "repeated_consistent",
+        "call": "is_Isomorphic('abba', 'xyyx')",
+        "expected": [
+          "bool",
+          true
+        ]
+      },
+      {
+        "name": "one_source_splits",
+        "call": "is_Isomorphic('aa', 'xy')",
+        "expected": [
+          "bool",
+          false
+        ]
+      },
+      {
+        "name": "two_sources_merge",
+        "call": "is_Isomorphic('abc', 'xyx')",
+        "expected": [
+          "bool",
+          false
+        ]
+      },
+      {
+        "name": "same_frequencies_different_positions",
+        "call": "is_Isomorphic('aabb', 'xyxy')",
+        "expected": [
+          "bool",
+          false
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-863",
+    "source_sha256": "ecbcbb90f6486a80d77465dbf6713f15cc4c6798565c41998366dbbf0b70c08f",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a nonempty list of integers arr with n equal to its length, return the length of the longest run of consecutive integer values present anywhere in the list. Count each distinct value once. Input order and repeated occurrences do not affect the length.\n\nRequired signature:\ndef find_longest_conseq_subseq(arr, n):",
+    "review_note": "The source sorts and deduplicates before measuring adjacent integer values. This resolves the ambiguity in 'sub-sequence': the chosen values need not occur in increasing input order. Empty arrays are excluded because the source reads the first element.",
+    "boundaries": [
+      {
+        "name": "one_value",
+        "call": "find_longest_conseq_subseq([6], 1)",
+        "expected": [
+          "int",
+          1
+        ]
+      },
+      {
+        "name": "all_equal",
+        "call": "find_longest_conseq_subseq([5, 5, 5], 3)",
+        "expected": [
+          "int",
+          1
+        ]
+      },
+      {
+        "name": "unordered_with_gap",
+        "call": "find_longest_conseq_subseq([8, 3, 9, 4, 5, 5, 12], 7)",
+        "expected": [
+          "int",
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-929",
+    "source_sha256": "ebd89bf15094bb88d78d620885ae36fe1cc6e2d681b6bdd7c9b76bf9feda1f2a",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a tuple of integers and an integer value, return the number of positions containing that value as an integer. Count every occurrence, including the first.\n\nRequired signature:\ndef count_tuplex(tuplex, value):",
+    "review_note": "The second argument specifies a single target. The function counts occurrences, rather than counting which values are repeated. An absent target and an empty tuple both yield zero.",
+    "boundaries": [
+      {
+        "name": "empty_tuple",
+        "call": "count_tuplex((), 4)",
+        "expected": [
+          "int",
+          0
+        ]
+      },
+      {
+        "name": "missing_target",
+        "call": "count_tuplex((1, 1, 3), 2)",
+        "expected": [
+          "int",
+          0
+        ]
+      },
+      {
+        "name": "all_match",
+        "call": "count_tuplex((6, 6, 6), 6)",
+        "expected": [
+          "int",
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-619",
+    "source_sha256": "65b6c743e200362f5ac53acb0629ef9e52363e9b16a94a94fa28f55f5e227d94",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven an ASCII string, move all decimal digit characters to the end. Keep the original order of the nondigit characters and the original order of the digits. Return the resulting string with every character preserved, including spaces, punctuation, and repeated zeros.\n\nRequired signature:\ndef move_num(test_str):",
+    "review_note": "The reference partitions individual characters using isdigit and concatenates nondigits followed by digits. Restricting to ASCII removes uncertainty over Unicode digit classes. The mixed boundary retains the space and punctuation and moves 9, 0, and 2 in that order.",
+    "boundaries": [
+      {
+        "name": "empty_string",
+        "call": "move_num('')",
+        "expected": [
+          "str",
+          ""
+        ]
+      },
+      {
+        "name": "all_digits",
+        "call": "move_num('00190')",
+        "expected": [
+          "str",
+          "00190"
+        ]
+      },
+      {
+        "name": "no_digits",
+        "call": "move_num('Ab!')",
+        "expected": [
+          "str",
+          "Ab!"
+        ]
+      },
+      {
+        "name": "separated_groups",
+        "call": "move_num('9A 0!b2')",
+        "expected": [
+          "str",
+          "A !b902"
+        ]
+      },
+      {
+        "name": "leading_and_repeated_zeros",
+        "call": "move_num('0A-90z2')",
+        "expected": [
+          "str",
+          "A-z0902"
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-641",
+    "source_sha256": "375ffbd65462000560010197cd1b9c49d20303dc69b197d2f7bae570ec83bdd5",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a positive integer n at most 1000, return the nth nonagonal number as an integer. Nonagonal numbers are the nine-sided polygonal numbers, indexed starting at n = 1.\n\nRequired signature:\ndef is_nonagonal(n):",
+    "review_note": "The is_ prefix could suggest a membership check, while the source returns an integer term. The bounded domain avoids precision ambiguity from the reference's floating-point division. Using n*(7*n-5)/2 gives 24, 46, and 3497500 for these inputs.",
+    "boundaries": [
+      {
+        "name": "third_term",
+        "call": "is_nonagonal(3)",
+        "expected": [
+          "int",
+          24
+        ]
+      },
+      {
+        "name": "fourth_term",
+        "call": "is_nonagonal(4)",
+        "expected": [
+          "int",
+          46
+        ]
+      },
+      {
+        "name": "bounded_upper",
+        "call": "is_nonagonal(1000)",
+        "expected": [
+          "int",
+          3497500
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-844",
+    "source_sha256": "a825821872b4c4541899acae70ba0d6baf21b87f2fa47fc79678f5f46b8df394",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven positive integers n and k with 1 <= k <= n, consider the integers from 1 through n. List all odd integers in ascending order, followed by all even integers in ascending order. Return the integer at position k, counting positions from 1.\n\nRequired signature:\ndef get_Number(n, k):",
+    "review_note": "The first parameter is the upper bound rather than a supplied array. For n=6 the virtual order is 1,3,5,2,4,6. The two positions at the odd/even transition therefore return 5 and 2.",
+    "boundaries": [
+      {
+        "name": "only_value",
+        "call": "get_Number(1, 1)",
+        "expected": [
+          "int",
+          1
+        ]
+      },
+      {
+        "name": "last_odd",
+        "call": "get_Number(6, 3)",
+        "expected": [
+          "int",
+          5
+        ]
+      },
+      {
+        "name": "first_even",
+        "call": "get_Number(6, 4)",
+        "expected": [
+          "int",
+          2
+        ]
+      },
+      {
+        "name": "odd_n_last",
+        "call": "get_Number(7, 7)",
+        "expected": [
+          "int",
+          6
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-789",
+    "source_sha256": "aba5d882b5e4b9335ec05c3b9ff98e162c4192b1a3fcd5c346d06b1f604c2ef9",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nA regular polygon has s sides, each of length l. Here s is an integer at least 3 and l is a positive integer. Return the perimeter as an integer in the same unit as l.\n\nRequired signature:\ndef perimeter_polygon(s, l):",
+    "review_note": "The source treats s as the number of sides and l as the common side length. Three unit sides give 3, and eight sides of length 5 give 40.",
+    "boundaries": [
+      {
+        "name": "minimum_polygon_unit",
+        "call": "perimeter_polygon(3, 1)",
+        "expected": [
+          "int",
+          3
+        ]
+      },
+      {
+        "name": "equal_sides",
+        "call": "perimeter_polygon(8, 5)",
+        "expected": [
+          "int",
+          40
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-610",
+    "source_sha256": "21d0a39c1949198a38d6d3195c0f62ee674b34aa46ab3e7ff8836548d352fb5f",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a nonempty list of integers list1 and a position L with 1 <= L <= len(list1), return the list with exactly the element at position L removed. Positions start at 1. Preserve the order of all remaining elements, including duplicates.\n\nRequired signature:\ndef remove_kth_element(list1, L):",
+    "review_note": "Source slices around position L-1. Removing the middle element of [2,8,2] retains both copies of 2. First, last and singleton inputs distinguish position-based removal from zero-based or value-based removal.",
+    "boundaries": [
+      {
+        "name": "first_position",
+        "call": "remove_kth_element([7, 8, 9], 1)",
+        "expected": [
+          "list",
+          [
+            [
+              "int",
+              8
+            ],
+            [
+              "int",
+              9
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "last_position",
+        "call": "remove_kth_element([7, 8, 9], 3)",
+        "expected": [
+          "list",
+          [
+            [
+              "int",
+              7
+            ],
+            [
+              "int",
+              8
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "single_element",
+        "call": "remove_kth_element([4], 1)",
+        "expected": [
+          "list",
+          []
+        ]
+      },
+      {
+        "name": "duplicates_survive",
+        "call": "remove_kth_element([2, 8, 2], 2)",
+        "expected": [
+          "list",
+          [
+            [
+              "int",
+              2
+            ],
+            [
+              "int",
+              2
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-681",
+    "source_sha256": "b523c76eacd81ee17cb26048525090bfe41f935a40a6bd5e115354fa3302f74e",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven an integer n >= 2, return its smallest positive prime divisor as an integer. For a prime input, return n itself.\n\nRequired signature:\ndef smallest_Divisor(n):",
+    "review_note": "The smallest divisor sought is greater than one. A prime square requires checking its square-root divisor, and a composite with multiple prime factors requires returning the smallest one.",
+    "boundaries": [
+      {
+        "name": "odd_square",
+        "call": "smallest_Divisor(49)",
+        "expected": [
+          "int",
+          7
+        ]
+      },
+      {
+        "name": "multiple_prime_factors",
+        "call": "smallest_Divisor(105)",
+        "expected": [
+          "int",
+          3
+        ]
+      },
+      {
+        "name": "small_odd_prime",
+        "call": "smallest_Divisor(3)",
+        "expected": [
+          "int",
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-816",
+    "source_sha256": "1f905d7e83fd6b48cf83ca62dd97e0441afb24023665a1b28381dcf00849ee01",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a tuple of integers, return an empty tuple representing the tuple after all elements have been removed.\n\nRequired signature:\ndef clear_tuple(test_tup):",
+    "review_note": "The required result is the tuple value (). Tuple immutability makes clearing an in-place side effect an unsuitable interpretation. Both a singleton and an already empty tuple give the same typed result.",
+    "boundaries": [
+      {
+        "name": "empty_tuple",
+        "call": "clear_tuple(())",
+        "expected": [
+          "tuple",
+          []
+        ]
+      },
+      {
+        "name": "single_element",
+        "call": "clear_tuple((8,))",
+        "expected": [
+          "tuple",
+          []
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-687",
+    "source_sha256": "34132f76781ce520aaf34925053732cf68e9b5ea33bcf7186f2bcbe1ec70651f",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven two positive integers a and b, use recursion to find their greatest common divisor. Return it as a positive integer.\n\nRequired signature:\ndef recur_gcd(a, b):",
+    "review_note": "The source uses Euclid's recurrence. Inputs stay in the prior positive domain. Equal inputs return that number, a unit operand gives 1, and swapping operands must preserve the answer. Output tests alone cannot establish recursion.",
+    "boundaries": [
+      {
+        "name": "equal_operands",
+        "call": "recur_gcd(8, 8)",
+        "expected": [
+          "int",
+          8
+        ]
+      },
+      {
+        "name": "unit_operand",
+        "call": "recur_gcd(1, 21)",
+        "expected": [
+          "int",
+          1
+        ]
+      },
+      {
+        "name": "common_factor",
+        "call": "recur_gcd(18, 12)",
+        "expected": [
+          "int",
+          6
+        ]
+      },
+      {
+        "name": "swapped_operands",
+        "call": "recur_gcd(12, 18)",
+        "expected": [
+          "int",
+          6
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-633",
+    "source_sha256": "b5688c2b4b44efe6ab031539caa4d18021f408a47739892b922a153594282b01",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a list arr of nonnegative integers and n equal to its length, return the sum of the bitwise XOR of each pair of values at distinct positions. Count each unordered pair of positions once. A list with fewer than two positions has sum zero.\n\nRequired signature:\ndef pair_OR_Sum(arr, n):",
+    "review_note": "The callable name mentions OR, but the public description, reference, and assertions all use XOR. The two equal values in [3,3,5] form a zero-contribution pair, while each occurrence contributes 6 when paired with 5.",
+    "boundaries": [
+      {
+        "name": "no_pairs",
+        "call": "pair_OR_Sum([], 0)",
+        "expected": [
+          "int",
+          0
+        ]
+      },
+      {
+        "name": "single_value",
+        "call": "pair_OR_Sum([12], 1)",
+        "expected": [
+          "int",
+          0
+        ]
+      },
+      {
+        "name": "equal_values_distinct_positions",
+        "call": "pair_OR_Sum([3, 3, 5], 3)",
+        "expected": [
+          "int",
+          12
+        ]
+      },
+      {
+        "name": "bit_overlap",
+        "call": "pair_OR_Sum([3, 1], 2)",
+        "expected": [
+          "int",
+          2
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-675",
+    "source_sha256": "eb680ae8aad3c72b1fcfd37a97e026fa055deabfe25bd3f69c956ddb58b03b56",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven integers x, y, m and n with m < n, let s be the sum of x and y. Return the integer 20 when m <= s < n. Otherwise return s. The lower endpoint is included and the upper endpoint is excluded.\n\nRequired signature:\ndef sum_nums(x, y, m, n):",
+    "review_note": "The source explicitly uses range(m,n). None of the 13 historical cases has s equal to n. These hand-derived cases distinguish both ends and their neighbors around [5,9): 4 returns 4, 5 and 8 return 20, 9 returns 9, and 10 returns 10. Choosing n different from 20 makes the endpoint difference observable.",
+    "boundaries": [
+      {
+        "name": "below_lower",
+        "call": "sum_nums(2, 2, 5, 9)",
+        "expected": [
+          "int",
+          4
+        ]
+      },
+      {
+        "name": "inclusive_lower",
+        "call": "sum_nums(2, 3, 5, 9)",
+        "expected": [
+          "int",
+          20
+        ]
+      },
+      {
+        "name": "last_included",
+        "call": "sum_nums(4, 4, 5, 9)",
+        "expected": [
+          "int",
+          20
+        ]
+      },
+      {
+        "name": "exclusive_upper",
+        "call": "sum_nums(4, 5, 5, 9)",
+        "expected": [
+          "int",
+          9
+        ]
+      },
+      {
+        "name": "above_upper",
+        "call": "sum_nums(2, 8, 5, 9)",
+        "expected": [
+          "int",
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-611",
+    "source_sha256": "12546ca7132d74b5337d7f2a206f94f76c577d816cb3602ff39cf1e642090c83",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a nonempty list of equal-length, nonempty tuples of integers, return the largest integer in column N across all tuples. The first column has index 0, and N is a valid column index.\n\nRequired signature:\ndef max_of_nth(test_list, N):",
+    "review_note": "The source selects index N from each row before taking the maximum. A single row with three columns also checks that a valid column index can exceed the last row index.",
+    "boundaries": [
+      {
+        "name": "first_column",
+        "call": "max_of_nth([(1, 9), (7, 2)], 0)",
+        "expected": [
+          "int",
+          7
+        ]
+      },
+      {
+        "name": "single_row_last_column",
+        "call": "max_of_nth([(4, 3, 8)], 2)",
+        "expected": [
+          "int",
+          8
+        ]
+      },
+      {
+        "name": "tied_maximum",
+        "call": "max_of_nth([(7, 4), (1, 4)], 1)",
+        "expected": [
+          "int",
+          4
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-745",
+    "source_sha256": "c40b509b4db9f1288d89b812937949507823cc61680d47beaf6aba8e07ccf97a",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven positive integers startnum and endnum with startnum <= endnum, return a list of all qualifying numbers in ascending order from startnum through endnum, including both endpoints. A number qualifies if every decimal digit is nonzero and divides the number evenly.\n\nRequired signature:\ndef divisible_by_digits(startnum, endnum):",
+    "review_note": "The reference excludes zero digits before division and collects values in a list. A singleton range can yield either one match or none. From 22 through 24, both ends qualify and 23 fails divisibility.",
+    "boundaries": [
+      {
+        "name": "zero_digit",
+        "call": "divisible_by_digits(10, 10)",
+        "expected": [
+          "list",
+          []
+        ]
+      },
+      {
+        "name": "singleton_qualifies",
+        "call": "divisible_by_digits(36, 36)",
+        "expected": [
+          "list",
+          [
+            [
+              "int",
+              36
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "both_ends_qualify",
+        "call": "divisible_by_digits(22, 24)",
+        "expected": [
+          "list",
+          [
+            [
+              "int",
+              22
+            ],
+            [
+              "int",
+              24
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "nondividing_digit",
+        "call": "divisible_by_digits(13, 13)",
+        "expected": [
+          "list",
+          []
+        ]
+      }
+    ]
+  },
+  {
+    "task_id": "mbpp-full-734",
+    "source_sha256": "679f5090b366ac0ab39839a74a268be21d34a4f06ee166b1dfa10306b3f86e87",
+    "clarified_prompt": "Implement the following Python function. Return concise, self-contained Python code only; no explanation or long comments. Include required imports. Only these modules are permitted: math, collections, itertools, functools, bisect, heapq, statistics, re, string, operator, array. Do not read stdin, print, access files, or use dynamic execution, introspection, or decorators.\n\nGiven a nonempty list arr of positive integers and n equal to its length, return the sum of the products of all nonempty contiguous slices of arr. Count each start/end position pair once, even when slices have the same values.\n\nRequired signature:\ndef sum_Of_Subarray_Prod(arr, n):",
+    "review_note": "The source sums products of contiguous subarrays. For [2,3,4] their products are 2,3,4,6,12,24, totaling 51. For three copies of 2, the contributions by length are 6,8,8, totaling 22.",
+    "boundaries": [
+      {
+        "name": "singleton",
+        "call": "sum_Of_Subarray_Prod([5], 1)",
+        "expected": [
+          "int",
+          5
+        ]
+      },
+      {
+        "name": "exclude_noncontiguous",
+        "call": "sum_Of_Subarray_Prod([2, 3, 4], 3)",
+        "expected": [
+          "int",
+          51
+        ]
+      },
+      {
+        "name": "equal_slices_count",
+        "call": "sum_Of_Subarray_Prod([2, 2, 2], 3)",
+        "expected": [
+          "int",
+          22
+        ]
+      }
+    ]
+  }
+]

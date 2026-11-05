@@ -64,7 +64,7 @@ jobs:
           sys.meta_path.insert(0, InstalledOnly())
           suite = unittest.TestSuite()
           for name in ('framework', 'successor', 'portable_modal', 'portable_modal_v2', 'portable_modal_v3', 'dataset_io',
-                       'preflight', 'reference_reuse', 'successor_recovery', 'successor_recovery_v2', 'successor_recovery_v3'):
+                       'preflight', 'reference_reuse', 'task_contracts', 'successor_recovery', 'successor_recovery_v2', 'successor_recovery_v3'):
               filename = root / 'tests' / f'test_{name}.py'
               spec = importlib.util.spec_from_file_location(f'test_{name}', filename)
               module = importlib.util.module_from_spec(spec)
@@ -81,4 +81,5 @@ jobs:
           if not result.wasSuccessful() or result.skipped:
               raise SystemExit(1)
           runpy.run_path(str(root / 'examples/offline_comparison.py'), run_name='__main__')
+          runpy.run_path(str(root / 'examples/task_contracts.py'), run_name='__main__')
           PY

@@ -109,9 +109,7 @@ for checksum comparison. Completed runs:
 
 Compact results are [tracked in Git](../studies/successor_recovery_v3/results.json).
 Full raw reports remain under SSD `runs/`; derived evidence and readbacks are
-under `artifacts/successor-recovery-v3/`. The additional combined W&B closure upload is pending specific approval: automatic
-approval review rejected its billing/internal-path payload and existing-run update.
-The bundle remains on the SSD; individual stage reports already passed W&B readback.
+under `artifacts/successor-recovery-v3/`. The approved combined bundle is now published as `ashu-na/rsi/successor-recovery-v3-summary:v0` on the [learned-teacher run](https://forge.coreweave.com/wandb/ashu-na/rsi/runs/kdo223jx). All 11 files downloaded from that exact version matched the pre-upload checksums. The run finished successfully. The bundled report reflects the earlier snapshot when approval was pending. The readback receipt is `artifacts/successor-recovery-v3/closure-readback/verification.json`.
 
 ## Limits and next executable milestone
 

@@ -2,7 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** completed the matched successor teacher probe with `rsilab 0.4.2`. Original teacher: **10/20** unique verified targets; learned teacher: **9/20**. Both failed the data gate, so no children were trained and the original parent remains selected. No sustained RSI has been demonstrated. The Apache-2.0 library now includes reference-evidence reuse, category preflight and a remotely validated portable Modal inference path. See the [completed report](docs/SUCCESSOR_RECOVERY_EXPERIMENT.md), [failure analysis](docs/SUCCESSOR_RECOVERY_FAILURE_ANALYSIS.md) and [public quickstart](docs/QUICKSTART.md).
+**Status:** `rsilab 0.5.0` adds reviewed task wording and typed boundary checks. The offline diagnostic covers all 20 previously attempted MBPP training tasks. The prior teacher comparison yielded 10/20 verified targets for the original teacher and 9/20 for the learned teacher. Both missed the training gate. The original parent remains selected. [Task diagnostic](studies/task_contracts_v1/README.md) · [Library quickstart](docs/QUICKSTART.md) · [Teacher comparison](docs/SUCCESSOR_RECOVERY_EXPERIMENT.md).
 
 ## Workspace and repository
 
@@ -50,6 +50,6 @@ Earlier engineering milestone: [stronger diagnostics and durable execution](docs
 
 Completed verified-data experiment: [verified-data SFT protocol](studies/verified_sft_v1/README.md). Reusable workflow: [learning API](docs/LEARNING.md), [dataset audit](docs/VERIFIED_DATA.md), and [project runtime](docs/PROJECT_RUNTIME.md).
 
-Latest measured result and handoff: [successor recovery](docs/SUCCESSOR_RECOVERY_EXPERIMENT.md). Current reservations: $194 plus $25 overhead; $31 unallocated. Reservations are not invoices.
+Latest model comparison: [successor recovery](docs/SUCCESSOR_RECOVERY_EXPERIMENT.md). The [task contract audit](studies/task_contracts_v1/README.md) is the latest evaluator diagnostic. Current reservations: $194 plus $25 overhead; $31 unallocated. Reservations are not invoices.
 
 Completed successor probe: [recovery protocol](studies/successor_recovery_v3/README.md), [measurement contract](docs/SUCCESSOR_MEASUREMENT.md), and [portable Modal workers](docs/PORTABLE_MODAL.md).

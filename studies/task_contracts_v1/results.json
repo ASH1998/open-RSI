@@ -1,0 +1,238 @@
+{
+  "study": "task-contracts-v1",
+  "scope": "post-hoc training data diagnostic",
+  "source_protocol_sha256": "0cba1d12bb4f06c051566ac9e9d58923d1ad108475a34f6b04aa4cb3aa0060ba",
+  "dataset_revision": "4bb6404fdc6cacfda99d4ac4205087b89d32030c",
+  "train_parquet_sha256": "09d125ca31edacb7800be8c67c45abff618faf0214ff551291817d06bdb914ae",
+  "reviews_sha256": "8934dd3d836911790e703a8f32a4a97140df9d48dfe7a51eaf32ee42ed65e300",
+  "derived_manifest_sha256": "8a5bd6d42ae6335c9c5e27f0db696237a74c4923f66f0f84ad6d135e987a7e38",
+  "reference_outputs_sha256": "a981761fc39891d4b9555de103e685e938d4f95234bf58c8f7c99dccd56ac0ba",
+  "evaluator_source_hashes": {
+    "rsi/mbpp_verification_v2.py": "b4b0d02ffc6ad71b5a33745c895709eb5bb2f3900c6d414f6063a3fe0afc1083",
+    "rsi/mbpp_verification.py": "47efce04acdef807e54a49f1ecbd64942a31baa2ce9e7d7404fd62326e660bc4",
+    "rsi/verification.py": "b6cd4334adf34678f7f35f908a38a14329ca9a81b6b4d557eb4de270868b0db4",
+    "child_source": "860c3c72558a431a07ac76549173b3d9499ba683ad768cc17526062e5380ca1a"
+  },
+  "source_files_sha256": {
+    "studies/task_contracts_v1/audit.py": "3ffd738551af8cae38b74b759900950920c1bfdba90402677273c441408c1cba",
+    "studies/task_contracts_v1/reference_check.py": "c72d58b5760a6c55038cf017dee55ee3be681c0edcf5fb9f622d134acd0b29e5",
+    "rsilab/task_contracts.py": "eee02edba54b0791e5f6767f23cd7d0fd68b23aa3ded1a5becca0fdca8b3b6ea"
+  },
+  "tasks": [
+    {
+      "id": "mbpp-full-613",
+      "category": "collections",
+      "original_cases": 15,
+      "new_cases": 3,
+      "reference_cases_passed": 18,
+      "reference_sha256": "11cff1de75fbab6921584e486bf223c967a5b3c79b0164199bfe0497e9eca98f",
+      "derived_task_sha256": "198b9d328ad406cf4024ce2ad4b87971bc42fb9a8a2dd4af8803775694d95348"
+    },
+    {
+      "id": "mbpp-full-757",
+      "category": "text",
+      "original_cases": 15,
+      "new_cases": 5,
+      "reference_cases_passed": 20,
+      "reference_sha256": "6b11e486f0cec68f9f10f08874d233f13c71c77c49c01b7d5855eca313ba0ed8",
+      "derived_task_sha256": "cd9748548fd24a7d53980259e3ba2e31dc2dc6e5c9d5446ba069f811ca1b0ba4"
+    },
+    {
+      "id": "mbpp-full-661",
+      "category": "numeric",
+      "original_cases": 15,
+      "new_cases": 4,
+      "reference_cases_passed": 19,
+      "reference_sha256": "523cca1676c85a70429eb72d54ca433e69b2c724234280814e4c3f9a59c4d061",
+      "derived_task_sha256": "6e4192a8b953137eaab60ed5c30034b62f136ae53278622e27a4fe0156d5816b"
+    },
+    {
+      "id": "mbpp-full-916",
+      "category": "collections",
+      "original_cases": 10,
+      "new_cases": 3,
+      "reference_cases_passed": 13,
+      "reference_sha256": "067d07206e113015e3b0f996af5b195a0773b8e86160ade67123b963a1c2e6f9",
+      "derived_task_sha256": "9e9f04b38d17b0a07d0cd5df4c04952166a9dc368a016b0e6a2fa140e62bdc88"
+    },
+    {
+      "id": "mbpp-full-885",
+      "category": "text",
+      "original_cases": 12,
+      "new_cases": 6,
+      "reference_cases_passed": 18,
+      "reference_sha256": "30a6e283f9c8b33a6535819578ed900b805cad2683aca162655074797aa4a62e",
+      "derived_task_sha256": "bc074e39faf871a3a9c461bb5e1a28f0e2ffdf67ef1786f7f705eab0f8ce4a84"
+    },
+    {
+      "id": "mbpp-full-863",
+      "category": "numeric",
+      "original_cases": 15,
+      "new_cases": 3,
+      "reference_cases_passed": 18,
+      "reference_sha256": "08fc839288a743e806e82c84c1a8e4e23654354f833bbd693d1728588fae6fd9",
+      "derived_task_sha256": "375bebab658ed104645a39d388c024f009cab8939faa6b388558c82899465816"
+    },
+    {
+      "id": "mbpp-full-929",
+      "category": "collections",
+      "original_cases": 15,
+      "new_cases": 3,
+      "reference_cases_passed": 18,
+      "reference_sha256": "c7b818809700dff923b34a96c2b3f0f9ee885f46406b086b22b03ebefb480ecf",
+      "derived_task_sha256": "ed3521b77f5c2289639dcef6fceb6ba9f8300ccb06bcc51047790e8f46a743eb"
+    },
+    {
+      "id": "mbpp-full-619",
+      "category": "text",
+      "original_cases": 12,
+      "new_cases": 5,
+      "reference_cases_passed": 17,
+      "reference_sha256": "3fc202a2e1d2a1661da85763e1660c5d58d98b34d253239356d5dbcc6442c5a0",
+      "derived_task_sha256": "267c46e3209329ddc89befe75d76ff609245f5a0eb6f6a7a5504467f3ec29e5e"
+    },
+    {
+      "id": "mbpp-full-641",
+      "category": "numeric",
+      "original_cases": 11,
+      "new_cases": 3,
+      "reference_cases_passed": 14,
+      "reference_sha256": "01765d5417c236adf43fe81e013fa7357a9b0b8a27a0873cf123fbdcd061e7c0",
+      "derived_task_sha256": "1b7c2afafce610bafe621eda18cae0122482bafab18bea4279495d974da1dae2"
+    },
+    {
+      "id": "mbpp-full-844",
+      "category": "collections",
+      "original_cases": 13,
+      "new_cases": 4,
+      "reference_cases_passed": 17,
+      "reference_sha256": "a50505421a08df6db4367ec79d31c9cc57216ff6e1074bb9042a9e52e22cb687",
+      "derived_task_sha256": "b5c4a31bb4d228425aaee45fb334a78aed48a027362e9a324f065d3a96ebddcf"
+    },
+    {
+      "id": "mbpp-full-789",
+      "category": "numeric",
+      "original_cases": 14,
+      "new_cases": 2,
+      "reference_cases_passed": 16,
+      "reference_sha256": "fd01087992ed8b97660bfdde5316eb7e86267bf1c652fe816d8e4587643375a9",
+      "derived_task_sha256": "feb7d5080bfe8de6b46aa466e057f75e04b4d0d7682505fcf8ca7001096a20cd"
+    },
+    {
+      "id": "mbpp-full-610",
+      "category": "collections",
+      "original_cases": 15,
+      "new_cases": 4,
+      "reference_cases_passed": 19,
+      "reference_sha256": "96af3bf9e0dac3cee72eed5ab1b835f724c2d029d7787a34b035cc2bc2f0f23d",
+      "derived_task_sha256": "69902a7d3c55107e4dcad34403380b294f3e3fb1e6d33d9eefbb62326c068fe7"
+    },
+    {
+      "id": "mbpp-full-681",
+      "category": "numeric",
+      "original_cases": 10,
+      "new_cases": 3,
+      "reference_cases_passed": 13,
+      "reference_sha256": "f24320d01b333c1175d8510c1b1993b43ce0a17a248ea41112f64c1e46b0ebcd",
+      "derived_task_sha256": "a61b114ebd738453319c28895d09f4aa8e83a0903183d0449050c175fd4503b1"
+    },
+    {
+      "id": "mbpp-full-816",
+      "category": "collections",
+      "original_cases": 15,
+      "new_cases": 2,
+      "reference_cases_passed": 17,
+      "reference_sha256": "8568705e3873bda4e12acc78efce5ca1c341f6ec2b8f1aeaa0dacba038c595de",
+      "derived_task_sha256": "52666547b1b01a4ad5f6f5d191d9e988b812488e63f5c5307625c80651908527"
+    },
+    {
+      "id": "mbpp-full-687",
+      "category": "numeric",
+      "original_cases": 15,
+      "new_cases": 4,
+      "reference_cases_passed": 19,
+      "reference_sha256": "d02876b05f4312bba6aeae64289fa886ce00b93db5c10c163a1f08524e7511f2",
+      "derived_task_sha256": "1183f2538c5eedcebb77e0e45004686720e80935260b6f6943d81b31bdcee502"
+    },
+    {
+      "id": "mbpp-full-633",
+      "category": "collections",
+      "original_cases": 15,
+      "new_cases": 4,
+      "reference_cases_passed": 19,
+      "reference_sha256": "3a6979eb90413609210f6a7b547ad6cf11689a2398e3ef540a3d62c7029acafc",
+      "derived_task_sha256": "eabc4ce32964cdb6ad9bb69c9666daaafd413d15c47a740ec0490ca75f7b7b26"
+    },
+    {
+      "id": "mbpp-full-675",
+      "category": "numeric",
+      "original_cases": 13,
+      "new_cases": 5,
+      "reference_cases_passed": 18,
+      "reference_sha256": "5ade5d77d119e865efd4b5c0056b7017bf991b2e3d4030945af6c544e298f0ff",
+      "derived_task_sha256": "9fcb45bd1af8fad2118601191b4c260f6762c82ec6fbf4f12aca427c23b31ec5"
+    },
+    {
+      "id": "mbpp-full-611",
+      "category": "collections",
+      "original_cases": 15,
+      "new_cases": 3,
+      "reference_cases_passed": 18,
+      "reference_sha256": "c4b8537c1f25cd82dd6b3979ac60c9b954ee07c530eba41fa5a8c694ec804bf0",
+      "derived_task_sha256": "c659e23e6023ec10fddd640e62c26a9997303368ad50316416f066a177ef8701"
+    },
+    {
+      "id": "mbpp-full-745",
+      "category": "numeric",
+      "original_cases": 13,
+      "new_cases": 4,
+      "reference_cases_passed": 17,
+      "reference_sha256": "1e338c5fe7a4a195ff36d9f13c1ed1dcb9360cf65a92e9e1bfeeb8903e71e833",
+      "derived_task_sha256": "31d7b85e20f6178e397695b9a66ddf100de516a4b9ab8e5ca47ab296cf527186"
+    },
+    {
+      "id": "mbpp-full-734",
+      "category": "collections",
+      "original_cases": 15,
+      "new_cases": 3,
+      "reference_cases_passed": 18,
+      "reference_sha256": "5f2addab15f0b5e21189ddf01f24fdb31ec6cee082a154d4c2abf72e7a03047d",
+      "derived_task_sha256": "1b20b01cdcd643c21c09a40527f9a4d2b85b4a85f403814a866ffbbaf2eb4597"
+    }
+  ],
+  "original_cases": 273,
+  "new_cases": 73,
+  "reference_cases_passed": 346,
+  "exposure": {
+    "source_protocol_sha256": "0cba1d12bb4f06c051566ac9e9d58923d1ad108475a34f6b04aa4cb3aa0060ba",
+    "previous_count": 264,
+    "previous_sha256": "7d6934db8e0bf32e1814907be7b5d2168b6da3e4f790e2a7ed6f0a33d76e65a2",
+    "additional_ids": [
+      "mbpp-full-613",
+      "mbpp-full-757",
+      "mbpp-full-661",
+      "mbpp-full-916",
+      "mbpp-full-885",
+      "mbpp-full-863",
+      "mbpp-full-929",
+      "mbpp-full-619",
+      "mbpp-full-641",
+      "mbpp-full-844",
+      "mbpp-full-789",
+      "mbpp-full-610",
+      "mbpp-full-681",
+      "mbpp-full-816",
+      "mbpp-full-687",
+      "mbpp-full-633",
+      "mbpp-full-675",
+      "mbpp-full-611",
+      "mbpp-full-745",
+      "mbpp-full-734"
+    ],
+    "combined_count": 284,
+    "combined_sha256": "05ae698aa0cc4a68d8c8e86eec35af3282e329f659e731bc515bf134fe3ac199",
+    "full_registry_location": "data/task-contracts-v1/prior-exposure.json"
+  },
+  "model_attempts": 0,
+  "modal_reservations_usd": 0
+}

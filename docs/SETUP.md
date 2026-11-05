@@ -106,3 +106,9 @@ $25 overhead, leaving $31 under the unchanged $250 cap. Failed reservations
 remain counted; billing snapshots are not final invoices. A new experiment
 requires a new frozen protocol and main-chat budget coordination. Portable
 inference is remotely validated; portable training and resume are not yet tested.
+
+## Reviewed task contracts
+
+Use the installed library's task-contract API and synthetic example for offline authoring. The source checkout contains a reproducible 20-task MBPP diagnostic which requires the pinned training Parquet and saved recovery inputs on this SSD. Replay it with `.venv/bin/python -m studies.task_contracts_v1.audit`. Use the full derived manifest in the trusted controller, its `prompts` projection for generation, and the reviewed boundary scorer for isolated outputs. Future studies should consume `data/task-contracts-v1/prior-exposure.json`. See [library API](TASK_CONTRACTS.md) and [diagnostic instructions](../studies/task_contracts_v1/README.md).
+
+Historical recovery reports bind the original package source inventory. To replay recovery v3 after installing a newer library, use the 0.4.2 wheel with the source tree at commit `55d0e29`, its pinned data, four run reports and teacher artifacts. The historical summary reproduced exactly from that combination on the SSD. The approved W&B recovery bundle is version `v0`, attached to run `kdo223jx`.

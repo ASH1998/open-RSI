@@ -6,7 +6,7 @@ from .core import (
 from .comparison import compare
 from .artifacts import artifact_manifest
 
-__version__ = "0.4.2"
+__version__ = "0.5.0"
 __all__ = [
     "Agent", "Decision", "Environment", "Evaluator", "FrozenJSON", "Manifest",
     "Operator", "PromotionGate", "Provenance", "RetainParentGate", "RunResult",
