@@ -2,9 +2,7 @@
 
 A small-model research project investigating whether a model can learn from verified execution experience and eventually improve how it produces its successors.
 
-**Status:** `rsilab 0.5.0` adds reviewed task wording and typed boundary checks. The offline diagnostic covers all 20 previously attempted MBPP training tasks. The prior teacher comparison yielded 10/20 verified targets for the original teacher and 9/20 for the learned teacher. Both missed the training gate. The original parent remains selected. [Task diagnostic](studies/task_contracts_v1/README.md) · [Library quickstart](docs/QUICKSTART.md) · [Teacher comparison](docs/SUCCESSOR_RECOVERY_EXPERIMENT.md).
-
-The next study compares independent sampling with one repair after verifier feedback. The evaluated design uses 24 fresh training tasks and nine held-back tasks from MBPP and APPS native training data. Main coordinates all Modal jobs under a $25 study envelope. [Prospective study](studies/repair_v1/README.md) · [Data selection](studies/repair_v1/source-amendment.md) · [Repair API](docs/PAIRED_REPAIR.md).
+**Status:** completed a matched successor training experiment with `rsilab 0.6.0`. Feedback repair produced 19/24 verified targets for the original teacher and 18/24 for the learned teacher. Their students passed the same 4/9 fresh and 6/16 retention tasks. The starting model passed 3/9 and 8/16, so the original parent stays selected. [Experiment results](docs/REPAIR_EXPERIMENT.md) · [Public library quickstart](docs/QUICKSTART.md).
 
 ## Workspace and repository
 
@@ -52,6 +50,6 @@ Earlier engineering milestone: [stronger diagnostics and durable execution](docs
 
 Completed verified-data experiment: [verified-data SFT protocol](studies/verified_sft_v1/README.md). Reusable workflow: [learning API](docs/LEARNING.md), [dataset audit](docs/VERIFIED_DATA.md), and [project runtime](docs/PROJECT_RUNTIME.md).
 
-Latest model comparison: [successor recovery](docs/SUCCESSOR_RECOVERY_EXPERIMENT.md). The [task contract audit](studies/task_contracts_v1/README.md) is the latest evaluator diagnostic. Current reservations: $194 plus $25 overhead; $31 unallocated. Reservations are not invoices.
+Latest model comparison: [sampling, repair and matched students](docs/REPAIR_EXPERIMENT.md). Project job reservations are $219, with $25 held for overhead and $6 unallocated.
 
 Completed successor probe: [recovery protocol](studies/successor_recovery_v3/README.md), [measurement contract](docs/SUCCESSOR_MEASUREMENT.md), and [portable Modal workers](docs/PORTABLE_MODAL.md).

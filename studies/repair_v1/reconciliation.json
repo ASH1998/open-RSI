@@ -1,0 +1,20 @@
+{
+  "study": "repair-v1",
+  "reserved_usd": 25,
+  "project": {
+    "project_cap_usd": 250.0,
+    "reserved_for_jobs_usd": 219.0,
+    "overhead_reserve_usd": 25.0,
+    "available_for_jobs_usd": 6.0,
+    "invoice_total_usd": null
+  },
+  "stage_reservations": {
+    "repair-v1-worker-probe": 1,
+    "repair-v1-baseline": 4,
+    "repair-v1-teacher-original": 5,
+    "repair-v1-teacher-learned": 5,
+    "repair-v1-child-original": 5,
+    "repair-v1-child-learned": 5
+  },
+  "invoice_total_usd": null
+}

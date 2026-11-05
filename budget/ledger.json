@@ -544,6 +544,90 @@
         "error_type": null,
         "app_id": "ap-1FDypnC0D6BtjpogFmHrpL"
       }
+    },
+    {
+      "id": "cf1ced9eacc14f20899ec31971591932",
+      "stage": "repair-v1-worker-probe",
+      "reserved_usd": 1,
+      "status": "completed",
+      "started_at": "2026-11-05T16:33:48.675963+00:00",
+      "finished_at": "2026-11-05T16:34:07.630089+00:00",
+      "details": {
+        "run_id": "20261105T163348Z-repair-v1-worker-probe-3b908549",
+        "wall_seconds": 13.118142374994932,
+        "error_type": null,
+        "app_id": "ap-t3eyCd4SkduW9wM15cJ03R"
+      }
+    },
+    {
+      "id": "43125d1bb7ed40ffaff6e940b24b37c4",
+      "stage": "repair-v1-baseline",
+      "reserved_usd": 4,
+      "status": "completed",
+      "started_at": "2026-11-05T16:34:27.348478+00:00",
+      "finished_at": "2026-11-05T16:36:06.747863+00:00",
+      "details": {
+        "run_id": "20261105T163427Z-repair-v1-baseline-78a59c92",
+        "wall_seconds": 93.34071600000607,
+        "error_type": null,
+        "app_id": "ap-lPmCLmdsU3jKkEhj1kZHjS"
+      }
+    },
+    {
+      "id": "0060323fcc6f467fb091ae355880bb45",
+      "stage": "repair-v1-teacher-original",
+      "reserved_usd": 5,
+      "status": "completed",
+      "started_at": "2026-11-05T16:36:24.907057+00:00",
+      "finished_at": "2026-11-05T16:42:32.938861+00:00",
+      "details": {
+        "run_id": "20261105T163624Z-repair-v1-teacher-original-2154f127",
+        "wall_seconds": 361.7679704579932,
+        "error_type": null,
+        "app_id": "ap-6dhdvpuIhBZuGUq8nA97KE"
+      }
+    },
+    {
+      "id": "b46524c2580a43c2859228a9a83f6942",
+      "stage": "repair-v1-teacher-learned",
+      "reserved_usd": 5,
+      "status": "completed",
+      "started_at": "2026-11-05T16:42:47.029814+00:00",
+      "finished_at": "2026-11-05T16:51:16.430460+00:00",
+      "details": {
+        "run_id": "20261105T164247Z-repair-v1-teacher-learned-aecc0190",
+        "wall_seconds": 503.242180250003,
+        "error_type": null,
+        "app_id": "ap-DGdW3VxkEZIV6CTagxi9G2"
+      }
+    },
+    {
+      "id": "35b4579f36cc444a9ab96c187575b40c",
+      "stage": "repair-v1-child-original",
+      "reserved_usd": 5,
+      "status": "completed",
+      "started_at": "2026-11-05T16:52:08.508095+00:00",
+      "finished_at": "2026-11-05T16:57:38.246175+00:00",
+      "details": {
+        "run_id": "20261105T165208Z-repair-v1-child-original-2c24a026",
+        "wall_seconds": 321.9563187500171,
+        "error_type": null,
+        "app_id": "ap-DiDqcXYtBxqFjLTRsXHZAz"
+      }
+    },
+    {
+      "id": "edd415022abc4609ba5f136dcbf16064",
+      "stage": "repair-v1-child-learned",
+      "reserved_usd": 5,
+      "status": "completed",
+      "started_at": "2026-11-05T16:58:02.363293+00:00",
+      "finished_at": "2026-11-05T17:02:54.799266+00:00",
+      "details": {
+        "run_id": "20261105T165802Z-repair-v1-child-learned-20634392",
+        "wall_seconds": 285.0608504579868,
+        "error_type": null,
+        "app_id": "ap-Tz09SStwHJ7D960Gst17cv"
+      }
     }
   ]
 }

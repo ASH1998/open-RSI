@@ -116,3 +116,5 @@ Historical recovery reports bind the original package source inventory. To repla
 ## Matched repair study
 
 The main chat operates `python -m rsi.repair_study` from the SSD. Use `preflight` to validate the frozen plan and sealed selected cohort offline. Only main may launch the named stages after checking their prerequisites and ledger entries. Each attempted stage is single-use, including failures. Use `report` to replay the outcome after execution. The generation controller sends public prompts and bounded failure feedback to GPU workers. Typed test expectations stay with the trusted controller. See the [study and budget](../studies/repair_v1/README.md) and [library API](PAIRED_REPAIR.md).
+
+The study is complete. Replay it with `.venv/bin/python -I -B -m rsi.repair_study report` from the pinned SSD workspace. All six stages have completed reservations, and the report rebuilds the paired comparison from saved evidence. The two student adapter/checkpoint exports have verified hashes under `artifacts/repair-v1/`. See [results and W&B links](REPAIR_EXPERIMENT.md).

@@ -1,0 +1,782 @@
+{
+  "study": "repair-v1",
+  "plan_sha256": "eaca8b38e8600715acb63fa5be57da5c178f5f607f451449a04662c22550ce7e",
+  "paired_sha256": "cf3377cda9293317a803697f334b80d4de8d0d20f99ab2701a29364e9077fae3",
+  "child_gate": {
+    "eligible": true,
+    "reasons": [],
+    "category_counts": {
+      "collections": 8,
+      "numeric": 4,
+      "text": 4
+    },
+    "selected_ids": {
+      "original": [
+        "mbpp-full-662",
+        "mbpp-full-663",
+        "mbpp-full-664",
+        "mbpp-full-688",
+        "mbpp-full-694",
+        "mbpp-full-696",
+        "mbpp-full-739",
+        "mbpp-full-744",
+        "mbpp-full-759",
+        "mbpp-full-796",
+        "mbpp-full-805",
+        "mbpp-full-811",
+        "mbpp-full-832",
+        "mbpp-full-936",
+        "apps-train-3038",
+        "apps-train-3041"
+      ],
+      "learned": [
+        "mbpp-full-662",
+        "mbpp-full-663",
+        "mbpp-full-664",
+        "mbpp-full-688",
+        "mbpp-full-694",
+        "mbpp-full-696",
+        "mbpp-full-723",
+        "mbpp-full-739",
+        "mbpp-full-744",
+        "mbpp-full-759",
+        "mbpp-full-796",
+        "mbpp-full-805",
+        "mbpp-full-811",
+        "mbpp-full-832",
+        "apps-train-3041",
+        "apps-train-3080"
+      ]
+    }
+  },
+  "baseline": {
+    "fresh": {
+      "mbpp-full-626": false,
+      "mbpp-full-644": true,
+      "mbpp-full-679": false,
+      "mbpp-full-717": true,
+      "mbpp-full-780": false,
+      "mbpp-full-915": false,
+      "mbpp-full-938": false,
+      "mbpp-full-950": true,
+      "apps-train-4194": false
+    },
+    "retention": {
+      "mbpp-full-742": false,
+      "mbpp-full-890": false,
+      "mbpp-full-711": true,
+      "mbpp-full-835": true,
+      "mbpp-full-771": false,
+      "mbpp-full-686": false,
+      "mbpp-full-854": true,
+      "mbpp-full-621": true,
+      "mbpp-full-873": true,
+      "mbpp-full-715": false,
+      "mbpp-full-849": true,
+      "mbpp-full-861": false,
+      "mbpp-full-898": false,
+      "mbpp-full-665": true,
+      "mbpp-full-616": true,
+      "mbpp-full-648": false
+    }
+  },
+  "teachers": {
+    "original": {
+      "run_id": "20261105T163624Z-repair-v1-teacher-original-2154f127",
+      "usage": {
+        "input_tokens": 11127,
+        "output_tokens": 4964,
+        "gpu_seconds": 267.860443666,
+        "sandbox_wall_seconds": 220.054972,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.16353091125618752,
+        "invoice_total_usd": null
+      },
+      "paired_unique": {
+        "both": [
+          "mbpp-full-662",
+          "mbpp-full-663",
+          "mbpp-full-664",
+          "mbpp-full-688",
+          "mbpp-full-694",
+          "mbpp-full-696",
+          "mbpp-full-739",
+          "mbpp-full-744",
+          "mbpp-full-759",
+          "mbpp-full-796",
+          "mbpp-full-805",
+          "mbpp-full-811",
+          "mbpp-full-832",
+          "mbpp-full-936",
+          "mbpp-full-972",
+          "apps-train-3041",
+          "apps-train-3080"
+        ],
+        "left_only": [],
+        "right_only": [
+          "mbpp-full-943",
+          "apps-train-3038"
+        ],
+        "neither": [
+          "mbpp-full-723",
+          "mbpp-full-830",
+          "mbpp-full-910",
+          "apps-train-3052",
+          "apps-train-4256"
+        ]
+      },
+      "paired_solved": {
+        "both": [
+          "mbpp-full-662",
+          "mbpp-full-663",
+          "mbpp-full-664",
+          "mbpp-full-688",
+          "mbpp-full-694",
+          "mbpp-full-696",
+          "mbpp-full-739",
+          "mbpp-full-744",
+          "mbpp-full-759",
+          "mbpp-full-796",
+          "mbpp-full-805",
+          "mbpp-full-811",
+          "mbpp-full-832",
+          "mbpp-full-936",
+          "mbpp-full-972",
+          "apps-train-3041",
+          "apps-train-3080"
+        ],
+        "left_only": [],
+        "right_only": [
+          "mbpp-full-943",
+          "apps-train-3038"
+        ],
+        "neither": [
+          "mbpp-full-723",
+          "mbpp-full-830",
+          "mbpp-full-910",
+          "apps-train-3052",
+          "apps-train-4256"
+        ]
+      },
+      "recoveries_by_category": {
+        "collections": {
+          "both": [],
+          "left_only": [],
+          "right_only": [
+            "mbpp-full-943"
+          ],
+          "neither": [
+            "mbpp-full-723"
+          ]
+        },
+        "numeric": {
+          "both": [],
+          "left_only": [],
+          "right_only": [],
+          "neither": [
+            "mbpp-full-830",
+            "mbpp-full-910"
+          ]
+        },
+        "text": {
+          "both": [],
+          "left_only": [],
+          "right_only": [
+            "apps-train-3038"
+          ],
+          "neither": [
+            "apps-train-3052",
+            "apps-train-4256"
+          ]
+        }
+      },
+      "yields": {
+        "sample": 17,
+        "repair": 19
+      },
+      "category_yields": {
+        "sample": {
+          "collections": 9,
+          "numeric": 4,
+          "text": 4
+        },
+        "repair": {
+          "collections": 10,
+          "numeric": 4,
+          "text": 5
+        }
+      },
+      "unique_yield_by_source": {
+        "google-research-datasets/mbpp": {
+          "task_ids": [
+            "mbpp-full-662",
+            "mbpp-full-663",
+            "mbpp-full-664",
+            "mbpp-full-688",
+            "mbpp-full-694",
+            "mbpp-full-696",
+            "mbpp-full-723",
+            "mbpp-full-739",
+            "mbpp-full-744",
+            "mbpp-full-759",
+            "mbpp-full-796",
+            "mbpp-full-805",
+            "mbpp-full-811",
+            "mbpp-full-830",
+            "mbpp-full-832",
+            "mbpp-full-910",
+            "mbpp-full-936",
+            "mbpp-full-943",
+            "mbpp-full-972"
+          ],
+          "sample": 15,
+          "repair": 16
+        },
+        "codeparrot/apps": {
+          "task_ids": [
+            "apps-train-3038",
+            "apps-train-3041",
+            "apps-train-3052",
+            "apps-train-3080",
+            "apps-train-4256"
+          ],
+          "sample": 2,
+          "repair": 3
+        }
+      }
+    },
+    "learned": {
+      "run_id": "20261105T164247Z-repair-v1-teacher-learned-aecc0190",
+      "usage": {
+        "input_tokens": 10971,
+        "output_tokens": 4425,
+        "gpu_seconds": 400.85083606600006,
+        "sandbox_wall_seconds": 229.009352,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.24389385652066553,
+        "invoice_total_usd": null
+      },
+      "paired_unique": {
+        "both": [
+          "mbpp-full-662",
+          "mbpp-full-663",
+          "mbpp-full-688",
+          "mbpp-full-694",
+          "mbpp-full-696",
+          "mbpp-full-723",
+          "mbpp-full-739",
+          "mbpp-full-744",
+          "mbpp-full-759",
+          "mbpp-full-796",
+          "mbpp-full-805",
+          "mbpp-full-811",
+          "mbpp-full-832",
+          "mbpp-full-936",
+          "mbpp-full-972",
+          "apps-train-3041",
+          "apps-train-3080"
+        ],
+        "left_only": [],
+        "right_only": [
+          "mbpp-full-664"
+        ],
+        "neither": [
+          "mbpp-full-830",
+          "mbpp-full-910",
+          "mbpp-full-943",
+          "apps-train-3038",
+          "apps-train-3052",
+          "apps-train-4256"
+        ]
+      },
+      "paired_solved": {
+        "both": [
+          "mbpp-full-662",
+          "mbpp-full-663",
+          "mbpp-full-688",
+          "mbpp-full-694",
+          "mbpp-full-696",
+          "mbpp-full-723",
+          "mbpp-full-739",
+          "mbpp-full-744",
+          "mbpp-full-759",
+          "mbpp-full-796",
+          "mbpp-full-805",
+          "mbpp-full-811",
+          "mbpp-full-832",
+          "mbpp-full-936",
+          "mbpp-full-972",
+          "apps-train-3041",
+          "apps-train-3080"
+        ],
+        "left_only": [],
+        "right_only": [
+          "mbpp-full-664"
+        ],
+        "neither": [
+          "mbpp-full-830",
+          "mbpp-full-910",
+          "mbpp-full-943",
+          "apps-train-3038",
+          "apps-train-3052",
+          "apps-train-4256"
+        ]
+      },
+      "recoveries_by_category": {
+        "collections": {
+          "both": [],
+          "left_only": [],
+          "right_only": [],
+          "neither": [
+            "mbpp-full-943"
+          ]
+        },
+        "numeric": {
+          "both": [],
+          "left_only": [],
+          "right_only": [
+            "mbpp-full-664"
+          ],
+          "neither": [
+            "mbpp-full-830",
+            "mbpp-full-910"
+          ]
+        },
+        "text": {
+          "both": [],
+          "left_only": [],
+          "right_only": [],
+          "neither": [
+            "apps-train-3038",
+            "apps-train-3052",
+            "apps-train-4256"
+          ]
+        }
+      },
+      "yields": {
+        "sample": 17,
+        "repair": 18
+      },
+      "category_yields": {
+        "sample": {
+          "collections": 10,
+          "numeric": 3,
+          "text": 4
+        },
+        "repair": {
+          "collections": 10,
+          "numeric": 4,
+          "text": 4
+        }
+      },
+      "unique_yield_by_source": {
+        "google-research-datasets/mbpp": {
+          "task_ids": [
+            "mbpp-full-662",
+            "mbpp-full-663",
+            "mbpp-full-664",
+            "mbpp-full-688",
+            "mbpp-full-694",
+            "mbpp-full-696",
+            "mbpp-full-723",
+            "mbpp-full-739",
+            "mbpp-full-744",
+            "mbpp-full-759",
+            "mbpp-full-796",
+            "mbpp-full-805",
+            "mbpp-full-811",
+            "mbpp-full-830",
+            "mbpp-full-832",
+            "mbpp-full-910",
+            "mbpp-full-936",
+            "mbpp-full-943",
+            "mbpp-full-972"
+          ],
+          "sample": 15,
+          "repair": 16
+        },
+        "codeparrot/apps": {
+          "task_ids": [
+            "apps-train-3038",
+            "apps-train-3041",
+            "apps-train-3052",
+            "apps-train-3080",
+            "apps-train-4256"
+          ],
+          "sample": 2,
+          "repair": 2
+        }
+      }
+    }
+  },
+  "selected_agent_id": "original-parent",
+  "promoted": false,
+  "sustained_rsi": false,
+  "paired_teachers_unique": {
+    "sample": {
+      "both": [
+        "mbpp-full-662",
+        "mbpp-full-663",
+        "mbpp-full-688",
+        "mbpp-full-694",
+        "mbpp-full-696",
+        "mbpp-full-739",
+        "mbpp-full-744",
+        "mbpp-full-759",
+        "mbpp-full-796",
+        "mbpp-full-805",
+        "mbpp-full-811",
+        "mbpp-full-832",
+        "mbpp-full-936",
+        "mbpp-full-972",
+        "apps-train-3041",
+        "apps-train-3080"
+      ],
+      "left_only": [
+        "mbpp-full-664"
+      ],
+      "right_only": [
+        "mbpp-full-723"
+      ],
+      "neither": [
+        "mbpp-full-830",
+        "mbpp-full-910",
+        "mbpp-full-943",
+        "apps-train-3038",
+        "apps-train-3052",
+        "apps-train-4256"
+      ]
+    },
+    "repair": {
+      "both": [
+        "mbpp-full-662",
+        "mbpp-full-663",
+        "mbpp-full-664",
+        "mbpp-full-688",
+        "mbpp-full-694",
+        "mbpp-full-696",
+        "mbpp-full-739",
+        "mbpp-full-744",
+        "mbpp-full-759",
+        "mbpp-full-796",
+        "mbpp-full-805",
+        "mbpp-full-811",
+        "mbpp-full-832",
+        "mbpp-full-936",
+        "mbpp-full-972",
+        "apps-train-3041",
+        "apps-train-3080"
+      ],
+      "left_only": [
+        "mbpp-full-943",
+        "apps-train-3038"
+      ],
+      "right_only": [
+        "mbpp-full-723"
+      ],
+      "neither": [
+        "mbpp-full-830",
+        "mbpp-full-910",
+        "apps-train-3052",
+        "apps-train-4256"
+      ]
+    }
+  },
+  "fresh_ids_by_source": {
+    "google-research-datasets/mbpp": [
+      "mbpp-full-626",
+      "mbpp-full-644",
+      "mbpp-full-679",
+      "mbpp-full-717",
+      "mbpp-full-780",
+      "mbpp-full-915",
+      "mbpp-full-938",
+      "mbpp-full-950"
+    ],
+    "codeparrot/apps": [
+      "apps-train-4194"
+    ]
+  },
+  "children": {
+    "original": {
+      "run_id": "20261105T165208Z-repair-v1-child-original-2c24a026",
+      "usage": {
+        "input_tokens": 3349,
+        "output_tokens": 1642,
+        "gpu_seconds": 228.15792654400002,
+        "sandbox_wall_seconds": 82.421801,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.13842451354390617,
+        "invoice_total_usd": null
+      },
+      "token_accounting": {
+        "processed_tokens": 13456,
+        "supervised_tokens": 4416,
+        "dataset_supervised_tokens": 1104
+      },
+      "scores": {
+        "fresh": {
+          "mbpp-full-626": false,
+          "mbpp-full-644": true,
+          "mbpp-full-679": false,
+          "mbpp-full-717": true,
+          "mbpp-full-780": true,
+          "mbpp-full-915": true,
+          "mbpp-full-938": false,
+          "mbpp-full-950": false,
+          "apps-train-4194": false
+        },
+        "retention": {
+          "mbpp-full-742": false,
+          "mbpp-full-890": false,
+          "mbpp-full-711": true,
+          "mbpp-full-835": true,
+          "mbpp-full-771": false,
+          "mbpp-full-686": false,
+          "mbpp-full-854": false,
+          "mbpp-full-621": false,
+          "mbpp-full-873": true,
+          "mbpp-full-715": false,
+          "mbpp-full-849": true,
+          "mbpp-full-861": false,
+          "mbpp-full-898": false,
+          "mbpp-full-665": true,
+          "mbpp-full-616": true,
+          "mbpp-full-648": false
+        }
+      },
+      "vs_start": {
+        "fresh": {
+          "parent_passes": 3,
+          "candidate_passes": 4,
+          "total": 9,
+          "gains": [
+            "mbpp-full-780",
+            "mbpp-full-915"
+          ],
+          "losses": [
+            "mbpp-full-950"
+          ],
+          "net": 1
+        },
+        "retention": {
+          "parent_passes": 8,
+          "candidate_passes": 6,
+          "total": 16,
+          "gains": [],
+          "losses": [
+            "mbpp-full-854",
+            "mbpp-full-621"
+          ],
+          "net": -2
+        }
+      },
+      "vs_other": {
+        "fresh": {
+          "parent_passes": 4,
+          "candidate_passes": 4,
+          "total": 9,
+          "gains": [],
+          "losses": [],
+          "net": 0
+        },
+        "retention": {
+          "parent_passes": 6,
+          "candidate_passes": 6,
+          "total": 16,
+          "gains": [],
+          "losses": [],
+          "net": 0
+        }
+      },
+      "promising": false
+    },
+    "learned": {
+      "run_id": "20261105T165802Z-repair-v1-child-learned-20634392",
+      "usage": {
+        "input_tokens": 3349,
+        "output_tokens": 1198,
+        "gpu_seconds": 186.928434265,
+        "sandbox_wall_seconds": 86.855392,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.11357007701086579,
+        "invoice_total_usd": null
+      },
+      "token_accounting": {
+        "processed_tokens": 12148,
+        "supervised_tokens": 3124,
+        "dataset_supervised_tokens": 781
+      },
+      "scores": {
+        "fresh": {
+          "mbpp-full-626": false,
+          "mbpp-full-644": true,
+          "mbpp-full-679": false,
+          "mbpp-full-717": true,
+          "mbpp-full-780": true,
+          "mbpp-full-915": true,
+          "mbpp-full-938": false,
+          "mbpp-full-950": false,
+          "apps-train-4194": false
+        },
+        "retention": {
+          "mbpp-full-742": false,
+          "mbpp-full-890": false,
+          "mbpp-full-711": true,
+          "mbpp-full-835": true,
+          "mbpp-full-771": false,
+          "mbpp-full-686": false,
+          "mbpp-full-854": false,
+          "mbpp-full-621": false,
+          "mbpp-full-873": true,
+          "mbpp-full-715": false,
+          "mbpp-full-849": true,
+          "mbpp-full-861": false,
+          "mbpp-full-898": false,
+          "mbpp-full-665": true,
+          "mbpp-full-616": true,
+          "mbpp-full-648": false
+        }
+      },
+      "vs_start": {
+        "fresh": {
+          "parent_passes": 3,
+          "candidate_passes": 4,
+          "total": 9,
+          "gains": [
+            "mbpp-full-780",
+            "mbpp-full-915"
+          ],
+          "losses": [
+            "mbpp-full-950"
+          ],
+          "net": 1
+        },
+        "retention": {
+          "parent_passes": 8,
+          "candidate_passes": 6,
+          "total": 16,
+          "gains": [],
+          "losses": [
+            "mbpp-full-854",
+            "mbpp-full-621"
+          ],
+          "net": -2
+        }
+      },
+      "vs_other": {
+        "fresh": {
+          "parent_passes": 4,
+          "candidate_passes": 4,
+          "total": 9,
+          "gains": [],
+          "losses": [],
+          "net": 0
+        },
+        "retention": {
+          "parent_passes": 6,
+          "candidate_passes": 6,
+          "total": 16,
+          "gains": [],
+          "losses": [],
+          "net": 0
+        }
+      },
+      "promising": false
+    }
+  },
+  "status": "paired_children_completed",
+  "stages": {
+    "repair-v1-worker-probe": {
+      "run_id": "20261105T163348Z-repair-v1-worker-probe-3b908549",
+      "wall_seconds": 13.118142374994932,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "gpu_seconds": 0,
+        "sandbox_wall_seconds": 0,
+        "cpu_probe_seconds": 0.21178358800000008,
+        "estimated_execution_cost_usd": 6.489049136320002e-06,
+        "invoice_total_usd": null
+      },
+      "report_sha256": "600d0b2c630ffd82cb8e7f6c92343cdfb8fdfe69eeedbc2144459912efb52485"
+    },
+    "repair-v1-baseline": {
+      "run_id": "20261105T163427Z-repair-v1-baseline-78a59c92",
+      "wall_seconds": 93.34071600000607,
+      "usage": {
+        "input_tokens": 3349,
+        "output_tokens": 1836,
+        "gpu_seconds": 56.620792404,
+        "sandbox_wall_seconds": 74.399539,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.03479783098113038,
+        "invoice_total_usd": null
+      },
+      "report_sha256": "4c37f35cd3edb253c918e1c2e0cdc7abb1d525eb8665d8b8e61f12ce31312c94"
+    },
+    "repair-v1-teacher-original": {
+      "run_id": "20261105T163624Z-repair-v1-teacher-original-2154f127",
+      "wall_seconds": 361.7679704579932,
+      "usage": {
+        "input_tokens": 11127,
+        "output_tokens": 4964,
+        "gpu_seconds": 267.860443666,
+        "sandbox_wall_seconds": 220.054972,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.16353091125618752,
+        "invoice_total_usd": null
+      },
+      "report_sha256": "510e7c7687aabf7e8a95e930e88548b492283c1991e6407e0cb3884c7b5c4e38"
+    },
+    "repair-v1-teacher-learned": {
+      "run_id": "20261105T164247Z-repair-v1-teacher-learned-aecc0190",
+      "wall_seconds": 503.242180250003,
+      "usage": {
+        "input_tokens": 10971,
+        "output_tokens": 4425,
+        "gpu_seconds": 400.85083606600006,
+        "sandbox_wall_seconds": 229.009352,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.24389385652066553,
+        "invoice_total_usd": null
+      },
+      "report_sha256": "22c852e9d5efd16ad311afffa557cd51004dea245f9955ae44261c8370703605"
+    },
+    "repair-v1-child-original": {
+      "run_id": "20261105T165208Z-repair-v1-child-original-2c24a026",
+      "wall_seconds": 321.9563187500171,
+      "usage": {
+        "input_tokens": 3349,
+        "output_tokens": 1642,
+        "gpu_seconds": 228.15792654400002,
+        "sandbox_wall_seconds": 82.421801,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.13842451354390617,
+        "invoice_total_usd": null
+      },
+      "report_sha256": "cfa3885b5989a4198833fef2f371e2c05597686ad4506554e1b744e87292a5d9"
+    },
+    "repair-v1-child-learned": {
+      "run_id": "20261105T165802Z-repair-v1-child-learned-20634392",
+      "wall_seconds": 285.0608504579868,
+      "usage": {
+        "input_tokens": 3349,
+        "output_tokens": 1198,
+        "gpu_seconds": 186.928434265,
+        "sandbox_wall_seconds": 86.855392,
+        "cpu_probe_seconds": 0,
+        "estimated_execution_cost_usd": 0.11357007701086579,
+        "invoice_total_usd": null
+      },
+      "report_sha256": "a39e5a30c7d561e60905fcc3f45ddf69810d8170b97fa7eed4eb73a8ce4096a8"
+    }
+  },
+  "budget": {
+    "project_cap_usd": 250.0,
+    "reserved_for_jobs_usd": 219.0,
+    "overhead_reserve_usd": 25.0,
+    "available_for_jobs_usd": 6.0,
+    "invoice_total_usd": null
+  }
+}

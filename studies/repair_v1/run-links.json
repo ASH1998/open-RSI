@@ -1,0 +1,26 @@
+{
+  "repair-v1-worker-probe": {
+    "url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/01rt43le",
+    "report_sha256": "600d0b2c630ffd82cb8e7f6c92343cdfb8fdfe69eeedbc2144459912efb52485"
+  },
+  "repair-v1-baseline": {
+    "url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/lysnxeds",
+    "report_sha256": "4c37f35cd3edb253c918e1c2e0cdc7abb1d525eb8665d8b8e61f12ce31312c94"
+  },
+  "repair-v1-teacher-original": {
+    "url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/1vz9kizr",
+    "report_sha256": "510e7c7687aabf7e8a95e930e88548b492283c1991e6407e0cb3884c7b5c4e38"
+  },
+  "repair-v1-teacher-learned": {
+    "url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/q162odcf",
+    "report_sha256": "22c852e9d5efd16ad311afffa557cd51004dea245f9955ae44261c8370703605"
+  },
+  "repair-v1-child-original": {
+    "url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/cz7rxlpl",
+    "report_sha256": "cfa3885b5989a4198833fef2f371e2c05597686ad4506554e1b744e87292a5d9"
+  },
+  "repair-v1-child-learned": {
+    "url": "https://forge.coreweave.com/wandb/ashu-na/rsi/runs/nkb1k8hw",
+    "report_sha256": "a39e5a30c7d561e60905fcc3f45ddf69810d8170b97fa7eed4eb73a8ce4096a8"
+  }
+}

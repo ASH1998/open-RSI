@@ -2,7 +2,7 @@
 
 ## Current launch disposition · corrected 33-task cohort
 
-**Eligible for the $1 CPU probe once main freezes and commits the reviewed source and plan. Eligible for the $4 baseline only after the probe passes on that exact image/source/package inventory.** I found no remaining data or preflight blocker for these two stages. I ran the real constructor and reservation checks offline against an in-memory prospective plan; the live ledger was untouched. Later teacher and child stages still depend on their own evidence and gates.
+**Accepted for the $1 CPU probe after main commits the frozen plan.** The official plan seal is `eaca8b38e8600715acb63fa5be57da5c178f5f607f451449a04662c22550ce7e`. I reproduced the entire plan from disk and ran the actual controller preflight at that seal with 24 train, nine fresh evaluation and 16 retention tasks. The $4 baseline is conditionally eligible after the CPU probe succeeds on that exact image/source/package inventory. The runner requires the plan to match its committed copy before reservation. The independent audit used no compute and left the live ledger untouched. Later teacher and child stages still depend on their own evidence and gates.
 
 The selected cohort seal is `3b72359686d34c844cb1a975fa20fd2b4d27950f98e14eb308de480ffe42b953`. Independent composition reproduced all three selected files exactly. All 33 ordered tasks are clear of the 284 exposure identities and admitted duplicate keys under the documented checks. I matched the per-task reference outputs with independent implementations for **all 234 typed cases**. Freshness is relative to recorded project exposures and the documented semantic screen.
 
@@ -101,3 +101,70 @@ All 32 added APPS boundary answers also agree with independent implementations a
 **Source amendment:** the pre-generation decision to hold out one or two qualifying APPS tasks is appropriate, as the native evaluation has zero text items. The hash rank makes allocation independent of outcomes. The initial in-memory composition used all eight APPS tasks, putting 4189 on evaluation across from native train 805. Do not freeze that composition. Apply the six-ID eligibility mask before ordering/splitting. The proposed hash rule then assigns 4194 to evaluation, with five APPS tasks in training. This gives 24 training tasks (seven text) and nine fresh evaluation tasks (one text) if all 19 native training tasks remain eligible.
 
 Native 830 has a valid calibrated reference but an underspecified public return-type contract: it promises a numeric result and the added scorer distinguishes a float from an integer at zero decimal places. A valid numeric implementation returning `-1.0` instead of `-1` fails that boundary. Before freezing, either derive an explicitly typed public contract while preserving the independently checked arithmetic and frozen source, or replace the task with a fresh eligible one. Excluding 830 without replacement leaves only 23 training tasks after the six-ID APPS allocation. Record this change in the combined selection lineage and verify all derivations against the actual combined manifest. Report both source denominators and fresh paired task outcomes; with one fresh text item, only its individual outcome is interpretable.
+
+## Independent replay of the CPU probe, baseline and original teacher
+
+All three reports match the committed plan `eaca8b38…50ce7e`, source revision `592bfb60f87d`, their ledger entries and evidence seals. I reconstructed all four GPU request hashes from their saved settings and ordered public prompts, matched each call result to its raw generation rows, and replayed verification locally. Across baseline and teacher there were 90 distinct execution sandbox IDs. Decoding their saved stdout reproduced the recorded typed outputs. The audit used the SSD evidence only.
+
+| Completed stage | Run ID | Verified outcome | Reservation |
+| --- | --- | --- | ---: |
+| CPU probe | `20261105T163348Z-repair-v1-worker-probe-3b908549` | One CPU-only call mounted `/artifacts`. Python 3.12.10 and 71 distribution versions were recorded. Inventory digest `911760ca397a3f9d5d1d928d73a83001d2b5fa5c6ee0258a9dd0b6bf97618216` matched every baseline and original-teacher GPU call. | $1 |
+| Starting baseline | `20261105T163427Z-repair-v1-baseline-78a59c92` | 3/9 fresh and 8/16 retention. Fresh passes were MBPP 644, 717 and 950. The sole fresh text item, APPS 4194, failed. | $4 |
+| Original teacher | `20261105T163624Z-repair-v1-teacher-original-2154f127` | 17/24 unique verified tasks under greedy + sample and 19/24 under greedy + repair. Two repair-only recoveries, MBPP 943 and APPS 3038; zero sample-only recoveries. | $5 |
+
+The baseline and original teacher used the pinned base model without an adapter on NVIDIA L40S. The baseline used one ordered greedy batch at effective seeds 42–66, with 3,349 input and 1,836 output tokens. Of 25 baseline generations, 23 reached isolated execution (97 case outputs). One hit its generation limit, and one failed the code policy. Neither received credit.
+
+| Original teacher call | Effective seeds | Standalone passes | Input tokens | Output tokens | Isolated executions |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Shared greedy first attempt | 42–65 | 17/24 | 3,458 | 1,556 | 23 |
+| Independent second attempt | 31415–31438 | 13/24 | 3,458 | 1,573 | 22 |
+| Repair second attempt | 31415–31438 | 15/24 | 4,211 | 1,835 | 22 |
+
+I checked all 72 original-teacher rows against the 24-task order and the three distinct physical calls. The effective seeds follow the frozen worker's base seed plus zero-based batch position. Both second calls used temperature 0.7 and the same 2,048-input/512-output limits. None of the 72 hit a token or time limit. The 67 isolated executions supplied 492 case outputs; all five pre-execution failures matched the frozen static failure checks. First-pass successes received identical prompts in both second calls and yielded byte-identical generated text on all 17. For the seven first-pass failures, each repair request contained the public prompt, its own first answer and one fixed feedback label: five wrong outputs, one invalid candidate and one execution error. Exact prompt reconstruction ruled out additional verifier content.
+
+The repair selection comprised 10 collections, four numeric and five text tasks (16 MBPP, three APPS). Independent sampling comprised nine collections, four numeric and four text (15 MBPP, two APPS). Repair used 753 additional input tokens on the second call. These are verified-label yields; the paired child gate still requires the learned teacher's completed evidence and a feasible matched 16-target subset.
+
+The three completed stages reserved $10. With the learned teacher's $5 reserved and running at this snapshot, the family total was $15, global job reservations were $209, the overhead hold was $25 and $16 remained unallocated. No child reservation appeared. These are ledger reservations; provider invoices were outside this replay.
+
+## Independent replay of both teachers and the child data gate
+
+**Both repair datasets pass the frozen child-data gate.** Rebuilding the complete paired report from the six physical teacher calls reproduced its canonical seal `cf3377cda9293317a803697f334b80d4de8d0d20f99ab2701a29364e9077fae3`. I also selected the earliest verified output per task directly from the raw greedy and second-attempt records, checked exact-code uniqueness, computed the shared category quotas, and reconstructed both ordered 16-example lists. Both lists match the saved gate byte-for-byte under canonical JSON.
+
+The learned-teacher run was `20261105T164247Z-repair-v1-teacher-learned-aecc0190`, evidence seal `8fe38dc6ac6cf4dce871d26622699f24729e9c6607115a22c7d80eb2816a290d`. All three calls matched the raw requests, original teacher's runtime, 71-package CPU inventory, task order and seed schedules. The sole model change was the pinned experimental adapter `6c5d5f5df6701757a2e34cdfa229921fa03f27610b745c18b7ce8c222d55c772`. Each of its 72 attempts reached isolated execution, supplying 525 case outputs. Across both teachers I checked all 144 ordered generation records, 139 unique sandbox IDs and 1,017 returned case outputs. The five pre-execution failures belonged to the original teacher.
+
+| Teacher | Greedy passes | Standalone sample / repair passes | Greedy + sample / greedy + repair unique tasks | Repair-only recoveries |
+| --- | ---: | ---: | ---: | --- |
+| Original | 17/24 | 13 / 15 | 17 / 19 | MBPP 943, APPS 3038 |
+| Learned | 17/24 | 13 / 14 | 17 / 18 | MBPP 664 |
+
+Neither teacher gained a unique task from independent sampling after a greedy failure. The learned teacher's seven first-pass failures received only the `wrong_output` feedback label, the teacher's own first answer and the revision instruction. The other 17 second prompts and completions were identical between branches. Learned first/sample/repair calls used 3,458 / 3,458 / 4,055 input tokens and 1,298 / 1,649 / 1,478 output tokens. Across the two repair selections, 17 tasks passed for both teachers, two only for the original teacher, one only for the learned teacher (MBPP 723), and four for neither.
+
+| Child labels from | Raw repair targets (collections / numeric / text) | Matched 16 (collections / numeric / text) | Ordered example digest | Dataset supervised tokens |
+| --- | ---: | ---: | --- | ---: |
+| Original teacher | 10 / 4 / 5 | 8 / 4 / 4 | `6892b8ea2392461277c92fb240bb7b7ebdf8d71ec314739222094c2ec8d913e6` | 1,104 |
+| Learned teacher | 10 / 4 / 4 | 8 / 4 / 4 | `c5b4d4be91ca542237b44faed65d0085877cb817566bb057c48d70c737555b53` | 781 |
+
+Each selected set contains 14 MBPP and two APPS labels. They share 14 task IDs, with identical code on six of those. The original-teacher set alone includes MBPP 936 and APPS 3038; the learned-teacher set alone includes MBPP 723 and APPS 3080. The SSD-cached pinned tokenizer gives 4,416 and 3,124 supervised tokens respectively across the planned optimizer steps. Matching example counts and category quotas still allows different code lengths and token exposure.
+
+The first child's saved training-request hash matched the reconstructed original-teacher labels. At the audit snapshot that job was running. Family reservations were $20, global jobs $214 and $11 was unallocated after overhead. This review establishes paired repair yield and child-data eligibility. Child evaluation and successor gains require the completed student evidence.
+
+## Final independent child comparison
+
+**Retain the original parent.** The two independently trained children returned the same pass/fail decision on every one of their 25 evaluation tasks. Both gained one net fresh success over the starting model and lost two retention successes. The learned-teacher child's net advantage over the original-teacher child is zero. Neither child met the frozen requirement of three net fresh gains over each comparator with zero individual retention losses.
+
+| Model | Fresh MBPP | Fresh APPS | All fresh | Historical retention |
+| --- | ---: | ---: | ---: | ---: |
+| Starting parent | 3/8 | 0/1 | 3/9 | 8/16 |
+| Original-teacher child | 4/8 | 0/1 | 4/9 | 6/16 |
+| Learned-teacher child | 4/8 | 0/1 | 4/9 | 6/16 |
+
+I replayed all 50 saved child generations against their ordered public requests, pinned adapter digests, effective seeds 42–66, and common runtime. Each child produced 107 per-case outputs in 25 distinct sandboxes. Decoding each saved stdout and independently checking the trusted score reproduced all 50 outcomes. Both children passed fresh MBPP 644, 717, 780 and 915. Compared with the starting baseline, 780 and 915 were gains and 950 was a loss. Both failed the one fresh text task, APPS 4194. The six retained successes for each child were MBPP 711, 835, 873, 849, 665 and 616. Each lost 854 and 621 relative to the starting parent and gained no retention task. The two children's generated text differed on 717, 938, 950 and 898 despite matching pass/fail results.
+
+| Teacher that supplied labels | Child run | Exported adapter SHA-256 | Training-state SHA-256 |
+| --- | --- | --- | --- |
+| Original | `20261105T165208Z-repair-v1-child-original-2c24a026` | `d4880358b1d469b31a2f0e45fcd61e4dd3adb87d6865a7a1b501c79639982f25` | `d3957ad09ad7ca96262690b78d78d0d425b5c171750181cd7918011535b0412e` |
+| Learned | `20261105T165802Z-repair-v1-child-learned-20634392` | `0ef633d32f711596dc334639e0af3ec6dd6ccc6d244754ffbdc262f31a327bff` | `3dd044cdc00c17b4da3543b90e3b361e7d094ca2dbf5ce7ed9402f3ac42f4302` |
+
+I independently enumerated and hashed all 12 exported files per child. Both exports matched their reports and step-16 checkpoint manifests. The adapter bytes in each checkpoint matched the worker-returned hash and the adapter loaded during evaluation. Training metadata regenerated each dataset fingerprint from the exact 16 selected examples and trainer settings. Both children used fresh adapters, seed 42, 16 optimizer steps and the same LoRA configuration. The checkpoints contained optimizer moments, step, loss history, and Torch CPU/CUDA RNG state. ZIP checksums passed; this audit did not execute a resumed training step. The matched schedules processed 4,416 supervised tokens for the original-teacher child and 3,124 for the learned-teacher child.
+
+Read-only replay reproduced the entire saved final summary at canonical digest `ba8b70dd941498c1a68edaa5c67ef80a5879c826c820a0c230e46c157e45d0d0`. All six repair stages completed with $25 reserved across the family. Global job reservations total $219, the overhead hold is $25 and $6 remains unallocated under the $250 cap. Invoice reconciliation is separate. The saved decision selects `original-parent`, sets both children's `promising` flags to false, and records `promoted=false` and `sustained_rsi=false`. Repair recovered additional teacher labels, but this paired child experiment yielded no learned-teacher successor advantage. No further job was launched by the reviewer.
