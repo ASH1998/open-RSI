@@ -1,7 +1,7 @@
 # rsilab framework foundation
 
 `rsilab` is an installable Python library for verified-learning experiments.
-Version 0.5.0 adds a public API for reviewing task prompts, appending independently specified boundary cases and replaying a source-bound task revision. See [task contracts](TASK_CONTRACTS.md). Version 0.4.2 added a runtime-only worker environment and CPU probe while retaining
+Version 0.6.0 adds a matched sampling and repair workflow for two teachers, including typed verification, paired task yields and a conditional student-data gate. See [paired repair](PAIRED_REPAIR.md). Version 0.5.0 added a public API for reviewing task prompts, appending independently specified boundary cases and replaying a source-bound task revision. See [task contracts](TASK_CONTRACTS.md). Version 0.4.2 added a runtime-only worker environment and CPU probe while retaining
 the explicit category preflight and reviewed reference-evidence reuse from
 0.4.0. The dependency-free offline core covers manifests,
 data and attempt audits, target selection, and matched comparisons, alongside

@@ -2,7 +2,7 @@
 
 `rsilab` records verified-learning experiments and compares results under matching controls. Its offline core needs Python 3.11+ and the standard library. Cloud execution is optional. There is no claim that installing it provides an agent capable of recursive self-improvement.
 
-Version 0.5.0 adds reviewed task prompts and boundary checks. The example builds a derived task, separates the public prompt from its tests and replays the result. See [task contracts](TASK_CONTRACTS.md). The source is available from GitHub.
+Version 0.6.0 adds a [matched sampling and repair API](PAIRED_REPAIR.md) for comparing teachers on shared tasks. Version 0.5.0 added reviewed task prompts and boundary checks. The example builds a derived task, separates the public prompt from its tests and replays the result. See [task contracts](TASK_CONTRACTS.md). The source is available from GitHub.
 
 Install from a checkout into your own project environment:
 

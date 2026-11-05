@@ -1,0 +1,18 @@
+# Semantic review of the eight APPS train tasks
+
+The comparison universe includes the 284 recorded exposures and all 374 train and 90 validation descriptions of the pinned MBPP full configuration. This covers both roles of any cohort assembled from those MBPP rows. For each selected APPS task I reviewed the native question, signature, native input/output pairs, and the contract. I compared its operation and return value to the MBPP text tasks and to the six synthetic families in the exposure registry. The review found no equivalent operation among the eight, or between the eight and the comparison universe. This is a project-exposure screen. Model pretraining exposure is unknown. Remaining shared text operations are listed below so a reviewer can apply a stricter threshold.
+
+| APPS ID | Decision and nearest MBPP concepts |
+| --- | --- |
+| 3038 | Select the character maximizing last-minus-first index, breaking ties alphabetically. MBPP 546 locates the last occurrence of a supplied character. MBPP 602 returns the first repeat and 937 ranks by frequency. Neither frequency nor arrival order determines this task. |
+| 3041 | Re-segment cleaned text at every vowel. MBPP 676 and 727 strip non-alphanumerics, 748 inserts spaces before capitalized words, 667 counts vowels and 737 tests a starting vowel. Each shares a step, but the complete segmentation and output differ. |
+| 3052 | Remove internal exclamation marks while keeping the trailing run. MBPP 640 removes parenthesized regions, 678 removes spaces, and 542 replaces punctuation globally. None preserves a terminal run by position. |
+| 3080 | Return a one- or two-element list containing the full name and, conditionally, a two-character prefix. MBPP 639 filters names by initial case and adds lengths. MBPP 813 returns string length. |
+| 4189 | Return the winning original string after summing ASCII codes, with first-argument ties. MBPP 828 counts character classes and 937 returns a frequent character. Neither compares two strings by additive codepoint value. |
+| 4194 | Increment a dot-delimited version with base-ten carry and an unbounded first component. MBPP 621 increments numeric values in strings by k. The distinguishing behavior is cross-component carry at nines. |
+| 4211 | Test equality of all case-insensitive character frequencies. MBPP 666 counts one supplied character, 829 selects a second-frequency string and 937 selects a most-common character. Those selections have different input/output semantics. |
+| 4256 | After the first occurrence of each original letter, insert uppercase suffix letters absent from the entire input. MBPP 668 collapses adjacent repeats and 967 tests vowel membership. Neither expands text by absent later letters. |
+
+The synthetic exposures concern masked means, gradient clipping, sequence padding, softmax, interval union and grouped reductions. Each APPS task also differs from the others above in its required output. The two tasks concerning frequencies and spans diverge even for the same text. The two involving punctuation produce different outputs and handle spaces differently.
+
+I omitted APPS 4255 because MBPP 624 already asks for uppercase conversion. I also omitted 4190 and 3044 to avoid nearby MBPP pattern, vowel-neighbor, rotation and palindrome tasks (914, 776, 871, 864). APPS 3029 falls inside the project's sealed edit-distance domain. The APPS test file and native MBPP test rows were never read. The two byte windows containing the selected IDs were sampled for readable call-based introductory tasks. This convenience selection supports a feasibility cohort only.

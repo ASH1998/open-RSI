@@ -30,3 +30,6 @@ wandb/
 *.ckpt
 *.pt
 *.pth
+
+# Reviewed preparation source and compact provenance for the matched repair study
+!studies/repair_v1/data/

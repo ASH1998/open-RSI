@@ -1,0 +1,20 @@
+{
+  "kind": "offline compatibility check; no cohort adoption or study freeze",
+  "native_cohort_sha256": "e9db7f08d3025527344271ca72d8af174d6545bdfd196fda10bbc66e00812cfd",
+  "native_train_count": 19,
+  "native_evaluation_count": 8,
+  "history_count": 284,
+  "history_sha256": "05ae698aa0cc4a68d8c8e86eec35af3282e329f659e731bc515bf134fe3ac199",
+  "apps_train_count": 8,
+  "apps_manifest_sha256": "1582afe626224f80522064a5ef08af2167c8d305089418780a44a9fb57a087ff",
+  "apps_validation_sha256": "64bf3b54f59d261b902bc10d5a4480a89d64091fbbc00ad642de9d3d38bb607e",
+  "combined_order": "native train then ascending APPS id",
+  "example_combined_manifest_sha256": "430928676745bd88fb1330042b6de1d27753319924d7b14d57b5dc7668cb6bad",
+  "example_combined_categories": {
+    "collections": 11,
+    "numeric": 6,
+    "text": 10
+  },
+  "wrong_typed_output_control": "Rejected int 1 in place of bool true on apps-train-4211 boundary",
+  "row_bytes": 42126
+}

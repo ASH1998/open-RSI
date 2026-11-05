@@ -1,0 +1,184 @@
+{
+  "input_file_hashes": {
+    "data/repair-v1/selected/cohort.json": "db5699877b9311f50f07bb5f98ad549972b3d24bc20df5fd34adb29d82e12317",
+    "data/repair-v1/selected/train-manifest.json": "c7543575a04c8ca571b67fdad7234d6dceeb7f6d9d36ffb9aa9a1d6003361a0e",
+    "data/repair-v1/selected/evaluation-manifest.json": "f456aa31d3d9b147add49c99520afa810aa487876bc55499c5991ce0ce735071"
+  },
+  "retention_sha256": "f9123f532ce2e34f3544d290952b0eb6d6064187869ea3660e9a8f93ceb196fb",
+  "study": "repair-v1",
+  "source_hashes": {
+    "config/budget.json": "a8a29e54f1ab6ee0da6384feacfc94898b9f5ba1be5874d143b8b12efc61e205",
+    "pyproject.toml": "7c3b16d36dc4df0a7d1b1cf533e4acb5828813ae68d796010acb1edaff6671e4",
+    "rsi/__init__.py": "8f4ed4a1d8cc90d97877f6db5f871f6f30c52211893780fc9fcf0ead5ed7a97e",
+    "rsi/budget.py": "28add06959592794da0ba71005149a085727ae686f39ef45efa2aef27196d6ae",
+    "rsi/config.py": "f677846f5c99ce066b457169cb89d225a72efee7ccbb38cae5704f8a26ff0821",
+    "rsi/datasets.py": "18312005d8bef3f640cd1d55056cdf90a39b3b2b10c5b2e20619072a15980d65",
+    "rsi/kaggle_backend.py": "6058b08aa1745b1241e8f52825fd20bb0f5988c987a1611109c6bbe1e3fcb096",
+    "rsi/kaggle_worker.py": "31e476cf84391b1da4b7770415fb5b37b905d916b4fe376274403b10fa3f1413",
+    "rsi/mbpp_robustness.py": "7a55b754382b42058ff5d2e98bf630567c9a77b8890667611a6b20c48613050b",
+    "rsi/mbpp_verification.py": "47efce04acdef807e54a49f1ecbd64942a31baa2ce9e7d7404fd62326e660bc4",
+    "rsi/mbpp_verification_v2.py": "b4b0d02ffc6ad71b5a33745c895709eb5bb2f3900c6d414f6063a3fe0afc1083",
+    "rsi/mbpp_workers.py": "f1700f659834dcd301d9f1e00c5b42f50c80b9bafe608d1718b0df6cdbaf695c",
+    "rsi/modal_workers.py": "d289e78ae99a40831810285d42c0b4ee73cd4bd3446bda0505e4905a70a45d95",
+    "rsi/pilot.py": "def3d0844f7cb321a99ac734aeda9b13f62742a1887cf16e467eff5348568b93",
+    "rsi/repair_study.py": "a023040a5311322753ad3fff1e3fe5e47c0f2fb51f63d57e84b2ee5f0507ac27",
+    "rsi/rescore_study.py": "242535009bc39c7e30ae9a582d88a272206c6a2cb9d36414203208dd27ac055c",
+    "rsi/robustness_study.py": "87a472e72520856a30da7d9b07b0fa5fc057d08418789f0bb514abc8edb5a216",
+    "rsi/study.py": "a947a86a9a94023c7b7fff3d0a1430e741800ff816131e6987e6b922427f8b27",
+    "rsi/successor_recovery.py": "7ab079e5b9b12f3bf46f2698c42c288a2a24b62f10e6e7725a5a4b71d845c217",
+    "rsi/successor_recovery_v2.py": "0f7c16abf1d1018dfce5f894e7e71d7cb6558a2ee4e59e9f4dc65e0b547eff70",
+    "rsi/successor_recovery_v3.py": "6558454fda636b6a4d5ef189d5498f91afc819eddff2c881eb382eccb8749393",
+    "rsi/successor_study.py": "2393dff8325dcd31ea5943af1c094a07917d5b917a1c96f02bb2f265715e53fa",
+    "rsi/tasks.py": "19f157e3578d8995ddd4db8bdc9c0f8619283ee12abe292b1e52697704081523",
+    "rsi/verification.py": "b6cd4334adf34678f7f35f908a38a14329ca9a81b6b4d557eb4de270868b0db4",
+    "rsi/verified_study.py": "ff96ff357ee84522a85c98808e75cb54b176f446cbd3ffe2fcbc5b74b1f16cdc",
+    "rsi/verified_workers.py": "0592b37e8c5c0f15da730085af8bacda5dc31978dc0f8387e9eb973aa1bd2ed6",
+    "rsilab/__init__.py": "99cb8e82f1a4b6d7ff2e8e746d8ddda0f589c1eda19141fe3b1bd190f6c89d9a",
+    "rsilab/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "rsilab/artifacts.py": "c89a9502611b2eaa9e16c1012e2df862e3ef047911ebb230eb8448a8cb7b1278",
+    "rsilab/cli.py": "e08f95028e6a4ea632c0091b1aeead2352de608d9df08779edca58252bb40574",
+    "rsilab/coding_data.py": "9f07d973685d80344de15c1f6c74250022c26f7cb34996b62e267f1a88117174",
+    "rsilab/comparison.py": "c9c3274183002ed892f6d6ae5333d9c0bbda4cc7a35a88bb23f138018b4c14d3",
+    "rsilab/core.py": "44b380977f933b88a8c8234922d7d82dd0f27a7f91f82714da890051cde5c929",
+    "rsilab/dataset_io.py": "74dfff22f641453f4a66f505c92698f8ebc66a563c684434d7071dbea388f80f",
+    "rsilab/execution.py": "e91bb72567925340caac0bdf7f18e7ccbcc0c27811a5888e45a8b008c56c49dd",
+    "rsilab/learning.py": "23d4d8e04507e4b6b258c30e0556671158a2a990f84c1078bfc9df005539e41b",
+    "rsilab/learning_commands.py": "3babe74554a85851c7be3d1751c823102fa850b3050ad27d00fcf3975127fc1a",
+    "rsilab/mbpp_report.py": "5f73d4f88b45cc593eab89df2b7514d3cb5d9e2b248acbc5c82c8ecf00fac810",
+    "rsilab/paired_repair.py": "dc38b745fa32fb805306698116b0f5b85c296e609cf151f33ed1b4f967022595",
+    "rsilab/pilot.py": "537280747a3815cfdfcfbf7f241a98ca719ee059c090edfe92580b053bdb3c6c",
+    "rsilab/preflight.py": "860805ceb003a5f9d477569e4a9795dd6e21c2acbaf6f97df962d3e7bf70dfea",
+    "rsilab/project.py": "96c77e73458b14b282982fa9eb9c1a1c3fa21125530c8ccad3d2f9acac1504ff",
+    "rsilab/providers/__init__.py": "fedb913795f582b9651c46c469d9d30fb6147805fcd619139da9c47f6286336e",
+    "rsilab/providers/modal.py": "c2ce1020c00ae0098175e2b3a5b40bc474d9db610a04dfbe5e2f67dc5e83d5f1",
+    "rsilab/providers/portable_modal.py": "98e39ce014d682c379152ebd694935b9b6b65876ce18bbd4604bebb2afdd8a6f",
+    "rsilab/providers/portable_modal_v2.py": "e44f21d8cfbc15dd37037620ba6043eb4c1f00e45f8ebc441d1720bcadbc661c",
+    "rsilab/providers/portable_modal_v3.py": "3c9097e69dd5dd8a0bf7e524754c666fb86248290758f11e066c85add21f647c",
+    "rsilab/reference_reuse.py": "5ec8d109c3bfcf357f34a4c941bd7fe49f3ac6d50160cc436f78bdf1a109e11c",
+    "rsilab/rescore.py": "8b81d0c97a084ea873029177edb4f06861db16ab92eba8f52d5b82f91acb0f2b",
+    "rsilab/resources/__init__.py": "475e578f3f410469070116ae5f4b5583633ac539ff9a87ce0db9b79ac82f6f9a",
+    "rsilab/resources/gpu_requirements_v1.txt": "0cdd2443fb0607a7619ee91bac14c05bfe0e3661e33482e9d4342ba5455ae9cc",
+    "rsilab/resources/gpu_worker_v1.provenance.json": "9f085dff7950d51d152a4e5efe2c70d0c04b71fa600531ff39d0d69f888a4020",
+    "rsilab/resources/gpu_worker_v1.py": "194bca0df0c3b2d6ff7811b2ed6fd47010137aba2a6cf2635a88a9574853e3b1",
+    "rsilab/successor.py": "512385657fe9438590f39a866d9c001fff7b9b4d0736b843468b9ae6be29c07f",
+    "rsilab/task_contracts.py": "eee02edba54b0791e5f6767f23cd7d0fd68b23aa3ded1a5becca0fdca8b3b6ea",
+    "rsilab/workflow.py": "d9b4c2b5ddaa315e8a55f208061cd9569595ea8c9c24435bf7bfa6b4392af979"
+  },
+  "cohort_sha256": "b8f35241d01b94cfd474e7350346cbe2128a96a529d9ca3c119517a772affae9",
+  "prior_exposure_sha256": "05ae698aa0cc4a68d8c8e86eec35af3282e329f659e731bc515bf134fe3ac199",
+  "model": {
+    "model_id": "openbmb/MiniCPM5-2B",
+    "revision": "f97400052a43d642bbc6e9975e2397e3ae6a6b52"
+  },
+  "teachers": {
+    "original": {
+      "agent_id": "original-parent",
+      "model_id": "openbmb/MiniCPM5-2B",
+      "revision": "f97400052a43d642bbc6e9975e2397e3ae6a6b52",
+      "tokenizer_revision": "f97400052a43d642bbc6e9975e2397e3ae6a6b52",
+      "adapter_sha256": null,
+      "parent_agent_sha256": null
+    },
+    "learned": {
+      "agent_id": "experimental-verified-sft-42",
+      "model_id": "openbmb/MiniCPM5-2B",
+      "revision": "f97400052a43d642bbc6e9975e2397e3ae6a6b52",
+      "tokenizer_revision": "f97400052a43d642bbc6e9975e2397e3ae6a6b52",
+      "adapter_sha256": "6c5d5f5df6701757a2e34cdfa229921fa03f27610b745c18b7ce8c222d55c772",
+      "parent_agent_sha256": "88a561eef6b25a736d071bc197dff73c5ac2de8c91071e4d250009877d85bdb8"
+    }
+  },
+  "learned_adapter_path": "/artifacts/adapters/20261104T143454Z-verified-sft-v1-train-evaluate-42-73116f4e/adapter-step-000024-ed3cae6955064611a024c51a06e45675",
+  "reservations": {
+    "worker-probe": 1,
+    "baseline": 4,
+    "teacher-original": 5,
+    "teacher-learned": 5,
+    "child-original": 5,
+    "child-learned": 5
+  },
+  "max_gpu_calls": {
+    "worker-probe": 0,
+    "baseline": 1,
+    "teacher-original": 3,
+    "teacher-learned": 3,
+    "child-original": 2,
+    "child-learned": 2
+  },
+  "stage_wall_seconds": {
+    "worker-probe": 900,
+    "baseline": 2700,
+    "teacher-original": 5400,
+    "teacher-learned": 5400,
+    "child-original": 5400,
+    "child-learned": 5400
+  },
+  "generation": {
+    "seed": 42,
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "max_input_tokens": 2048
+  },
+  "sampling": {
+    "seed": 31415,
+    "temperature": 0.7,
+    "max_new_tokens": 512,
+    "max_input_tokens": 2048
+  },
+  "training": {
+    "seed": 42,
+    "learning_rate": 2e-05,
+    "gradient_accumulation": 4,
+    "max_length": 2048,
+    "max_steps": 16
+  },
+  "scientific_policy": {
+    "task_order": "frozen manifest order for both teachers and all three batches",
+    "min_train_tasks": 24,
+    "max_train_tasks": 32,
+    "min_text_train": 6,
+    "min_fresh_evaluation": 8,
+    "gate": {
+      "minimum_unique_targets": 16,
+      "required_categories": [
+        "text",
+        "numeric",
+        "collections"
+      ],
+      "max_category_share": 0.6,
+      "child_targets_per_arm": 16,
+      "matched_category_counts": true
+    },
+    "passed_first_attempt_second_prompt": "original prompt in both branches",
+    "failed_first_attempt_second_prompt": "original for sample; own prior code and fixed failure category for repair",
+    "primary_endpoint": "within-teacher paired unique verified yields, greedy+repair minus greedy+sample",
+    "child_dataset": "earliest independent verified greedy or repair output, exact-code/task deduplication",
+    "child_evaluation": "paired starting base and two fresh children on never-generated evaluation and 16 prior retention tasks",
+    "child_signal": "at least three net gains against both base and other child, with no individual retention loss against either",
+    "promotion": "retain original parent",
+    "automatic_retries": false,
+    "project_unallocated_floor_usd": 6,
+    "budget_family_ceiling_usd": 25,
+    "invoice_total_usd": null
+  },
+  "reviewed_manifest_sha256": {
+    "train": "83b91ffab4637d2d970e3bc5b5fd10b1b0b2b2943899717179549f1d8c632127",
+    "evaluation": "f2bd8bef1c45b508ddf605768b14abb081fe9c06d84e1b12e6b93407b268df08"
+  },
+  "design_files_sha256": {
+    "studies/repair_v1/README.md": "d2c4dc774fdf22a7ac277c069dba247c2dfa82645a0a78f5e5af644690b739f8",
+    "studies/repair_v1/freeze.py": "9c59e4ac2c3022d5533a8b10888a9ceb08eebf45bdd161993f91c2f48d05e06b",
+    "studies/repair_v1/select_cohort.py": "8d66fd42be915ad0ae0caaa48ff9156051b7244c0ae6e220a21cf1f0845aa8de",
+    "studies/repair_v1/source-amendment.md": "b5134947ced4d473b87502997e137fc8ffe325c47c110d753db1d73875822525",
+    "studies/repair_text_source/oracles.py": "cffe269ca4451f5de48d369a24381f44d8672280d0f7a6c20d02abba4f98ca13",
+    "studies/repair_text_source/prepare.py": "5d05cd599491e9391d1e34cd682e01b0fc6d68b045e7eaf47b6d3406ee8c5b03",
+    "studies/repair_text_source/reviews.py": "16df03a5ba939d5955af40da1c5e03f84207eaa39c243df262cfc634bf32e530",
+    "studies/repair_text_source/slice.json": "c645dead721419f51ec09b347f9caddbff8358d972b3df60239b3d50338c0fad",
+    "studies/repair_text_source/overlap.md": "de5780cab757e1c2eda653b8c8550e1b51660eb017392352947b7e22522aab05",
+    "studies/repair_v1/data/selection.json": "3eb73b61ca321b9bef306ef28652ab7d46fe553b77c56980aca253eb3ab25e29",
+    "studies/repair_v1/data/prepare.py": "e57db8e2241b5b4b0f0a1233078d1b776b7135602e6ee2226359e4b19667987d",
+    "studies/repair_v1/data/reference.py": "4d9e3ca580cf104f96f63b6fa4ed4d6c99cf37a9a0e8812b3d401ecff187fb66",
+    "studies/repair_v1/data/reviews.py": "6c27e149ae84db08214fc4d6f8e9745ede9bf5f1a6a5a0c6797bc107076923e5"
+  },
+  "sha256": "eaca8b38e8600715acb63fa5be57da5c178f5f607f451449a04662c22550ce7e"
+}

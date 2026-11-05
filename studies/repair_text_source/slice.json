@@ -1,0 +1,99 @@
+{
+  "dataset": "codeparrot/apps",
+  "revision": "21e74ddf8de1a21436da12e3e653065c5213e9d1",
+  "path": "train.jsonl",
+  "native_split": "train",
+  "file_size": 107101272,
+  "lfs_sha256": "45e82ef22ed8e7c0c04d881a21b923e9dd233157896b0b8d5b3493e887499cae",
+  "dataset_card_license": "MIT",
+  "rows": [
+    {
+      "id": 3038,
+      "start": 90095855,
+      "end": 90099924,
+      "row_bytes_sha256": "6c517f0bf9ddaaea8d0a85c7ab90ed57b60532496614f317f7a3636adbd886d7",
+      "url": "https://www.codewars.com/kata/5dd5128f16eced000e4c42ba",
+      "title": "Most valuable character",
+      "author": "KenKamau",
+      "created_at": "2019-11-20T10:16:47.185Z",
+      "attribution_url": "https://www.codewars.com/api/v1/code-challenges/5dd5128f16eced000e4c42ba"
+    },
+    {
+      "id": 3041,
+      "start": 90642329,
+      "end": 90645260,
+      "row_bytes_sha256": "7d25933a7e6d6d6591b309549e5999016fbf47bbb42acd48c83eb44057abbd8e",
+      "url": "https://www.codewars.com/kata/5a02e9c19f8e2dbd50000167",
+      "title": "Start with a Vowel",
+      "author": "boxer",
+      "created_at": "2017-11-08T11:26:00.903Z",
+      "attribution_url": "https://www.codewars.com/api/v1/code-challenges/5a02e9c19f8e2dbd50000167"
+    },
+    {
+      "id": 3052,
+      "start": 90738298,
+      "end": 90740286,
+      "row_bytes_sha256": "786bbcccb522c4dd646f2553ff1a7289c820270d4efddb59b9f28fc69efd5d74",
+      "url": "https://www.codewars.com/kata/57faefc42b531482d5000123",
+      "title": "Exclamation marks series #3: Remove all exclamation marks from sentence except at the end",
+      "author": "myjinxin2015",
+      "created_at": "2016-10-10T01:32:52.754Z",
+      "attribution_url": "https://www.codewars.com/api/v1/code-challenges/57faefc42b531482d5000123"
+    },
+    {
+      "id": 3080,
+      "start": 91007369,
+      "end": 91026214,
+      "row_bytes_sha256": "eeb3c92a02e75fac10dba72fd863c85717b300d38de84e69c24faa4f8a731647",
+      "url": "https://www.codewars.com/kata/58bf9bd943fadb2a980000a7",
+      "title": "Who is going to pay for the wall?",
+      "author": "mamafrantz",
+      "created_at": "2017-03-08T05:51:21.707Z",
+      "attribution_url": "https://www.codewars.com/api/v1/code-challenges/58bf9bd943fadb2a980000a7"
+    },
+    {
+      "id": 4189,
+      "start": 100031864,
+      "end": 100033874,
+      "row_bytes_sha256": "51a3781ddc33cc25fd4fc7e80024f619666dae2549f310927ca595326526c6bf",
+      "url": "https://www.codewars.com/kata/5840586b5225616069000001",
+      "title": "Which string is worth more?",
+      "author": "ArtOfCode",
+      "created_at": "2016-12-01T17:05:48.591Z",
+      "attribution_url": "https://www.codewars.com/api/v1/code-challenges/5840586b5225616069000001"
+    },
+    {
+      "id": 4194,
+      "start": 100048910,
+      "end": 100053519,
+      "row_bytes_sha256": "b17b246257f99f8d0ce9f1f1ba76f25ca00e078655bcb756638b2b5620970f9e",
+      "url": "https://www.codewars.com/kata/56c0ca8c6d88fdb61b000f06",
+      "title": "Next Version",
+      "author": "AzariasB",
+      "created_at": "2016-02-14T18:42:20.491Z",
+      "attribution_url": "https://www.codewars.com/api/v1/code-challenges/56c0ca8c6d88fdb61b000f06"
+    },
+    {
+      "id": 4211,
+      "start": 100656848,
+      "end": 100659503,
+      "row_bytes_sha256": "a0dd18dfe82c6a9cfe6f7b4d981f3099dfcd4d5af2a17b48e0c3edd9bda7a3b5",
+      "url": "https://www.codewars.com/kata/56786a687e9a88d1cf00005d",
+      "title": "Character Counter",
+      "author": "Shivo",
+      "created_at": "2015-12-21T21:08:56.263Z",
+      "attribution_url": "https://www.codewars.com/api/v1/code-challenges/56786a687e9a88d1cf00005d"
+    },
+    {
+      "id": 4256,
+      "start": 101035152,
+      "end": 101040163,
+      "row_bytes_sha256": "fb31e3a1f4c9999eeb17476b1946b80c983252cec402f789b736c13bfebec79b",
+      "url": "https://www.codewars.com/kata/5ad1e412cc2be1dbfb000016",
+      "title": "Missing Alphabet",
+      "author": "MicheleCarbone",
+      "created_at": "2018-04-14T11:20:50.878Z",
+      "attribution_url": "https://www.codewars.com/api/v1/code-challenges/5ad1e412cc2be1dbfb000016"
+    }
+  ]
+}

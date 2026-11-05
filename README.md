@@ -4,6 +4,8 @@ A small-model research project investigating whether a model can learn from veri
 
 **Status:** `rsilab 0.5.0` adds reviewed task wording and typed boundary checks. The offline diagnostic covers all 20 previously attempted MBPP training tasks. The prior teacher comparison yielded 10/20 verified targets for the original teacher and 9/20 for the learned teacher. Both missed the training gate. The original parent remains selected. [Task diagnostic](studies/task_contracts_v1/README.md) · [Library quickstart](docs/QUICKSTART.md) · [Teacher comparison](docs/SUCCESSOR_RECOVERY_EXPERIMENT.md).
 
+The next study compares independent sampling with one repair after verifier feedback. The evaluated design uses 24 fresh training tasks and nine held-back tasks from MBPP and APPS native training data. Main coordinates all Modal jobs under a $25 study envelope. [Prospective study](studies/repair_v1/README.md) · [Data selection](studies/repair_v1/source-amendment.md) · [Repair API](docs/PAIRED_REPAIR.md).
+
 ## Workspace and repository
 
 - Canonical local workspace: `/Volumes/DevSSDWD/openbmb/rsi`

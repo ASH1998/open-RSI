@@ -1,0 +1,541 @@
+{
+  "cohort_sha256": "e9db7f08d3025527344271ca72d8af174d6545bdfd196fda10bbc66e00812cfd",
+  "configuration": "full",
+  "counts": {
+    "evaluation": {
+      "collections": 5,
+      "numeric": 3
+    },
+    "train": {
+      "collections": 11,
+      "numeric": 6,
+      "text": 2
+    }
+  },
+  "data_revision": "4bb6404fdc6cacfda99d4ac4205087b89d32030c",
+  "dataset": "google-research-datasets/mbpp",
+  "diagnostic_ids": [
+    "mbpp-full-512",
+    "mbpp-full-520",
+    "mbpp-full-557",
+    "mbpp-full-558",
+    "mbpp-full-568",
+    "mbpp-full-576",
+    "mbpp-full-928"
+  ],
+  "domain_review_sha256": "fa63e01a700c143e54181a2dbde872508458c10b69c439d0f31e29fd7af53a00",
+  "manifests": {
+    "evaluation": {
+      "path": "data/repair-v1/evaluation-manifest.json",
+      "sha256": "e989ef90b3dc2d2629c7dd9895cf828b5affea85c397e0e4601670c9312d3c82"
+    },
+    "train": {
+      "path": "data/repair-v1/train-manifest.json",
+      "sha256": "c26af3a49bd4accc505e247cd0fdaf3c84f2302b7993c9e335bc5ef4bb628d0a"
+    }
+  },
+  "manual_duplicate_ids": [
+    "mbpp-full-541",
+    "mbpp-full-554",
+    "mbpp-full-629",
+    "mbpp-full-955"
+  ],
+  "native_only_eligible": false,
+  "new_boundaries": 91,
+  "passed_cases": 172,
+  "pool_sha256": "13907d86dc89f61a1bfb06d691415984b6efd0304d5b321b914d787d8873b49f",
+  "prior_exposure_count": 284,
+  "prior_exposure_path": "data/task-contracts-v1/prior-exposure.json",
+  "prior_exposure_sha256": "05ae698aa0cc4a68d8c8e86eec35af3282e329f659e731bc515bf134fe3ac199",
+  "reference_outputs_sha256": "bfa92fb8177273b1f7749eee1202289b72d854a32e81d50cb560cffff5173de9",
+  "screen_counts": {
+    "dev": {
+      "after_conversion_and_exclusions": 6,
+      "unexposed": 11
+    },
+    "train": {
+      "after_conversion_and_exclusions": 64,
+      "unexposed": 69
+    }
+  },
+  "screened_not_selected": [
+    {
+      "id": "mbpp-full-518",
+      "native_split": "validation",
+      "reason": "Square root of perfect squares overlaps the inverse computation of exposed 803. Native references return float for int expectations."
+    },
+    {
+      "id": "mbpp-full-531",
+      "native_split": "validation",
+      "reason": "Minimum coin count differs from exposed 918's number of combinations. Possible native-validation candidate if restricted to reachable sums and calibrated separately."
+    },
+    {
+      "id": "mbpp-full-532",
+      "native_split": "validation",
+      "reason": "Permutation predicate overlaps exposed anagram task 861. Reference can accept strings differing only in their last sorted letter."
+    },
+    {
+      "id": "mbpp-full-550",
+      "native_split": "validation",
+      "reason": "Rotated-sorted-array pivot closely overlaps exposed rotation-count task 802. The source also tests [3,4,5,2,1], outside the stated input class."
+    },
+    {
+      "id": "mbpp-full-560",
+      "native_split": "validation",
+      "reason": "Returns a tuple built from a set. Required tuple order depends on set iteration."
+    },
+    {
+      "id": "mbpp-full-575",
+      "native_split": "validation",
+      "reason": "Possible native-validation candidate with a guaranteed Nth nonmultiple inside [L,R]; not calibrated or used here."
+    },
+    {
+      "id": "mbpp-full-605",
+      "native_split": "train",
+      "reason": "Reference returns after the first trial divisor and accepts odd composites; invalid augmentation oracle."
+    },
+    {
+      "id": "mbpp-full-615",
+      "native_split": "train",
+      "reason": "Column arithmetic means are the no-missing-value subdomain of the previously trained column masked_mean tasks."
+    },
+    {
+      "id": "mbpp-full-622",
+      "native_split": "train",
+      "reason": "Median of two sorted arrays reduces to averaging two adjacent ranks of the same merged sequence as exposed 597."
+    },
+    {
+      "id": "mbpp-full-631",
+      "native_split": "train",
+      "reason": "Early return makes the advertised underscore-to-space direction unreachable."
+    },
+    {
+      "id": "mbpp-full-650",
+      "native_split": "train",
+      "reason": "The multiset-equality reference ignores the last elements after sorting, accepting unequal singleton arrays."
+    },
+    {
+      "id": "mbpp-full-660",
+      "native_split": "train",
+      "reason": "Underspecified disjoint-point selection and nested/overlapping interval behavior; generic one-endpoint changes cannot establish the contract."
+    },
+    {
+      "id": "mbpp-full-670",
+      "native_split": "train",
+      "reason": "Prompt asks decreasing trend while reference/tests implement nondecreasing order; do not extend contradictory semantics."
+    },
+    {
+      "id": "mbpp-full-690",
+      "native_split": "train",
+      "reason": "Adjacent numeric products duplicate prior label mbpp-full-726, with list versus tuple containers."
+    },
+    {
+      "id": "mbpp-full-698",
+      "native_split": "train",
+      "reason": "Dictionary equality in the grader cannot distinguish the requested key iteration order from an unsorted mapping."
+    },
+    {
+      "id": "mbpp-full-702",
+      "native_split": "train",
+      "reason": "Binary-search helper omits its final remaining endpoint. For proposed ([1,2,3,4,5,5],6,3), retaining [2,3,4,5,5] needs one removal, but the helper misses the last 5 and reports two. Static reasoning only."
+    },
+    {
+      "id": "mbpp-full-714",
+      "native_split": "train",
+      "reason": "Task wording does not specify the distinct-prime-power partition objective implemented by the reference; ambiguous oracle contract."
+    },
+    {
+      "id": "mbpp-full-754",
+      "native_split": "train",
+      "reason": "Three-way aligned equality and value extraction is close to 723's aligned-equality count. Retain one representative."
+    },
+    {
+      "id": "mbpp-full-760",
+      "native_split": "train",
+      "reason": "All-elements-identical predicate is a container/output-format variant of prior label mbpp-full-741 (all characters identical); conservatively excluded as a semantic near duplicate."
+    },
+    {
+      "id": "mbpp-full-765",
+      "native_split": "train",
+      "reason": "Closed-form logarithmic approximation for nth polite number is not independently established; excluded from this conservative review."
+    },
+    {
+      "id": "mbpp-full-769",
+      "native_split": "train",
+      "reason": "Symmetric difference is close to exposed 579, and list output order depends on set iteration."
+    },
+    {
+      "id": "mbpp-full-773",
+      "native_split": "train",
+      "reason": "Reference returns only the first match; selected substitutions commonly remove every match and change type. Exclude underspecified occurrence contract."
+    },
+    {
+      "id": "mbpp-full-775",
+      "native_split": "train",
+      "reason": "Prompt constrains odd indices only, but reference also rejects odd values at even indices. Proposal index 3 has all odd indices valid yet reference returns False."
+    },
+    {
+      "id": "mbpp-full-793",
+      "native_split": "train",
+      "reason": "Original supposed sorted array is unsorted and declared n exceeds its length; do not extend contradictory examples."
+    },
+    {
+      "id": "mbpp-full-806",
+      "native_split": "train",
+      "reason": "Reference overwrites run length instead of taking a maximum; new tests would inherit last-run behavior."
+    },
+    {
+      "id": "mbpp-full-824",
+      "native_split": "train",
+      "reason": "Reference mutates the list while iterating, skipping consecutive even elements."
+    },
+    {
+      "id": "mbpp-full-829",
+      "native_split": "train",
+      "reason": "Second frequency rank projects the ranked counts of exposed 862 and 946. Ties alone do not establish freshness."
+    },
+    {
+      "id": "mbpp-full-831",
+      "native_split": "train",
+      "reason": "Equal-pair counting is a predicate/complement variant of development task mbpp-full-564 (unequal-pair counting); conservatively excluded as a semantic near duplicate."
+    },
+    {
+      "id": "mbpp-full-833",
+      "native_split": "train",
+      "reason": "Returning keys in insertion order is too close to indexed key selection in 679. Retain one representative."
+    },
+    {
+      "id": "mbpp-full-836",
+      "native_split": "train",
+      "reason": "Maximum-sum contiguous subarray matches the core optimization target of exposed 559."
+    },
+    {
+      "id": "mbpp-full-840",
+      "native_split": "train",
+      "reason": "Same quadratic-root relationship template, signature and result type as exposed 636, with only the coefficient predicate changed."
+    },
+    {
+      "id": "mbpp-full-847",
+      "native_split": "train",
+      "reason": "Prompt requests copying a list from a singleton tuple, but every source assertion and reference take/copy a plain list. Earlier stronger-test acceptance is not proof of semantic agreement; exclude rather than silently rewrite prompt."
+    },
+    {
+      "id": "mbpp-full-851",
+      "native_split": "train",
+      "reason": "Second argument is supposed to be the divisor sum but is independently mutated; original (1,4) also violates that relationship."
+    },
+    {
+      "id": "mbpp-full-886",
+      "native_split": "train",
+      "reason": "Arithmetic mean duplicates prior label mbpp-full-959 and overlaps the no-missing-value masked_mean pilot subproblem."
+    },
+    {
+      "id": "mbpp-full-889",
+      "native_split": "train",
+      "reason": "Prompt requests reversal, but reference sorts each sublist descending. Original and generated monotone examples hide the difference; exclude the faulty oracle."
+    },
+    {
+      "id": "mbpp-full-891",
+      "native_split": "train",
+      "reason": "Uses true division by ten until floating-point underflow rather than integer digit removal; stopping behavior depends on significands and underflow, not decimal digit count. Excluded without execution."
+    },
+    {
+      "id": "mbpp-full-900",
+      "native_split": "train",
+      "reason": "A fixed leading digit specializes the exposed prefix-match task 823."
+    },
+    {
+      "id": "mbpp-full-902",
+      "native_split": "train",
+      "reason": "Pinned reference returns a Counter, not the dictionary in the native assertions. Its addition also drops nonpositive totals."
+    },
+    {
+      "id": "mbpp-full-908",
+      "native_split": "train",
+      "reason": "Uses object identity (arr[i] is i), not numerical equality. Small cached integers can conceal a runtime-dependent incorrect oracle."
+    },
+    {
+      "id": "mbpp-full-931",
+      "native_split": "train",
+      "reason": "Previously rejected by the unchanged strict expectation-type gate: math.pow returns float while original assertions encode integer expectations."
+    },
+    {
+      "id": "mbpp-full-940",
+      "native_split": "train",
+      "reason": "Same heap_sort list-to-sorted-list task and function signature as trained label mbpp-full-635; also overlaps sorting development task 516 despite differing implementation requirements."
+    },
+    {
+      "id": "mbpp-full-967",
+      "native_split": "train",
+      "reason": "Counts distinct uppercase/lowercase vowel symbols rather than five case-insensitive vowels; known oracle ambiguity."
+    },
+    {
+      "id": "mbpp-full-969",
+      "native_split": "train",
+      "reason": "Prompt joins tuples sharing initial elements; reference only joins adjacent runs. Proposals 1,4,11 separate equal keys and expose the missing global grouping behavior."
+    }
+  ],
+  "selected": [
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-662",
+      "reference_sha256": "3b81b91cbd180dedbc2c0fa022bd0f2912fda55dc47903636e631425d5434030",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "0677526234943143e42ebe6ae5284e42ffee62c82f4898eb7e37b0837c5f7620"
+    },
+    {
+      "boundaries": 4,
+      "category": "numeric",
+      "id": "mbpp-full-663",
+      "reference_sha256": "163142220f7a9630543e0d20d3d72583ea22724453f31f145e534ccd49fa9d5a",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "655723ad81758dea86ff06c2c898f51a965bd78cc77df75cdaec171c62ad9f50"
+    },
+    {
+      "boundaries": 3,
+      "category": "numeric",
+      "id": "mbpp-full-664",
+      "reference_sha256": "c2ba3080a09f694d24fd932f1ca73eca0a5c0e415b768fd5ecfc9548b93a0259",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "d7e4f7c150791c2359aab2e3a51a1c04c9d51f86a651144c9f1a50ca2e957a4b"
+    },
+    {
+      "boundaries": 3,
+      "category": "numeric",
+      "id": "mbpp-full-688",
+      "reference_sha256": "4432fcca4667e9cee5b4e0d961607e28be787d862a60f471385726c13555c5a5",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "18dc1ba02fd33c37452ca3bd02df0ad357810de15eb184ed843a23677b355910"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-694",
+      "reference_sha256": "9e042a4cd3f1b564393c98e6f66b6fe69822f0b67b8768dd93d5ae94b4bd330a",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "9df8315f26eed9e23aa2b1ed1384b6fe87ba1279956ce7ecd3fea45c10df2af7"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-696",
+      "reference_sha256": "b810a5bd0af90e231888974e612d60e7a2ff49a16e32790cf361240f2f2d75ed",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "05a482ab19e517f4cf2c31357f297110a24b877403b99ef0ade75ba55e9dfcc1"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-723",
+      "reference_sha256": "44818ec505e437794b5b58d76711ef91e83c4131369dda0c767692a4aa3b174f",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "14c6f6ea15a524527732c0e4718be4cf9b12216a635833dbff3c0487ddb36890"
+    },
+    {
+      "boundaries": 4,
+      "category": "numeric",
+      "id": "mbpp-full-739",
+      "reference_sha256": "7100baad9b868f54fef6fcab805ff354d3b603a21b55c71f1a1799dae4483380",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "b125670e214e04c1980db91737cf7d3c2a14a14f092108869db56bdaea7e438e"
+    },
+    {
+      "boundaries": 4,
+      "category": "collections",
+      "id": "mbpp-full-744",
+      "reference_sha256": "c8d449aa4361fc4f1482f0557ddd3aa2bef7dbc74497dc242c67f362d33322c5",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "7c749ecf824f7d3882b739750a307df986df4ce65a72d46747596cfae6e4dada"
+    },
+    {
+      "boundaries": 5,
+      "category": "text",
+      "id": "mbpp-full-759",
+      "reference_sha256": "9752e1783462d1aa957b33a90da5eec5b3407de2ef5ccaa68a88ded08597f297",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "e7a2ffde5dc5428d40b6283a34b2d34044d2ba9ab643c04e8fc1e6f004f6c923"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-796",
+      "reference_sha256": "547c6b23436469617a6c982fde282efc7eac0bdc6739ee9a7bdb68ec5fc66730",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "2ac66c45dc67fe3ede32ba288a894391779c6f694beffa55faeed84b10272148"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-805",
+      "reference_sha256": "65fd7afffb21cbd249c568475bf45362af26c0e0bcbf9e1a5fe0645688393ad1",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "de9c718f54c57732e5846cbeea4dde51dcabbb91d692185c313aba5402be3b06"
+    },
+    {
+      "boundaries": 4,
+      "category": "collections",
+      "id": "mbpp-full-811",
+      "reference_sha256": "4c3836106afb7dc501e1a2c71fdde2db373fcb32d0871633d6b0b14ef60e58bd",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "fda22e37168fa8390adf1e3023d0a2f435f093d1622c21bed3b3cd231422c3b2"
+    },
+    {
+      "boundaries": 3,
+      "category": "numeric",
+      "id": "mbpp-full-830",
+      "reference_sha256": "9d8b79ef4fd0a2318193fd530f15773c0afe6f9cad48c14dcf56d08b6f865870",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "c495c5b4f1df912da9cf7802c0d35bd3c6840031a80d5fc780fa7d97078d0812"
+    },
+    {
+      "boundaries": 4,
+      "category": "text",
+      "id": "mbpp-full-832",
+      "reference_sha256": "52024e2af7fc2b6efff0f4abfb173b345dee57892c89b70e67951dab2696efab",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "42ae0a55ea2161925636dfec9557832673333983e065e497c79410f74812cbfc"
+    },
+    {
+      "boundaries": 4,
+      "category": "numeric",
+      "id": "mbpp-full-910",
+      "reference_sha256": "7ebf662b04e92129d5e54270d4a63fb49510a968771edcba7170b5eb96c71820",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "ba71cb4af7a4fb049d03e345409200b2b8d7f197132a6124900968874891c1b5"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-936",
+      "reference_sha256": "81b3acd2f892fddab1266aec135b9d9e23104d0596f0c9e7db8553815d27b44e",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "497a93cf2c4f0e810f84efb15605084fee80c3ae636123f787ad67f4d4bc02a9"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-943",
+      "reference_sha256": "f679167621bdecfa073146798e90e227ff53eb6cddb053d2e145349b0aead3ff",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "24f7ec70f96141c33f1a3e437da7574b61951dd7fcb57097857e505aa5c10b96"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-972",
+      "reference_sha256": "275f41d7201159e095bb73827a0db01a9a503026491e20ad68c718122b6cdcd4",
+      "role": "train",
+      "source_cases": 3,
+      "task_sha256": "1099e0279e47dfc4c6e780252874ce9b7a6ad6026c14ca493d975c7ab2608490"
+    },
+    {
+      "boundaries": 3,
+      "category": "numeric",
+      "id": "mbpp-full-626",
+      "reference_sha256": "b563d2c2f4cbe28c8e216087a55146591e1208f913c37a2f22bc3836addd375b",
+      "role": "evaluation",
+      "source_cases": 3,
+      "task_sha256": "cc340a87e02b0b4f0762c832e765b4f4b6f07d96b77b822005f39b9e6f970ac4"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-644",
+      "reference_sha256": "02f70d21e8e3a467a800b4eab4dfdc897c6546afdbe4276bf8d05c3fddf8ae76",
+      "role": "evaluation",
+      "source_cases": 3,
+      "task_sha256": "fb300121451a2a3d49be5873de55618ec9a955b1d8656daac99e809a7cbea925"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-679",
+      "reference_sha256": "8cb6b1968eaa4a8b58b237d5975aac71de8ad52ef1049df2e26645892cf164bd",
+      "role": "evaluation",
+      "source_cases": 3,
+      "task_sha256": "994d20022715713590faaf29df44514307f4dabe288658fde49a546633ae5a74"
+    },
+    {
+      "boundaries": 3,
+      "category": "numeric",
+      "id": "mbpp-full-717",
+      "reference_sha256": "d8f79460609712fc1ebed6b5cc210b39acbf2d08afdf1164acbf935959a25af4",
+      "role": "evaluation",
+      "source_cases": 3,
+      "task_sha256": "59d4d1cb8f4173cddbcd64e1737f69718a7d3cd94663138d19f1ad6eb6f26b89"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-780",
+      "reference_sha256": "cca0b8f65edbf995db979d8fe3be406872a97f2c14a351b7a13e5f50039ce3fa",
+      "role": "evaluation",
+      "source_cases": 3,
+      "task_sha256": "7512b152de0252a558aea1ad1d4fdce1708416aedbcb9eda67b6bb5889e224a9"
+    },
+    {
+      "boundaries": 3,
+      "category": "collections",
+      "id": "mbpp-full-915",
+      "reference_sha256": "06687fc88e46fd5637cb24b0c3d0df21c83f915e84f481af8e12aee6e345dd8b",
+      "role": "evaluation",
+      "source_cases": 3,
+      "task_sha256": "ead59c4d94fc22fa1b3f32dad1dbac276a64a5c3840a90a053b18a6ed27ea2e0"
+    },
+    {
+      "boundaries": 4,
+      "category": "collections",
+      "id": "mbpp-full-938",
+      "reference_sha256": "e95d95a62fc2ed4564149fb6e0cda69736c62b8aa8dccb5210d363e4b8296708",
+      "role": "evaluation",
+      "source_cases": 3,
+      "task_sha256": "199fa3bf5f02fdff8587e44d597357d4528293d2cbf2deca5c47cd24be926594"
+    },
+    {
+      "boundaries": 4,
+      "category": "numeric",
+      "id": "mbpp-full-950",
+      "reference_sha256": "3bc35d25443ddf254439f326292fa7390cf5253cc2f0f71d930e4308b4cafe46",
+      "role": "evaluation",
+      "source_cases": 3,
+      "task_sha256": "95168be0cd9448155adba707691135bfd1b53677f9aae082d2f98d340eed17ed"
+    }
+  ],
+  "shortfalls": {
+    "evaluation_tasks": 0,
+    "train_tasks": 5,
+    "train_text": 4
+  },
+  "source_files": {
+    "rsi/mbpp_verification.py": "47efce04acdef807e54a49f1ecbd64942a31baa2ce9e7d7404fd62326e660bc4",
+    "rsi/mbpp_verification_v2.py": "b4b0d02ffc6ad71b5a33745c895709eb5bb2f3900c6d414f6063a3fe0afc1083",
+    "rsilab/task_contracts.py": "eee02edba54b0791e5f6767f23cd7d0fd68b23aa3ded1a5becca0fdca8b3b6ea",
+    "studies/repair_v1/data/prepare.py": "e57db8e2241b5b4b0f0a1233078d1b776b7135602e6ee2226359e4b19667987d",
+    "studies/repair_v1/data/reference.py": "4d9e3ca580cf104f96f63b6fa4ed4d6c99cf37a9a0e8812b3d401ecff187fb66",
+    "studies/repair_v1/data/reviews.py": "6c27e149ae84db08214fc4d6f8e9745ede9bf5f1a6a5a0c6797bc107076923e5"
+  },
+  "source_split": "train",
+  "study": "repair-v1",
+  "train_parquet_sha256": "09d125ca31edacb7800be8c67c45abff618faf0214ff551291817d06bdb914ae",
+  "train_reviews_sha256": "049d4415fc21bf4673163ecb78fe6248a2036d5e6f601a9fe3d7c2cf4b5538cb",
+  "train_sources_sha256": "e323a3d400f4b63e4a9b30aca284fc0ed7ed14d683b645a13a9f02548d18a2e8"
+}
